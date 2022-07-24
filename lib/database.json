@@ -1,0 +1,151 @@
+{
+  "users": {
+    "918156874290@s.whatsapp.net": {
+      "afkTime": -1,
+      "banned": false,
+      "afkReason": ""
+    },
+    "62852364835040@s.whatsapp.net": {
+      "premium": true,
+      "premiumTime": -1,
+      "banned": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": "Infinity"
+    },
+    "6283839350104@s.whatsapp.net": {
+      "premium": true,
+      "premiumTime": -1,
+      "banned": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": "Infinity"
+    },
+    "6283134879359@s.whatsapp.net": {
+      "premium": false,
+      "premiumTime": -1,
+      "banned": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 100
+    },
+    "6283896230699@s.whatsapp.net": {
+      "premium": false,
+      "premiumTime": -1,
+      "banned": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 100
+    }
+  },
+  "chats": {
+    "918156874290@s.whatsapp.net": {
+      "mute": false,
+      "setWelcome": "",
+      "setLeave": ""
+    },
+    "120363022682639473@g.us": {
+      "mute": false,
+      "setWelcome": "",
+      "setLeave": ""
+    },
+    "62852364835040@s.whatsapp.net": {
+      "goodbye": true,
+      "welcome": true,
+      "mute": false,
+      "nsfw": false,
+      "antilink": false,
+      "setWelcome": "",
+      "setLeave": "",
+      "name": "🅢🅗🅐🅟",
+      "antivirus": true,
+      "antionce": true
+    },
+    "120363023032250363@g.us": {
+      "name": "Tes Bot",
+      "goodbye": false,
+      "welcome": false,
+      "mute": false,
+      "nsfw": false,
+      "antilink": false,
+      "antivirus": true,
+      "antionce": true,
+      "setWelcome": "",
+      "setLeave": ""
+    },
+    "6283839350104@s.whatsapp.net": {
+      "name": "🄽🄰🄽🄳🄴 🅈🄾",
+      "goodbye": false,
+      "welcome": false,
+      "mute": true,
+      "nsfw": false,
+      "antilink": false,
+      "antivirus": true,
+      "antionce": true,
+      "setWelcome": "",
+      "setLeave": ""
+    },
+    "62895322265316-1614343889@g.us": {
+      "name": "BTS LONTHE & MALAYDOG DAJJAL",
+      "goodbye": false,
+      "welcome": false,
+      "mute": true,
+      "nsfw": false,
+      "antilink": false,
+      "antivirus": true,
+      "antionce": true,
+      "setWelcome": "",
+      "setLeave": ""
+    }
+  },
+  "database": {},
+  "game": {
+    "math": [],
+    "family100": [],
+    "tebakgambar": [],
+    "tebakkata": [],
+    "tebakbendera": [],
+    "siapaaku": [],
+    "tebakkalimat": [],
+    "caklontong": [],
+    "susunkata": [],
+    "tekateki": [],
+    "tebakkabupaten": [],
+    "tebakkimia": [],
+    "tebaklirik": [],
+    "tebaktebakan": []
+  },
+  "others": {},
+  "sticker": {},
+  "absen": {},
+  "cmd": {},
+  "settings": {
+    "918156874290@s.whatsapp.net": {
+      "autobio": true,
+      "available": false,
+      "composing": false,
+      "recording": false,
+      "autorespond": false
+    },
+    "62852364835042@s.whatsapp.net": {
+      "autobio": false,
+      "available": false,
+      "composing": false,
+      "recording": false,
+      "autorespond": false
+    },
+    "6289603420692@s.whatsapp.net": {
+      "autobio": false,
+      "available": false,
+      "composing": false,
+      "recording": false,
+      "autorespond": false
+    }
+  },
+  "anonymous": {},
+  "store": [],
+  "RSticker": [],
+  "RImage": [],
+  "RVideo": [],
+  "RVn": []
+}
