@@ -1,6 +1,8 @@
 const fs = require('fs')
 const chalk = require('chalk')
-const  { indonesia, english} = require(`./language`)
+const moment = require("moment-timezone");
+const { indonesia, english} = require(`./language`)
+const { tanggal, getTime } = require('./lib/myfunc')
 
 // Website Api
 global.APIs = {
@@ -12,6 +14,9 @@ global.APIKeys = {
 	'https://api.zeeoneofc.xyz': 'Ceb3FLtq',  // login https://api.zeeoneofc.xyz to get apikey || https://api-alphabot.herokuapp.com
 }
 
+// Time
+const waktu =  `${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB`
+
 // Setting //punya gw
 global.autoread = true // auto read pesan (auto read message)
 global.autoketik = false //status auto mengetik (auto typing)
@@ -20,7 +25,8 @@ global.available = false //status online (online)
 global.unavailable = false //status offline (offline)
 global.pause = false //YNTKTS
 global.autovoice = false //prank autovoice (auto voice pas ada yg toxic) //punya gw
-global.autobio = false //auto set bio (kalau ada orang yg komen)
+global.autobio = true //auto set bio (kalau ada orang yg komen)
+global.autoreadsw = true //auto read SW (story WhatsApp)
 
 //language
 //Available in indonesia & english
@@ -28,24 +34,24 @@ global.autobio = false //auto set bio (kalau ada orang yg komen)
 global.language = indonesia  //change indonesia to english if you don't understand the language used by the bot
 
 // Other
-global.botname = "ᏃᎯᏨᏦᎽ-Mdོ" //namabot kalian
-global.ownername= "ᴹᴿ᭄ ᴅᴏɴᴢ ×፝֟͜×" //nama kalian
-global.myweb = "https://chat.whatsapp.com/B5xKfSwQR3a6258K9DXhiR" //bebas asal jan hapus
-global.youtube = "https://youtube.com/channel/UCJBH-edRR1zUy5X_Cw-5hJw" //bebas asal jan hapus
+global.botname = "кєιтн вσт-м∂ོ" //namabot kalian
+global.ownername= "ᴹᴿ᭄ ∂σηz ×፝֟͜૨̸" //nama kalian
+global.myweb = "https://chat.whatsapp.com/HKDyOsfEEDCKE4z8GVDahd" //bebas asal jan hapus
+global.youtube = "https://youtu.be/FoksUIwNYIM" //bebas asal jan hapus
 global.github = "https://github.com/Radit10" //bebas
 global.email = "kontolodonz@gmail.com" //bebas
 global.region = "Indonesia" //bebas
 global.timezone = 'Asia/Jakarta' //  timezone wib
-global.premium = ["6283839350104","62852364835040","62852364835042","62852364835045"] //premium user
-global.owner = ["6283839350104","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
-global.ownernomer = "62852364835045" // nomor wa kalian
-global.ownernomerr = "+62852364835045" //nmr wa kalian
+global.premium = ["6283839350104","6285236483504","62852364835040","62852364835040","62852364835042","62852364835045"] //premium user
+global.owner = ["6283839350104","6285236483504","62852364835040","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
+global.ownernomer = "62852364835040" // nomor wa kalian
+global.ownernomerr = "+62852364835040" //nmr wa kalian
 global.thumbnail = "./image/lol.jpg" // ini lol.jpg adalah nama foto di folder image. untuk foto bot
 global.donasi = "./image/donasi.jpg" // foto donasi di folder image
 global.background_welcome = "https://telegra.ph/file/392fbf09cfc4f6823d204.jpg" // https://telegra.ph/file/90a931648de597820bc08.jpg maks size 30kb, agar welcome image nya tdk delay
 
 global.packname = '© ᏃᎯᏨᏦᎽ-Mdོ' //sticker wm ubah
-global.author = 'Di Buat Oleh ᎠᎾᏁᏃ•T̶Z̶Y\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' //sticker wm ganti nama kalian
+global.author = `Di Buat Oleh ᎠᎾᏁᏃ•T̶Z̶Y\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${waktu}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n` //sticker wm ganti nama kalian
 global.sessionName = 'session'
 global.typemenu = 'document'
 

