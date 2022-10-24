@@ -544,7 +544,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 
         // Auto Bio \\
     	if (m.message && autobio) {
-	       await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${alpha.public ? 'Public-Mode' : 'Self-Mode'} | Hit Today : ${hit_today.length} | Prefix : Multi-Prefix`)
+	       await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${alpha.public ? 'Public-Mode' : 'Self-Mode'} | Prefix : Multi-Prefix`)
 		}
 		
 		// Auto Bio every 60seconds
