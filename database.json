@@ -17,11 +17,10 @@
     }
   },
   "chats": {
-    "120363027121266452@g.us": {
-      "name": "warga +62",
-      "mute": true,
+    "62852364835045@s.whatsapp.net": {
+      "name": "",
+      "mute": false,
       "antivirus": true,
-      "antilink": true,
       "setWelcome": "",
       "setLeave": ""
     },
@@ -48,7 +47,7 @@
       "setLeave": ""
     },
     "120363024710399996@g.us": {
-      "name": "CPG",
+      "name": "",
       "mute": false,
       "antivirus": true,
       "setWelcome": "",
