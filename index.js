@@ -238,8 +238,8 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             return alpha.relayMessage(m.chat, { requestPaymentMessage: { Message: { extendedTextMessage: { text: teks, currencyCodeIso4217: 'IDR', requestFrom: '0@s.whatsapp.net', expiryTimestamp: 10000, amount: 1, background: pp_bot }}}}, {})
         }
         const deleteChat = (dari) => {
-            return alpha.sendMessage(dari, { delete: { remoteJid: m.chat, fromMe: true, id: m.id, participant: m.sender } })
-        }
+            return alpha.sendMessage(dari, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant } })
+        }        
         const hidetag = (teks) => {
             return alpha.sendMessage(from, { text : teks ? teks : '' , mentions: participants.map(a => a.id)}, {quoted: fkontak})
         }
@@ -363,10 +363,13 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
         	linkgrup = await alpha.groupInviteCode(m.chat)
-	    	if (budy.includes(linkgrup)) return	    	
-        	reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res => 
+	    	if (budy.includes(linkgrup)) return
+        	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res => 
+        	alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        	
 			alpha.updateBlockStatus(sender, 'block')
+			await sleep(500)
+			deleteChat(from)
         }
      }
 		
@@ -378,16 +381,22 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	sendSticker(heker).then(async res =>
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
+			await sleep(500)
+			deleteChat(from)
 	    } else if (m.mtype === 'productMessage') {
         	//reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
+			await sleep(500)
+			deleteChat(from)
 	    } else if (m.mtype === 'orderMessage') {
         	//reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
+			await sleep(500)
+			deleteChat(from)
 		/*} else if (m.mtype === 'locationMessage') { // Lokasi biasa, rekomendasi off
         	reply(`「 *VIRLOK TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -401,6 +410,8 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
+			await sleep(500)
+			deleteChat(from)
 		/*} else if (m.mtype === 'audioMessage') {
         	reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -427,6 +438,8 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	sendSticker(heker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
+			await sleep(500)
+			deleteChat(from)
         }
      }
      
@@ -434,7 +447,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 	    if (!m.isGroup && !m.key.fromMe && !isCreator){
         	if (budy.length > 800) {        	
         	reply('Bacot Hekel Ngentod, gak ngeleg dek🖕').then(async res => 
-        	await alpha.updateBlockStatus(sender, 'block'))        	
+        	await alpha.updateBlockStatus(sender, 'block'))
         }
      }
      
@@ -1007,10 +1020,12 @@ if (!m.isGroup) return reply(lang.groupOnly())
 			if (args[0] === "on") {
 				if (global.db.data.chats[m.chat].antilink) return reply(lang.OnBef())
 				global.db.data.chats[m.chat].antilink = true
+                await sendReact("✅")
 				reply(lang.OkOn(command))
 				} else if (args[0] === "off") {
 					if (!global.db.data.chats[m.chat].antilink) return reply(lang.OffYaBef())
 					global.db.data.chats[m.chat].antilink = false
+                    await sendReact("❎")
 					reply(lang.OffBef())
 					} else {
 						alpha.sendButMessage(from, 'Mode Antilink', `© ${ownername}`, [{buttonId: 'antilink on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'antilink off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: fgif})
@@ -1968,11 +1983,9 @@ break
 ├ Me : ${m.key.fromMe ? 'True' : 'False'}
 ╰❒ Owner : ${isCreator ? 'True' : `False`}
 `	
-const buttojns = [
-  {buttonId: 'command', buttonText: {displayText: '📖 List Menu'}, type: 1},
-  {buttonId: 'owner', buttonText: {displayText: '🙍‍♂️ Owner'}, type: 1},
-  {buttonId: 'donasi', buttonText: {displayText: '💰 Donation'}, type: 1}
-]			
+const buttojns = [{buttonId: 'Donasi', buttonText: {displayText: 'donate'}, type: 1},
+                   {buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},
+                   {buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}]			
 					if(typemenu == 'document'){
 							alpha.sendButDoc(from, ini_anu,  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, buttojns, [ownernya, ini_mark, m.sender], { quoted: ftroli})
 						}
@@ -1995,7 +2008,8 @@ const buttojns = [
 					break    
 	case 'allmenu':{
 	    await sendReact("📋")
-		alpha.send5ButLoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix) , `© ${ownername}`,pp_bot, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Rules","id": 'rules'}}] )
+		//alpha.send5ButLoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix) , `© ${ownername}`,pp_bot, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Rules","id": 'rules'}}] )   	    
+   	    alpha.sendButDoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix),  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, [{buttonId: 'donate', buttonText: {displayText: 'Donasi'}, type: 1},{buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},{buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}], [m.sender], { quoted: ftroli})
    	  }
 	break   
 	case 'infocmd': case'infomenu':{
@@ -4382,10 +4396,12 @@ gak share gak bisa masuk🙏`
 			if (args[0] === "on") {
 				if (global.db.data.chats[m.chat].antivirus) return reply('Sudah Aktif Sebelumnya')
 				global.db.data.chats[m.chat].antivirus = true
+                await sendReact("✅")
 				reply(lang.OkOn(command))
 				} else if (args[0] === "off") {
 					if (!global.db.data.chats[m.chat].antivirus) return reply('Sudah Nonaktif Sebelumnya')
 					global.db.data.chats[m.chat].antivirus = false
+                    await sendReact("❎")
 					reply(lang.OffBef())
 					} else {
 						alpha.sendButMessage(from, 'Mode antivirus', `© ${ownername}`, [{buttonId: 'antivirus on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'antivirus off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: fgif})
@@ -4485,7 +4501,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
 let teks = `══✪〘 *BUG TAGALL️* 〙✪══
  ➲ *Pesan : ${q ? q : 'kosong'}*\n\n`
 for (let mem of participants) {
-teks += `⭔ @${mem.id.split('@')[0]}\n`
+teks += `☠︎︎ @${mem.id.split('@')[0]}\n`
 }
 alpha.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: doc })
 break
@@ -4573,6 +4589,12 @@ await alpha.relayMessage(m.chat, audio.message, { messageId: audio.key.id })
 await alpha.sendContact(m.chat, global.ownerr, fkontol)
 alpha.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: doc })
 break
+
+/*case 'bugpayment':
+   if(!isCreator && !m.key.fromMe) return   
+    let requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","1000": "1000","extendedTextMessage": {"text": "anjay"}}}), { userJid: m })
+    alpha.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
+   break*/
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[ BATASAN ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw        
 
