@@ -1983,9 +1983,11 @@ break
 ├ Me : ${m.key.fromMe ? 'True' : 'False'}
 ╰❒ Owner : ${isCreator ? 'True' : `False`}
 `	
-const buttojns = [{buttonId: 'Donasi', buttonText: {displayText: 'donate'}, type: 1},
-                   {buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},
-                   {buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}]			
+const buttojns = [
+  {buttonId: 'command', buttonText: {displayText: '📖 List Menu'}, type: 1},
+  {buttonId: 'owner', buttonText: {displayText: '🙍‍♂️ Owner'}, type: 1},
+  {buttonId: 'donasi', buttonText: {displayText: '💰 Donation'}, type: 1}
+]				
 					if(typemenu == 'document'){
 							alpha.sendButDoc(from, ini_anu,  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, buttojns, [ownernya, ini_mark, m.sender], { quoted: ftroli})
 						}
