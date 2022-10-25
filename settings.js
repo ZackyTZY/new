@@ -25,7 +25,7 @@ global.available = false //status online (online)
 global.unavailable = false //status offline (offline)
 global.pause = false //YNTKTS
 global.autovoice = false //prank autovoice (auto voice pas ada yg toxic) //punya gw
-global.autobio = true //auto set bio (kalau ada orang yg komen)
+global.autobio = false //auto set bio (kalau ada orang yg komen)
 global.autoreadsw = true //auto read SW (story WhatsApp)
 
 //language
@@ -59,6 +59,14 @@ global.limitawal = {
     premium: "Infinity",
     free: 100
 }
+
+// Documents Variants
+global.doc1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+global.doc2 = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+global.doc3 = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+global.doc4 = 'application/zip'
+global.doc5 = 'application/pdf'
+global.doc6 = 'application/vnd.android.package-archive'
 
 global.flaming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
 global.fluming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=fluffy-logo&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
