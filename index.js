@@ -548,7 +548,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 	    }}
 
         // Auto Bio \\
-    	if (m.message && autobio) {
+    	if (isCmd && autobio) {
 	       await alpha.setStatus(`${botname} | Ꮢυηтιмє : ${runtime(process.uptime())} | ${alpha.public ? 'ᴘᴜʙʟɪᴄ-ᴍᴏᴅᴇ' : 'sᴇʟғ-ᴍᴏᴅᴇ'} | Ɱυʅƚι-Ρɾҽϝιx`)
 		}
 		
