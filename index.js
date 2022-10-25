@@ -433,24 +433,19 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
+		} else if (budy.match(/(bug([123456789|combine|stik|tod|tag])|troli([123456789])|santet([123456789])|jadibug([123456789])|slayer([123456789])|virtex([123456789])|jomomo([123456789])|jobug([123456789])|catalog([123456789])|inibug|poll|gaskal)/gi)) {
+            alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+            alpha.updateBlockStatus(sender, 'block')
 	    } else if (budy.length > 3000) {
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	sendSticker(heker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
 			/*await sleep(500)
-			deleteChat(from)*/
+			deleteChat(from)*/	    
         }
-     }
-     
-     // Anti Bug Bot \\
-     if (m.isBaileys && m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
-        if (budy.match(/(bug|poll|troli)/gi)) {
-            alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
-        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
-            alpha.updateBlockStatus(sender, 'block')			
-        }
-     }
+     }          
 
         // Anti Spam \\
 	    if (!m.isGroup && !m.key.fromMe && !isCreator){
@@ -460,11 +455,12 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         }
      }
      
-        /*// Tes \\
-        if (budy.match(/(te?s)/gi)) {
-        	//reply(`「 *TES* 」\n\nSuccses`)
+        // Tes \\
+        /*if (budy.match(/(te?s)/gi)) {
+        	if (m.key.fromMe && isCreator) return 
+        	reply(`「 *TES* 」\n\nSuccses`)
         	//sendStickerVideo(hengker)
-        	deleteChat(m.chat)
+        	//deleteChat(m.chat)
         	//alpha.sendMessage(m.chat, { sticker: { url: "https://telegra.ph/file/25d567b38e5a8a1d8d573.png" }, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted })
         }*/
 
@@ -4481,7 +4477,7 @@ virgam = fs.readFileSync('./image/gamvir.jpeg')
 alpha.sendMessage(from, { caption: "nih", image: fs.readFileSync("./image/gamvir.jpeg") }, { quoted: m, thumbnail: virgam })
 break
 
-case 'bug1':
+case 'tultil':
 if (!isCreator) return reply(lang.ownerOnly())
 var audio = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 "audioMessage": {
