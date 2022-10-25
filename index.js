@@ -380,8 +380,8 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `${pushname} Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
-			/*await sleep(500)
-			deleteChat(from)*/
+			await sleep(1000)
+			deleteChat(from)
         }
      }
 		
