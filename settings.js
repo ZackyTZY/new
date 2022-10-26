@@ -25,7 +25,7 @@ global.available = false //status online (online)
 global.unavailable = false //status offline (offline)
 global.pause = false //YNTKTS
 global.autovoice = false //prank autovoice (auto voice pas ada yg toxic) //punya gw
-global.autobio =true //auto set bio (kalau ada orang yg komen)
+global.autobio = false //auto set bio (kalau ada orang yg komen)
 global.autoreadsw = true //auto read SW (story WhatsApp)
 
 //language
@@ -50,7 +50,7 @@ global.thumbnail = "./image/lol.jpg" // ini lol.jpg adalah nama foto di folder i
 global.donasi = "./image/donasi.jpg" // foto donasi di folder image
 global.background_welcome = "https://telegra.ph/file/392fbf09cfc4f6823d204.jpg" // https://telegra.ph/file/90a931648de597820bc08.jpg maks size 30kb, agar welcome image nya tdk delay
 
-global.packname = '© ᏃᎯᏨᏦᎽ-Mdོ' //sticker wm ubah
+global.packname = '© кєιтн вσт-м∂ོ' //sticker wm ubah
 global.author = `Di Buat Oleh ᎠᎾᏁᏃ•T̶Z̶Y\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${waktu}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n` //sticker wm ganti nama kalian
 global.sessionName = 'session'
 global.typemenu = 'document'
