@@ -1284,7 +1284,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
           }
         ]
-        await alpha.send5ButImg(from, lang.tos(ownernomer) , `© ${ownername}`,qris, but , { userJid: m.chat, quoted: m })
+        /*var but = [
+  {buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1},
+  {buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},
+  {buttonId: 'command', buttonText: {displayText: 'List Command'}, type: 1}
+]*/
+        //await alpha.sendButImg(from, lang.tos(ownernomer) , `© ${ownername}`,qris, but , { userJid: m.chat, quoted: m })
+        //await alpha.sendButImage(from, qris, but, lang.tos(ownernomer), `© ${ownername}`, [sender], {quoted:m})
+        await alpha.sendImage(m.chat, qris, lang.tos(ownernomer), m)
     }
  break
       
