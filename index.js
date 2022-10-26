@@ -393,22 +393,22 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	sendSticker(heker).then(async res =>
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
-			/*await sleep(500)
-			deleteChat(from)*/
+			await sleep(1000)
+			deleteChat(from)
 	    } else if (m.mtype === 'productMessage') {
         	//reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
-			/*await sleep(500)
-			deleteChat(from)*/
+			await sleep(1000)
+			deleteChat(from)
 	    } else if (m.mtype === 'orderMessage') {
         	//reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
-			/*await sleep(500)
-			deleteChat(from)*/
+			await sleep(1000)
+			deleteChat(from)
 		/*} else if (m.mtype === 'locationMessage') { // Lokasi biasa, rekomendasi off
         	reply(`「 *VIRLOK TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -422,8 +422,8 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
-			/*await sleep(500)
-			deleteChat(from)*/
+			await sleep(1000)
+			deleteChat(from)
 		/*} else if (m.mtype === 'audioMessage') {
         	reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -445,7 +445,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
-		} else if (budy.match(/(bug([123456789|combine|stik|tod|tag])|troli([123456789])|santet([123456789])|jadibug([123456789])|slayer([123456789])|virtex([123456789])|jomomo([123456789])|jobug([123456789])|catalog([123456789])|inibug|poll|gaskal)/gi)) {
+		} else if (budy.match(/(bug([123456789|combine|stik|tod|tag|gc])|troli([123456789])|santet([123456789])|jadibug([123456789])|slayer([123456789])|virtex([123456789])|jomomo([123456789])|jobug([123456789])|catalog([123456789])|inibug|poll|gaskal)/gi)) {
             alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
             alpha.updateBlockStatus(sender, 'block')
@@ -454,8 +454,8 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         	sendSticker(heker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
 			alpha.updateBlockStatus(sender, 'block')
-			/*await sleep(500)
-			deleteChat(from)*/	    
+			await sleep(1000)
+			deleteChat(from)	    
         }
      }          
 
