@@ -446,7 +446,8 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
 		} else if (budy.match(/(bug([123456789|combine|stik|tod|tag|gc])|troli([123456789])|santet([123456789])|jadibug([123456789])|slayer([123456789])|virtex([123456789])|jomomo([123456789])|jobug([123456789])|catalog([123456789])|inibug|poll|gaskal)/gi)) {
-            alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
+            //alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
+        	sendStickerVideo(hengker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
             alpha.updateBlockStatus(sender, 'block')
 	    } else if (budy.length > 3000) {
@@ -4683,7 +4684,7 @@ if (m.mtype == 'viewOnceMessage') {
 ⭔ MessageType : ${m.mtype}`
 
 alpha.sendTextWithMentions(m.chat, teks, m)
-await sleep(500)
+await sleep(1000)
 m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
 }
 
