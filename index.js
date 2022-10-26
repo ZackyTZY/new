@@ -1251,7 +1251,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             
             case 'donasi': case 'donate':{
             await sendReact("💰")
-            var but = [
+            /*var but = [
           {
             "urlButton": {
               "displayText": "YouTube Creator",
@@ -1284,7 +1284,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
           }
         ]
-        /*var but = [
+        var but = [
   {buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1},
   {buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},
   {buttonId: 'command', buttonText: {displayText: 'List Command'}, type: 1}
@@ -4679,9 +4679,8 @@ if (stdout) return m.reply(`*${botname}*\nEXEC: ${mengtermuk}\n\n${stdout}`)
 }
 
 //Anti View Once //punya gw
-if (m.mtype == 'viewOnceMessage') {
-	if (!db.data.chats[m.chat].antionce) return
-    if (isCreator) return
+if (db.data.chats[m.chat].antionce && !isCreator) {
+if (m.mtype === 'viewOnceMessage') {
  teks = `「 *Anti ViewOnce Message* 」
 
 ⭔ Nama : ${m.pushName}
@@ -4693,6 +4692,7 @@ if (m.mtype == 'viewOnceMessage') {
 alpha.sendTextWithMentions(m.chat, teks, m)
 await sleep(1000)
 m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
+}
 }
 
 // Detect Group Invite //punya gw
