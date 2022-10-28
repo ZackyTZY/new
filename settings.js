@@ -27,6 +27,7 @@ global.pause = false //YNTKTS
 global.autovoice = false //prank autovoice (auto voice pas ada yg toxic) //punya gw
 global.autobio = true //auto set bio (kalau ada orang yg komen)
 global.autoreadsw = true //auto read SW (story WhatsApp)
+global.publik = true //publik mode
 
 //language
 //Available in indonesia & english
