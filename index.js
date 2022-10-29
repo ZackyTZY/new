@@ -370,7 +370,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 
 //Anti View Once //punya gw
 if (m.mtype === 'viewOnceMessage') {
-if (!db.data.chats[m.chat].antionce && isCreator) return
+if (!db.data.chats[m.chat].antionce && isCreator && isGroupAdmins) return
  teks = `「 *Anti ViewOnce Message* 」
 
 ⭔ Nama : ${m.pushName}
