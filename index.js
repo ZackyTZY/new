@@ -368,6 +368,28 @@ const order = generateWAMessageFromContent(jid, proto.Message.fromObject({
 alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 }
 
+//Anti View Once //punya gw
+if (m.mtype === 'viewOnceMessage') {
+if (!db.data.chats[m.chat].antionce && isCreator) return
+ teks = `「 *Anti ViewOnce Message* 」
+
+⭔ Nama : ${m.pushName}
+⭔ User : @${m.sender.split("@")[0]}
+⭔ Clock : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB
+⭔ Date : ${tanggal(new Date())}
+⭔ MessageType : ${m.mtype}`
+
+alpha.sendTextWithMentions(m.chat, teks, m)
+await sleep(1000)
+m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
+}
+
+// Detect Group Invite //punya gw
+if (m.mtype === 'groupInviteMessage') { 
+if (isCreator) return sendOrder(m.chat, "Ga usah masukin gw ke grup ngentod", "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+//await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
+}
+
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
@@ -569,7 +591,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 		// Auto Bio every 60seconds
         /*if (autobio) setInterval(async () => {
         if (autobio) await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${global.publik ? 'Public-Mode' : 'Self-Mode'} | Hit Today : ${hit_today.length} | Prefix : Multi-Prefix`)
-        }, 60 * 1000)*/
+        }, 60 * 1000)*/        
         
 		const sendFileFromUrl = async (from, url, caption, mek, men) => {
             let mime = '';
@@ -4493,6 +4515,21 @@ gak share gak bisa masuk🙏`
  }
  break
 
+case 'stupid': case 'foolish': case 'smart': case 'idiot': case 'gay': case 'lesbi': case 'bastard': case 'stubble': 
+case 'dog': case 'fuck': case 'noob': case 'horny': case 'wibu': case 'handsome': case 'beautiful':case 'cute': case 'ugly': case 'pretty': 
+case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case 'fuckboy': case 'playboy': case 'fuckgirl':case 'playgirl':
+      if (!m.isGroup) return reply(lang.groupOnly())
+            let member = participants.map(u => u.id)
+            let me = m.sender
+            let jodoh = member[Math.floor(Math.random() * member.length)]
+            let jawab = `The Most *${command}* Here Is @${jodoh.split('@')[0]}`
+            let ments = [me, jodoh]
+            let buttons = [
+                        { buttonId: 'wkwkwk', buttonText: { displayText: '👀😂' }, type: 1 }
+                    ]
+            await alpha.sendButtonText(from, jawab, buttons, botname, {quoted: m, mentions: ments})
+            break
+
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
 case 'jadivirgam': //ga work
@@ -4675,31 +4712,6 @@ exec(mengtermuk, (err, stdout) => {
 if(err) return m.reply(err)
 if (stdout) return m.reply(`*${botname}*\nEXEC: ${mengtermuk}\n\n${stdout}`)
 })
-}
-}
-
-//Anti View Once //punya gw
-if (db.data.chats[m.chat].antionce && !isCreator) {
-if (m.mtype === 'viewOnceMessage') {
- teks = `「 *Anti ViewOnce Message* 」
-
-⭔ Nama : ${m.pushName}
-⭔ User : @${m.sender.split("@")[0]}
-⭔ Clock : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB
-⭔ Date : ${tanggal(new Date())}
-⭔ MessageType : ${m.mtype}`
-
-alpha.sendTextWithMentions(m.chat, teks, m)
-await sleep(1000)
-m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
-}
-}
-
-// Detect Group Invite //punya gw
-if (!isCreator) {
-if (m.mtype === 'groupInviteMessage') { 
-sendOrder(m.chat, "Ga usah masukin gw ke grup ngentod", "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
-//await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
 }
 }
 
