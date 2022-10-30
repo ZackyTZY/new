@@ -4551,7 +4551,7 @@ reply(`「 _*Pesan Sukses Terkirim!*_ 」 ✓\n\nPesan Link Group Telah Dikirim 
 break
 
     case 'mode':
-        if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+        if (!isCreator) return reply(lang.ownerOnly())
         if (args[0] === "all") {
       	if (global.pc) return reply(lang.OnBef())
         global.pc = true
@@ -4559,7 +4559,7 @@ break
         } else if (args[0] === "pc") {
         if (!global.pc) return reply(lang.OffYaBef())
         global.pc = false
-        reply(`Berhasil Menjadi ${command} PC!`())
+        reply(`Berhasil Menjadi ${command} PC!`)
         } else {
         	alpha.sendButMessage(from, 'Mode ALL or PC', `© ${ownername}`, [{buttonId: 'mode all', buttonText: {displayText: 'ALL'}, type: 1},{buttonId: 'mode pc', buttonText: {displayText: 'PC'}, type: 1}], {quoted: fgif})
 			}
