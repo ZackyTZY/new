@@ -414,10 +414,10 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
         	sendSticker(sharelink).then(async res => 
-        	await deleteChat(from))
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(500)
-			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
+			await sleep(1000)
+			deleteChat(from)			
         }
      }
 		
@@ -428,19 +428,19 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
         	sendSticker(heker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(500)
+			await sleep(1000)
 			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 	    } else if (m.mtype === 'productMessage') {
         	//reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	sendStickerVideo(hengker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(500)
+			await sleep(1000)
 			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 	    } else if (m.mtype === 'orderMessage') {
         	//reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
         	sendStickerVideo(hengker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(500)
+			await sleep(1000)
 			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 		/*} else if (m.mtype === 'locationMessage') { // Lokasi biasa, rekomendasi off
         	reply(`「 *VIRLOK TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
@@ -454,7 +454,7 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         	//reply(`「 *VIRDOC TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	sendStickerVideo(hengker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(500)
+			await sleep(1000)
 			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 		/*} else if (m.mtype === 'audioMessage') {
         	reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
@@ -486,7 +486,7 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	sendSticker(heker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(500)
+			await sleep(1000)
 			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
         }
      }          
