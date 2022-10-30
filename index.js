@@ -84,32 +84,6 @@ const tebakkimia = db.data.game.tebakkimia = []
 const tebaklirik = db.data.game.tebaklirik = []
 const tebaktebakan = db.data.game.tebaktebakan = []
 
-//punya gw, Sticker Image
-heker1 = "https://telegra.ph/file/6e93488bdd86d4193daf6.jpg"
-heker2 = "https://telegra.ph/file/81b9635450fc4a0068541.jpg"
-heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg"
-heker4 = "https://telegra.ph/file/a9a7a9702db222f61641a.jpg"
-heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
-heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
-var HekerList = [heker1,heker2,heker3,heker4,heker5,heker6]
-var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
-
-sherlink1 = "https://telegra.ph/file/60ac33e30400ead10f8b0.png"
-sherlink2 = "https://telegra.ph/file/11ac226ff2fb15d8cad36.png"
-sherlink3 = "https://telegra.ph/file/aeb0dc90fc42980f4af4a.png"
-sherlink4 = "https://telegra.ph/file/b9a1f838db947cbe20a3b.png"
-var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4]
-var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
-
-// Sticker Video
-hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
-var HekerListMP4 = [hekel1]
-var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
-
-// Document
-let documents = [doc1,doc2,doc3,doc5] 
-let docs = documents[Math.floor(Math.random() * documents.length)]
-
 module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype == 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ""
@@ -173,7 +147,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 
 		let picaks = [flaming,fluming,flarun,flasmurf]
 		let picak = picaks[Math.floor(Math.random() * picaks.length)]
-		
+
 	    // Bot Status & //punya gw
         const used = process.memoryUsage()
         const cpus = os.cpus().map(cpu => {
@@ -354,6 +328,32 @@ Selama ${clockString(new Date - user.afkTime)}
 user.afkTime = -1
 user.afkReason = ''
 }
+
+//punya gw, Sticker Image
+heker1 = "https://telegra.ph/file/6e93488bdd86d4193daf6.jpg"
+heker2 = "https://telegra.ph/file/81b9635450fc4a0068541.jpg"
+heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg"
+heker4 = "https://telegra.ph/file/a9a7a9702db222f61641a.jpg"
+heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
+heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
+var HekerList = [heker1,heker2,heker3,heker4,heker5,heker6]
+var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
+
+sherlink1 = "https://telegra.ph/file/60ac33e30400ead10f8b0.png"
+sherlink2 = "https://telegra.ph/file/11ac226ff2fb15d8cad36.png"
+sherlink3 = "https://telegra.ph/file/aeb0dc90fc42980f4af4a.png"
+sherlink4 = "https://telegra.ph/file/b9a1f838db947cbe20a3b.png"
+var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4]
+var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
+
+// Sticker Video
+hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
+var HekerListMP4 = [hekel1]
+var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
+
+// Document
+let documents = [doc1,doc2,doc3,doc5] 
+let docs = documents[Math.floor(Math.random() * documents.length)]
 
 //punya gw
 const sendOrder = async(jid, text, orid, img, itcount, title, sellers, tokens, ammount) => {
