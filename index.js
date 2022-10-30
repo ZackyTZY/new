@@ -403,7 +403,7 @@ if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung 
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
+        if (m.isGroup && !isCreator && !isGroupAdmins){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
         	linkgrup = await alpha.groupInviteCode(m.chat)
 	    	if (budy.includes(linkgrup)) return
@@ -419,7 +419,7 @@ if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung 
      }
 		
 		// Anti Virus \\
-	  if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
+	  if (m.isGroup && !isCreator && !isGroupAdmins){
 	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)
         	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
