@@ -28,6 +28,7 @@ global.autovoice = false //prank autovoice (auto voice pas ada yg toxic) //punya
 global.autobio = false //auto set bio (kalau ada orang yg komen)
 global.autoreadsw = true //auto read SW (story WhatsApp)
 global.publik = true //publik mode
+global.pc = false //Private chat mode
 
 //language
 //Available in indonesia & english
@@ -43,8 +44,8 @@ global.github = "https://github.com/Radit10" //bebas
 global.email = "kontolodonz@gmail.com" //bebas
 global.region = "Indonesia" //bebas
 global.timezone = 'Asia/Jakarta' //  timezone wib
-global.premium = ["6283839350104","6285236483504","62852364835040","62852364835040","62852364835042","62852364835045"] //premium user
-global.owner = ["6283839350104","6285236483504","62852364835040","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
+global.premium = ["6283839350104","6285236483504","62852364835040","62852364835042","62852364835045"] //premium user
+global.owner = ["6283839350104","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
 global.ownernomer = "62852364835045" // nomor wa kalian
 global.ownernomerr = "+62852364835045" //nmr wa kalian
 global.thumbnail = "./image/lol.jpg" // ini lol.jpg adalah nama foto di folder image. untuk foto bot

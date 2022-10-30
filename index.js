@@ -808,6 +808,11 @@ alpha.sendReceipts(m.chat, sender, [m.key.id])
       return
       }
       
+      // Chat Private 
+      if (!global.pc && m.isGroup && !isCreator) {
+      return
+      }
+      
       switch(command) {
         
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[ COMMAND ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw
@@ -4544,6 +4549,21 @@ if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(lang.eror
 alpha.sendMessage(`6285236483504@s.whatsapp.net`, {text: `*Pesan dari:* wa.me/${m.sender.split("@")[0]}\n*Whatsapp Group Link:*\n${text}` })
 reply(`「 _*Pesan Sukses Terkirim!*_ 」 ✓\n\nPesan Link Group Telah Dikirim Ke Owner,\nHarap Pastikan Tautan Valid!\nKami Akan Cek Nanti!`)                    
 break
+
+    case 'mode':
+        if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+        if (args[0] === "all") {
+      	if (global.pc) return reply(lang.OnBef())
+        global.pc = true
+        reply(lang.OkOn(command))
+        } else if (args[0] === "pc") {
+        if (!global.pc) return reply(lang.OffYaBef())
+        global.pc = false
+        reply(lang.OffBef())
+        } else {
+        	alpha.sendButMessage(from, 'Mode ALL or PC', `© ${ownername}`, [{buttonId: 'mode all', buttonText: {displayText: 'ALL'}, type: 1},{buttonId: 'mode pc', buttonText: {displayText: 'PC'}, type: 1}], {quoted: fgif})
+			}
+			break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
