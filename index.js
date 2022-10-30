@@ -393,7 +393,7 @@ m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin d
 
 // Detect Group Invite //punya gw
 if (m.mtype === 'groupInviteMessage') { 
-if (isCreator) return sendOrder(m.chat, "Ga usah masukin gw ke grup ngentod", "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
 //await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
 }
 
@@ -4537,6 +4537,13 @@ case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case '
                     ]
             await alpha.sendButtonText(from, jawab, buttons, botname, {quoted: m, mentions: ments})
             break
+
+case 'joins':
+if (!text) return reply(`Mana linknya?\n\nContoh: *${prefix + command}* ${myweb}`)
+if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(lang.erorLink())
+alpha.sendMessage(`6285236483504@s.whatsapp.net`, {text: `*Pesan dari:* wa.me/${m.sender.split("@")[0]}\n*Whatsapp Group Link:*\n${text}` })
+reply(`「 _*Pesan Sukses Terkirim!*_ 」 ✓\n\nPesan Link Group Telah Dikirim Ke Owner,\nHarap Pastikan Tautan Valid!\nKami Akan Cek Nanti!`)                    
+break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
