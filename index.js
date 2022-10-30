@@ -94,6 +94,13 @@ heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
 var HekerList = [heker1,heker2,heker3,heker4,heker5,heker6]
 var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
 
+sherlink1 = "https://telegra.ph/file/60ac33e30400ead10f8b0.png"
+sherlink2 = "https://telegra.ph/file/11ac226ff2fb15d8cad36.png"
+sherlink3 = "https://telegra.ph/file/aeb0dc90fc42980f4af4a.png"
+sherlink4 = "https://telegra.ph/file/b9a1f838db947cbe20a3b.png"
+var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4]
+var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
+
 // Sticker Video
 hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
 var HekerListMP4 = [hekel1]
@@ -399,7 +406,8 @@ if (isCreator) return sendOrder(m.chat, "Ga usah masukin gw ke grup ngentod", "5
 	    	if (budy.includes(linkgrup)) return
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>         	
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
-        	sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
+        	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
+        	sendSticker(sharelink).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
 			await sleep(1000)
@@ -4537,7 +4545,7 @@ virgam = fs.readFileSync('./image/gamvir.jpeg')
 alpha.sendMessage(from, { caption: "nih", image: fs.readFileSync("./image/gamvir.jpeg") }, { quoted: m, thumbnail: virgam })
 break
 
-case 'tultil':
+case 'bug1':
 if (!isCreator) return reply(lang.ownerOnly())
 var audio = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 "audioMessage": {
