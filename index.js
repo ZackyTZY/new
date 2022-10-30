@@ -271,7 +271,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 				if (!('welcome' in chats)) chats.welcome = false
 				if (!('mute' in chats)) chats.mute = true
 				if (!('nsfw' in chats)) chats.nsfw = false
-				if (!('antilink' in chats)) chats.antilink = true
+				if (!('antilink' in chats)) chats.antilink = false
 				if (!('antivirus' in chats)) chats.antivirus = true
 				if (!('antionce' in chats)) chats.antionce = true
 				if (!('setWelcome' in chats)) chats.setWelcome = ''
@@ -282,7 +282,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 					welcome: false, 
 					mute: true,
 					nsfw: false,
-					antilink: true,
+					antilink: false,
 					antivirus: true,
 					antionce: true,
 					setWelcome: '',
@@ -331,7 +331,7 @@ user.afkReason = ''
 
 //punya gw, Sticker Image
 heker1 = "https://telegra.ph/file/6e93488bdd86d4193daf6.jpg"
-heker2 = "https://telegra.ph/file/81b9635450fc4a0068541.jpg"
+heker2 = "https://telegra.ph/file/16d47fcc205b23e4e99d5.png"
 heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg"
 heker4 = "https://telegra.ph/file/a9a7a9702db222f61641a.jpg"
 heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
@@ -343,7 +343,10 @@ sherlink1 = "https://telegra.ph/file/60ac33e30400ead10f8b0.png"
 sherlink2 = "https://telegra.ph/file/11ac226ff2fb15d8cad36.png"
 sherlink3 = "https://telegra.ph/file/aeb0dc90fc42980f4af4a.png"
 sherlink4 = "https://telegra.ph/file/b9a1f838db947cbe20a3b.png"
-var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4]
+sherlink5 = "https://telegra.ph/file/5340c5c7c32ef192bfb26.png"
+sherlink6 = "https://telegra.ph/file/0fd4826325c43a7629148.png"
+sherlink7 = "https://telegra.ph/file/f9acd7c6acda9bd35faf0.png"
+var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7]
 var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
 
 // Sticker Video
