@@ -4555,11 +4555,11 @@ break
         if (args[0] === "all") {
       	if (global.pc) return reply(lang.OnBef())
         global.pc = true
-        reply(lang.OkOn(command))
+        reply(`Berhasil Menjadi ${command} ALL!`)
         } else if (args[0] === "pc") {
         if (!global.pc) return reply(lang.OffYaBef())
         global.pc = false
-        reply(lang.OffBef())
+        reply(`Berhasil Menjadi ${command} PC!`())
         } else {
         	alpha.sendButMessage(from, 'Mode ALL or PC', `© ${ownername}`, [{buttonId: 'mode all', buttonText: {displayText: 'ALL'}, type: 1},{buttonId: 'mode pc', buttonText: {displayText: 'PC'}, type: 1}], {quoted: fgif})
 			}
