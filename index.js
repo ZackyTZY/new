@@ -84,6 +84,32 @@ const tebakkimia = db.data.game.tebakkimia = []
 const tebaklirik = db.data.game.tebaklirik = []
 const tebaktebakan = db.data.game.tebaktebakan = []
 
+//punya gw, Sticker Image
+heker1 = "https://telegra.ph/file/6e93488bdd86d4193daf6.jpg"
+heker2 = "https://telegra.ph/file/16d47fcc205b23e4e99d5.png"
+heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg"
+heker4 = "https://telegra.ph/file/a9a7a9702db222f61641a.jpg"
+heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
+heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
+var HekerList = [heker1,heker2,heker3,heker4,heker5,heker6]
+
+sherlink1 = "https://telegra.ph/file/60ac33e30400ead10f8b0.png"
+sherlink2 = "https://telegra.ph/file/11ac226ff2fb15d8cad36.png"
+sherlink3 = "https://telegra.ph/file/aeb0dc90fc42980f4af4a.png"
+sherlink4 = "https://telegra.ph/file/b9a1f838db947cbe20a3b.png"
+sherlink5 = "https://telegra.ph/file/5340c5c7c32ef192bfb26.png"
+sherlink6 = "https://telegra.ph/file/0fd4826325c43a7629148.png"
+sherlink7 = "https://telegra.ph/file/f9acd7c6acda9bd35faf0.png"
+var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7]
+
+// Sticker Video
+hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
+var HekerListMP4 = [hekel1]
+
+// Document
+let documents = [doc1,doc2,doc3,doc5] 
+let docs = documents[Math.floor(Math.random() * documents.length)]
+
 module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype == 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ""
@@ -241,35 +267,6 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             return list[Math.floor(list.length * Math.random())]
         }
         
-        //punya gw, Sticker Image
-heker1 = "https://telegra.ph/file/6e93488bdd86d4193daf6.jpg"
-heker2 = "https://telegra.ph/file/16d47fcc205b23e4e99d5.png"
-heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg"
-heker4 = "https://telegra.ph/file/a9a7a9702db222f61641a.jpg"
-heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
-heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
-var HekerList = [heker1,heker2,heker3,heker4,heker5,heker6]
-var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
-
-sherlink1 = "https://telegra.ph/file/60ac33e30400ead10f8b0.png"
-sherlink2 = "https://telegra.ph/file/11ac226ff2fb15d8cad36.png"
-sherlink3 = "https://telegra.ph/file/aeb0dc90fc42980f4af4a.png"
-sherlink4 = "https://telegra.ph/file/b9a1f838db947cbe20a3b.png"
-sherlink5 = "https://telegra.ph/file/5340c5c7c32ef192bfb26.png"
-sherlink6 = "https://telegra.ph/file/0fd4826325c43a7629148.png"
-sherlink7 = "https://telegra.ph/file/f9acd7c6acda9bd35faf0.png"
-var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7]
-var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
-
-// Sticker Video
-hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
-var HekerListMP4 = [hekel1]
-var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
-
-// Document
-let documents = [doc1,doc2,doc3,doc5] 
-let docs = documents[Math.floor(Math.random() * documents.length)]
-
 		// DATABASE
 		try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
@@ -400,48 +397,50 @@ if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung 
 //await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
 }
 
+// Random Sticker
+var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
+var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
+var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
+
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
         if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
-        	linkgrup = await alpha.groupInviteCode(m.chat)
+        	linkgrup = await alpha.groupInviteCode(m.chat)        	
 	    	if (budy.includes(linkgrup)) return
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>         	
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
-        	sendSticker(sharelink).then(async res => 
-        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
-			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
+        	//sendSticker(sharelink).then(async res => 
+        	//await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			//alpha.updateBlockStatus(sender, 'block')
+			//await sleep(1000)
 			deleteChat(from)
         }
      }
 		
 		// Anti Virus \\
 	  if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
-	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ
+	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ        	
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)
         	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
-        	sendSticker(heker).then(async res =>
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
+        	sendSticker(heker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			deleteChat(from)
+			await sleep(500)
+			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 	    } else if (m.mtype === 'productMessage') {
         	//reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	sendStickerVideo(hengker).then(async res => 
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
+        	sendStickerVideo(hengker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			deleteChat(from)
+			await sleep(500)
+			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 	    } else if (m.mtype === 'orderMessage') {
         	//reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
-        	sendStickerVideo(hengker).then(async res => 
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
+        	sendStickerVideo(hengker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			deleteChat(from)
+			await sleep(500)
+			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 		/*} else if (m.mtype === 'locationMessage') { // Lokasi biasa, rekomendasi off
         	reply(`「 *VIRLOK TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -452,11 +451,10 @@ if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung 
 			alpha.updateBlockStatus(sender, 'block')*/
 		} else if (m.mtype === 'documentMessage') {
         	//reply(`「 *VIRDOC TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	sendStickerVideo(hengker).then(async res => 
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
+        	sendStickerVideo(hengker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			deleteChat(from)
+			await sleep(500)
+			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 		/*} else if (m.mtype === 'audioMessage') {
         	reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -485,11 +483,10 @@ if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung 
             alpha.updateBlockStatus(sender, 'block')
 	    } else if (budy.length > 3000) {
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	sendSticker(heker).then(async res => 
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))			
+        	sendSticker(heker).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			deleteChat(from)	    
+			await sleep(500)
+			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
         }
      }          
 
