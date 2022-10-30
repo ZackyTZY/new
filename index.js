@@ -378,32 +378,10 @@ const order = generateWAMessageFromContent(jid, proto.Message.fromObject({
 alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 }
 
-//Anti View Once //punya gw
-if (m.mtype === 'viewOnceMessage') {
-if (!db.data.chats[m.chat].antionce && isCreator && isGroupAdmins) return
- teks = `「 *Anti ViewOnce Message* 」
-
-⭔ Nama : ${m.pushName}
-⭔ User : @${m.sender.split("@")[0]}
-⭔ Clock : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB
-⭔ Date : ${tanggal(new Date())}
-⭔ MessageType : ${m.mtype}`
-
-alpha.sendTextWithMentions(m.chat, teks, m)
-await sleep(1000)
-m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
-}
-
-// Detect Group Invite //punya gw
-if (m.mtype === 'groupInviteMessage') { 
-if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
-//await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
-}
-
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        if (m.isGroup && !isCreator && !isGroupAdmins){
+        if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
         	linkgrup = await alpha.groupInviteCode(m.chat)
 	    	if (budy.includes(linkgrup)) return
@@ -419,7 +397,7 @@ if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung 
      }
 		
 		// Anti Virus \\
-	  if (m.isGroup && !isCreator && !isGroupAdmins){
+	  if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
 	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)
         	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
@@ -626,17 +604,27 @@ if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung 
             }
         }
         
-/*if(autorecording){
-	if(autorecording== true) return
-	await alpha.sendPresenceUpdate('recording', m.chat)
-	} else if(autoketik){
-		if(autoketik == true) return
-		await alpha.sendPresenceUpdate('composing', m.chat)
-		} else if(available){
-			if(available == true) return
-			alpha.sendPresenceUpdate('available', m.chat)
-			}*/
+//Anti View Once //punya gw
+if (m.mtype === 'viewOnceMessage') {
+if (!db.data.chats[m.chat].antionce && isCreator && isGroupAdmins) return
+ teks = `「 *Anti ViewOnce Message* 」
 
+⭔ Nama : ${m.pushName}
+⭔ User : @${m.sender.split("@")[0]}
+⭔ Clock : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB
+⭔ Date : ${tanggal(new Date())}
+⭔ MessageType : ${m.mtype}`
+
+alpha.sendTextWithMentions(m.chat, teks, m)
+await sleep(1000)
+m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
+}
+
+// Detect Group Invite //punya gw
+if (m.mtype === 'groupInviteMessage') { 
+if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+//await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
+}
 
  //FUN
 
