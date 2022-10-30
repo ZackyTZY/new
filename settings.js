@@ -29,6 +29,7 @@ global.autobio = false //auto set bio (kalau ada orang yg komen)
 global.autoreadsw = true //auto read SW (story WhatsApp)
 global.publik = true //publik mode
 global.pc = false //Private chat mode
+global.antilink = true
 
 //language
 //Available in indonesia & english
