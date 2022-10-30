@@ -298,7 +298,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 				if (!('welcome' in chats)) chats.welcome = false
 				if (!('mute' in chats)) chats.mute = true
 				if (!('nsfw' in chats)) chats.nsfw = false
-				if (!('antilink' in chats)) chats.antilink = global.antilink
+				if (!('antilink' in chats)) chats.antilink = true
 				if (!('antivirus' in chats)) chats.antivirus = true
 				if (!('antionce' in chats)) chats.antionce = true
 				if (!('setWelcome' in chats)) chats.setWelcome = ''
@@ -309,7 +309,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 					welcome: false, 
 					mute: true,
 					nsfw: false,
-					antilink: global.antilink,
+					antilink: true,
 					antivirus: true,
 					antionce: true,
 					setWelcome: '',
@@ -413,7 +413,8 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>         	
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
-        	sendSticker(sharelink).then(async res => await deleteChat(from))
+        	sendSticker(sharelink).then(async res => 
+        	await deleteChat(from))
 			alpha.updateBlockStatus(sender, 'block')
 			await sleep(500)
 			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
