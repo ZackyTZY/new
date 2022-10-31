@@ -413,11 +413,10 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>         	
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
-        	sendSticker(sharelink).then(async res => 
-        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+        	sendSticker(sharelink).then(async res => deleteChat(from)
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			deleteChat(from)			
+			await sleep(500)				
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))		
         }
      }
 		
