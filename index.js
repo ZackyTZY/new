@@ -406,17 +406,17 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
+        if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
         	linkgrup = await alpha.groupInviteCode(m.chat)        	
 	    	if (budy.includes(linkgrup)) return
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>         	
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
-        	sendSticker(sharelink).then(async res => await deleteChat(from)
+        	sendSticker(sharelink).then(async res => deleteChat(from))
 			alpha.updateBlockStatus(sender, 'block')
 			await sleep(500)				
-			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))		
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')		
         }
      }
 		
