@@ -107,11 +107,6 @@ var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sher
 hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
 var HekerListMP4 = [hekel1]
 
-// Random Sticker
-var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
-var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
-var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
-
 // Document
 let documents = [doc1,doc2,doc3,doc5] 
 let docs = documents[Math.floor(Math.random() * documents.length)]
@@ -403,11 +398,17 @@ if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung 
 //await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
 }
 
+// Random Sticker
+var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
+var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
+var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
+
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
-            if (budy.match(/(chat.whatsapp.com)/gi)) {
+        //if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
+        if (budy.match(/(chat.whatsapp.com)/gi)) {
+            if (!m.isGroup && !db.data.chats[m.chat].antilink && isCreator && isGroupAdmins && isGroupOwner) return
         	linkgrup = await alpha.groupInviteCode(m.chat)        	
 	    	if (budy.includes(linkgrup)) return
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>         	
@@ -418,7 +419,7 @@ if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung 
 			await sleep(500)				
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')		
         }
-     }
+     
 		
 		// Anti Virus \\
 	  if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
@@ -4552,6 +4553,30 @@ break
         	alpha.sendButMessage(from, 'Mode ALL or PC', `© ${ownername}`, [{buttonId: 'mode all', buttonText: {displayText: 'ALL'}, type: 1},{buttonId: 'mode pc', buttonText: {displayText: 'PC'}, type: 1}], {quoted: fgif})
 			}
 			break
+
+case 'ytmp3': 
+if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(lang.erorLink())
+try {
+sendReact("⏰")
+const jettempur = args.join(" ")
+const jetbosok = args.join(" ")
+const jetasu = jettempur.split(" | ")[0]
+const jetkontol = jetbosok.split(" | ")[1]
+ anu = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${jetasu}&type=${jetkontol}`)        
+                if (anu.filesize_video >= 999999) return reply('*File Over Limit* '+util.format(anu))
+                tummb = await getBuffer(anu.thumbnail)
+                audio = await getBuffer(anu.audio.audio)      
+alpha.sendMessage(from, {document:{url: anu.audio.audio}, mimetype:'audio/mpeg', fileName: `${anu.title}`, contextInfo:{ externalAdReply:{ showAdAttribution: true,
+title:`${global.botname}`,
+body:`MP3 | 128K`,
+thumbnail: tummb,
+mediaType:2,
+mediaUrl: `${myweb}`,
+sourceUrl: ``
+}}}, {quoted:m}).catch((err) => reply(`${anu.audio.audio}`))
+} catch {(err) => reply(jsonformat(err))
+}
+break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
