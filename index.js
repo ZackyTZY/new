@@ -298,7 +298,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 				if (!('welcome' in chats)) chats.welcome = false
 				if (!('mute' in chats)) chats.mute = true
 				if (!('nsfw' in chats)) chats.nsfw = false
-				if (!('antilink' in chats)) chats.antilenk = true
+				if (!('antilink' in chats)) chats.antilink = true
 				if (!('antivirus' in chats)) chats.antivirus = true
 				if (!('antionce' in chats)) chats.antionce = true
 				if (!('setWelcome' in chats)) chats.setWelcome = ''
@@ -309,7 +309,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 					welcome: false, 
 					mute: true,
 					nsfw: false,
-					antilenk: true,
+					antilink: true,
 					antivirus: true,
 					antionce: true,
 					setWelcome: '',
@@ -406,7 +406,7 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        if (m.isGroup && db.data.chats[m.chat].antilenk && !isCreator && !isGroupAdmins && !isGroupOwner){
+        if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
         	linkgrup = await alpha.groupInviteCode(m.chat)        	
 	    	if (budy.includes(linkgrup)) return
@@ -1060,13 +1060,13 @@ if (!m.isGroup) return reply(lang.groupOnly())
 			if (!isGroupAdmins && !isGroupOwner && !isCreator) return reply(lang.adminOnly())
 			if (!isBotAdmins) return reply(lang.botNotAdmin())
 			if (args[0] === "on") {
-				if (global.db.data.chats[m.chat].antilenk) return reply(lang.OnBef())
-				global.db.data.chats[m.chat].antilenk = true
+				if (global.db.data.chats[m.chat].antilink) return reply(lang.OnBef())
+				global.db.data.chats[m.chat].antilink = true
                 await sendReact("✅")
 				reply(lang.OkOn(command))
 				} else if (args[0] === "off") {
-					if (!global.db.data.chats[m.chat].antilenk) return reply(lang.OffYaBef())
-					global.db.data.chats[m.chat].antilenk = false
+					if (!global.db.data.chats[m.chat].antilink) return reply(lang.OffYaBef())
+					global.db.data.chats[m.chat].antilink = false
                     await sendReact("❎")
 					reply(lang.OffBef())
 					} else {
