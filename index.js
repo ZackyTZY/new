@@ -299,7 +299,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 				if (!('welcome' in chats)) chats.welcome = false
 				if (!('mute' in chats)) chats.mute = true
 				if (!('nsfw' in chats)) chats.nsfw = false
-				if (!('antilink' in chats)) chats.antilink = false
+				if (!('antilink' in chats)) chats.antilink = true
 				if (!('antivirus' in chats)) chats.antivirus = true
 				if (!('antionce' in chats)) chats.antionce = true
 				if (!('setWelcome' in chats)) chats.setWelcome = ''
@@ -310,7 +310,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 					welcome: false, 
 					mute: true,
 					nsfw: false,
-					antilink: false,
+					antilink: true,
 					antivirus: true,
 					antionce: true,
 					setWelcome: '',
