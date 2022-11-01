@@ -4530,7 +4530,7 @@ case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case '
             let buttons = [
                         { buttonId: 'wkwkwk', buttonText: { displayText: '👀😂' }, type: 1 }
                     ]
-            await alpha.sendButtonText(from, jawab, buttons, botname, {quoted: m, mentions: ments})
+            await alpha.sendButMessage(from, jawab, botname, buttons, {quoted: m, mentions: ments})
             break
 
 case 'joins':
