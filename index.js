@@ -101,7 +101,8 @@ sherlink5 = "https://telegra.ph/file/5340c5c7c32ef192bfb26.png"
 sherlink6 = "https://telegra.ph/file/0fd4826325c43a7629148.png"
 sherlink7 = "https://telegra.ph/file/f9acd7c6acda9bd35faf0.png"
 sherlink8 = "https://telegra.ph/file/23a6f079509787d497539.png"
-var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7,sherlink8]
+sherlink9 = "https://telegra.ph/file/08f8200346b3f232ec78c.png"
+var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7,sherlink8,sherlink9]
 
 // Sticker Video
 hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
@@ -406,9 +407,9 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        //if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
-        if (budy.match(/(chat.whatsapp.com)/gi)) {
-            if (!m.isGroup && !db.data.chats[m.chat].antilink && isCreator && isGroupAdmins && isGroupOwner) return
+        if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
+            if (budy.match(/(chat.whatsapp.com)/gi)) {
+            //if (!m.isGroup && !db.data.chats[m.chat].antilink && isCreator && isGroupAdmins && isGroupOwner) return
         	linkgrup = await alpha.groupInviteCode(m.chat)        	
 	    	if (budy.includes(linkgrup)) return
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>         	
@@ -419,7 +420,7 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 			await sleep(500)				
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')		
         }
-     
+     }
 		
 		// Anti Virus \\
 	  if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
