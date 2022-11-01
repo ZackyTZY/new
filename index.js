@@ -4525,7 +4525,7 @@ case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case '
             let member = participants.map(u => u.id)
             let me = m.sender
             let jodoh = member[Math.floor(Math.random() * member.length)]
-            let jawab = `The Most *${command}* Here Is @${jodoh.split('@')[0]}`
+            let jawab = `Yang Paling *${command}* Disini Adalah @${jodoh.split('@')[0]}`
             let ments = [me, jodoh]
             let buttons = [
                         { buttonId: 'wkwkwk', buttonText: { displayText: '👀😂' }, type: 1 }
