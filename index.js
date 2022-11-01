@@ -107,6 +107,11 @@ var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sher
 hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
 var HekerListMP4 = [hekel1]
 
+// Random Sticker
+var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
+var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
+var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
+
 // Document
 let documents = [doc1,doc2,doc3,doc5] 
 let docs = documents[Math.floor(Math.random() * documents.length)]
@@ -397,11 +402,6 @@ if (m.mtype === 'groupInviteMessage') {
 if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
 //await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
 }
-
-// Random Sticker
-var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
-var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
-var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
