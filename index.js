@@ -417,7 +417,7 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 			alpha.updateBlockStatus(sender, 'block')
 			await sleep(500)				
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')		
-        }
+        } else {
      }
 		
 		// Anti Virus \\
