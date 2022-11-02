@@ -406,7 +406,7 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
-        // Anti Link Grup \\ → !db
+        // Anti Link Grup \\
         if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
             //if (!m.isGroup && !db.data.chats[m.chat].antilink && isCreator && isGroupAdmins && isGroupOwner) return
@@ -417,7 +417,7 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
         	sendSticker(sharelink).then(async res => await deleteChat(from))
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(500)				
+			await sleep(1000)				
 			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')		
         }
      }
@@ -4555,7 +4555,7 @@ break
 			}
 			break
 
-case 'mp3': 
+case 'ytmp32': case 'mp32': 
 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(lang.erorLink())
 try {
 sendReact("⏰")
@@ -4568,7 +4568,7 @@ const jetkontol = jetbosok.split(" | ")[1]
                 tummb = await getBuffer(anu.thumbnail)
                 audio = await getBuffer(anu.audio.audio)      
 alpha.sendMessage(from, {document:{url: anu.audio.audio}, mimetype:'audio/mpeg', fileName: `${anu.title}`, contextInfo:{ externalAdReply:{ showAdAttribution: true,
-title:`${global.botname}`,
+title:`${botname}`,
 body:`MP3 | 128K`,
 thumbnail: tummb,
 mediaType:2,
@@ -4581,7 +4581,7 @@ break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
-case 'jadivirgam': //ga work
+case 'jadivirgam': //error
 virgam = fs.readFileSync('./image/gamvir.jpeg')
 alpha.sendMessage(from, { caption: "nih", image: fs.readFileSync("./image/gamvir.jpeg") }, { quoted: m, thumbnail: virgam })
 break
@@ -4689,7 +4689,7 @@ const fkontaak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.
 alpha.sendContact(m.chat, bugkontak, fkontaak)
 break
 
-case 'bugcombine': case 'bugkombo': case 'allbug': case 'allbag': case 'bruutal': case 'gasken': case 'boom': case 'diyah': case 'booyah':
+case 'bugcombine': case 'bugkombo': case 'allbug': case 'allbag': case 'bruutal': case 'gasken': case 'boom': case 'diyah': case 'booyah': case 'shinratensei': case 'chibakutensei':
 if (!isCreator) return reply(lang.ownerOnly())
 if (!m.isGroup) return reply(lang.groupOnly())
 let toks = `══✪〘 *MAMPUS LO KONTOL️* 〙✪══
