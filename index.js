@@ -4518,11 +4518,11 @@ gak share gak bisa masuk🙏`
  }
  break
 
-case 'stupid': case 'foolish': case 'smart': case 'idiot': case 'gay': case 'lesbi': case 'bastard': case 'stubble': 
+case 'stupid': case 'foolish': case 'smart': case 'idiot': case 'gay': case 'lesbi': case 'bastard': case 'stubble': //error gabisa ngetag
 case 'dog': case 'fuck': case 'noob': case 'horny': case 'wibu': case 'handsome': case 'beautiful':case 'cute': case 'ugly': case 'pretty': 
 case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case 'fuckboy': case 'playboy': case 'fuckgirl':case 'playgirl':
       if (!m.isGroup) return reply(lang.groupOnly())
-            let member = participants.map(u => u.id)
+            let member = participants.map(a => a.id)
             let me = m.sender
             let jodoh = member[Math.floor(Math.random() * member.length)]
             let jawab = `Yang Paling *${command}* Disini Adalah @${jodoh.split('@')[0]}`
