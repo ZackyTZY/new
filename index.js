@@ -4555,7 +4555,7 @@ break
 			}
 			break
 
-case 'ytmp3': 
+case 'mp3': 
 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(lang.erorLink())
 try {
 sendReact("⏰")
