@@ -148,6 +148,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const isGroupAdmen = m.isGroup ? groupAdmins.includes(m.sender) : false
         const isGroupAdmins = isGroupAdmen || isCreator
         const isKecuali = ['6283866838382','6281316408830','6281316407846','6287878230953'].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) // if (isKecuali) return (`Mending lu nguli aja sunda ngentod`) biar orangnya gabisa make fitur       
+        const myName = alpha.user.name
 
         const groupOwner = m.isGroup ? groupMetadata.owner : ''
         const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).includes(m.sender) : false
@@ -272,6 +273,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             let user = db.data.users[m.sender]
             if (typeof user !== 'object') db.data.users[m.sender] = {}
             if (user) {
+                if (!('name' in user)) user.name = pushname
             	if (!('premium' in user)) user.premium = isPremium
 				if (!isNumber(user.premiumTime)) user.premiumTime = -1
 				if (!('banned' in user)) user.banned = false
@@ -279,6 +281,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
                 if (!('afkReason' in user)) user.afkReason = ''
                 if (!isNumber(user.limit)) user.limit = limitUser
             } else db.data.users[m.sender] = {
+                name: pushname,
             	premium: isPremium,
         	    premiumTime: -1,
             	banned : false, 
@@ -318,17 +321,21 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 					let setting = db.data.settings[botNumber]
 					if (typeof setting !== 'object') db.data.settings[botNumber] = {}
 					if (setting) {
-						if (!('autobio' in setting)) setting.autobio = autobio
+					    if (!('name' in setting)) setting.name = myName
+					    if (!('pconly' in setting)) pconly.name = true
+						if (!('autobio' in setting)) setting.autobio = false
 						if (!('available' in setting)) setting.available = false
 						if (!('composing' in setting)) setting.composing = false
 						if (!('recording' in setting)) setting.recording = false
 						if (!('autorespond' in setting)) setting.autorespond = false
 							} else db.data.settings[botNumber] = {
-								autobio: autobio,
+							    name: myName,
+							    pconly: true,
+								autobio: false,
 								available: false,
 								composing: false,
 								recording: false,
-								autorespond:false,
+								autorespond: false,
 							}
 						} catch (err) {
 							console.log(err)
@@ -551,10 +558,27 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
             return reply(randomArr(jawab_salam))
         }*/
         
-        if (isCmd && db.data.users[m.sender].banned === true){
-        	reply(lang.getBan())
-        	throw false
-        }
+            let cron = require('node-cron')
+        cron.schedule('00 23 * * *', () => {
+            let user = Object.keys(global.db.data.users)
+            for (let jid of user) {
+            let limitUser = db.data.users[jid].premium ? global.limitawal.premium : global.limitawal.free
+            global.db.data.users[jid].limit = limitUser
+			}
+            console.log('Reseted Limit')
+        }, {
+            scheduled: true,
+            timezone: "Asia/Jakarta"
+        })
+        
+        if (!m.key.fromMe && isCmd && db.data.users[m.sender].banned){
+          if (!(new Date - db.data.users[m.sender].lastbanned < 3600000)) {
+	        let user = db.data.users[m.sender]
+	      	user.lastbanned = new Date * 1
+          await alpha.sendMessage(m.chat, {text: lang.getBan()}, {quoted: m})
+          }
+        return
+       	} 
         
         // Public & Self
         if (!global.publik) {
@@ -593,7 +617,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 	    }}
 
         // Auto Bio \\
-    	if (isCmd && autobio) {
+    	if (isCmd && db.data.settings[botNumber].autobio) {
 	       await alpha.setStatus(`${botname} | Ꮢυηтιмє : ${runtime(process.uptime())} | ${global.publik ? 'ᴘᴜʙʟɪᴄ-ᴍᴏᴅᴇ' : 'sᴇʟғ-ᴍᴏᴅᴇ'} | Ɱυʅƚι-Ρɾҽϝιx`)
 		}
 		
