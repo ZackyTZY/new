@@ -323,7 +323,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 					if (setting) {
 					    if (!('name' in setting)) setting.name = myName
 					    if (!('pconly' in setting)) pconly.name = true
-						if (!('autobio' in setting)) setting.autobio = false
+						if (!('autobio' in setting)) setting.autobio = global.autobio
 						if (!('available' in setting)) setting.available = false
 						if (!('composing' in setting)) setting.composing = false
 						if (!('recording' in setting)) setting.recording = false
@@ -331,7 +331,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 							} else db.data.settings[botNumber] = {
 							    name: myName,
 							    pconly: true,
-								autobio: false,
+								autobio: global.autobio,
 								available: false,
 								composing: false,
 								recording: false,
