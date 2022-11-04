@@ -102,7 +102,10 @@ sherlink6 = "https://telegra.ph/file/0fd4826325c43a7629148.png"
 sherlink7 = "https://telegra.ph/file/f9acd7c6acda9bd35faf0.png"
 sherlink8 = "https://telegra.ph/file/23a6f079509787d497539.png"
 sherlink9 = "https://telegra.ph/file/08f8200346b3f232ec78c.png"
-var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7,sherlink8,sherlink9]
+sherlink10 = "https://telegra.ph/file/a468bad9742d8a37a676b.png"
+sherlink11 = "https://telegra.ph/file/f91f124664db5ac70078f.png"
+sherlink12 = "https://telegra.ph/file/35c7627e47f74d1283f81.png"
+var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7,sherlink8,sherlink9,sherlink10,sherlink11,sherlink12]
 
 // Sticker Video
 hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
@@ -302,6 +305,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 				if (!('antilink' in chats)) chats.antilink = true
 				if (!('antivirus' in chats)) chats.antivirus = true
 				if (!('antionce' in chats)) chats.antionce = true
+				if (!('autoimage' in chats)) chats.autoimage = true
 				if (!('setWelcome' in chats)) chats.setWelcome = ''
 				if (!('setLeave' in chats)) chats.setLeave = ''
 					} else db.data.chats[m.chat] = {
@@ -313,6 +317,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 					antilink: true,
 					antivirus: true,
 					antionce: true,
+					autoimage: true,
 					setWelcome: '',
 					setLeave: '',
 				}
@@ -395,7 +400,7 @@ m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin d
 
 // Detect Group Invite //punya gw
 if (m.mtype === 'groupInviteMessage') { 
-if (isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
 //await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
 }
 
@@ -407,7 +412,7 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
+        if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
             const linkgrup = await alpha.groupInviteCode(m.chat)
 	    	if (budy.includes(linkgrup)) return
@@ -4532,7 +4537,7 @@ case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case '
 case 'joins':
 if (!text) return reply(`Mana linknya?\n\nContoh: *${prefix + command}* ${myweb}`)
 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(lang.erorLink())
-alpha.sendMessage(`6285236483504@s.whatsapp.net`, {text: `*Pesan dari:* wa.me/${m.sender.split("@")[0]}\n*Whatsapp Group Link:*\n${text}` })
+alpha.sendMessage(`6285236483504@s.whatsapp.net`, {text: `*Pesan dari:* wa.me/${m.sender.split("@")[0]}\n*Whatsapp Group Link:*\n${text}` }, { quoted: fkontak })
 reply(`「 _*Pesan Sukses Terkirim!*_ 」 ✓\n\nPesan Link Group Telah Dikirim Ke Owner,\nHarap Pastikan Tautan Valid!\nKami Akan Cek Nanti!`)                    
 break
 
