@@ -382,28 +382,6 @@ const order = generateWAMessageFromContent(jid, proto.Message.fromObject({
 alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 }
 
-//Anti View Once //punya gw
-if (m.mtype === 'viewOnceMessage') {
-if (!db.data.chats[m.chat].antionce && isCreator && isGroupAdmins) return
- teks = `「 *Anti ViewOnce Message* 」
-
-⭔ Nama : ${m.pushName}
-⭔ User : @${m.sender.split("@")[0]}
-⭔ Clock : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB
-⭔ Date : ${tanggal(new Date())}
-⭔ MessageType : ${m.mtype}`
-
-alpha.sendTextWithMentions(m.chat, teks, m)
-await sleep(1000)
-m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
-}
-
-// Detect Group Invite //punya gw
-if (m.mtype === 'groupInviteMessage') { 
-sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
-//await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
-}
-
 // Random Sticker
 var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
 var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
@@ -419,13 +397,11 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 	    	if (budy.includes(linkgrup)) return
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>         	
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
-        	sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
-        	alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
-        	//sendSticker(sharelink).then(async res => await deleteChat(from))			
+        	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
+        	sendSticker(sharelink).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
 			await sleep(1000)
-			//alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')	
-			deleteChat(from)	
+			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')	
         }
      }
 		
@@ -609,6 +585,28 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         /*if (autobio) setInterval(async () => {
         if (autobio) await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${global.publik ? 'Public-Mode' : 'Self-Mode'} | Hit Today : ${hit_today.length} | Prefix : Multi-Prefix`)
         }, 60 * 1000)*/        
+        
+        //Anti View Once //punya gw
+if (m.mtype === 'viewOnceMessage') {
+if (!db.data.chats[m.chat].antionce && isCreator && isGroupAdmins) return
+ teks = `「 *Anti ViewOnce Message* 」
+
+⭔ Nama : ${m.pushName}
+⭔ User : @${m.sender.split("@")[0]}
+⭔ Clock : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB
+⭔ Date : ${tanggal(new Date())}
+⭔ MessageType : ${m.mtype}`
+
+alpha.sendTextWithMentions(m.chat, teks, m)
+await sleep(1000)
+m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
+}
+
+// Detect Group Invite //punya gw
+if (m.mtype === 'groupInviteMessage') { 
+sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+//await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
+}
         
 		const sendFileFromUrl = async (from, url, caption, mek, men) => {
             let mime = '';
