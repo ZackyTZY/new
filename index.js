@@ -2062,7 +2062,7 @@ const buttojns = [
   {buttonId: 'owner', buttonText: {displayText: '🙍‍♂️ Owner'}, type: 1},
   {buttonId: 'donasi', buttonText: {displayText: '💰 Donation'}, type: 1}
 ]
-let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [m.sender], fileName: `${botname} | ${time}`, caption: ini_anu, footer: `© ${ownername}`, buttons: buttojns, headerType: 4, contextInfo: { externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}` }}} 			
+let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [ownernya, ini_mark, m.sender], fileName: `${botname} | ${time}`, caption: ini_anu, footer: `© ${ownername}`, buttons: buttojns, headerType: 4, contextInfo: { externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}` }}} 			
 					if(typemenu == 'document'){					
                             alpha.sendMessage(m.chat, buttonMessage, {quoted: ftroli})
 							//alpha.sendButDoc(from, ini_anu,  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, buttojns, [ownernya, ini_mark, m.sender], { quoted: ftroli})
