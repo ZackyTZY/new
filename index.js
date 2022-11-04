@@ -558,7 +558,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
             return reply(randomArr(jawab_salam))
         }*/
         
-            let cron = require('node-cron')
+            /*let cron = require('node-cron')
         cron.schedule('00 23 * * *', () => {
             let user = Object.keys(global.db.data.users)
             for (let jid of user) {
@@ -569,7 +569,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         }, {
             scheduled: true,
             timezone: "Asia/Jakarta"
-        })
+        })*/
         
         if (!m.key.fromMe && isCmd && db.data.users[m.sender].banned){
           if (!(new Date - db.data.users[m.sender].lastbanned < 3600000)) {
