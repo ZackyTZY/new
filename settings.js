@@ -10,7 +10,7 @@ global.APIs = {
 }
 
 // Free apikey
-global.APIKeys = {
+global.APIKeys = { //Nama: Zacky, Sandi: nayaka123
 	'https://api.zeeoneofc.xyz': 'Ceb3FLtq',  // login https://api.zeeoneofc.xyz to get apikey || https://api-alphabot.herokuapp.com
 }
 
@@ -70,6 +70,7 @@ global.doc3 = 'application/vnd.openxmlformats-officedocument.wordprocessingml.do
 global.doc4 = 'application/zip'
 global.doc5 = 'application/pdf'
 global.doc6 = 'application/vnd.android.package-archive'
+global.documents = [doc1,doc2,doc3,doc5] 
 
 global.flaming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
 global.fluming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=fluffy-logo&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='

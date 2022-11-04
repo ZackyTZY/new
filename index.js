@@ -111,10 +111,6 @@ var Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sher
 hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
 var HekerListMP4 = [hekel1]
 
-// Document
-let documents = [doc1,doc2,doc3,doc5] 
-let docs = documents[Math.floor(Math.random() * documents.length)]
-
 module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype == 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ""
@@ -268,9 +264,6 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             let regexEmoji = new RegExp(emoji_ranges, 'gi');
             return emo.match(regexEmoji)
         }
-        const pickRandom = (list) => {
-            return list[Math.floor(list.length * Math.random())]
-        }
         
 		// DATABASE
 		try {
@@ -408,6 +401,7 @@ sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817
 var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
 var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
 var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
+var docs = documents[Math.floor(Math.random() * documents.length)]
 
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
@@ -415,11 +409,11 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
             //if (!m.isGroup && !db.data.chats[m.chat].antilink && isCreator && isGroupAdmins && isGroupOwner) return
-        	linkgrup = await alpha.groupInviteCode(m.chat)        	
+        	linkgrup = await alpha.groupInviteCode(m.chat)
 	    	if (budy.includes(linkgrup)) return
-        	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>         	
-        	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
-        	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res => 
+        	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>
+        	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res =>
+        	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m).then(async res =>
         	sendSticker(sharelink).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
 			await sleep(1000)
