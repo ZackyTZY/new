@@ -803,10 +803,10 @@ alpha.sendReceipts(m.chat, sender, [m.key.id])
       return
       }
       
-      // Chat Private 
+     /* // Chat Private 
       if (!global.pc && m.isGroup && !isCreator) {
       return
-      }
+      }*/
       
       switch(command) {
         
