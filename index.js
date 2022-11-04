@@ -382,6 +382,28 @@ const order = generateWAMessageFromContent(jid, proto.Message.fromObject({
 alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 }
 
+//Anti View Once //punya gw
+if (m.mtype === 'viewOnceMessage') {
+if (!db.data.chats[m.chat].antionce && isCreator && isGroupAdmins) return
+ teks = `「 *Anti ViewOnce Message* 」
+
+⭔ Nama : ${m.pushName}
+⭔ User : @${m.sender.split("@")[0]}
+⭔ Clock : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB
+⭔ Date : ${tanggal(new Date())}
+⭔ MessageType : ${m.mtype}`
+
+alpha.sendTextWithMentions(m.chat, teks, m)
+await sleep(1000)
+m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
+}
+
+// Detect Group Invite //punya gw
+if (m.mtype === 'groupInviteMessage') { 
+sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+//await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
+}
+
 // Random Sticker
 var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
 var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
@@ -390,7 +412,7 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
+        if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
             //if (!m.isGroup && !db.data.chats[m.chat].antilink && isCreator && isGroupAdmins && isGroupOwner) return
         	linkgrup = await alpha.groupInviteCode(m.chat)        	
@@ -585,28 +607,6 @@ var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
         /*if (autobio) setInterval(async () => {
         if (autobio) await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${global.publik ? 'Public-Mode' : 'Self-Mode'} | Hit Today : ${hit_today.length} | Prefix : Multi-Prefix`)
         }, 60 * 1000)*/        
-        
-        //Anti View Once //punya gw
-if (m.mtype === 'viewOnceMessage') {
-if (!db.data.chats[m.chat].antionce && isCreator && isGroupAdmins) return
- teks = `「 *Anti ViewOnce Message* 」
-
-⭔ Nama : ${m.pushName}
-⭔ User : @${m.sender.split("@")[0]}
-⭔ Clock : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB
-⭔ Date : ${tanggal(new Date())}
-⭔ MessageType : ${m.mtype}`
-
-alpha.sendTextWithMentions(m.chat, teks, m)
-await sleep(1000)
-m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
-}
-
-// Detect Group Invite //punya gw
-if (m.mtype === 'groupInviteMessage') { 
-sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
-//await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
-}
         
 		const sendFileFromUrl = async (from, url, caption, mek, men) => {
             let mime = '';
@@ -803,10 +803,10 @@ alpha.sendReceipts(m.chat, sender, [m.key.id])
       return
       }
       
-     /* // Chat Private 
+      // Chat Private 
       if (!global.pc && m.isGroup && !isCreator) {
       return
-      }*/
+      }
       
       switch(command) {
         
