@@ -822,7 +822,7 @@ alpha.sendReceipts(m.chat, sender, [m.key.id])
       }
       
       // Chat Private 
-      if (!global.pc && m.isGroup && !isCreator) {
+      if (pconly && m.isGroup && !isCreator) {
       return
       }
       
