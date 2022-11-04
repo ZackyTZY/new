@@ -25,11 +25,10 @@ global.available = false //status online (online)
 global.unavailable = false //status offline (offline)
 global.pause = false //YNTKTS
 global.autovoice = false //prank autovoice (auto voice pas ada yg toxic) //punya gw
-global.autobio = false //auto set bio (kalau ada orang yg komen)
+//global.autobio = false //auto set bio (kalau ada orang yg komen)
 global.autoreadsw = true //auto read SW (story WhatsApp)
 global.publik = true //publik mode
-global.pc = false //Private chat mode
-global.antilink = true
+global.pconly = true //Private chat mode
 
 //language
 //Available in indonesia & english
