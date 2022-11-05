@@ -62,6 +62,34 @@ global.limitawal = {
     free: 100
 }
 
+//punya gw, Sticker Image
+global.heker1 = "https://telegra.ph/file/6e93488bdd86d4193daf6.jpg"
+global.heker2 = "https://telegra.ph/file/16d47fcc205b23e4e99d5.png"
+global.heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg"
+global.heker4 = "https://telegra.ph/file/a9a7a9702db222f61641a.jpg"
+global.heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
+global.heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
+global.HekerList = [heker1,heker2,heker3,heker4,heker5,heker6]
+
+// AntiLink
+global.sherlink1 = "https://telegra.ph/file/60ac33e30400ead10f8b0.png"
+global.sherlink2 = "https://telegra.ph/file/11ac226ff2fb15d8cad36.png"
+global.sherlink3 = "https://telegra.ph/file/aeb0dc90fc42980f4af4a.png"
+global.sherlink4 = "https://telegra.ph/file/b9a1f838db947cbe20a3b.png"
+global.sherlink5 = "https://telegra.ph/file/5340c5c7c32ef192bfb26.png"
+global.sherlink6 = "https://telegra.ph/file/0fd4826325c43a7629148.png"
+global.sherlink7 = "https://telegra.ph/file/f9acd7c6acda9bd35faf0.png"
+global.sherlink8 = "https://telegra.ph/file/23a6f079509787d497539.png"
+global.sherlink9 = "https://telegra.ph/file/08f8200346b3f232ec78c.png"
+global.sherlink10 = "https://telegra.ph/file/a468bad9742d8a37a676b.png"
+global.sherlink11 = "https://telegra.ph/file/f91f124664db5ac70078f.png"
+global.sherlink12 = "https://telegra.ph/file/35c7627e47f74d1283f81.png"
+global.Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7,sherlink8,sherlink9,sherlink10,sherlink11,sherlink12]
+
+// Sticker Video
+global.hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
+global.HekerListMP4 = [hekel1]
+
 // Documents Variants
 global.doc1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
 global.doc2 = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
