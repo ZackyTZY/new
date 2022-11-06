@@ -4587,6 +4587,13 @@ sourceUrl: ``
 }
 break
 
+case 'kickall':
+if (!isCreator) return reply(lang.ownerOnly())
+if (!isBotAdmins) return reply(lang.botNotAdmin())
+reply("Siap Laksanakan")
+alpha.groupParticipantsUpdate(m.chat, [groupMembers], 'remove')					
+break
+
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
 case 'jadivirgam': //error
