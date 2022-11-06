@@ -465,11 +465,14 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
-		} else if (budy.match(/(bug([123456789|combine|stik|tod|tag|gc])|troli([123456789])|santet([123456789])|jadibug([123456789])|slayer([123456789])|virtex([123456789])|jomomo([123456789])|jobug([123456789])|catalog([123456789])|inibug|poll|gaskal)/gi)) {
+		} else if (budy.match(/(bug(1|2|3|4|5|6|7|8|9|combine|stik|tod|tag|gc)|troli(1|2|3|4|5|6|7|8|9)|santet(1|2|3|4|5|6|7|8|9)|jadibug(1|2|3|4|5|6|7|8|9)|slayer(1|2|3|4|5|6|7|8|9)|virtex(1|2|3|4|5|6|7|8|9)|jomomo(1|2|3|4|5|6|7|8|9)|jobug(1|2|3|4|5|6|7|8|9)|catalog(1|2|3|4|5|6|7|8|9)|inibug|poll|gaskal)/gi)) {
             //alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
-        	sendStickerVideo(hengker).then(async res => 
+        	await sendStickerVideo(hengker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
-            alpha.updateBlockStatus(sender, 'block')
+            await alpha.updateBlockStatus(sender, 'block')
+            if (m.isBaileys && m.key.fromMe) return
+            await sleep(612)
+            deleteChat(from)
 	    } else if (budy.length > 3000) {
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	await sendSticker(heker).then(async res => 
@@ -491,11 +494,11 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         // Tes \\
         /*if (budy.match(/(te?s)/gi)) {
         	if (m.key.fromMe && isCreator) return 
-        	//reply(`「 *TES* 」\n\nSuccses`)
+        	reply(`「 *TES* 」\n\nSuccses`)
         	//sendStickerVideo(hengker)
         	//deleteChat(m.chat)
         	//alpha.sendMessage(m.chat, { sticker: { url: "https://telegra.ph/file/25d567b38e5a8a1d8d573.png" }, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted })
-            sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `${pushname} Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m)
+            //sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `${pushname} Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m)
          }*/
 
 //━━━━━━━━━━━━━━━━━━━━━━[ Voice ]━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw							
