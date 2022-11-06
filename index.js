@@ -1668,6 +1668,7 @@ break
             case 'tagall': case 'infoall':
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (isKecuali) return hidetag(`@${sender.split('@')[0]} Selalu coli tiap malem pake foto animek`)
                 let tekss = `══✪〘 *👥 Mention All* 〙✪══\n\n➲ *Message : ${q ? q : 'Nothing'}*\n\n`
 		      	for (let mem of participants) {
 		            tekss += `🏅 @${mem.id.split('@')[0]}\n`
