@@ -1,7 +1,7 @@
 {
   "users": {
     "6285236483504@s.whatsapp.net": {
-      "name": "ẉạ.me/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n️",
+      "name": "ẉạ.me/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
       "premium": true,
       "premiumTime": -1,
       "banned": false,
@@ -18,7 +18,7 @@
       "mute": false,
       "nsfw": true,
       "antilink": false,
-      "antivirus": true,
+      "antivirus": false,
       "antionce": true,
       "AdminOnly": false,
       "setWelcome": "",
