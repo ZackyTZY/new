@@ -83,7 +83,16 @@ global.sherlink9 = "https://telegra.ph/file/08f8200346b3f232ec78c.png"
 global.sherlink10 = "https://telegra.ph/file/a468bad9742d8a37a676b.png"
 global.sherlink11 = "https://telegra.ph/file/f91f124664db5ac70078f.png"
 global.sherlink12 = "https://telegra.ph/file/35c7627e47f74d1283f81.png"
-global.Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7,sherlink8,sherlink9,sherlink10,sherlink11,sherlink12]
+global.sherlink13 = "https://telegra.ph/file/15915398874d984a37661.png"
+global.sherlink14 = "https://telegra.ph/file/2d14c3c19f20c623f4017.png"
+global.sherlink15 = "https://telegra.ph/file/0b23c92dc4d2950da2352.png"
+global.sherlink16 = "https://telegra.ph/file/6150f3255c981dd7a1948.png"
+global.sherlink17 = "https://telegra.ph/file/a61b0080e9166990167b8.png"
+global.sherlink18 = "https://telegra.ph/file/1d4e2bbc33d619dd8c79c.png"
+global.sherlink19 = "https://telegra.ph/file/4b54124f57f16615181c4.png"
+global.sherlink20 = "https://telegra.ph/file/cfc3d7b259951358f23be.png"
+global.sherlink21 = "https://telegra.ph/file/62672e3f89adf2313417b.png"
+global.Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7,sherlink8,sherlink9,sherlink10,sherlink11,sherlink12,sherlink13,sherlink14,sherlink15,sherlink16,sherlink17,sherlink18,sherlink19,sherlink20,sherlink21]
 
 // Sticker Video
 global.hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
