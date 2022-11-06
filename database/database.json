@@ -1,1 +1,73 @@
-{}
+{
+  "users": {
+    "6285236483504@s.whatsapp.net": {
+      "name": "ẉạ.me/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n️",
+      "premium": true,
+      "premiumTime": -1,
+      "banned": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": "Infinity"
+    }
+  },
+  "chats": {
+    "120363024710399996@g.us": {
+      "name": "ƈρɠ•home 👹🌻",
+      "goodbye": true,
+      "welcome": true,
+      "mute": false,
+      "nsfw": true,
+      "antilink": false,
+      "antivirus": true,
+      "antionce": true,
+      "AdminOnly": false,
+      "setWelcome": "",
+      "setLeave": ""
+    }
+  },
+  "database": {},
+  "game": {
+    "math": [],
+    "family100": [],
+    "tebakgambar": [],
+    "tebakkata": [],
+    "tebakbendera": [],
+    "siapaaku": [],
+    "tebakkalimat": [],
+    "caklontong": [],
+    "susunkata": [],
+    "tekateki": [],
+    "tebakkabupaten": [],
+    "tebakkimia": [],
+    "tebaklirik": [],
+    "tebaktebakan": []
+  },
+  "others": {},
+  "sticker": {},
+  "absen": {},
+  "cmd": {},
+  "settings": {
+    "62852364835042@s.whatsapp.net": {
+      "name": "Benci KAFEAR",
+      "autobio": false,
+      "available": false,
+      "composing": false,
+      "recording": false,
+      "autorespond": false
+    },
+    "6289664709977@s.whatsapp.net": {
+      "name": "кєιтн вσт-м∂ོ",
+      "autobio": true,
+      "available": false,
+      "composing": false,
+      "recording": false,
+      "autorespond": false
+    }
+  },
+  "anonymous": {},
+  "store": [],
+  "RSticker": [],
+  "RImage": [],
+  "RVideo": [],
+  "RVn": []
+}
