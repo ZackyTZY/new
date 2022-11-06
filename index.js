@@ -803,7 +803,7 @@ alpha.sendReceipts(m.chat, sender, [m.key.id])
       return
       }
       
-      // Chat Private / 
+      // Private Only Chat
       if (db.data.chats[m.chat].mute && m.isGroup && !isCreator) {
       return
       }
@@ -2069,7 +2069,7 @@ const buttojns = [
 					break    
 	case 'allmenu':{ //punya gw
 	    await sendReact("📋")
-	    let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [m.sender], fileLength: 1000000000000000, pageCount: 2022, fileName: `${botname} | ${ownername}`, caption: `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix), footer: `© ${ownername}`, buttons: [{buttonId: 'donate', buttonText: {displayText: 'Donasi'}, type: 1},{buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},{buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}], headerType: 4, contextInfo:{ forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: true, title:`WhatsApp Bot Multi Device`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}
+	    let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [m.sender], fileLength: 1000000000000000, pageCount: 2022, fileName: `${botname} | ${ownername}`, caption: `Hai kak @${m.sender.split('@')[0]} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix), footer: `© ${ownername}`, buttons: [{buttonId: 'donate', buttonText: {displayText: 'Donasi'}, type: 1},{buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},{buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}], headerType: 4, contextInfo:{ forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: true, title:`WhatsApp Bot Multi Device`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}
 		//alpha.send5ButLoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix) , `© ${ownername}`,pp_bot, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Rules","id": 'rules'}}] )   	    
    	    //alpha.sendButDoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix),  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, [{buttonId: 'donate', buttonText: {displayText: 'Donasi'}, type: 1},{buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},{buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}], [m.sender], { quoted: ftroli})
    	    alpha.sendMessage(m.chat, buttonMessage, {quoted: ftroli})
