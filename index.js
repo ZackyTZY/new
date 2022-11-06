@@ -370,7 +370,7 @@ if (isCreator && isGroupAdmins) return
 
 //alpha.sendTextWithMentions(m.chat, teks, m)
 alpha.sendMessage(m.chat, { text: teks, mentions: [m.sender], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})
-await sleep(1000)
+await sleep(612)
 m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
 }
 
@@ -389,7 +389,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
+        if (m.isGroup && antilenk && !isCreator && !isGroupAdmins && !isGroupOwner){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
             //if (!m.isGroup && !db.data.chats[m.chat].antilink && isCreator && isGroupAdmins && isGroupOwner) return
         	linkgrup = await alpha.groupInviteCode(m.chat)
@@ -399,7 +399,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>
         	sendSticker(sharelink).then(async res => await deleteChat(from))			
 			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
+			await sleep(612)
 			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')	
         }
      }
@@ -593,7 +593,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 	    }}
 
         // Auto Bio \\
-    	if (isCmd && db.data.settings[botNumber].autobio) {
+    	if (isCmd && autobio) {
 	       await alpha.setStatus(`${botname} | Ꮢυηтιмє : ${runtime(process.uptime())} | ${global.publik ? 'ᴘᴜʙʟɪᴄ-ᴍᴏᴅᴇ' : 'sᴇʟғ-ᴍᴏᴅᴇ'} | Ɱυʅƚι-Ρɾҽϝιx`)
 		}
 		
