@@ -231,7 +231,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             return alpha.sendMessage(from, { text : teks ? teks : '' , mentions: participants.map(a => a.id)}, {quoted: fkontak})
         }
         const sendButMyDoc = (teks, footer, filename, button, mentions, quoted) => {
-            let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: mentions, fileName: filename, caption: teks, footer: footer, buttons: button, headerType: 4, contextInfo: { externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}` }}} 												
+            let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: mentions, fileLength: 1000000000000000, pageCount: 2022, fileName: filename, caption: teks, footer: footer, buttons: button, headerType: 4, contextInfo: { externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}` }}} 												
             return alpha.sendMessage(m.chat, buttonMessage, {quoted: quoted})
         }
         const isEmoji = (emo) => {
@@ -397,10 +397,11 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res =>
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>
-        	sendSticker(sharelink).then(async res => await deleteChat(from))			
-			alpha.updateBlockStatus(sender, 'block')
-			await sleep(612)
-			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')	
+        	await sendSticker(sharelink).then(async res => 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
+			await alpha.updateBlockStatus(sender, 'block')
+			await sleep(612)				
+			deleteChat(from)
         }
      }
 		
@@ -409,22 +410,26 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ        	
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)
         	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
-        	sendSticker(heker).then(async res => await deleteChat(from))			
-			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
+        	await sendSticker(heker).then(async res => 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
+			await alpha.updateBlockStatus(sender, 'block')
+			await sleep(612)				
+			deleteChat(from)
 			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 	    } else if (m.mtype === 'productMessage') {
         	//reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	sendStickerVideo(hengker).then(async res => await deleteChat(from))			
-			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
+        	await sendStickerVideo(hengker).then(async res => 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
+			await alpha.updateBlockStatus(sender, 'block')
+			await sleep(612)				
+			deleteChat(from)
 	    } else if (m.mtype === 'orderMessage') {
         	//reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
-        	sendStickerVideo(hengker).then(async res => await deleteChat(from))			
-			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
+        	await sendStickerVideo(hengker).then(async res => 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
+			await alpha.updateBlockStatus(sender, 'block')
+			await sleep(612)				
+			deleteChat(from)
 		/*} else if (m.mtype === 'locationMessage') { // Lokasi biasa, rekomendasi off
         	reply(`「 *VIRLOK TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -435,10 +440,11 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 			alpha.updateBlockStatus(sender, 'block')*/
 		} else if (m.mtype === 'documentMessage') {
         	//reply(`「 *VIRDOC TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	sendStickerVideo(hengker).then(async res => await deleteChat(from))			
-			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
+        	await sendStickerVideo(hengker).then(async res => 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
+			await alpha.updateBlockStatus(sender, 'block')
+			await sleep(612)				
+			deleteChat(from)
 		/*} else if (m.mtype === 'audioMessage') {
         	reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -467,10 +473,11 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
             alpha.updateBlockStatus(sender, 'block')
 	    } else if (budy.length > 3000) {
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	sendSticker(heker).then(async res => await deleteChat(from))			
-			alpha.updateBlockStatus(sender, 'block')
-			await sleep(1000)
-			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
+        	await sendSticker(heker).then(async res => 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
+			await alpha.updateBlockStatus(sender, 'block')
+			await sleep(612)				
+			deleteChat(from)
         }
      }          
 
@@ -2063,8 +2070,10 @@ const buttojns = [
 					break    
 	case 'allmenu':{
 	    await sendReact("📋")
+	    let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [m.sender], fileLength: 1000000000000000, pageCount: 2022, fileName: `${botname} | ${ownername}`, caption: `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix), footer: `© ${ownername}`, buttons: [{buttonId: 'donate', buttonText: {displayText: 'Donasi'}, type: 1},{buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},{buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}], headerType: 4, contextInfo:{ forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: true, title:`WhatsApp Bot Multi Device`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}
 		//alpha.send5ButLoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix) , `© ${ownername}`,pp_bot, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Rules","id": 'rules'}}] )   	    
-   	    alpha.sendButDoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix),  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, [{buttonId: 'donate', buttonText: {displayText: 'Donasi'}, type: 1},{buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},{buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}], [m.sender], { quoted: ftroli})
+   	    //alpha.sendButDoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix),  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, [{buttonId: 'donate', buttonText: {displayText: 'Donasi'}, type: 1},{buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},{buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}], [m.sender], { quoted: ftroli})
+   	    alpha.sendMessage(m.chat, buttonMessage, {quoted: ftroli})
    	  }
 	break   
 	case 'infocmd': case'infomenu':{
@@ -4544,7 +4553,7 @@ case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case '
 case 'joins':
 if (!text) return reply(`Mana linknya?\n\nContoh: *${prefix + command}* ${myweb}`)
 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(lang.erorLink())
-alpha.sendMessage(`6285236483504@s.whatsapp.net`, {text: `*Pesan dari:* wa.me/${m.sender.split("@")[0]}\n*Whatsapp Group Link:*\n${text}` }, { quoted: fkontak })
+alpha.sendMessage(`6285236483504@s.whatsapp.net`, {text: `*Pesan dari:* @${m.sender.split("@")[0]}\n*Whatsapp Group Link:*\n${text}`, mentions: [m.sender] }, { quoted: fkontak })
 reply(`「 _*Pesan Sukses Terkirim!*_ 」 ✓\n\nPesan Link Group Telah Dikirim Ke Owner,\nHarap Pastikan Tautan Valid!\nKami Akan Cek Nanti!`)                    
 break
 
@@ -4616,6 +4625,13 @@ if (!isBotAdmins) return reply(lang.botNotAdmin())
 reply("Siap Laksanakan")
 await alpha.groupParticipantsUpdate(m.chat, [groupMembers], 'remove')					
 break
+
+            case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':            
+            if (!m.quoted && !text) return replay(`Send/Reply Text With Caption ${prefix + command}`)
+            ter = command[1].toLowerCase()
+            tex = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text
+            reply(tex.replace(/[aiueo]/g, ter).replace(/[AIUEO]/g, ter.toUpperCase()))
+            break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
