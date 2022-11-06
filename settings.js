@@ -37,7 +37,7 @@ global.language = indonesia  //change indonesia to english if you don't understa
 // Other
 global.botname = "кєιтн вσт-м∂ོ" //namabot kalian
 global.ownername= "ᴹᴿ᭄ ∂σηz ×፝֟͜૨̸" //nama kalian
-global.myweb = "https://chat.whatsapp.com/HKDyOsfEEDCKE4z8GVDahd" //bebas asal jan hapus
+global.myweb = "https://chat.whatsapp.com/JoyHOlsc4ggHMH9OAGUeNR" //bebas asal jan hapus
 global.youtube = "https://youtu.be/FoksUIwNYIM" //bebas asal jan hapus
 global.github = "https://github.com/Radit10" //bebas
 global.email = "kontolodonz@gmail.com" //bebas
