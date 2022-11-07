@@ -358,7 +358,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 //Anti View Once //punya gw
 if (m.mtype === 'viewOnceMessage') {
 if (!db.data.chats[m.chat].antionce) return
-if (isCreator && isGroupAdmins) return
+if ((isCreator || isGroupAdmins)) return
  teks = `「 *Anti ViewOnce Message* 」
 
 ⭔ Nama : ${m.pushName}
@@ -388,7 +388,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
 
         // Anti Link Grup \\
-        if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
+        if (m.isGroup && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
             //if (!m.isGroup && !db.data.chats[m.chat].antilink && isCreator && isGroupAdmins && isGroupOwner) return
         	linkgrup = await alpha.groupInviteCode(m.chat)
@@ -405,7 +405,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
      }
 		
 		// Anti Virus \\
-	  if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
+	  if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
 	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ        	
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)
         	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
@@ -413,8 +413,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
 			await sleep(612)				
-			deleteChat(from)
-			alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
+			deleteChat(from)			
 	    } else if (m.mtype === 'productMessage') {
         	//reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	await sendStickerVideo(hengker).then(async res => 
@@ -1215,7 +1214,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
             break
             case 'ping': case 'runtime':
             await sendReact("⏳")
-            reply(`Runtime : ${runtime(process.uptime())}`)
+            reply(`*Runtime :* ${runtime(process.uptime())}`)
             break
             case 'botstatus': case 'statusbot': { //punya gw
                 let timestamp = speed()
