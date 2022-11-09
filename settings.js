@@ -50,6 +50,7 @@ global.ownernomerr = "+62852364835045" //nmr wa kalian
 global.thumbnail = "./image/lol.jpg" // ini lol.jpg adalah nama foto di folder image. untuk foto bot
 global.donasi = "./image/donasi.jpg" // foto donasi di folder image
 global.background_welcome = "https://telegra.ph/file/392fbf09cfc4f6823d204.jpg" // https://telegra.ph/file/90a931648de597820bc08.jpg maks size 30kb, agar welcome image nya tdk delay
+global.virgam = fs.readFileSync(`./storage/image/virgam.jpeg`)
 
 global.packname = '© кєιтн вσт-м∂ོ' //sticker wm ubah
 global.author = `Di Buat Oleh ᎠᎾᏁᏃ•T̶Z̶Y\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${waktu}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n` //sticker wm ganti nama kalian
