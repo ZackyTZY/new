@@ -616,7 +616,7 @@ exports.menunya = (salam, pushname, botname) =>{
 saya ${botname}, bot ini adalah Beta Multi-Device Whatsapp.
 `
 }
-exports.listMenu = (time, salam, pushname, prefix, botname) => {
+exports.listMenu = (time, salam, pushname, botname, prefix) => {
     return `*Selamat ${salam} ${pushname}*
 *⌚Time Server : ${time}*
 *📚 List-Menu ${botname} :*
