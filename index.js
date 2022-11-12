@@ -401,13 +401,13 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 	    	if (budy.includes(linkgrup)) return
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res =>
-        	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>
-        	//await sendSticker(sharelink).then(async res => 
-        	await deleteChat(from).then(async res => 
+        	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>        	
+        	//await deleteChat(from).then(async res => 
+        	await sendSticker(sharelink).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
-			alpha.updateBlockStatus(sender, 'block')
-			//await sleep(612)				
-			//deleteChat(from)
+			await alpha.updateBlockStatus(sender, 'block')
+			await sleep(612)				
+			deleteChat(from)
         }
      }
 		
@@ -4698,9 +4698,28 @@ case 'ytshorts': case 'shorts': {
             break
 
 case 'testing':
-if (!isCreator) return
-alpha.sendMessage(jid, { video: vid, jpegThumbnail: lol, caption: text, footer: footer, buttons: but}, {quoted: m})
-    break
+try{
+ja = `⏰`
+XeonBotInc.sendMessage(from, { react: { text: ja, key: m.key }})
+const jettempur = args.join(" ")
+const jetbosok = args.join(" ")
+const jetasu = jettempur.split(" | ")[0]
+const jetkontol = jetbosok.split(" | ")[1]
+ anu = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${jetasu}&type=${jetkontol}`)        
+                if (anu.filesize_video >= 999999) return reply('*File Over Limit* '+util.format(anu))
+                tummb = await getBuffer(anu.thumbnail)
+                audio = await getBuffer(anu.audio.audio)      
+XeonBotInc.sendMessage(from, {document:{url: anu.audio.audio}, mimetype:'audio/mpeg', fileName: `${anu.title}`, contextInfo:{externalAdReply:{
+title:`${global.botname}`,
+body:`MP3 | 128K`,
+thumbnail: tummb,
+mediaType:2,
+mediaUrl: `${linkz}`,
+sourceUrl: ``
+}}}, {quoted:m}).catch((err) => reply(`${anu.audio.audio}`))
+} catch {(err) => reply(`${jsonformat(err)}`)
+}
+break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
