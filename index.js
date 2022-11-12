@@ -4617,9 +4617,9 @@ break
 *📆 Upload :* ${anu.ago}
 *🔴 Author :* ${anu.author.name}
 *☕ Channel :* ${anu.author.url}
-*📜 Description :* ${anu.description}
-*🔗 Url :* ${anu.url}`,
-                    footer: botname,
+*🔗 Url :* ${anu.url}
+*📜 Description :* ${anu.description}`,
+                    footer: `© ${botname}`,
                     buttons: buttons,
                     headerType: 4
                 }
@@ -4632,8 +4632,9 @@ break
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 128kbps`)
                 let qualityvoice = args[1] ? args[1] : '128kbps'
                 let mediaptt = await yta(text, qualityvoice)
+                let lolvoice = await alpha.reSize(mediaptt.thumb, 300, 150)
                 if (mediaptt.filesize >= 100000) return reply('File Melebihi Batas '+util.format(mediaptt))
-                alpha.sendMessage(m.chat, { audio: { url: mediaptt.dl_link }, mimetype: 'audio/mpeg', ptt: true, fileName: `${mediaptt.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
+                alpha.sendMessage(m.chat, { audio: { url: mediaptt.dl_link }, mimetype: 'audio/mpeg', ptt: true, fileName: `${mediaptt.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: lolvoice, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
             break
 
             case 'ytmp3': case 'ytaudio': case 'mp3':
@@ -4642,8 +4643,9 @@ break
                 let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
-                //alpha.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, m)
-                alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
+                let lolmp3 = await alpha.reSize(medias.thumb, 300, 150)
+                //alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
+                alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `mp4 ${isUrl(text)}`, buttonText: {displayText: '▷ Video'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP3`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
             break
 
             case 'ytmp4': case 'ytvideo': case 'mp4':
@@ -4652,9 +4654,9 @@ break
                 let qualitye = args[1] ? args[1] : '360p'
                 let medias = await ytv(text, qualitye)
                 if (medias.filesize >= 100000) return reply('File Melebihi Batas '+util.format(medias))
-                //alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, mimetype: 'video/mp4', fileName: `${medias.title}.mp4`, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '360p'}`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })            
                 let lolmp4 = await alpha.reSize(medias.thumb, 300, 150)
-                alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, jpegThumbnail: lolmp4, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${args[1] || '360p'}`, footer: `${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytvoice ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}]}, {quoted: m})
+                //alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, mimetype: 'video/mp4', fileName: `${medias.title}.mp4`, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '360p'}`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })                            
+                alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, jpegThumbnail: lolmp4, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${args[1] || '360p'}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytvoice ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}]}, contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP3`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
             break            
 
             case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':            
