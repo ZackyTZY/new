@@ -396,11 +396,12 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res =>
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>
-        	await sendSticker(sharelink).then(async res => 
+        	//await sendSticker(sharelink).then(async res => 
+        	await deleteChat(from).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
-			await alpha.updateBlockStatus(sender, 'block')
-			await sleep(612)				
-			deleteChat(from)
+			alpha.updateBlockStatus(sender, 'block')
+			//await sleep(612)				
+			//deleteChat(from)
         }
      }
 		
