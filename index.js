@@ -4643,7 +4643,7 @@ break
                 let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
-                let lolmp3 = await alpha.reSize(medias.thumb, 300, 150)
+                let lolmp3 = await alpha.reSize(media.thumb, 300, 150)
                 //alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
                 alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `mp4 ${isUrl(text)}`, buttonText: {displayText: '▷ Video'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP3`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
             break
@@ -4656,7 +4656,7 @@ break
                 if (medias.filesize >= 100000) return reply('File Melebihi Batas '+util.format(medias))
                 let lolmp4 = await alpha.reSize(medias.thumb, 300, 150)
                 //alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, mimetype: 'video/mp4', fileName: `${medias.title}.mp4`, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '360p'}`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })                            
-                alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, jpegThumbnail: lolmp4, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${args[1] || '360p'}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytvoice ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP3`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
+                alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, jpegThumbnail: lolmp4, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${args[1] || '360p'}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytvoice ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP3`, body:`${time}`, mediaType: 2, thumbnail: lolmp4, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
             break            
 
             case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':            
@@ -4678,6 +4678,24 @@ reply(util.format(anu))
 }
 await fs.unlinkSync(medio)
 break
+
+case 'ytshorts': case 'shorts': {   
+  if (!text) return reply(`*Use ${prefix + command} put yt shorts link*`)
+  if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`The link you provided is not valid`)
+  zee.Youtube(`${text}`).then(async (data) => {
+  if (data.medias[0].formattedSize.split('MB')[0] >= 999) return reply('*File Over Limit* '+util.format(data)) 
+  cap = `
+*YOUTUBE SHORTS*
+
+*${themeemoji}TITLE:* ${data.title}\n*${themeemoji}QUALITY:* ${data.medias[0].quality}\n*${themeemoji}SIZE:* ${data.medias[0].formattedSize}\n*${themeemoji}DURATION* ${data.duration}\n*${themeemoji}ID:* ${data.medias[0].cached}\n*${themeemoji}LINK:* ${data.url}\n\n*${botname}*`
+  buf = await getBuffer(data.thumbnail)
+  alpha.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${cap}` }, { quoted: m })
+  alpha.sendMessage(m.chat, { video: { url: data.medias[0].url }, jpegThumbnail:buf, caption: `*${themeemoji}TITLE:* ${data.title}\n*${themeemoji}QUALITY:* ${data.medias[0].quality}\n*${themeemoji}SIZE:* ${data.medias[0].formattedSize}` }, { quoted: m })  
+                }).catch((err) => {
+                    reply(lang.err())
+                })
+            }
+            break
 
 case 'testing':
 if (!isCreator) return
