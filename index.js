@@ -402,12 +402,12 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res =>
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>        	
-        	//await deleteChat(from).then(async res => 
-        	await sendSticker(sharelink).then(async res => 
+        	await deleteChat(from).then(async res => 
+        	//await sendSticker(sharelink).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
-			await sleep(612)				
-			deleteChat(from)
+			//await sleep(612)				
+			//deleteChat(from)
         }
      }
 		
@@ -1744,16 +1744,17 @@ break
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
-			case 'revoke':
+			case 'revoke': //punya gw
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
-                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                //if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (!isCreator) return reply(lang.ownerOnly())
                 let link = await alpha.groupRevokeInvite(from)
                 await reply(lang.ok() + `\n\n*New Link for ${groupName}* :\n https://chat.whatsapp.com/${link}`)
             break
             case 'out': case 'leave': //punya gw
                 if (!m.isGroup) return reply(lang.groupOnly())
-                if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+                if (!isCreator) return reply(lang.ownerOnly())
                 reply('Sayonara~ 👋').then(async res => 
                 await alpha.groupLeave(from))
             break
@@ -4597,17 +4598,18 @@ break
 			}
 			break*/
 			
-			case 'play': case 'ytplay': {
-                if (!text) throw `Example : ${prefix + command} story wa anime`
+			case 'play': case 'ytplay':
+                if (!text) return reply(`Contoh : ${prefix + command} bokep anime`)
+                await sendReact("🔎")
                 let yts = require("yt-search")
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
-                let buttons = [
+                var buttonsplay = [
                     {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
                     {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: '▷ Video'}, type: 1}
                 ]
                 let lolplay = await alpha.reSize(anu.thumbnail, 300, 150)
-                let buttonMessage = {                
+                let buttonPlay = {                
                     location: { jpegThumbnail: lolplay },
                     caption: `
 *────「 YOUTUBE PLAY 」────*
@@ -4620,16 +4622,17 @@ break
 *🔗 Url :* ${anu.url}
 *📜 Description :* ${anu.description}`,
                     footer: `© ${botname}`,
-                    buttons: buttons,
+                    buttons: buttonsplay,
                     headerType: 4
                 }
-                alpha.sendMessage(m.chat, buttonMessage, { quoted: m })
-            }
+                alpha.sendMessage(m.chat, buttonPlay, { quoted: m })            
             break
 
-            case 'ytvoice': case 'ytptt':
-                var { yta } = require('./lib/y2mate')
+            case 'ytvoice': case 'ytptt':                
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 128kbps`)
+                if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
+                await sendReact("🎤")
+                var { yta } = require('./lib/y2mate')
                 let qualityvoice = args[1] ? args[1] : '128kbps'
                 let mediaptt = await yta(text, qualityvoice)
                 let lolvoice = await alpha.reSize(mediaptt.thumb, 300, 150)
@@ -4637,26 +4640,30 @@ break
                 alpha.sendMessage(m.chat, { audio: { url: mediaptt.dl_link }, mimetype: 'audio/mpeg', ptt: true, fileName: `${mediaptt.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: lolvoice, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
             break
 
-            case 'ytmp3': case 'ytaudio': case 'mp3':
-                var { yta } = require('./lib/y2mate')
+            case 'ytmp3': case 'ytaudio': case 'mp3':               
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 128kbps`)
+                if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
+                await sendReact("🎵")
+                var { yta } = require('./lib/y2mate')
                 let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
                 let lolmp3 = await alpha.reSize(media.thumb, 300, 150)
                 //alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
-                alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `mp4 ${isUrl(text)}`, buttonText: {displayText: '▷ Video'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP3`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
+                alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${quality}`, footer: `© ${botname}`, buttons: [{buttonId: `mp4 ${isUrl(text)}`, buttonText: {displayText: '▷ Video'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP3`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
             break
 
-            case 'ytmp4': case 'ytvideo': case 'mp4':
-                let { ytv } = require('./lib/y2mate')
+            case 'ytmp4': case 'ytvideo': case 'mp4':                
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 360p`)
+                if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
+                await sendReact("📹")
+                let { ytv } = require('./lib/y2mate')
                 let qualitye = args[1] ? args[1] : '360p'
                 let medias = await ytv(text, qualitye)
                 if (medias.filesize >= 100000) return reply('File Melebihi Batas '+util.format(medias))
                 let lolmp4 = await alpha.reSize(medias.thumb, 300, 150)
                 //alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, mimetype: 'video/mp4', fileName: `${medias.title}.mp4`, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '360p'}`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })                            
-                alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, jpegThumbnail: lolmp4, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${args[1] || '360p'}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytvoice ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP4`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
+                alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, jpegThumbnail: lolmp4, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${qualitye}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP4`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
             break            
 
             case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':            
@@ -4680,17 +4687,18 @@ await fs.unlinkSync(medio)
 break
 
 case 'ytshorts': case 'shorts': {   
-  if (!text) return reply(`*Use ${prefix + command} put yt shorts link*`)
+  if (!text) return reply(`Contoh : ${prefix + command} yt shorts link`)
   if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`The link you provided is not valid`)
-  zee.Youtube(`${text}`).then(async (data) => {
+  await sendReact("📹")
+  zee.Youtube(text).then(async (data) => {
   if (data.medias[0].formattedSize.split('MB')[0] >= 999) return reply('*File Over Limit* '+util.format(data)) 
   cap = `
 *YOUTUBE SHORTS*
 
-*${themeemoji}TITLE:* ${data.title}\n*${themeemoji}QUALITY:* ${data.medias[0].quality}\n*${themeemoji}SIZE:* ${data.medias[0].formattedSize}\n*${themeemoji}DURATION* ${data.duration}\n*${themeemoji}ID:* ${data.medias[0].cached}\n*${themeemoji}LINK:* ${data.url}\n\n*${botname}*`
+TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medias[0].formattedSize}\n*DURATION* ${data.duration}\n*ID:* ${data.medias[0].cached}\n*LINK:* ${data.url}\n\n*${botname}*`
   buf = await getBuffer(data.thumbnail)
-  alpha.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${cap}` }, { quoted: m })
-  alpha.sendMessage(m.chat, { video: { url: data.medias[0].url }, jpegThumbnail:buf, caption: `*${themeemoji}TITLE:* ${data.title}\n*${themeemoji}QUALITY:* ${data.medias[0].quality}\n*${themeemoji}SIZE:* ${data.medias[0].formattedSize}` }, { quoted: m })  
+  //alpha.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail: data.thumbnail, caption: `${cap}` }, { quoted: m })
+  alpha.sendMessage(m.chat, { video: { url: data.medias[0].url }, jpegThumbnail: buf, caption: `*TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medias[0].formattedSize}` }, { quoted: m })  
                 }).catch((err) => {
                     reply(lang.err())
                 })
@@ -4698,27 +4706,34 @@ case 'ytshorts': case 'shorts': {
             break
 
 case 'testing':
-try{
-ja = `⏰`
-XeonBotInc.sendMessage(from, { react: { text: ja, key: m.key }})
-const jettempur = args.join(" ")
-const jetbosok = args.join(" ")
-const jetasu = jettempur.split(" | ")[0]
-const jetkontol = jetbosok.split(" | ")[1]
- anu = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${jetasu}&type=${jetkontol}`)        
-                if (anu.filesize_video >= 999999) return reply('*File Over Limit* '+util.format(anu))
-                tummb = await getBuffer(anu.thumbnail)
-                audio = await getBuffer(anu.audio.audio)      
-XeonBotInc.sendMessage(from, {document:{url: anu.audio.audio}, mimetype:'audio/mpeg', fileName: `${anu.title}`, contextInfo:{externalAdReply:{
-title:`${global.botname}`,
-body:`MP3 | 128K`,
-thumbnail: tummb,
-mediaType:2,
-mediaUrl: `${linkz}`,
-sourceUrl: ``
-}}}, {quoted:m}).catch((err) => reply(`${anu.audio.audio}`))
-} catch {(err) => reply(`${jsonformat(err)}`)
+if (!isCreator) return
+var messa = await prepareWAMessageMedia({ image: pp_bot }, { upload: alpha.waUploadToServer })
+var catalog = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+"productMessage": {
+"product": {
+"productImage": messa.imageMessage,
+"productId": "449756950375071",
+"title": ` © Hay Kak ${pushname} 👋 Selamat ${salam} Apa Yang Bisa Saya Bantu 🙏`,
+"description": ` - © HW MODS WA -
+
+◎ Owner : ${botname}
+◎ Lib : Multi-Device
+◎ Terbit : *01-09-1999*
+
+SILAHKAN KETIK MENU UNTUK MENGGUNAKAN BOT LEBIB LANJUT ✌️`,
+"currencyCode": "IDR",
+"footerText": `oi`,
+"priceAmount1000": "10000000",
+"productImageCount": 1,
+"firstImageId": 1,
+"salePriceAmount1000": "10000000",
+"retailerId": `© HW MODS WA WE ARE NOT MASTOD`,
+"url": "Wa.me/6285714170944"
+},
+"businessOwnerJid": `itsMe@s.whatsapp.net`,
 }
+}), { userJid: m.chat, quoted: m })
+alpha.relayMessage(m.chat, catalog.message, { messageId: catalog.key.id })
 break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
