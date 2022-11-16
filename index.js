@@ -1761,10 +1761,11 @@ break
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
-			case 'add': {
+			case 'add': { //punya gw
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
-                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan, karena dapat menyebabkan banned!`)
+                //if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
                 if (!m.quoted && !text) return reply(lang.MauAdd())
 				let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
