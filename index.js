@@ -402,12 +402,12 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	//reply(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`).then(async res =>
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res =>
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>        	
-        	await deleteChat(from)//.then(async res => 
+        	//await deleteChat(from)//.then(async res => 
         	//await sendSticker(sharelink).then(async res => 
         	//await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			//await alpha.updateBlockStatus(sender, 'block')
 			//await sleep(612)				
-			//deleteChat(from)
+			deleteChat(from)
         }
      }
 		
@@ -1322,15 +1322,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 "id": 'command'
             }
           }
-        ]
+        ]*/
         var but = [
   {buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1},
   {buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},
   {buttonId: 'command', buttonText: {displayText: 'List Command'}, type: 1}
-]*/
-        //await alpha.sendButImg(from, lang.tos(ownernomer) , `© ${ownername}`,qris, but , { userJid: m.chat, quoted: m })
-        //await alpha.sendButImage(from, qris, but, lang.tos(ownernomer), `© ${ownername}`, [sender], {quoted:m})
-        await alpha.sendImage(m.chat, qris, lang.tos(ownernomer), m)
+]
+        await alpha.sendButImg(from, lang.tos(ownernomer) , `© ${ownername}`,qris, but , { userJid: m.chat, quoted: m })
+        //await alpha.sendImage(m.chat, qris, lang.tos(ownernomer), m)
     }
  break
       
@@ -2082,7 +2081,7 @@ const buttojns = [
 	case 'allmenu':{ //punya gw
 	    await sendReact("📋")
 	    let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [m.sender], fileLength: 1000000000000000, pageCount: 2022, fileName: `${botname} | ${ownername}`, caption: `Hai kak @${m.sender.split('@')[0]} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix), footer: `© ${ownername}`, buttons: [{buttonId: 'donate', buttonText: {displayText: 'Donasi'}, type: 1},{buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},{buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}], headerType: 4, contextInfo:{ forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: true, title:`WhatsApp Bot Multi Device`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}
-		//alpha.send5ButLoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix) , `© ${ownername}`,pp_bot, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Rules","id": 'rules'}}] )   	    
+		//alpha.send5ButLoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix) , `© ${ownername}`,pp_bot, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Group WhatsApp","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Rules","id": 'rules'}}] )   	    
    	    //alpha.sendButDoc(from, `Hai kak ${pushname} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix),  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, [{buttonId: 'donate', buttonText: {displayText: 'Donasi'}, type: 1},{buttonId: 'owner', buttonText: {displayText: 'Owner'}, type: 1},{buttonId: 'rules', buttonText: {displayText: 'Rules'}, type: 1}], [m.sender], { quoted: ftroli})
    	    alpha.sendMessage(m.chat, buttonMessage, {quoted: ftroli})
    	  }
@@ -4708,33 +4707,53 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
 
 case 'testing':
 if (!isCreator) return
-var messa = await prepareWAMessageMedia({ image: pp_bot }, { upload: alpha.waUploadToServer })
-var catalog = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-"productMessage": {
-"product": {
-"productImage": messa.imageMessage,
-"productId": "449756950375071",
-"title": ` © Hay Kak ${pushname} 👋 Selamat ${salam} Apa Yang Bisa Saya Bantu 🙏`,
-"description": ` - © HW MODS WA -
-
-◎ Owner : ${botname}
-◎ Lib : Multi-Device
-◎ Terbit : *01-09-1999*
-
-SILAHKAN KETIK MENU UNTUK MENGGUNAKAN BOT LEBIB LANJUT ✌️`,
-"currencyCode": "IDR",
-"footerText": `oi`,
-"priceAmount1000": "10000000",
-"productImageCount": 1,
-"firstImageId": 1,
-"salePriceAmount1000": "10000000",
-"retailerId": `© HW MODS WA WE ARE NOT MASTOD`,
-"url": "Wa.me/6285714170944"
-},
-"businessOwnerJid": `itsMe@s.whatsapp.net`,
+        /*let templateButtons = [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Rules","id": 'rules'}}]
+        var templateMessage = {
+        text: `text`,
+        footer: `footer`,
+        templateButtons: templateButtons
+        }
+        alpha.sendMessage(from, templateMessage, { quoted: m })      
+        /*var template = generateWAMessageFromContent(from, proto.Message.fromObject({
+        templateMessage: {
+        hydratedTemplate: {
+               "hydratedContentText": `text`,
+               "locationMessage": {
+               "jpegThumbnail": pp_bot },
+               "hydratedFooterText": `footer`,
+               "hydratedButtons": [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Rules","id": 'rules'}}]
+            }
+            }
+            }), {quoted: m})
+            alpha.relayMessage(from, template.message, { messageId: template.key.id })*/    
+let buttonmenu = [{
+urlButton: {
+displayText: 'DONASI',
+url: 'https://saweria.co/Yukishima'
 }
-}), { userJid: m.chat, quoted: m })
-alpha.relayMessage(m.chat, catalog.message, { messageId: catalog.key.id })
+}, {
+urlButton: {
+displayText: 'INSTAGRAM',
+url: 'https://instagram.com/Yukishima3_'
+}
+}, {
+quickReplyButton: {
+displayText: 'SIMPLE',
+id: 'command'
+}
+}, {
+quickReplyButton: {
+displayText: 'ALL',
+id: 'allmenu'
+}  
+}, {
+quickReplyButton: {
+displayText: 'ANONYMOUS CHAT',
+id: 'ac'
+}
+}]
+//let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, fileLength: 1000000000000000, pageCount: 2022, fileName: `${botname} | ${ownername}`, caption: `Hai kak @${m.sender.split('@')[0]} 👋, saya *${botname}* ` + '\n\n' + lang.listMenu(time, salam, pushname, prefix), footer: `© ${ownername}`, templateButtons: [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Group WhatsApp","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Rules","id": 'rules'}}], mentions: [m.sender], contextInfo:{ forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: true, title:`WhatsApp Bot Multi Device`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}
+alpha.sendMessage(m.chat, { caption: `woi @${m.sender.split('@')[0]}`, document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, jpegThumbnail: pp_bot, fileName: `${botname}`, templateButtons: buttonmenu, footer: `© ${botname}`, mentionedJid: [m.sender] })
 break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
