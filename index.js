@@ -812,7 +812,7 @@ if(!isMedia && global.autoread == true) {
 alpha.sendReceipts(m.chat, sender, [m.key.id])
 }
 
-switch(command) { //punya gw
+/*switch(command) { //punya gw
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[ COMMAND ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw
 
@@ -862,7 +862,7 @@ case 'toimage': case 'toimg': { //punya gw
  break
 
 default:
-}
+}*/
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[ DEFAULT ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw
 
