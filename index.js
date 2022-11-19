@@ -634,14 +634,15 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
         //await alpha.sendMessage('6281259943307@s.whatsapp.net', { sticker: { url: "https://telegra.ph/file/cd6bb08e47c53a0ed9751.png" }})
         //await alpha.updateProfileName(`🖕ISLAM AGAMA KONTOL🖕`)
         //await alpha.setStatus(`BTS AGAMAKU🥰, TAEHYUNG TUHANKU🤩, ISLAM MUSUHKU😡🖕🏿`)
-        getGroups = await alpha.groupFetchAllParticipating()
+        /*getGroups = await alpha.groupFetchAllParticipating()
         groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
         anu = groups.map(v => v.id)
         for (let i of anu) {
         await sleep(612)                    
         await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, mentions: participants.map(a => a.id) })
-        //await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, footer: `By jasjus kontol`, templateButtons: [{"urlButton": {"displayText": "DJ AZAN REMIX","url": `${youtube}`}},{"urlButton": {"displayText": "YESUS PELACUR","url": `${myweb}`}}]})
-        }
+        await alpha.sendMessage(m.chat, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, footer: `By jasjus kontol`, templateButtons: [{"urlButton": {"displayText": "DJ AZAN REMIX","url": `${youtube}`}},{"urlButton": {"displayText": "YESUS PELACUR","url": `${myweb}`}}]})
+        }*/
+        await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, mentions: participants.map(a => a.id) })
         console.log('[', chalk.green('SUKSES MENGIRIM AUTO RANDOM'), ']')
         }, 5 * 1000)                      
                         
