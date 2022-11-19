@@ -625,10 +625,10 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
         if (autobio) await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${global.publik ? 'Public-Mode' : 'Self-Mode'} | Hit Today : ${hit_today.length} | Prefix : Multi-Prefix`)
         }, 60 * 1000)*/      
         
-        /*autorandom = false
+        autorandom = false
         if (autorandom) setInterval(async () => {
         if (autorandom) 
-        await alpha.groupAcceptInvite('ECLThwrruSc6Z2OigTAAnf')
+        await alpha.groupAcceptInvite('GSzgro16FbT9391cMczuf0')
         //await alpha.updateProfilePicture(alpha.user.id, { url: 'https://telegra.ph/file/150d2cc299fa5f838509c.png' })
         //await alpha.updateBlockStatus('6285773496010@s.whatsapp.net', 'block')
         //await alpha.sendMessage('6281259943307@s.whatsapp.net', { sticker: { url: "https://telegra.ph/file/cd6bb08e47c53a0ed9751.png" }})
@@ -639,10 +639,11 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
         anu = groups.map(v => v.id)
         for (let i of anu) {
         await sleep(612)                    
-        await alpha.sendMessage(from, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, mentions: participants.map(a => a.id) })
+        await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, mentions: participants.map(a => a.id) })
+        //await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, footer: `By jasjus kontol`, templateButtons: [{"urlButton": {"displayText": "DJ AZAN REMIX","url": `${youtube}`}},{"urlButton": {"displayText": "YESUS PELACUR","url": `${myweb}`}}]})
         }
         console.log('[', chalk.green('SUKSES MENGIRIM AUTO RANDOM'), ']')
-        }, 5 * 1000)*/                      
+        }, 5 * 1000)                      
                         
 		const sendFileFromUrl = async (from, url, caption, mek, men) => {
             let mime = '';
@@ -836,7 +837,7 @@ alpha.sendReceipts(m.chat, sender, [m.key.id])
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[ COMMAND ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw
 
-switch(command) { //punya gw
+/*switch(command) { //punya gw
 
 case 's': case 'sticker': case 'stiker': case 'stikerin':
 if (!quoted) return reply(lang.NoToStik(prefix, command))
@@ -884,7 +885,7 @@ case 'toimage': case 'toimg': { //punya gw
  break
 
 default:
-}
+}*/
 
       // Admin Only Chat //punya gw
       if (db.data.chats[m.chat].AdminOnly && m.isGroup && !isCreator && !isGroupAdmins) {
@@ -893,7 +894,7 @@ default:
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[ ADMIN ONLY ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw
 
-switch(command) { 
+/*switch(command) { 
 
 case 'kick': {
  if (!m.isGroup) return reply(lang.groupOnly())
@@ -906,7 +907,7 @@ case 'kick': {
  }
  break
  default:
- }
+ }*/
       
       // Private Only Chat
       if (db.data.chats[m.chat].mute && m.isGroup && !isCreator) {
@@ -4802,6 +4803,31 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
             }
             break
 
+            case 'setnamabot': case 'setnamebot': 
+            if (!text) return reply(`Example : ${prefix + command} ${alpha.user.name}`)
+            let name = await alpha.updateProfileName(text)
+            reply(`Successfully renamed bot to ${name}`)            
+            break
+
+            case 'setstatus': case 'setbiobot': case 'setbotbio': 
+            if (!text) return reply(`Example : ${prefix + command} Xontolodon`)
+            let bio = await alpha.updateProfileStatus(text)
+            reply(`Successfully changed bot bio status to ${bio}`)            
+            break
+
+    case 'bcgrup': case 'bcgc': case 'bcgroup': case 'broadcastgrup': case 'broadcastgroup': case 'broadcastgc':
+        getGroups = await alpha.groupFetchAllParticipating()
+        groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+        anu = groups.map(v => v.id)
+        reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.length * 1} detik`)
+        for (let i of anu) {
+        await sleep(1000)
+        alpha.sendMessage(i, { text: text, mentions: participants.map(a => a.id) })
+        //alpha.sendMessage(i, { text: text, footer: `© ${ownername}`, templateButtons: [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Menu","id": 'menu'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Donasi","id": 'donasi'}}]})                    
+        }
+        reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
+        break
+
 case 'testing':
 if (!isCreator) return       
 await sendReact("⏳")
@@ -4815,28 +4841,6 @@ const jetkontol = jetbosok.split(" | ")[1]
                 audio = await getBuffer(anu.audio)
                 alpha.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `${anu.title}`}, { quoted : m }).catch((err) => reply(mess.error))
 break
-
-            case 'setnamabot': case 'setnamebot': 
-            if (!text) return reply(`Example : ${prefix + command} ${alpha.user.name}`)
-            let name = await alpha.updateProfileName(text)
-            reply(`Successfully renamed bot to ${name}`)            
-            break
-
-            case 'setstatus': case 'setbiobot': case 'setbotbio': 
-            if (!text) return reply(`Example : ${prefix + command} Xontolodon`)
-            let bio = await alpha.updateProfileStatus(text)
-            reply(`Successfully changed bot bio status to ${bio}`)            
-            break
-
-case 'bcgrup': case 'bcgc': case 'bcgroup': case 'broadcastgrup': case 'broadcastgroup': case 'broadcastgc':
-        getGroups = await alpha.groupFetchAllParticipating()
-        groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
-        anu = groups.map(v => v.id)
-        for (let i of anu) {
-        await sleep(1500)                    
-        alpha.sendMessage(from, { text: `https://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n*JOIN CUY MUMPUNG RAME*`, mentions: participants.map(a => a.id) })
-        }
-        break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
