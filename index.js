@@ -1752,21 +1752,21 @@ break
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (isKecuali) return //reply(`Mending lu nguli aja sunda ngentod`)
-                if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)
-                //if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())                
-                if (!m.quoted && !text) return reply(lang.MauKick())
+                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)                                
+                /*if (!m.quoted && !text) return reply(lang.MauKick())
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))*/
 				}
 				break
 			case 'add': { //punya gw
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
-                if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)
-                //if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                if (!m.quoted && !text) return reply(lang.MauAdd())
+                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)                
+                /*if (!m.quoted && !text) return reply(lang.MauAdd())
 				let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-				await alpha.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+				await alpha.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))*/
 				}
 				break
 			case 'promote': {
