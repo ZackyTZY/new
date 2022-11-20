@@ -47,8 +47,8 @@ global.premium = ["6283839350104","6285236483504","62852364835040","628523648350
 global.owner = ["6283839350104","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
 global.ownernomer = "62852364835045" // nomor wa kalian
 global.ownernomerr = "+62852364835045" //nmr wa kalian
-global.thumbnail = "./image/lol.jpg" // ini lol.jpg adalah nama foto di folder image. untuk foto bot
-global.donasi = "./image/donasi.jpg" // foto donasi di folder image
+global.thumbnail = "./storage/image/lol.jpg" // ini lol.jpg adalah nama foto di folder image. untuk foto bot
+global.donasi = "./storage/image/donasi.jpg" // foto donasi di folder image
 global.background_welcome = "https://telegra.ph/file/392fbf09cfc4f6823d204.jpg" // https://telegra.ph/file/90a931648de597820bc08.jpg maks size 30kb, agar welcome image nya tdk delay
 
 global.packname = '© кєιтн вσт-м∂ོ' //sticker wm ubah
