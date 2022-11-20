@@ -39,6 +39,7 @@ global.botname = "кєιтн вσт-м∂ོ" //namabot kalian
 global.ownername= "ᴹᴿ᭄ ∂σηz ×፝֟͜૨̸" //nama kalian
 global.myweb = "https://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj" //bebas asal jan hapus
 global.youtube = "https://youtu.be/FoksUIwNYIM" //bebas asal jan hapus
+global.ytchannel = "https://youtube.com/channel/UCJBH-edRR1zUy5X_Cw-5hJw"
 global.github = "https://github.com/Radit10" //bebas
 global.email = "kontolodonz@gmail.com" //bebas
 global.region = "Indonesia" //bebas
