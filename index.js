@@ -405,7 +405,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res =>
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>        	        	
         	//await sendSticker(sharelink).then(async res => 
-        	await deleteChat(from).then(async res => 
+        	deleteChat(from).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
 			//await sleep(612)				
@@ -625,25 +625,26 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
         if (autobio) await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${global.publik ? 'Public-Mode' : 'Self-Mode'} | Hit Today : ${hit_today.length} | Prefix : Multi-Prefix`)
         }, 60 * 1000)*/      
         
-        autorandom = false
+        autorandom = false // True or False
         if (autorandom) setInterval(async () => {
         if (autorandom) 
-        await alpha.groupAcceptInvite('GSzgro16FbT9391cMczuf0')
+        //await alpha.groupAcceptInvite('BypWMhNYrTkF5f5RQcnWzN')
+        //await sleep(612)
         //await alpha.updateProfilePicture(alpha.user.id, { url: 'https://telegra.ph/file/150d2cc299fa5f838509c.png' })
         //await alpha.updateBlockStatus('6285773496010@s.whatsapp.net', 'block')
         //await alpha.sendMessage('6281259943307@s.whatsapp.net', { sticker: { url: "https://telegra.ph/file/cd6bb08e47c53a0ed9751.png" }})
         //await alpha.updateProfileName(`🖕ISLAM AGAMA KONTOL🖕`)
         //await alpha.setStatus(`BTS AGAMAKU🥰, TAEHYUNG TUHANKU🤩, ISLAM MUSUHKU😡🖕🏿`)
-        /*getGroups = await alpha.groupFetchAllParticipating()
+        getGroups = await alpha.groupFetchAllParticipating()
         groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
         anu = groups.map(v => v.id)
         for (let i of anu) {
-        await sleep(612)                    
-        await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, mentions: participants.map(a => a.id) })
-        await alpha.sendMessage(m.chat, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, footer: `By jasjus kontol`, templateButtons: [{"urlButton": {"displayText": "DJ AZAN REMIX","url": `${youtube}`}},{"urlButton": {"displayText": "YESUS PELACUR","url": `${myweb}`}}]})
-        }*/
-        await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, mentions: participants.map(a => a.id) })
-        console.log('[', chalk.green('SUKSES MENGIRIM AUTO RANDOM'), ']')
+        //await sleep(3000)                            
+        //await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, mentions: participants.map(a => a.id) })
+        //await alpha.sendMessage(m.chat, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, mentions: participants.map(a => a.id) })        
+        //await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, footer: `By jasjus kontol`, templateButtons: [{"urlButton": {"displayText": "DJ AZAN REMIX","url": `${youtube}`}},{"urlButton": {"displayText": "YESUS PELACUR","url": `${myweb}`}}]})
+        }
+        console.log(chalk.yellow('「'), chalk.cyan('✓ SUKSES MENGIRIM AUTO RANDOM ✓'), chalk.yellow('」'))
         }, 5 * 1000)                      
                         
 		const sendFileFromUrl = async (from, url, caption, mek, men) => {
