@@ -1062,7 +1062,7 @@ reply(lang.DoneMsg(prefix, text))
         } else if (args[0] === "off") {
         	if (!db.data.chats[m.chat].antionce) return reply(lang.OffYaBef())
         db.data.chats[m.chat].antionce = false
-        reply(lang.OffBef())
+        reply(lang.OffBef(command))
         } else {
         	alpha.sendButMessage(from, 'Mode Anti View Once', `© ${ownername}`, [{buttonId: 'antionce on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'antionce off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: fgif})
 			}
@@ -1088,9 +1088,9 @@ reply(lang.DoneMsg(prefix, text))
         db.data.settings[botNumber].autorespond = true
         reply(lang.OkOn(command))
         } else if (args[0] === "off") {
-        	if (!db.data.settings[botNumber].autorespond) return reply(lang.OffBef())
+        	if (!db.data.settings[botNumber].autorespond) return reply(lang.OffYaBef())
         db.data.settings[botNumber].autorespond = false
-        reply(lang.OffBef('Auto Respond'))
+        reply(lang.OffBef(command))
         } else {
         	alpha.sendButMessage(from, 'Mode Auto Respond', `© ${ownername}`, [{buttonId: 'autorespond on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'autorespond off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: fgif})
 			}}
@@ -1144,7 +1144,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
 					if (!global.db.data.chats[m.chat].antilink) return reply(lang.OffYaBef())
 					global.db.data.chats[m.chat].antilink = false
                     await sendReact("❎")
-					reply(lang.OffBef())
+					reply(lang.OffBef(command))
 					} else {
 						alpha.sendButMessage(from, 'Mode Antilink', `© ${ownername}`, [{buttonId: 'antilink on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'antilink off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: fgif})
 						}
@@ -4549,7 +4549,7 @@ gak share gak bisa masuk🙏`
 					if (!global.db.data.chats[m.chat].antivirus) return reply('Sudah Nonaktif Sebelumnya')
 					global.db.data.chats[m.chat].antivirus = false
                     await sendReact("❎")
-					reply(lang.OffBef())
+					reply(lang.OffBef(command))
 					} else {
 						alpha.sendButMessage(from, 'Mode antivirus', `© ${ownername}`, [{buttonId: 'antivirus on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'antivirus off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: fgif})
 						}
