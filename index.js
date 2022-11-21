@@ -4828,7 +4828,7 @@ if (!isCreator) return
 await sendReact("⏳")
 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
-              res = await y2mateA(text)
+              res = await y2mateV(text)
               //alpha.sendMessage(from, {audio: {url: res[0].link}}, { quoted: m })                            
               alpha.sendMessage(m.chat, { document: { url: res[0].link }, mimetype: 'audio/mpeg', fileName: `${res[0].judul}.mp3`}, { quoted: m })   
 break
