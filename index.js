@@ -288,7 +288,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 				if (!('goodbye' in chats)) chats.goodbye = false
 				if (!('welcome' in chats)) chats.welcome = false
 				if (!('mute' in chats)) chats.mute = false
-				if (!('nsfw' in chats)) chats.nsfw = false
+				if (!('nsfw' in chats)) chats.nsfw = true
 				if (!('antilink' in chats)) chats.antilink = true
 				if (!('antivirus' in chats)) chats.antivirus = true
 				if (!('antionce' in chats)) chats.antionce = true
@@ -301,7 +301,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 					goodbye: false, 
 					welcome: false, 
 					mute: false,
-					nsfw: false,
+					nsfw: true,
 					antilink: true,
 					antivirus: true,
 					antionce: true,
@@ -1185,12 +1185,24 @@ if (!m.isGroup) return reply(lang.groupOnly())
                 alpha.sendText(m.chat, `Link Group : *${groupMetadata.subject}*\nhttps://chat.whatsapp.com/${response}`, m, { detectLink: true })
             }
             break
-            case 'delete': case 'del': {
+            case 'delete': { //punya gw
+            	if (!m.isGroup) return reply(lang.groupOnly())
+			    if (!isGroupAdmins && !isGroupOwner && !isCreator) return reply(lang.adminOnly())
+			    if (!isBotAdmins) return reply(lang.botNotAdmin())
+                if (!m.quoted) return reply(`Reply chat yg mau dihapus`)
+                //if (m.isBaileys) return reply(`Pesan tersebut dikirim oleh bot!\nketik *${prefix}del* untuk menghapus pesan bot`)
+                await alpha.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.quoted.id, participant: m.quoted.sender } })
+                await alpha.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
+                reply(lang.ok())
+            }
+            break
+            case 'del': { 
             	if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
                 if (!m.quoted) throw false
                 let { chat, fromMe, id, isBaileys } = m.quoted
                 if (!isBaileys) return reply(lang.NoMsgBot())
-                alpha.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
+                await alpha.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
+                reply(lang.ok())
             }
             break
 	    case 'toimage': case 'toimg': { //punya gw
