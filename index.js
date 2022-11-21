@@ -50,6 +50,7 @@ const zee = require('xfarr-api')
 const { msgFilter } = require('./lib/antispam')
 const { toAudio, toPTT} = require('./lib/converter')
 const { yta, ytv, ytvd, ytvf, servers } = require('./lib/y2mate')
+const { y2mateA, y2mateV } = require('./lib/y2mate2')
 const { pinterest, wallpaper, wikimedia, hentai, quotesAnime} = require('./lib/scraper')
 const {bytesToSize,fileIO,  UploadFileUgu,telesticker, webp2mp4File, TelegraPh } = require('./lib/uploader')
 const { addResponList, delResponList, isAlreadyResponList, isAlreadyResponListGroup, sendResponList, updateResponList, getDataResponList } = require('./lib/respon-list');
@@ -109,6 +110,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const text = q = args.join(" ")
         const c = args.join(' ')
         const quoted = m.quoted ? m.quoted : m
+        const qmsg = (quoted.msg || quoted)
         const mime = (quoted.msg || quoted).mimetype || ''
 		const isMedia = /image|video|sticker|audio/.test(mime)
 	
@@ -414,8 +416,8 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res =>
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>        	        	
         	//await deleteChat(from).then(async res =>
-        	await sendSticker(sharelink).then(async res =>        	 
-        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
+        	await sendSticker(sharelink)//.then(async res =>        	 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
 			await alpha.updateBlockStatus(sender, 'block')
 			//await sleep(612)				
 			await deleteChat(from)
@@ -678,6 +680,14 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
                 return alpha.sendMessage(m.chat, { audio: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'audio/mpeg'}, {quoted: m })
             }
         }
+
+// ━━━━━━━━━━━━━━━━━━[ Detector Media ]━━━━━━━━━━━━━━━━━━ \\       
+	const isQuotedImage = m.type === 'extendedTextMessage' && content.includes('imageMessage')
+	const isQuotedVideo = m.type === 'extendedTextMessage' && content.includes('videoMessage')			
+	const isQuotedAudio = m.type === 'extendedTextMessage' && content.includes('audioMessage')
+	const isQuotedSticker = m.type === 'extendedTextMessage' && content.includes('stickerMessage')
+	const isQuotedDocument = m.type === 'extendedTextMessage' && content.includes('documentMessage')			
+	const isQuotedLocation = m.type === 'extendedTextMessage' && content.includes('locationMessage')			
         
  //FUN
 
@@ -1092,7 +1102,7 @@ if (!db.data.chats[m.chat].mute) return reply(lang.NoMute())
         db.data.chats[m.chat].mute = false
         reply(lang.OkUnBanC())
 break
-case 'banchat': case 'banchats': case 'mute':
+/*case 'banchat': case 'banchats': case 'mute': case 'pconly': case 'onlypc':
 if (!m.isGroup) return reply(lang.groupOnly())
          if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
         if (args[0] === "on") {
@@ -1106,7 +1116,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
         } else {
         	alpha.sendButMessage(from, 'Mode ', `© ${ownername}`, [{buttonId: 'mute on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'mute off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: fgif})
 			}
-			break
+			break*/
         	case 'nsfw':
         if (!isGroupAdmins && !isGroupOwner && !m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
         if (args[0] === "on") {
@@ -4533,7 +4543,23 @@ gak share gak bisa masuk🙏`
 						}
 					break
 
-    case 'adminonly': case 'hanyaadmin': case 'mute2':
+    case 'mute': case 'banchat': case 'banchats': case 'pconly': case 'onlypc':
+        if (!m.isGroup) return reply(lang.groupOnly())
+        if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+        if (args[0] === "on") {
+		if (db.data.chats[m.chat].mute) return reply(lang.OnBef())
+        db.data.chats[m.chat].mute = true
+        reply(lang.OkMute())
+        } else if (args[0] === "off") {
+		if (!db.data.chats[m.chat].mute) return reply(lang.OffYaBef())
+        db.data.chats[m.chat].mute = false
+        reply(lang.OkUnMute())
+        } else {
+        	alpha.sendButMessage(from, 'Mode ', `© ${ownername}`, [{buttonId: 'mute on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'mute off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: fgif})
+			}
+			break
+
+    case 'mute2': case 'adminonly': case 'onlyadmin': case 'hanyaadmin':
         if (!m.isGroup) return reply(lang.groupOnly())
         if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
         if (args[0] === "on") {
@@ -4788,7 +4814,8 @@ case 'smeme': case 'stickermeme': case 'stickmeme': try{
  if (!/image/.test(mime)) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
  //if (/webp/.test(mime)) return reply(`perlu mengonversi ke gambar terlebih dahulu\ndengan cara balas sticker dengan caption *toimg*`)
  let { TelegraPh } = require('./lib/uploader') 
- mee = await alpha.downloadAndSaveMediaMessage(quoted) 
+ //ger = isQuotedImage || isQuotedSticker ? JSON.parse(JSON.stringify(m).replace('quotedM','m')).message.extendedTextMessage.contextInfo : m           
+ mee = await alpha.downloadAndSaveMediaMessage(m.quoted) 
  mem = await TelegraPh(mee) 
  meme = `https://api.memegen.link/images/custom/-/${text}.png?background=${mem}` 
  memek = await alpha.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author }).catch((err) => reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
@@ -4796,18 +4823,14 @@ case 'smeme': case 'stickermeme': case 'stickmeme': try{
  } catch (e) { return }
 break
 
-case 'testing':
+case 'testing': case 'coks':
 if (!isCreator) return       
 await sendReact("⏳")
-                const jettempur = args.join(" ")
-const jetbosok = args.join(" ")
-const jetasu = jettempur.split(" | ")[0]
-const jetkontol = jetbosok.split(" | ")[1]
- anu = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${jetasu}&type=${jetkontol}`)
-                 if (anu.filesize_video >= 999999) return reply('*File Over Limit* '+util.format(anu))
-                tummb = await getBuffer(anu.thumbnail)
-                audio = await getBuffer(anu.audio)
-                alpha.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `${anu.title}`}, { quoted : m }).catch((err) => reply(mess.error))
+if (!text) throw 'Masukkan Query Link!'
+                m.reply(mess.wait)
+              res = await y2mateA(text)
+              //alpha.sendMessage(from, {audio: {url: res[0].link}}, { quoted: m })                            
+              alpha.sendMessage(m.chat, { document: { url: res[0].link }, mimetype: 'audio/mpeg', fileName: `${res[0].judul}.mp3`}, { quoted: m })   
 break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
