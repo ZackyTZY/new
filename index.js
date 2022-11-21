@@ -4812,7 +4812,7 @@ case 'smeme': case 'stickermeme': case 'stickmeme': try{
  if (!text) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*\n\Contoh penggunaan: *smeme ${pushname}*`) 
  if (text.includes('|')) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
  if (!/image/.test(mime)) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
- //if (/webp/.test(mime)) return reply(`perlu mengonversi ke gambar terlebih dahulu\ndengan cara balas sticker dengan caption *toimg*`)
+ if (/webp/.test(mime)) return reply(`perlu mengonversi ke gambar terlebih dahulu\ndengan cara balas sticker dengan caption *toimg*`)
  let { TelegraPh } = require('./lib/uploader') 
  //ger = isQuotedImage || isQuotedSticker ? JSON.parse(JSON.stringify(m).replace('quotedM','m')).message.extendedTextMessage.contextInfo : m           
  mee = await alpha.downloadAndSaveMediaMessage(m.quoted) 
@@ -4820,7 +4820,9 @@ case 'smeme': case 'stickermeme': case 'stickmeme': try{
  meme = `https://api.memegen.link/images/custom/-/${text}.png?background=${mem}` 
  memek = await alpha.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author }).catch((err) => reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
  await fs.unlinkSync(memek)
- } catch (e) { return }
+ } catch (e) {
+ reply(`Reply/balas fotonya lalu ketik *${prefix+command} ${pushname}*`)
+ }
 break
 
 case 'testing': 
