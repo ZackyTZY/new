@@ -400,7 +400,7 @@ if (!isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung
 // Random Sticker
 var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
 var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
-var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
+//var hengker = HekerListMP4[Math.floor(Math.random() * HekerListMP4.length)];
 var docs = documents[Math.floor(Math.random() * documents.length)]
 
 //━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
