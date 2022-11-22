@@ -53,7 +53,7 @@ global.donasi = "./storage/image/donasi.jpg" // foto donasi di folder image
 global.background_welcome = "https://telegra.ph/file/392fbf09cfc4f6823d204.jpg" // https://telegra.ph/file/90a931648de597820bc08.jpg maks size 30kb, agar welcome image nya tdk delay
 
 global.packname = '© кєιтн вσт-м∂ོ' //sticker wm ubah
-global.author = `Di Buat Oleh ᎠᎾᏁᏃ•T̶Z̶Y\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${waktu}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n` //sticker wm ganti nama kalian
+global.wmnya = `Di Buat Oleh ᎠᎾᏁᏃ•T̶Z̶Y` //sticker wm ganti nama kalian
 global.sessionName = 'session'
 global.typemenu = 'document'
 
@@ -75,7 +75,6 @@ global.heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
 global.heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
 // Sticker Video
 global.hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
-//global.HekerListMP4 = [hekel1]
 global.HekerList = [heker1,heker2,heker3,heker4,heker5,heker6,hekel1]
 
 // AntiLink

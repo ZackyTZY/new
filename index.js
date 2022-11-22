@@ -219,10 +219,10 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             return alpha.sendMessage(m.chat, { react: { text: emoji, key: m.key }})
 		}
 		const sendSticker = async (file) => {
-		    return alpha.sendImageAsSticker(m.chat, file, m, { packname: global.packname, author: global.author,contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Link!`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}})
+		    return alpha.sendImageAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Link!`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}})
 		}
 		const sendStickerVideo = async (file) => {
-		    return alpha.sendVideoAsSticker(m.chat, file, m, { packname: global.packname, author: global.author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Virus!`, body: `${ownername}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}})
+		    return alpha.sendVideoAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Virus!`, body: `${ownername}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}})
 		}
 		const randomArr = (arr = []) => {
             return arr[Math.floor(Math.random() * arr.length)]
@@ -860,7 +860,7 @@ alpha.sendReceipts(m.chat, sender, [m.key.id])
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ RANDOM ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
-      //const author = `${wmnya}\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time} WIB\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
+      var author = `${global.wmnya}\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time} WIB\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
 
       // Admin Only Chat //punya gw
       if (db.data.chats[m.chat].AdminOnly && m.isGroup && !isCreator && !isGroupAdmins) {
