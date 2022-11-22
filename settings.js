@@ -73,7 +73,10 @@ global.heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg"
 global.heker4 = "https://telegra.ph/file/a9a7a9702db222f61641a.jpg"
 global.heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
 global.heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
-global.HekerList = [heker1,heker2,heker3,heker4,heker5,heker6]
+// Sticker Video
+global.hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
+//global.HekerListMP4 = [hekel1]
+global.HekerList = [heker1,heker2,heker3,heker4,heker5,heker6,hekel1]
 
 // AntiLink
 global.sherlink1 = "https://telegra.ph/file/60ac33e30400ead10f8b0.png"
@@ -98,10 +101,6 @@ global.sherlink19 = "https://telegra.ph/file/4b54124f57f16615181c4.png"
 global.sherlink20 = "https://telegra.ph/file/cfc3d7b259951358f23be.png"
 global.sherlink21 = "https://telegra.ph/file/62672e3f89adf2313417b.png"
 global.Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7,sherlink8,sherlink9,sherlink10,sherlink11,sherlink12,sherlink13,sherlink14,sherlink15,sherlink16,sherlink17,sherlink18,sherlink19,sherlink20,sherlink21]
-
-// Sticker Video
-global.hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
-global.HekerListMP4 = [hekel1]
 
 // Documents Variants
 global.doc1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'

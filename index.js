@@ -219,10 +219,10 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             return alpha.sendMessage(m.chat, { react: { text: emoji, key: m.key }})
 		}
 		const sendSticker = async (file) => {
-		    return alpha.sendImageAsSticker(m.chat, file, m, { packname: global.packname, author: global.author })
+		    return alpha.sendImageAsSticker(m.chat, file, m, { packname: global.packname, author: global.author,contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Link!`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}})
 		}
 		const sendStickerVideo = async (file) => {
-		    return alpha.sendVideoAsSticker(m.chat, file, m, { packname: global.packname, author: global.author })
+		    return alpha.sendVideoAsSticker(m.chat, file, m, { packname: global.packname, author: global.author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Virus!`, body: `${ownername}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}})
 		}
 		const randomArr = (arr = []) => {
             return arr[Math.floor(Math.random() * arr.length)]
@@ -429,7 +429,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ        	
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)
         	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
-        	await sendSticker(heker).then(async res => 
+        	await sendStickerVideo(hengker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
 			await sleep(612)				
@@ -494,7 +494,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
             deleteChat(from)
 	    } else if (budy.length > 5000) {
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	await sendSticker(heker).then(async res => 
+        	await sendStickerVideo(hengker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
 			await sleep(612)				
