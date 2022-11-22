@@ -416,8 +416,8 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	//alpha.sendButMessage(from, `「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res =>
         	//sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `Goodbye ${pushname}`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], [m.sender], m).then(async res =>        	        	
         	//await deleteChat(from).then(async res =>
-        	await sendSticker(sharelink)//.then(async res =>        	 
-        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
+        	await sendSticker(sharelink).then(async res =>        	 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			await alpha.updateBlockStatus(sender, 'block')
 			//await sleep(612)				
 			await deleteChat(from)
@@ -429,21 +429,21 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ        	
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)
         	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
-        	await sendStickerVideo(hengker).then(async res => 
+        	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
 			await sleep(612)				
 			deleteChat(from)			
 	    } else if (m.mtype === 'productMessage') {
         	//reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	await sendStickerVideo(hengker).then(async res => 
+        	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
 			await sleep(612)				
 			deleteChat(from)
 	    } else if (m.mtype === 'orderMessage') {
         	//reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
-        	await sendStickerVideo(hengker).then(async res => 
+        	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
 			await sleep(612)				
@@ -458,7 +458,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 			alpha.updateBlockStatus(sender, 'block')*/
 		} else if (m.mtype === 'documentMessage') {
         	//reply(`「 *VIRDOC TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	await sendStickerVideo(hengker).then(async res => 
+        	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
 			await sleep(612)				
@@ -486,7 +486,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 			alpha.updateBlockStatus(sender, 'block')*/
 		} else if (budy.match(/(bug(1|2|3|4|5|6|7|8|9|combine|stik|tod|tag|gc)|troli(1|2|3|4|5|6|7|8|9)|santet(1|2|3|4|5|6|7|8|9)|jadibug(1|2|3|4|5|6|7|8|9)|slayer(1|2|3|4|5|6|7|8|9)|virtex(1|2|3|4|5|6|7|8|9)|jomomo(1|2|3|4|5|6|7|8|9)|jobug(1|2|3|4|5|6|7|8|9)|catalog(1|2|3|4|5|6|7|8|9)|inibug|poll|gaskal)/gi)) {
             //alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
-        	await sendStickerVideo(hengker).then(async res => 
+        	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
             await alpha.updateBlockStatus(sender, 'block')
             if (m.isBaileys && m.key.fromMe) return
@@ -494,7 +494,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
             deleteChat(from)
 	    } else if (budy.length > 5000) {
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	await sendStickerVideo(hengker).then(async res => 
+        	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
 			await sleep(612)				
