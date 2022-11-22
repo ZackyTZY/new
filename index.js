@@ -1436,12 +1436,12 @@ case 's': case 'sticker': case 'stiker': case 'stikerin': {
 if (!quoted) return reply(lang.NoToStik(prefix, command))
 if (/image/.test(mime)) {
 let media = await quoted.download()
-let encmedia = await alpha.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} 🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
+let encmedia = await alpha.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
 await fs.unlinkSync(encmedia)
 } else if (/video/.test(mime)) {
 if ((quoted.msg || quoted).seconds > 11) return reply(lang.NoToStik(prefix, command))
 let media = await quoted.download()
-let encmedia = await alpha.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} 🅅🄸🄳🄴🄾 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
+let encmedia = await alpha.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅅🄸🄳🄴🄾 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
 await fs.unlinkSync(encmedia)
 } else {
 reply(lang.NoToStik(prefix, command))
@@ -4820,7 +4820,7 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
         reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
         break
 
-case 'smeme': case 'stickermeme': case 'stickmeme': try{
+case 'smeme': case 'stickermeme': case 'stickmeme':
  if (!text) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*\n\Contoh penggunaan: *smeme ${pushname}*`) 
  if (text.includes('|')) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
  if (!/image/.test(mime)) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
@@ -4830,12 +4830,9 @@ case 'smeme': case 'stickermeme': case 'stickmeme': try{
  mee = await alpha.downloadAndSaveMediaMessage(qmsg) 
  mem = await TelegraPh(mee) 
  meme = `https://api.memegen.link/images/custom/-/${text}.png?background=${mem}` 
- memek = await alpha.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} 🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}).catch((err) => reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
+ memek = await alpha.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}).catch((err) => reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
  await fs.unlinkSync(memek)
- } catch (e) {
- reply(`Reply/balas fotonya lalu ketik *${prefix+command} ${pushname}*`)
- }
-break
+ break
 
 case 'testing': 
 if (!isCreator) return       
