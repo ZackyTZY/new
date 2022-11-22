@@ -4823,8 +4823,8 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
 case 'smeme': case 'stickermeme': case 'stickmeme':
  if (!text) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*\n\Contoh penggunaan: *smeme ${pushname}*`) 
  if (text.includes('|')) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
- if (/webp/.test(mime)) return reply(`perlu mengonversi ke gambar terlebih dahulu\ndengan cara balas sticker dengan caption *toimg*`)
- if (!/image/.test(mime)) { 
+ //if (/webp/.test(mime)) return reply(`perlu mengonversi ke gambar terlebih dahulu\ndengan cara balas sticker dengan caption *toimg*`)
+ if (/image/.test(mime)) { 
  let { TelegraPh } = require('./lib/uploader') 
  //ger = isQuotedImage || isQuotedSticker ? JSON.parse(JSON.stringify(m).replace('quotedM','m')).message.extendedTextMessage.contextInfo : m           
  mee = await alpha.downloadAndSaveMediaMessage(qmsg) 
