@@ -28,6 +28,7 @@ global.autovoice = false //prank autovoice (auto voice pas ada yg toxic) //punya
 //global.autobio = true //auto set bio (kalau ada orang yg komen)
 global.autoreadsw = true //auto read SW (story WhatsApp)
 global.publik = true //publik mode
+global.autoblok212 = false //ubah jadi true biar nmr 212 di blok sama bot
 
 //language
 //Available in indonesia & english
@@ -41,6 +42,8 @@ global.myweb = "https://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj" //bebas asal j
 global.youtube = "https://youtu.be/FoksUIwNYIM" //bebas asal jan hapus
 global.ytchannel = "https://youtube.com/channel/UCJBH-edRR1zUy5X_Cw-5hJw"
 global.github = "https://github.com/Radit10" //bebas
+global.instagram = "https://instagram.com/lord_zacky69"
+global.facebook = "https://Facebook.com/AadipuraStars"
 global.email = "kontolodonz@gmail.com" //bebas
 global.region = "Indonesia" //bebas
 global.timezone = 'Asia/Jakarta' //  timezone wib
