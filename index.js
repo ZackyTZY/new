@@ -256,7 +256,33 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         alpha.sendButLoc = async (jid , text = '' , footer = '', lok, but = [], options = {}) =>{ //options { asLocation: true }
             let bb = await alpha.reSize(lok, 300, 150)
             alpha.sendMessage(jid, { location: { jpegThumbnail: bb }, caption: text, footer: footer, buttons: but, ...options })
-            }
+            }        
+            /*
+             * sendGroupV4Invite
+             * @param {String} jid 
+             * @param {*} participant 
+             * @param {String} inviteCode 
+             * @param {Number} inviteExpiration 
+             * @param {String} groupName 
+             * @param {String} caption 
+             * @param {Buffer} jpegThumbnail
+             * @param {*} options 
+             */
+        alpha.sendGroupV4Invite = async (jid, participant, inviteCode, inviteExpiration, groupName = 'unknown subject', caption = 'Invitation to join my WhatsApp group', jpegThumbnail, options = {}) =>{
+                const msg = proto.Message.fromObject({
+                    groupInviteMessage: proto.GroupInviteMessage.fromObject({
+                        inviteCode,
+                        inviteExpiration: parseInt(inviteExpiration) || + new Date(new Date + (3 * 86400000)),
+                        groupJid: jid,
+                        groupName: (groupName ? groupName : await alpha.getName(jid)) || null,
+                        jpegThumbnail: Buffer.isBuffer(jpegThumbnail) ? jpegThumbnail : null,
+                        caption
+                    })
+                })
+                const message = generateWAMessageFromContent(participant, msg, options)
+                await alpha.relayMessage(participant, message.message, { messageId: message.key.id, additionalAttributes: { ...options } })
+                return message
+            }        
         
 		// DATABASE
 		try {
@@ -503,11 +529,27 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         }
      }          
 
-        // Anti Spam \\
+        // Anti Hekel PC \\
 	    if (!m.isGroup && !isCreator){
         	if (budy.length > 3000) {        	
         	reply('Bacot Hekel Ngentod, gak ngeleg dek🖕').then(async res => 
         	await alpha.updateBlockStatus(sender, 'block'))
+        }
+     }
+     
+//━━━━━━━━━━━━━━━━━━━━━━[ Anti Nomor Luar ]━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw							
+	
+	    if (global.autoblok212 && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
+        if (m.sender.startsWith('212' || '212')) {                 
+        	//global.db.data.users[m.sender].banned = true
+            await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+			await alpha.updateBlockStatus(m.sender, 'block')               
+        } else if (m.sender.startsWith('91' || '91')) {
+        	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+			await alpha.updateBlockStatus(m.sender, 'block')        
+        } else if (m.sender.startsWith('92' || '92')) {
+        	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+			await alpha.updateBlockStatus(m.sender, 'block')
         }
      }
      
@@ -1779,9 +1821,9 @@ break
             case 'kick': { //punya gw
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
-                if (isKecuali) return //reply(`Mending lu nguli aja sunda ngentod`)
+                if (isKecuali) return reply(`Mending lu nguli aja sunda ngentod`)
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)                                
+                //if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)                                
                 /*if (!m.quoted && !text) return reply(lang.MauKick())
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))*/
@@ -1791,7 +1833,7 @@ break
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)                
+                //if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)                
                 /*if (!m.quoted && !text) return reply(lang.MauAdd())
 				let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))*/
@@ -2127,11 +2169,11 @@ const buttojns = [
   {buttonId: 'owner', buttonText: {displayText: '🙍‍♂️ Owner'}, type: 1},
   {buttonId: 'donasi', buttonText: {displayText: '💰 Donation'}, type: 1}
 ]
-//let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [ownernya, ini_mark, m.sender], fileName: `${botname} | ${time}`, caption: ini_anu, footer: `© ${ownername}`, buttons: buttojns, headerType: 4, contextInfo: { externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}` }}} 			
+let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [ownernya, ini_mark, m.sender], fileName: `${botname} | ${time}`, caption: ini_anu, footer: `© ${ownername}`, buttons: buttojns, headerType: 4, contextInfo: { forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: false, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}			
 					if(typemenu == 'document'){					
-                            //alpha.sendMessage(m.chat, buttonMessage, {quoted: ftroli})
+                            alpha.sendMessage(m.chat, buttonMessage, {quoted: ftroli})
 							//alpha.sendButDoc(from, ini_anu,  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, buttojns, [ownernya, ini_mark, m.sender], { quoted: ftroli})
-						    sendButMyDoc(ini_anu, botname, `${botname} | ${time}`, buttojns, [ownernya, ini_mark, m.sender], m)
+						    //sendButMyDoc(ini_anu, botname, `${botname} | ${time}`, buttojns, [ownernya, ini_mark, m.sender], m)
 						}
 					if(typemenu == 'templateLocation'){
 						await alpha.send5ButLoc(from, lang.menunya(salam, pushname, botname) , `© ${ownername}`,pp_bot, [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Donasi","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "List Command","id": 'command'}}], { userJid: m.chat, quoted: m } )
@@ -4836,15 +4878,35 @@ case 'smeme': case 'stickermeme': case 'stickmeme':
  }
 break
 
+case 'apakah':
+if (!text) return replay(`Contob : ${prefix + command} dia sering coli `)
+const lel = [`Iya`, `Mungkin`, `Tidak`, `Mana gw tau, tanya sama bapak lu aja`, `Gw gak tau`, `YNTKTS`, `Tanya sama si yesus, dia maha tau`, `Bisa jadi`]
+const kahk = lel[Math.floor(Math.random() * lel.length)]
+alpha.sendMessage(from, { text: `*Pertanyaan :* Apakah ${q}\n*Jawaban :* ${kahk}` }, { quoted: m })
+break
+
+case 'rate':
+if (!text) return replay(`Use Text, Example : ${prefix + command} ipong gw`)
+const ra = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
+const te = ra[Math.floor(Math.random() * ra.length)]
+alpha.sendMessage(from, { text: `*Rate :* ${q}\n*Jawaban :* *${te}%*` }, { quoted: m })
+break
+
 case 'testing': 
 if (!isCreator) return       
 await sendReact("⏳")
-if (!text) throw 'Masukkan Query Link!'
-                m.reply(mess.wait)
-              res = await y2mateV(text)
-              //alpha.sendMessage(from, {audio: {url: res[0].link}}, { quoted: m })                            
-              alpha.sendMessage(m.chat, { document: { url: res[0].link }, mimetype: 'audio/mpeg', fileName: `${res[0].judul}.mp3`}, { quoted: m })   
-break
+ alpha.sendImageAsSticker(m.chat, sharelink, m, { packname: global.packname, author: author, 
+contextInfo:{ 
+externalAdReply :{
+    mediaUrl: instagram,
+    mediaType: 2, 
+    description: 'turu', 
+    title: 'title',
+    body: 'body',
+    thumbnail: pp_bot,
+    sourceUrl: myweb
+    }}})
+    break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
 
