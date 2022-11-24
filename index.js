@@ -46,7 +46,7 @@ const ytdl = require('ytdl-core');
 const yts = require('yt-search');
 const { performance } = require('perf_hooks')
 const zee = require('xfarr-api')
-const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews,TribunNews,DailyNews,DetikNews,OkezoneNews,CNBCNews,KompasNews,SindoNews,TempoNews,IndozoneNews,AntaraNews,RepublikaNews,VivaNews,KontanNews,MerdekaNews,KomikuSearch,AniPlanetSearch,KomikFoxSearch,KomikStationSearch,MangakuSearch,KiryuuSearch,KissMangaSearch,KlikMangaSearch,PalingMurah,LayarKaca21,AminoApps,Mangatoon,WAModsSearch,Emojis,CoronaInfo,JalanTikusMeme, Cerpen,Quotes,Couples, Darkjokes } = require("dhn-api")
+//const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews,TribunNews,DailyNews,DetikNews,OkezoneNews,CNBCNews,KompasNews,SindoNews,TempoNews,IndozoneNews,AntaraNews,RepublikaNews,VivaNews,KontanNews,MerdekaNews,KomikuSearch,AniPlanetSearch,KomikFoxSearch,KomikStationSearch,MangakuSearch,KiryuuSearch,KissMangaSearch,KlikMangaSearch,PalingMurah,LayarKaca21,AminoApps,Mangatoon,WAModsSearch,Emojis,CoronaInfo,JalanTikusMeme, Cerpen,Quotes,Couples, Darkjokes } = require("dhn-api")
 
 const { msgFilter } = require('./lib/antispam')
 const { toAudio, toPTT} = require('./lib/converter')
@@ -4918,7 +4918,7 @@ const te = ra[Math.floor(Math.random() * ra.length)]
 alpha.sendMessage(from, { text: `*Rate :* ${q}\n*Jawaban :* *${te}%*` }, { quoted: m })
 break
 
-case 'darkjoke': case 'darkjokes': {
+case 'darkjoke': case 'darkjokes': { //error
 var res = await Darkjokes()
 let teks = "*Darkjokes*"
 alpha.sendMessage(m.chat, { image: { url: res }, caption: teks, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄳🄰🅁🄺🄹🄾🄺🄴`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
