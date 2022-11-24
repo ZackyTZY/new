@@ -5083,6 +5083,7 @@ await alpha.sendMessage(target, { sticker: { url: "https://telegra.ph/file/25d56
 await alpha.relayMessage(target, audio.message, { messageId: audio.key.id })
 await alpha.sendContact(target, bugkuntul, fkontol)
 await alpha.relayMessage(target, pollCreation.message, { messageId: pollCreation.key.id })
+await alpha.sendMessage(target, {text: `P`}, { quoted: doc })
 }
 reply(`*Sukses Kirim Bug ke :* ${num}\n*Jumlah :* ${jumlah}`)
 break
