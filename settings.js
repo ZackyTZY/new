@@ -105,12 +105,13 @@ global.sherlink21 = "https://telegra.ph/file/62672e3f89adf2313417b.png"
 global.Sherlink = [sherlink1,sherlink2,sherlink3,sherlink4,sherlink5,sherlink6,sherlink7,sherlink8,sherlink9,sherlink10,sherlink11,sherlink12,sherlink13,sherlink14,sherlink15,sherlink16,sherlink17,sherlink18,sherlink19,sherlink20,sherlink21]
 
 // Documents Variants
-global.doc1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
-global.doc2 = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-global.doc3 = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-global.doc4 = 'application/zip'
-global.doc5 = 'application/pdf'
-global.doc6 = 'application/vnd.android.package-archive'
+global.doc1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation' // PPTX
+global.doc2 = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' // XLSX
+global.doc3 = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' // DOCX
+global.doc4 = 'application/zip' // ZIP
+global.doc5 = 'application/pdf' // PDF
+global.doc6 = 'application/vnd.android.package-archive' // APK
+global.doc7 = 'text/rtf' // RTF
 global.documents = [doc1,doc2,doc3,doc5] 
 
 global.flaming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='
@@ -129,7 +130,7 @@ global.mess = {
     private: 'Perintah Ini Hanya Bisa Digunakan Di Private !',
 	bot: 'Fitur Khusus Pengguna Nomor Bot',
     errtoimg: 'Maaf Saat Ini Belum Support Sticker Gif !',
-    wait: '⏳ Sedang Di Proses',
+    wait: '```⏳「▰▰▰▱▱▱▱▱▱▱」Sedang Di Proses...```',
 	lockCmd: 'Fitur Tidak Diaktifkan Oleh Owner!',
 	example1: 'Selamat Datang @user Di Group @subject Jangan Lupa Baca Rules @desc\n\nNote :\n1. @user (Mention User Join)\n2. @bio (Get Bio User Join)\n3. @tanggal (Date Now)\n4. @desc (Get Description Group)\n5. @subject (Group Name)'
 }
