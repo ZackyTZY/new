@@ -46,6 +46,7 @@ const ytdl = require('ytdl-core');
 const yts = require('yt-search');
 const { performance } = require('perf_hooks')
 const zee = require('xfarr-api')
+const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews,TribunNews,DailyNews,DetikNews,OkezoneNews,CNBCNews,KompasNews,SindoNews,TempoNews,IndozoneNews,AntaraNews,RepublikaNews,VivaNews,KontanNews,MerdekaNews,KomikuSearch,AniPlanetSearch,KomikFoxSearch,KomikStationSearch,MangakuSearch,KiryuuSearch,KissMangaSearch,KlikMangaSearch,PalingMurah,LayarKaca21,AminoApps,Mangatoon,WAModsSearch,Emojis,CoronaInfo,JalanTikusMeme, Cerpen,Quotes,Couples, Darkjokes } = require("dhn-api")
 
 const { msgFilter } = require('./lib/antispam')
 const { toAudio, toPTT} = require('./lib/converter')
@@ -424,6 +425,24 @@ if (!isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung
 //await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
 }
 
+async function deleteUpdate(message) {
+    try {
+        const { fromMe, id, participant } = message
+        if (fromMe)
+            return
+        let msg = m.serializeM(m.loadMessage(id))
+        if (!msg)
+            return
+        let chat = global.db.data.chats[msg.chat] || {}
+        if (antidelete)
+            return
+        await reply(`Terdeteksi @${participant.split`@`[0]} telah menghapus pesan\nUntuk mematikan fitur ini, ketik\n*.enable delete*`)
+        m.copyNForward(msg.chat, msg).catch(e => console.log(e, msg))
+    } catch (e) {
+        console.error(e)
+    }
+}
+
 // Random Sticker
 var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
 var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
@@ -519,7 +538,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
             if (m.isBaileys && m.key.fromMe) return
             await sleep(612)
             deleteChat(from)
-	    } else if (budy.length > 5000) {
+	    } else if (budy.length > 3000) {
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
@@ -1473,7 +1492,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 reply(lang.ok())
                 }
                 break
-case 's': case 'sticker': case 'stiker': case 'stikerin': {
+case 's': case 'sticker': case 'stiker': case 'stikerin': case 'setiker':{
 if (!quoted) return reply(lang.NoToStik(prefix, command))
 if (/image/.test(mime)) {
 let media = await quoted.download()
@@ -1823,10 +1842,10 @@ break
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (isKecuali) return reply(`Mending lu nguli aja sunda ngentod`)
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                //if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)                                
-                /*if (!m.quoted && !text) return reply(lang.MauKick())
+                if (!isCreator) return //reply(`Fitur ini telah di nonaktifkan!`)                                
+                if (!m.quoted && !text) return reply(lang.MauKick())
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))*/
+				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
 			case 'add': { //punya gw, fitur ini dapat menyebabkan nomor bot diblokir/bwn
@@ -4728,7 +4747,7 @@ break
 			}
 			break*/
 			
-			case 'play': case 'ytplay':
+			case 'play': case 'ytplay': {
                 if (!text) return reply(`Contoh : ${prefix + command} bokep anime`)
                 await sendReact("🔎")
                 let yts = require("yt-search")
@@ -4755,10 +4774,11 @@ break
                     buttons: buttonsplay,
                     headerType: 4
                 }
-                alpha.sendMessage(m.chat, buttonPlay, { quoted: m })            
+                alpha.sendMessage(m.chat, buttonPlay, { quoted: m })   
+            }         
             break
 
-            case 'ytvoice': case 'ytptt':                
+            case 'ytvoice': case 'ytptt': {                
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 128kbps`)
                 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
                 await sendReact("🎤")
@@ -4768,9 +4788,10 @@ break
                 let lolvoice = await alpha.reSize(mediaptt.thumb, 300, 150)
                 if (mediaptt.filesize >= 100000) return reply('File Melebihi Batas '+util.format(mediaptt))
                 alpha.sendMessage(m.chat, { audio: { url: mediaptt.dl_link }, mimetype: 'audio/mpeg', ptt: true, fileName: `${mediaptt.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: lolvoice, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
+            }
             break
 
-            case 'ytmp3': case 'ytaudio': case 'mp3':               
+            case 'ytmp3': case 'ytaudio': case 'mp3': {
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 128kbps`)
                 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
                 await sendReact("🎵")
@@ -4781,10 +4802,11 @@ break
                 let lolmp3 = await alpha.reSize(media.thumb, 300, 150)
                 //tummb = await getBuffer(media.thumb)
                 //alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
-                alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${quality}`, footer: `© ${botname}`, buttons: [{buttonId: `mp4 ${isUrl(text)}`, buttonText: {displayText: '▷ Video'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP3`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
+                alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${quality}`, footer: `© ${botname}`, buttons: [{buttonId: `mp4 ${isUrl(text)}`, buttonText: {displayText: '▷ Video'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅈🄾🅄🅃🅄🄱🄴 🄼🄿③`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m }).catch((e) => reply(`Download Sendiri:\n${media.dl_link}`))
+            }
             break
 
-            case 'ytmp4': case 'ytvideo': case 'mp4':                
+            case 'ytmp4': case 'ytvideo': case 'mp4': {
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 360p`)
                 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
                 await sendReact("📹")
@@ -4794,14 +4816,16 @@ break
                 if (medias.filesize >= 100000) return reply('File Melebihi Batas '+util.format(medias))
                 let lolmp4 = await alpha.reSize(medias.thumb, 300, 150)
                 //alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, mimetype: 'video/mp4', fileName: `${medias.title}.mp4`, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '360p'}`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })                            
-                alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, jpegThumbnail: lolmp4, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${qualitye}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`Youtube MP4`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
+                alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, jpegThumbnail: lolmp4, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${qualitye}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅈🄾🅄🅃🅄🄱🄴 🄼🄿④`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m }).catch((err) => reply(`Download Sendiri:\n${medias.dl_link}`))
+            }
             break            
 
-            case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':            
+            case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh': {            
             if (!m.quoted && !text) return reply(`Send/Reply Text With Caption ${prefix + command}`)
             ter = command[1].toLowerCase()
             tex = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text
             reply(tex.replace(/[aiueo]/g, ter).replace(/[AIUEO]/g, ter.toUpperCase()))
+            }
             break
 
 case 'tourl':
@@ -4836,16 +4860,18 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
             }
             break
 
-            case 'setnamabot': case 'setnamebot': 
+            case 'setnamabot': case 'setnamebot': {
             if (!text) return reply(`Example : ${prefix + command} ${alpha.user.name}`)
             let name = await alpha.updateProfileName(text)
             reply(`Successfully renamed bot to ${name}`)            
+            }
             break
 
-            case 'setstatus': case 'setbiobot': case 'setbotbio': 
+            case 'setstatus': case 'setbiobot': case 'setbotbio': {
             if (!text) return reply(`Example : ${prefix + command} Xontolodon`)
             let bio = await alpha.updateProfileStatus(text)
-            reply(`Successfully changed bot bio status to ${bio}`)            
+            reply(`Successfully changed bot bio status to ${bio}`)        
+            }    
             break
 
     case 'bcgrup': case 'bcgc': case 'bcgroup': case 'broadcastgrup': case 'broadcastgroup': case 'broadcastgc':
@@ -4892,20 +4918,23 @@ const te = ra[Math.floor(Math.random() * ra.length)]
 alpha.sendMessage(from, { text: `*Rate :* ${q}\n*Jawaban :* *${te}%*` }, { quoted: m })
 break
 
-case 'testing': 
+case 'darkjoke': case 'darkjokes': {
+var res = await Darkjokes()
+let teks = "*Darkjokes*"
+alpha.sendMessage(m.chat, { image: { url: res }, caption: teks, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄳🄰🅁🄺🄹🄾🄺🄴`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
+//alpha.sendMessage(m.chat, { image : { url : res }, caption: teks }, { quoted : m })
+}
+break
+
+case 'testing': {//try{
 if (!isCreator) return       
 await sendReact("⏳")
- alpha.sendImageAsSticker(m.chat, sharelink, m, { packname: global.packname, author: author, 
-contextInfo:{ 
-externalAdReply :{
-    mediaUrl: instagram,
-    mediaType: 2, 
-    description: 'turu', 
-    title: 'title',
-    body: 'body',
-    thumbnail: pp_bot,
-    sourceUrl: myweb
-    }}})
+/*let teks = args.join(' ').split('|')
+let quality = teks[0] !== '' ? teks[0] : "360"*/
+var anu = await fetchJson(`https://api.akuari.my.id/downloader/yt1?link=${text}`)        
+alpha.sendMessage(from, {audio: {url: anu.urldl_audio}, mimetype: "audio/mpeg", }, { quoted: m }).catch((err) => reply(`${anu.urldl_audio}`))
+//} catch {(err) => reply(`${jsonformat(err)}`)
+}
     break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
