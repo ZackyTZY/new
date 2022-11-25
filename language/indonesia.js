@@ -662,6 +662,20 @@ exports.listMenu = (time, salam, pushname, prefix) => {
 ├ ${prefix}del [reply pesan bot]
 ╰❒ ${prefix}setppbot [reply image]
 
+╭─❒ 「 Virus 」 
+├ ${prefix}jadivirgam
+├ ${prefix}bug1
+├ ${prefix}bugtag
+├ ${prefix}inibug
+├ ${prefix}bugstik [jumlah]
+├ ${prefix}poll
+├ ${prefix}bugtod
+├ ${prefix}bugcombine
+├ ${prefix}santet [nomor|jumlah]
+├ ${prefix}santetgc [id|jumlah]
+├ ${prefix}troli [jumlah]
+╰❒ ${prefix}🌷 [jumlah]
+
 ╭─❒ 「 Store Menu 」
 ├ ${prefix}list
 ├ ${prefix}addlist [key|respond]
@@ -706,7 +720,7 @@ exports.listMenu = (time, salam, pushname, prefix) => {
 ├ ${prefix}setppgrup [reply image]
 ├ ${prefix}revoke
 ├ ${prefix}leave
-├ ${prefix}add [62***]
+├ ~${prefix}add [62***]~
 ├ ${prefix}kick @tag
 ├ ${prefix}leave
 ├ ${prefix}linkgc
@@ -1649,7 +1663,7 @@ exports.group = (prefix) =>{
 ├ ${prefix}setppgrup [reply image]
 ├ ${prefix}revoke
 ├ ${prefix}leave
-├ ${prefix}add [62***]
+├ ~${prefix}add [62***]~
 ├ ${prefix}kick @tag
 ├ ${prefix}leave
 ├ ${prefix}linkgc
