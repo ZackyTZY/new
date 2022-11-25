@@ -7,11 +7,17 @@ const { tanggal, getTime } = require('./lib/myfunc')
 // Website Api
 global.APIs = {
 	alfa: 'https://api.zeeoneofc.xyz', //apabila link api eror, segera laporkan le owner
+	zenz: 'https://zenzapis.xyz',
+	lol: 'https://api.lolhuman.xyz',
+	xteam: 'https://api.xteam.xyz',
 }
 
 // Free apikey
-global.APIKeys = { //Nama: Zacky, Sandi: nayaka123
+global.APIKeys = {
 	'https://api.zeeoneofc.xyz': 'Ceb3FLtq',  // login https://api.zeeoneofc.xyz to get apikey || https://api-alphabot.herokuapp.com
+	'https://zenzapis.xyz': 'b57b228ead', // nayakadonz@gmail.com | nayaka123
+	'https://api.lolhuman.xyz': 'APIKEY',
+	'https://api.xteam.xyz': 'APIKEY',
 }
 
 // Time
