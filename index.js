@@ -127,7 +127,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const isCreator = isCreatod || m.key.fromMe
         const isGroupAdmen = m.isGroup ? groupAdmins.includes(m.sender) : false
         const isGroupAdmins = isGroupAdmen || isCreator
-        const isKecuali = [global.kecuali].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) // if (isKecuali) return (`Mending lu nguli aja sunda ngentod`) biar orangnya gabisa make fitur       
+        const isKecuali = [...global.kecuali].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) // if (isKecuali) return (`Mending lu nguli aja sunda ngentod`) biar orangnya gabisa make fitur       
         //const isOnlyGroup = ['120363024710399996'].map(v => v.replace(/[^0-9]/g, '') + '@g.us').includes(m.isGroup) // Hanya grup
         const myName = alpha.user.name
         const author = `${global.wmnya}\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
