@@ -4897,7 +4897,7 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
         //alpha.sendMessage(i, { text: text, footer: `© ${ownername}`, templateButtons: [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Menu","id": 'menu'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Donasi","id": 'donasi'}}]})                    
         let bbbcgc = await alpha.reSize(pp_bot, 300, 300)
         let butbcgc = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]
-        await alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST 」*\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
+        await alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
         //await alpha.sendMessage(m.chat, { image: { url: res }, caption: text, footer: `© ${botname}`, buttons: [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄱🅁🄾🄰🄳🄲🄰🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}, { quoted: m })
         }
         reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
