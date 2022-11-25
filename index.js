@@ -2199,7 +2199,7 @@ const buttojns = [
   {buttonId: 'owner', buttonText: {displayText: '🙍‍♂️ Owner'}, type: 1},
   {buttonId: 'donasi', buttonText: {displayText: '💰 Donation'}, type: 1}
 ]
-let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [ownernya, ini_mark, m.sender], fileLength: 1000000000000000, pageCount: 2022, fileName: `${botname} | ${time}`, caption: ini_anu, footer: `© ${ownername}`, buttons: buttojns, headerType: 4, contextInfo: { forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: false, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}			
+let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [ownernya, ini_mark, m.sender], fileLength: 1000000000000000, pageCount: 2022, fileName: `${botname} | ${time}`, caption: ini_anu, footer: `© ${ownername}`, buttons: buttojns, headerType: 4, contextInfo: { forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: false, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}			
 					if(typemenu == 'document'){					
                             alpha.sendMessage(m.chat, buttonMessage, {quoted: ftroli})
 							//alpha.sendButDoc(from, ini_anu,  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, buttojns, [ownernya, ini_mark, m.sender], { quoted: ftroli})
