@@ -43,7 +43,7 @@ global.language = indonesia  //change indonesia to english if you don't understa
 
 // Other
 global.botname = "кєιтн вσт-м∂ོ" //namabot kalian
-global.ownername = "ᴹᴿ᭄ ƈρg • σƒƒι¢ιαℓ ×፝֟͜૨̸" //nama kalian
+global.ownername = "ᴹᴿ᭄ ∂σηz ×፝֟͜૨̸" //nama kalian
 global.myweb = "https://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj" //bebas asal jan hapus
 global.youtube = "https://youtu.be/FoksUIwNYIM" //bebas asal jan hapus
 global.ytchannel = "https://youtube.com/channel/UCJBH-edRR1zUy5X_Cw-5hJw"
@@ -54,7 +54,7 @@ global.email = "kontolodonz@gmail.com" //bebas
 global.region = "Indonesia" //bebas
 global.timezone = 'Asia/Jakarta' //  timezone wib
 global.premium = ["6283839350104","6285236483504","62852364835040","62852364835042","62852364835045"] //premium user
-global.owner = ["6281316408830","6283839350104","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
+global.owner = ["6283839350104","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
 global.ownernomer = "62852364835045" // nomor wa kalian
 global.ownernomerr = "+62852364835045" //nmr wa kalian
 global.thumbnail = "./storage/image/lol.jpg" // ini lol.jpg adalah nama foto di folder image. untuk foto bot
