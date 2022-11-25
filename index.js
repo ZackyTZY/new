@@ -1808,7 +1808,7 @@ break
             case 'join': {
                 if (!isCreator) return reply(lang.ownerOnly())
                 if (!text) return reply(lang.JoinGc())
-                if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(lang.erorLink())
+                if (!isUrl(args[0]) && args[0].includes('whatsapp.com')) return reply(lang.erorLink())
                 reply(lang.wait())
                 let result = args[0].split('https://chat.whatsapp.com/')[1]
                 await alpha.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
@@ -1817,7 +1817,7 @@ break
             case 'tagall': case 'infoall':
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                if (isKecuali) return hidetag(`@${sender.split('@')[0]} Selalu coli tiap malem pake foto animek`)
+                if (budy.match(/(ra?dit)/gi)) return hidetag(`@${sender.split('@')[0]} Selalu coli tiap malem pake foto animek`)
                 let tekss = `══✪〘 *👥 Mention All* 〙✪══\n\n➲ *Message : ${q ? q : 'Nothing'}*\n\n`
 		      	for (let mem of participants) {
 		            tekss += `🏅 @${mem.id.split('@')[0]}\n`
@@ -1828,7 +1828,7 @@ break
             case 'hidetag':
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                if (isKecuali) return hidetag(`@${sender.split('@')[0]} Suka coli pake foto Yesus`)
+                if (budy.match(/(ra?dit)/gi)) return hidetag(`@${sender.split('@')[0]} Suka coli pake foto Yesus`)
                 alpha.sendMessage(from, { text : q ? q : '' , mentions: participants.map(a => a.id)}, {quoted: fkontak})
             break
 			case 'banned': {
