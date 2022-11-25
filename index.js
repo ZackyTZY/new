@@ -127,7 +127,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const isCreator = isCreatod || m.key.fromMe
         const isGroupAdmen = m.isGroup ? groupAdmins.includes(m.sender) : false
         const isGroupAdmins = isGroupAdmen || isCreator
-        const isKecuali = ['6288293521754','6283866838382','6281316408830','6281316407846','6287878230953'].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) // if (isKecuali) return (`Mending lu nguli aja sunda ngentod`) biar orangnya gabisa make fitur       
+        const isKecuali = [global.kecuali].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) // if (isKecuali) return (`Mending lu nguli aja sunda ngentod`) biar orangnya gabisa make fitur       
         //const isOnlyGroup = ['120363024710399996'].map(v => v.replace(/[^0-9]/g, '') + '@g.us').includes(m.isGroup) // Hanya grup
         const myName = alpha.user.name
         const author = `${global.wmnya}\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
@@ -2199,7 +2199,7 @@ const buttojns = [
   {buttonId: 'owner', buttonText: {displayText: '🙍‍♂️ Owner'}, type: 1},
   {buttonId: 'donasi', buttonText: {displayText: '💰 Donation'}, type: 1}
 ]
-let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [ownernya, ini_mark, m.sender], fileLength: 1000000000000000, pageCount: 2022, fileName: `${botname} | ${time}`, caption: ini_anu, footer: `© ${ownername}`, buttons: buttojns, headerType: 4, contextInfo: { forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: false, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}			
+let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: [ownernya, ini_mark, m.sender], fileLength: 1000000000000000, pageCount: 2022, fileName: `${botname} | ${time}`, caption: ini_anu, footer: `© ${ownername}`, buttons: buttojns, headerType: 4, contextInfo: { forwardingScore: 1000, isForwarded: true, externalAdReply: { showAdAttribution: false, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}			
 					if(typemenu == 'document'){					
                             alpha.sendMessage(m.chat, buttonMessage, {quoted: ftroli})
 							//alpha.sendButDoc(from, ini_anu,  '© ' + ownername, botname , ownername, `WhatsApp Bot Multi Device`, time, pp_bot, pp_bot, buttojns, [ownernya, ini_mark, m.sender], { quoted: ftroli})
