@@ -101,7 +101,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const wib = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('HH:mm:ss z')
         const wita = moment(Date.now()).tz('Asia/Makassar').locale('id').format('HH:mm:ss z')
         const wit = moment(Date.now()).tz('Asia/Jayapura').locale('id').format('HH:mm:ss z')
-        const salam = moment(Date.now()).tz( timezone).locale('id').format('a')
+        const salam = moment(Date.now()).tz(timezone).locale('id').format('a')
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
         const pushname = m.pushName || "No Name"
@@ -130,7 +130,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const isKecuali = ['6283866838382','6281316408830','6281316407846','6287878230953'].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) // if (isKecuali) return (`Mending lu nguli aja sunda ngentod`) biar orangnya gabisa make fitur       
         //const isOnlyGroup = ['120363024710399996'].map(v => v.replace(/[^0-9]/g, '') + '@g.us').includes(m.isGroup) // Hanya grup
         const myName = alpha.user.name
-        const author = `${global.wmnya}\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time} WIB\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
+        const author = `${global.wmnya}\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
 
         const groupOwner = m.isGroup ? groupMetadata.owner : ''
         const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).includes(m.sender) : false
