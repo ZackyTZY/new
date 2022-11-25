@@ -4886,14 +4886,19 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
             break
 
     case 'bcgrup': case 'bcgc': case 'bcgroup': case 'broadcastgrup': case 'broadcastgroup': case 'broadcastgc':
+        if (!text) return reply(`Contoh : ${prefix + command} Xontolodon`)
         getGroups = await alpha.groupFetchAllParticipating()
         groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
         anu = groups.map(v => v.id)
         reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.length * 1} detik`)
         for (let i of anu) {
         await sleep(1000)
-        alpha.sendMessage(i, { text: text, mentions: participants.map(a => a.id) })
+        //alpha.sendMessage(i, { text: text, mentions: participants.map(a => a.id) })
         //alpha.sendMessage(i, { text: text, footer: `© ${ownername}`, templateButtons: [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Menu","id": 'menu'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Donasi","id": 'donasi'}}]})                    
+        let bbbcgc = await alpha.reSize(pp_bot, 300, 300)
+        let butbcgc = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]
+        await alpha.sendMessage(from, { location: { jpegThumbnail: bbbcgc }, caption: text, footer: `© ${botname}`, buttons: butbcgc })         
+        //await alpha.sendMessage(m.chat, { image: { url: res }, caption: text, footer: `© ${botname}`, buttons: [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄱🅁🄾🄰🄳🄲🄰🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}, { quoted: m })
         }
         reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
         break
@@ -4992,15 +4997,12 @@ break
             }
             break
 
-case 'testing': {//try{
+case 'testing': //try{
 if (!isCreator) return       
 await sendReact("⏳")
-/*let teks = args.join(' ').split('|')
-let quality = teks[0] !== '' ? teks[0] : "360"*/
-var anu = await fetchJson(`https://api.akuari.my.id/downloader/yt1?link=${text}`)        
-alpha.sendMessage(from, {audio: {url: anu.urldl_audio}, mimetype: "audio/mpeg", }, { quoted: m }).catch((err) => reply(`${anu.urldl_audio}`))
-//} catch {(err) => reply(`${jsonformat(err)}`)
-}
+let bb = await alpha.reSize(pp_bot, 300, 300)
+let yamte = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]
+      alpha.sendMessage(from, { location: { jpegThumbnail: bb }, caption: 'caption', footer: 'footer', buttons: yamte })     
     break
 
 //━━━━━━━━━━━━━━━━━━━━━━━━[ BUG WHATSAPP ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━//
