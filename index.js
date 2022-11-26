@@ -223,7 +223,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             return alpha.sendMessage(m.chat, { react: { text: emoji, key: m.key }})
 		}
 		const sendSticker = async (file) => {
-		    return alpha.sendImageAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Link!`, body: `${ownername}`, mediaType: 1, thumbnailUrl: ``, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `${myweb}`}}})
+		    return alpha.sendImageAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Link!`, body: `${ownername}`, mediaType: 1, thumbnailUrl: ``, thumbnail: pp_bot, renderLargerThumbnail: false, sourceUrl: `${myweb}`}}})
 		}
 		const sendStickerVideo = async (file) => {
 		    return alpha.sendVideoAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Virus!`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}})
