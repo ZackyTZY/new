@@ -131,6 +131,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         //const isOnlyGroup = ['120363024710399996'].map(v => v.replace(/[^0-9]/g, '') + '@g.us').includes(m.isGroup) // Hanya grup
         const myName = alpha.user.name
         const author = `${global.wmnya}\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
+        const externalAdGc = contextInfo:{ externalAdReply: { showAdAttribution: true, title: `ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ᴊᴏɪɴ`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: false, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}
 
         const groupOwner = m.isGroup ? groupMetadata.owner : ''
         const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).includes(m.sender) : false
@@ -1307,6 +1308,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
 					}
 				]
 				await alpha.send5ButImg(from, `${text}` , `© ${ownername}`,gam, but , { userJid: m.chat, quoted: m })
+				await alpha.sendMessage(m.chat, { image: gam, caption: `${text}\n\n${result}`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄿🄸🄽🅃🄴🅁🄴🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
 				.catch((err) => {
                     reply(lang.err())
                 })
@@ -1483,9 +1485,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 					reply(lang.wait())
 					axios.get(`https://api.waifu.pics/sfw/${command}`)
 					.then(({data}) => {
-						alpha.sendMediaAsSticker(m.chat, data.url, m, { packname: global.packname, author: author })
-
-
+						alpha.sendMediaAsSticker(m.chat, data.url, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🄴🄺🄾`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: false, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
 					})
 					break
 				case 'waifu': case 'loli':
