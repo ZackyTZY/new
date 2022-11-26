@@ -1273,7 +1273,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
             break
             case 'del': { 
             	if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
-                if (!m.quoted) throw false
+                if (!m.quoted) return reply(`Reply chat bot yg mau dihapus`)
                 let { chat, fromMe, id, isBaileys } = m.quoted
                 if (!isBaileys) return reply(lang.NoMsgBot())
                 await alpha.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
@@ -1283,7 +1283,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
 	    case 'toimage': case 'toimg': { //punya gw
                 if (!quoted) return reply(lang.NoToImg())
                 if (!/webp/.test(mime)) return reply(lang.NoToImg())                
-                let media = await alpha.downloadAndSaveMediaMessage(quoted)
+                let media = await alpha.downloadAndSaveMediaMessage(qmsg)
                 let ran = await getRandom('.png')
                 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
                     fs.unlinkSync(media)
@@ -1529,7 +1529,7 @@ break
                 if (!quoted) return reply(lang.NoPpBot(prefix, command))
                 if (!/image/.test(mime)) return reply(lang.NoPpBot(prefix, command))
                 if (/webp/.test(mime)) return reply(lang.NoPpBot(prefix, command))
-                let media = await alpha.downloadAndSaveMediaMessage(quoted)
+                let media = await alpha.downloadAndSaveMediaMessage(qmsg)
                 await alpha.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
                 reply(lang.ok())
                 }
@@ -1803,7 +1803,7 @@ if (!isBotAdmins) return reply(lang.botNotAdmin())
 if (!isGroupAdmins && !isGroupOwner && !isBotAdmins) return reply(lang.adminOnly())
 if (!quoted) return reply(lang.SetPpGc(prefix, command))
 if (!/image/.test(mime)) return reply(lang.SetPpGc(prefix, command))
-let media = await alpha.downloadAndSaveMediaMessage(quoted)
+let media = await alpha.downloadAndSaveMediaMessage(qmsg)
 await alpha.updateProfilePicture(groupId, { url: media }).catch((err) => fs.unlinkSync(media))
 reply(lang.ok())
 }
@@ -2369,12 +2369,12 @@ if (!text) return reply(lang.NoWm(prefix, command))
 //if (!text.includes('|')) return reply(lang.NoWm(prefix, command))
 if (/image/.test(mime)) {
 let media = await quoted.download()
-let encmedia = await alpha.sendImageAsSticker(m.chat, media, m, { packname: text.split("|")[0], author: text.split("|")[1] })
+let encmedia = await alpha.sendImageAsSticker(m.chat, media, m, { packname: text.split("|")[0], author: text.split("|")[1], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
 await fs.unlinkSync(encmedia)
 } else if (/video/.test(mime)) {
 if ((quoted.msg || quoted).seconds > 11) return reply(lang.NoToStik(prefix, command))
 let media = await quoted.download()
-let encmedia = await alpha.sendVideoAsSticker(m.chat, media, m, { packname: text.split("|")[0], author: text.split("|")[1] })
+let encmedia = await alpha.sendVideoAsSticker(m.chat, media, m, { packname: text.split("|")[0], author: text.split("|")[1], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅅🄸🄳🄴🄾 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
 await fs.unlinkSync(encmedia)
 } else {
 reply(lang.NoToStik(prefix, command))
@@ -4512,7 +4512,7 @@ ${prefix+command}kiri Subscribe Ya ${ytchannel}`)
                 if (/tupai/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
                 if (/audio/.test(mime)) {
                 reply(lang.wait())
-                let media = await alpha.downloadAndSaveMediaMessage(quoted)
+                let media = await alpha.downloadAndSaveMediaMessage(qmsg)
                 let ran = getRandom('.mp3')
                 exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
                 fs.unlinkSync(media)
@@ -4854,7 +4854,7 @@ break
 
 case 'tourl':
 let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
-let medio = await alpha.downloadAndSaveMediaMessage(quoted)
+let medio = await alpha.downloadAndSaveMediaMessage(qmsg)
 if (/image/.test(mime)) {
 let anu = await TelegraPh(medio)
 reply(util.format(anu))
@@ -4926,7 +4926,8 @@ case 'smeme': case 'stickermeme': case 'stickmeme':
  mee = await alpha.downloadAndSaveMediaMessage(qmsg) 
  mem = await TelegraPh(mee) 
  meme = `https://api.memegen.link/images/custom/-/${text}.png?background=${mem}` 
- memek = await alpha.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}).catch((err) => reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
+ memek = await alpha.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
+ .catch((err) => reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
  await fs.unlinkSync(memek)
  } else {
  reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
@@ -4937,7 +4938,7 @@ case 'apakah':
 if (!text) return replay(`Contob : ${prefix + command} dia sering coli `)
 const lel = [`Iya`, `Mungkin`, `Tidak`, `Mana gw tau, tanya sama bapak lu aja`, `Gw gak tau`, `YNTKTS`, `Tanya sama si yesus, dia maha tau`, `Bisa jadi`]
 const kahk = lel[Math.floor(Math.random() * lel.length)]
-alpha.sendMessage(from, { text: `*Pertanyaan :* Apakah ${q}\n*Jawaban :* ${kahk}` }, { quoted: m })
+alpha.sendMessage(from, { text: `*Pertanyaan :* Apakah ${q}?\n*Jawaban :* ${kahk}` }, { quoted: m })
 break
 
 case 'rate':
