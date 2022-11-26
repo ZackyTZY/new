@@ -14,6 +14,7 @@
 	@ ZeeoneOfc
 	@ Penyedia Module
 	@ And All Support
+	❌ alpha.send5ButImg /error butuh baileys terbaru nanti
 **/
 
 
@@ -131,7 +132,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         //const isOnlyGroup = ['120363024710399996'].map(v => v.replace(/[^0-9]/g, '') + '@g.us').includes(m.isGroup) // Hanya grup
         const myName = alpha.user.name
         const author = `${global.wmnya}\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
-        const externalAdGc = contextInfo:{ externalAdReply: { showAdAttribution: true, title: `ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ᴊᴏɪɴ`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: false, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}
+        const externalAdGc = { contextInfo:{ externalAdReply: { showAdAttribution: true, title: `ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ᴊᴏɪɴ`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: false, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}
 
         const groupOwner = m.isGroup ? groupMetadata.owner : ''
         const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).includes(m.sender) : false
