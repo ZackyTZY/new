@@ -208,7 +208,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         try {
              ppuser = await alpha.profilePictureUrl(m.sender, 'image')
         } catch {
-             ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+             ppuser = pp_bot //'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
         }        
         
         //punya gw
@@ -584,11 +584,11 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
      }
      
         // Tes \\
-        /*if (budy.match(/(te?s)/gi)) {
+        /*if (budy.match(/(t?es)/gi)) {
         	if (!isCreator) return 
-        	//reply(`「 *TES* 」\n\nSuccses`)
+        	reply(`「 *TES* 」\n\nSuccses`)
         	//sendStickerVideo(hengker)
-        	sendSticker(sharelink)
+        	//sendSticker(sharelink)
         	//deleteChat(m.chat)
         	//alpha.sendMessage(m.chat, { sticker: { url: "https://telegra.ph/file/25d567b38e5a8a1d8d573.png" }, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted })
             //sendButMyDoc(`「 *LINK GROUP TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${botname}*`, `${pushname} Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], m)
@@ -1817,19 +1817,26 @@ break
             case 'tagall': case 'infoall':
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                if (budy.match(/(ra?dit)/gi)) return hidetag(`@${sender.split('@')[0]} Selalu coli tiap malem pake foto animek`)
-                let tekss = `══✪〘 *👥 Mention All* 〙✪══\n\n➲ *Message : ${q ? q : 'Nothing'}*\n\n`
+                if (budy.match(/(r?ad(i|e|o)t)/gi)) return alpha.sendMessage(from, { text: `@${sender.split('@')[0]} Suka coli pake foto Yesus`, mentions: participants.map(a => a.id), footer: botname, buttons: [{ buttonId: `${prefix}menu`, buttonText: { displayText: '⋮☰ мєηυ' }, type: 1 },{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]}, { quoted: fkontak }) //hidetag(`@${sender.split('@')[0]} Selalu coli tiap malem pake foto animek`)
+                let bbtagall = await alpha.reSize(ppuser, 300, 300)
+                let buttagall = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]
+                let tekss = `${q ? q : ''}\n\n╔══✪〘 *Tag All* 〙✪══\n`
 		      	for (let mem of participants) {
-		            tekss += `🏅 @${mem.id.split('@')[0]}\n`
+		            tekss += `║◪ @${mem.id.split('@')[0]}\n`
 				}
-                tekss += `\n⋙ *${botname}* ⋘`
-                alpha.sendMessage(from, { text: tekss, mentions: participants.map(a => a.id) }, { quoted: fkontak })
+				    tekss += `╚═══════════════❖`
+				//tekss += `\n⋙ 「 *Total :* ${groupMembers.length} Member* 」 ⋘`
+                //alpha.sendMessage(from, { text: tekss, mentions: participants.map(a => a.id) }, { quoted: fkontak })
+                alpha.sendMessage(m.chat, { location: { jpegThumbnail: bbtagall }, caption: tekss, mentions: participants.map(a => a.id), footer: `⋙ 「 *Total :* ${groupMembers.length} Member* 」 ⋘`, buttons: buttagall }, { quoted: m })                 
             break
             case 'hidetag':
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                if (budy.match(/(ra?dit)/gi)) return hidetag(`@${sender.split('@')[0]} Suka coli pake foto Yesus`)
-                alpha.sendMessage(from, { text : q ? q : '' , mentions: participants.map(a => a.id)}, {quoted: fkontak})
+                if (budy.match(/(r?ad(i|e|o)t)/gi)) return alpha.sendMessage(from, { text: `@${sender.split('@')[0]} Suka coli pake foto Yesus`, mentions: participants.map(a => a.id), footer: botname, buttons: [{ buttonId: `${prefix}menu`, buttonText: { displayText: '⋮☰ мєηυ' }, type: 1 },{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]}, { quoted: fkontak }) //hidetag(`@${sender.split('@')[0]} Suka coli pake foto Yesus`)
+                //alpha.sendMessage(from, { text : q ? q : '' , mentions: participants.map(a => a.id)}, {quoted: fkontak})
+                let buthidetag = [{ buttonId: `${prefix}menu`, buttonText: { displayText: '⋮☰ мєηυ' }, type: 1},
+                                  {buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]
+                alpha.sendMessage(from, { text: q ? q : ' ', mentions: participants.map(a => a.id), footer: botname, buttons: buthidetag }, { quoted: fkontak })
             break
 			case 'banned': {
 				 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
