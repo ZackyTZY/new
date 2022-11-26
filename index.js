@@ -1491,7 +1491,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 					reply(lang.wait())
 					axios.get(`https://api.waifu.pics/sfw/waifu`)
 					.then(({data}) => {
-					alpha.sendImage(m.chat, data.url, lang.ok(), m)
+					//alpha.sendImage(m.chat, data.url, lang.ok(), m)
+					alpha.sendMessage(m.chat, { image: { url: data.url }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 1, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄳🄰🅁🄺🄹🄾🄺🄴`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
 					})
 					break
 			case 'setppbot': case 'setpp': {
@@ -1819,7 +1820,7 @@ break
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
                 if (budy.match(/(r?ad(i|e|o)t)/gi)) return alpha.sendMessage(from, { text: `@${sender.split('@')[0]} Suka coli pake foto Yesus`, mentions: participants.map(a => a.id), footer: botname, buttons: [{ buttonId: `${prefix}menu`, buttonText: { displayText: '⋮☰ мєηυ' }, type: 1 },{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]}, { quoted: fkontak }) //hidetag(`@${sender.split('@')[0]} Selalu coli tiap malem pake foto animek`)
                 let bbtagall = await alpha.reSize(ppuser, 300, 300)
-                let buttagall = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]
+                let buttagall = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{ buttonId: `${prefix}owner`, buttonText: { displayText: 'σωηєя 亗' }, type: 1 }]
                 let tekss = `${q ? q : ''}\n\n╔══✪〘 *Tag All* 〙✪══\n`
 		      	for (let mem of participants) {
 		            tekss += `║◪ @${mem.id.split('@')[0]}\n`
@@ -1833,10 +1834,12 @@ break
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
                 if (budy.match(/(r?ad(i|e|o)t)/gi)) return alpha.sendMessage(from, { text: `@${sender.split('@')[0]} Suka coli pake foto Yesus`, mentions: participants.map(a => a.id), footer: botname, buttons: [{ buttonId: `${prefix}menu`, buttonText: { displayText: '⋮☰ мєηυ' }, type: 1 },{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]}, { quoted: fkontak }) //hidetag(`@${sender.split('@')[0]} Suka coli pake foto Yesus`)
+                let buthidetag = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},
+                                  {buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}
+                ]                
                 //alpha.sendMessage(from, { text : q ? q : '' , mentions: participants.map(a => a.id)}, {quoted: fkontak})
-                let buthidetag = [{ buttonId: `${prefix}menu`, buttonText: { displayText: '⋮☰ мєηυ' }, type: 1},
-                                  {buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]
                 alpha.sendMessage(from, { text: q ? q : ' ', mentions: participants.map(a => a.id), footer: botname, buttons: buthidetag }, { quoted: fkontak })
+                // Text with externalAdReply alpha.sendMessage(from, { text: `p`, footer: botname, buttons: [{ buttonId: `${prefix}menu`, buttonText: { displayText: '⋮☰ мєηυ' }, type: 1 },{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Link!`, body: `${ownername}`, mediaType: 1, thumbnailUrl: ``, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `${myweb}`}}}, { quoted: m })
             break
 			case 'banned': {
 				 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
