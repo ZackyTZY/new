@@ -1492,7 +1492,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 					axios.get(`https://api.waifu.pics/sfw/waifu`)
 					.then(({data}) => {
 					//alpha.sendImage(m.chat, data.url, lang.ok(), m)
-					alpha.sendMessage(m.chat, { image: { url: data.url }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 1, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄳🄰🅁🄺🄹🄾🄺🄴`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
+					alpha.sendMessage(m.chat, { image: { url: data.url }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 1, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄻🄾🄻🄸`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
 					})
 					break
 			case 'setppbot': case 'setpp': {
