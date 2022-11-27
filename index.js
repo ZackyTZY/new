@@ -1309,7 +1309,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
 					}
 				]
 				await alpha.send5ButImg(from, `${text}` , `© ${ownername}`,gam, but , { userJid: m.chat, quoted: m })
-				await alpha.sendMessage(m.chat, { image: gam, caption: `${text}\n\n${result}`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄿🄸🄽🅃🄴🅁🄴🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
+				await alpha.sendMessage(m.chat, { image: gam, caption: `${text}\n\n${result}`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command} ${q}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄿🄸🄽🅃🄴🅁🄴🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
 				.catch((err) => {
                     reply(lang.err())
                 })
@@ -1872,7 +1872,7 @@ break
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
-			case 'add': { //punya gw, fitur ini dapat menyebabkan nomor bot diblokir/bwn
+			case 'add': { //punya gw, fitur ini dapat menyebabkan nomor bot diblokir/ban
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
