@@ -662,7 +662,7 @@ exports.listMenu = (time, salam, pushname, prefix) => {
 ├ ${prefix}del [reply pesan bot]
 ╰❒ ${prefix}setppbot [reply image]
 
-╭─❒ 「 Virus 」 
+╭─❒ 「 Bug Menu 」 
 ├ ${prefix}jadivirgam
 ├ ${prefix}bug1
 ├ ${prefix}bugtag
