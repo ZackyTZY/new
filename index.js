@@ -4934,10 +4934,11 @@ case 'smeme': case 'stickermeme': case 'stickmeme':
  mem = await TelegraPh(mee) 
  meme = `https://api.memegen.link/images/custom/-/${text}.png?background=${mem}` 
  memek = await alpha.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
- .catch((err) => reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
+ .catch((err) => reply(mess.error)) //reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
  await fs.unlinkSync(memek)
  } else {
  reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
+ return
  }
 break
 
