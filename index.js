@@ -5242,6 +5242,7 @@ break
  default:
 if (budy.startsWith('=>')) {
 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+if (isKecuali) return 
 function Return(sul) {
 sat = JSON.stringify(sul, null, 2)
 bang = util.format(sat)
@@ -5259,6 +5260,7 @@ reply(String(e))
 
 if (budy.startsWith('>')) {
 if (!m.key.fromMe && !isCreator) return m.reply(lang.ownerOnly())
+if (isKecuali) return 
 try {
                         let evaled = await eval(budy.slice(2))
                         if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
@@ -5271,6 +5273,7 @@ try {
 
 if (budy.startsWith('<')) {
 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+if (isKecuali) return 
 try {
 return m.reply(JSON.stringify(eval(`${args.join(' ')}`),null,'\t'))
 } catch (e) {
@@ -5280,6 +5283,7 @@ m.reply(e)
 
 if (budy.startsWith('$')) {
 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+if (isKecuali) return 
 mengtermuk = budy.slice(2)
 exec(mengtermuk, (err, stdout) => {
 if(err) return m.reply(err)
