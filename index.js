@@ -256,6 +256,27 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             var kiyomasa = await oyy.resize(width, height).getBufferAsync(jimp.MIME_JPEG)
             return kiyomasa
         }
+        const sendFileFromUrl = async (from, url, caption, mek, men) => {
+            let mime = '';
+            let res = await axios.head(url)
+            mime = res.headers['content-type']
+            if (mime.split("/")[1] === "gif") {
+                return alpha.sendMessage(from, { video: await getBuffer(url), caption: caption, gifPlayback: true, mentions: men ? men : [], mimetype: 'video/mp4'}, {quoted: m})
+                }
+            let type = mime.split("/")[0]+"Message"
+            if(mime === "application/pdf"){
+                return alpha.sendMessage(m.chat, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, mentions: men ? men : []}, {quoted: mek })
+            }
+            if(mime.split("/")[0] === "image"){
+                return alpha.sendMessage(m.chat, { image: await getBuffer(url), caption: caption, mentions: men ? men : []}, {quoted: m})
+            }
+            if(mime.split("/")[0] === "video"){
+                return alpha.sendMessage(m.chat, { video: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'video/mp4'}, {quoted: m})
+            }
+            if(mime.split("/")[0] === "audio"){
+                return alpha.sendMessage(m.chat, { audio: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'audio/mpeg'}, {quoted: m })
+            }
+        }
         // Button Message
         const sendButMyDoc = (teks, footer, filename, button, mentions, quoted) => {
             let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: mentions, fileLength: 1000000000000000, pageCount: 2022, fileName: filename, caption: teks, footer: footer, buttons: button, headerType: 4, contextInfo: { externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}` }}} 												
@@ -440,9 +461,9 @@ for await (const chunk of media) {
     buffer = Buffer.concat([buffer, chunk])
 }
 if (/video/.test(type)) {
-    return alpha.sendFile(m.chat, buffer, 'media.mp4', msg[type].caption || '', m)
+    return sendFileFromUrl(m.chat, buffer, 'media.mp4', msg[type].caption || '', m)
 } else if (/image/.test(type)) {
-    return alpha.sendFile(m.chat, buffer, 'media.jpg', msg[type].caption || '', m)
+    return sendFileFromUrl(m.chat, buffer, 'media.jpg', msg[type].caption || '', m)
 }
 }       
 
@@ -731,29 +752,7 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
         //await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, footer: `By jasjus kontol`, templateButtons: [{"urlButton": {"displayText": "DJ AZAN REMIX","url": `${youtube}`}},{"urlButton": {"displayText": "YESUS PELACUR","url": `${myweb}`}}]})
         }
         console.log(chalk.yellow('「'), chalk.cyan('✓ SUKSES MENGIRIM AUTO RANDOM ✓'), chalk.yellow('」'))
-        }, 5 * 1000)                      
-                        
-		const sendFileFromUrl = async (from, url, caption, mek, men) => {
-            let mime = '';
-            let res = await axios.head(url)
-            mime = res.headers['content-type']
-            if (mime.split("/")[1] === "gif") {
-                return alpha.sendMessage(from, { video: await getBuffer(url), caption: caption, gifPlayback: true, mentions: men ? men : [], mimetype: 'video/mp4'}, {quoted: m})
-                }
-            let type = mime.split("/")[0]+"Message"
-            if(mime === "application/pdf"){
-                return alpha.sendMessage(m.chat, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, mentions: men ? men : []}, {quoted: mek })
-            }
-            if(mime.split("/")[0] === "image"){
-                return alpha.sendMessage(m.chat, { image: await getBuffer(url), caption: caption, mentions: men ? men : []}, {quoted: m})
-            }
-            if(mime.split("/")[0] === "video"){
-                return alpha.sendMessage(m.chat, { video: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'video/mp4'}, {quoted: m})
-            }
-            if(mime.split("/")[0] === "audio"){
-                return alpha.sendMessage(m.chat, { audio: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'audio/mpeg'}, {quoted: m })
-            }
-        }
+        }, 5 * 1000)                                              		
 
 // ━━━━━━━━━━━━━━━━━━[ Detector Media ]━━━━━━━━━━━━━━━━━━ \\       
 	const isQuotedImage = m.type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -4904,12 +4903,12 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
         anu = groups.map(v => v.id)
         reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.length * 1.5} detik`)
         for (let i of anu) {
-        await sleep(1500)
+        await sleep(1000)
         //alpha.sendMessage(i, { text: text, mentions: participants.map(a => a.id) })
         //alpha.sendMessage(i, { text: text, footer: `© ${ownername}`, templateButtons: [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Menu","id": 'menu'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Donasi","id": 'donasi'}}]})                    
         let bbbcgc = await alpha.reSize(pp_bot, 300, 300)
         let butbcgc = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]
-        await alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
+        alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
         //await alpha.sendMessage(m.chat, { image: { url: res }, caption: text, footer: `© ${botname}`, buttons: [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄱🅁🄾🄰🄳🄲🄰🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}, { quoted: m })
         }
         reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
