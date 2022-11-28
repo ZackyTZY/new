@@ -131,7 +131,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const isKecuali = [...global.kecuali].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) // if (isKecuali) return (`Mending lu nguli aja sunda ngentod`) biar orangnya gabisa make fitur       
         //const isOnlyGroup = ['120363024710399996'].map(v => v.replace(/[^0-9]/g, '') + '@g.us').includes(m.isGroup) // Hanya grup
         const myName = alpha.user.name
-        const packname = `   ╭──━━━━┈┈┈┈┈┈━━━━──╮\n〔 ıll ⫹⫺ ${global.packname} ²⁰²²/²⁰²³ 浤 llı 〕\n   ╰──━━━━┈┈┈┈┈┈━━━━──╯\n\n   亗 Nomor : +62 896-6470-9977\n   ◔ Waktu : ${time}\n   ⎙ Tanggal : ${tanggal(new Date())}\n\n   ┅┄•⏤͟͟͞͞⏤★⏤͟͟͞͞★•┄┅`
+        const packname = `   ╭──━━━━┈┈┈┈┈┈━━━━──╮\n〔 ıll ⫹⫺ ${global.packname} ²⁰²²/²⁰²³ 浤 llı 〕\n   ╰──━━━━┈┈┈┈┈┈━━━━──╯\n\n\n\n\n\n\n   亗 Nomor : +62 896-6470-9977\n   ✾ Waktu : ${time}\n   ⎙ Tanggal : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n   ┅┄•⏤͟͟͞͞⏤★⏤͟͟͞͞★•┄┅\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
         const author = `${global.wmnya}\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
         const author2 = `\n\n\n\n\n\n\n\n\nNomor : +62 896-6470-9977\nWaktu : ${time}\nTgl : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`        
         const externalAdGc = { contextInfo:{ externalAdReply: { showAdAttribution: true, title: `ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ᴊᴏɪɴ`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: false, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}
