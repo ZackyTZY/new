@@ -256,27 +256,6 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
             var kiyomasa = await oyy.resize(width, height).getBufferAsync(jimp.MIME_JPEG)
             return kiyomasa
         }
-        const sendFileFromUrl = async (from, url, caption, mek, men) => {
-            let mime = '';
-            let res = await axios.head(url)
-            mime = res.headers['content-type']
-            if (mime.split("/")[1] === "gif") {
-                return alpha.sendMessage(from, { video: await getBuffer(url), caption: caption, gifPlayback: true, mentions: men ? men : [], mimetype: 'video/mp4'}, {quoted: m})
-                }
-            let type = mime.split("/")[0]+"Message"
-            if(mime === "application/pdf"){
-                return alpha.sendMessage(m.chat, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, mentions: men ? men : []}, {quoted: mek })
-            }
-            if(mime.split("/")[0] === "image"){
-                return alpha.sendMessage(m.chat, { image: await getBuffer(url), caption: caption, mentions: men ? men : []}, {quoted: m})
-            }
-            if(mime.split("/")[0] === "video"){
-                return alpha.sendMessage(m.chat, { video: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'video/mp4'}, {quoted: m})
-            }
-            if(mime.split("/")[0] === "audio"){
-                return alpha.sendMessage(m.chat, { audio: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'audio/mpeg'}, {quoted: m })
-            }
-        }
         // Button Message
         const sendButMyDoc = (teks, footer, filename, button, mentions, quoted) => {
             let buttonMessage = { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, mentions: mentions, fileLength: 1000000000000000, pageCount: 2022, fileName: filename, caption: teks, footer: footer, buttons: button, headerType: 4, contextInfo: { externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `menu`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}` }}} 												
@@ -741,8 +720,30 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
         //await alpha.sendMessage(i, { text: `*ωαяgα +62*\nhttps://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj\n\n*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*\nhttps://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb\n\n_*#JOIN CUY MUMPUNG RAME*_`, footer: `By jasjus kontol`, templateButtons: [{"urlButton": {"displayText": "DJ AZAN REMIX","url": `${youtube}`}},{"urlButton": {"displayText": "YESUS PELACUR","url": `${myweb}`}}]})
         }
         console.log(chalk.yellow('「'), chalk.cyan('✓ SUKSES MENGIRIM AUTO RANDOM ✓'), chalk.yellow('」'))
-        }, 5 * 1000)                                              		
-
+        }, 5 * 1000)   
+        
+        const sendFileFromUrl = async (from, url, caption, mek, men) => {
+            let mime = '';
+            let res = await axios.head(url)
+            mime = res.headers['content-type']
+            if (mime.split("/")[1] === "gif") {
+                return alpha.sendMessage(from, { video: await getBuffer(url), caption: caption, gifPlayback: true, mentions: men ? men : [], mimetype: 'video/mp4'}, {quoted: m})
+                }
+            let type = mime.split("/")[0]+"Message"
+            if(mime === "application/pdf"){
+                return alpha.sendMessage(m.chat, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, mentions: men ? men : []}, {quoted: mek })
+            }
+            if(mime.split("/")[0] === "image"){
+                return alpha.sendMessage(m.chat, { image: await getBuffer(url), caption: caption, mentions: men ? men : []}, {quoted: m})
+            }
+            if(mime.split("/")[0] === "video"){
+                return alpha.sendMessage(m.chat, { video: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'video/mp4'}, {quoted: m})
+            }
+            if(mime.split("/")[0] === "audio"){
+                return alpha.sendMessage(m.chat, { audio: await getBuffer(url), caption: caption, mentions: men ? men : [], mimetype: 'audio/mpeg'}, {quoted: m })
+            }
+        }
+        
 // ━━━━━━━━━━━━━━━━━━[ Detector Media ]━━━━━━━━━━━━━━━━━━ \\       
 	const isQuotedImage = m.type === 'extendedTextMessage' && content.includes('imageMessage')
 	const isQuotedVideo = m.type === 'extendedTextMessage' && content.includes('videoMessage')			
@@ -4884,6 +4885,48 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
             reply(`Successfully changed bot bio status to ${bio}`)        
             }    
             break
+
+/*case 'bc': case 'broadcast': case 'bcall': {
+   if (isBan) return reply(mess.ban)	 			
+if (isBanChat) return reply(mess.banChat)
+if (!isCreator) return replay(mess.owner)
+if (!args.join(" ")) return replay(`Where is the text??\n\nExample : ${prefix + command} ${global.ownername}`)
+let anu = await store.chats.all().map(v => v.id)
+replay(`Send Broadcast To ${anu.length} Chat\nTime's up ${anu.length * 1.5} second`)
+for (let yoi of anu) {
+await sleep(1500)
+let btn = [{
+urlButton: {
+displayText: 'YouTube 🍓',
+url: `${global.websitex}`
+}
+}, {
+urlButton: {
+displayText: 'Script 🍜',
+url: `${global.botscript}`
+}
+}, {
+quickReplyButton: {
+displayText: 'Bot Status 🚀',
+id: 'ping'
+}
+}, {
+quickReplyButton: {
+displayText: 'Menu 🐰',
+id: 'menu'
+}  
+}, {
+quickReplyButton: {
+displayText: 'Owner 😈',
+id: 'owner'
+}
+}]
+let txt = `*「 ${global.ownername}'s Broadcast」*\n\n${text}`
+XeonBotInc.send5ButImg(yoi, txt, `${global.botname}`, log0, btn, thum)
+}
+replay('Broadcast Success')
+}
+break*/
 
     case 'bcgrup': case 'bcgc': case 'bcgroup': case 'broadcastgrup': case 'broadcastgroup': case 'broadcastgc':
         if (!isCreator) return reply(lang.ownerOnly())
