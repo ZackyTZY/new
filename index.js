@@ -443,11 +443,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 if (m.mtype === 'viewOnceMessage') {
 if (!db.data.chats[m.chat].antionce) return
 if ((isCreator || isGroupAdmins)) return
-let msg = m.message.viewOnceMessage.message
-let type = Object.keys(msg)[0]
-let media = await downloadContentFromMessage(msg[type], type == 'imageMessage' ? 'image' : 'video')
-let buffer = Buffer.from([])
-teks = `「 *Anti ViewOnce Message* 」
+ teks = `「 *Anti ViewOnce Message* 」
 
 ⭔ Nama : ${m.pushName}
 ⭔ User : @${m.sender.split("@")[0]}
@@ -455,17 +451,10 @@ teks = `「 *Anti ViewOnce Message* 」
 ⭔ Date : ${tanggal(new Date())}
 ⭔ MessageType : ${m.mtype}`
 
-alpha.sendMessage(m.chat, { text: teks, mentions: [m.sender], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})
+await alpha.sendMessage(m.chat, { text: teks, mentions: [m.sender], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})
 await sleep(612)
-for await (const chunk of media) {
-    buffer = Buffer.concat([buffer, chunk])
+m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
 }
-if (/video/.test(type)) {
-    return sendFileFromUrl(m.chat, buffer, 'media.mp4', msg[type].caption || '', m)
-} else if (/image/.test(type)) {
-    return sendFileFromUrl(m.chat, buffer, 'media.jpg', msg[type].caption || '', m)
-}
-}       
 
 // Detect Group Invite //punya gw
 if (m.mtype === 'groupInviteMessage') { 
