@@ -4926,6 +4926,7 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
 case 'smeme': case 'stickermeme': case 'stickmeme':
  if (!text) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*\n\Contoh penggunaan: *smeme ${pushname}*`) 
  if (text.includes('|')) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
+ if (budy.match(/(?|!)/gi)) return reply(`Tidak dapat menggunakan tanda tanya/emot!`)
  if (/webp/.test(mime)) return reply(`perlu mengonversi ke gambar terlebih dahulu\ndengan cara balas sticker dengan caption *toimg*`)
  if (/image/.test(mime)) { 
  let { TelegraPh } = require('./lib/uploader') 
@@ -4938,7 +4939,6 @@ case 'smeme': case 'stickermeme': case 'stickmeme':
  await fs.unlinkSync(memek)
  } else {
  reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
- return
  }
 break
 
