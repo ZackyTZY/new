@@ -43,7 +43,7 @@ global.language = indonesia  //change indonesia to english if you don't understa
 
 // Other
 global.botname = "кєιтн вσт-м∂ོ" //namabot kalian
-global.ownername = "ᴹᴿ᭄ ∂σηz ×፝֟͜૨̸" //nama kalian
+global.ownername = "ᴹᴿ᭄ ƈρg • σƒƒι¢ιαℓ ×፝֟͜૨̸" //nama kalian
 global.myweb = "https://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj" //bebas asal jan hapus
 global.youtube = "https://youtu.be/FoksUIwNYIM" //bebas asal jan hapus
 global.ytchannel = "https://youtube.com/channel/UCJBH-edRR1zUy5X_Cw-5hJw"
@@ -53,8 +53,8 @@ global.facebook = "https://Facebook.com/AadipuraStars"
 global.email = "kontolodonz@gmail.com" //bebas
 global.region = "Indonesia" //bebas
 global.timezone = 'Asia/Jakarta' //  timezone wib
-global.premium = ["6283839350104","6285236483504","62852364835040","62852364835042","62852364835045"] //premium user
-global.owner = ["6283839350104","6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
+global.premium = ["6283839350104","6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //premium user
+global.owner = ["6281316408830","6283839350104","6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
 global.kecuali = ["6283843295654","6288293521754","6283866838382","6281316408830","6281316407846","6287878230953"] //nomor² yg gabisa make fitur tertentu
 global.ownernomer = "62852364835045" // nomor wa kalian
 global.ownernomerr = "+62852364835045" //nmr wa kalian
@@ -150,3 +150,8 @@ fs.watchFile(file, () => {
 	delete require.cache[file]
 	require(file)
 })
+
+/* Set Dias
+"6281316408830",
+"ᴹᴿ᭄ ƈρg • σƒƒι¢ιαℓ ×፝֟͜૨̸"
+*/

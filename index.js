@@ -422,7 +422,11 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 if (m.mtype === 'viewOnceMessage') {
 if (!db.data.chats[m.chat].antionce) return
 if ((isCreator || isGroupAdmins)) return
- teks = `「 *Anti ViewOnce Message* 」
+let msg = m.message.viewOnceMessage.message
+let type = Object.keys(msg)[0]
+let media = await downloadContentFromMessage(msg[type], type == 'imageMessage' ? 'image' : 'video')
+let buffer = Buffer.from([])
+teks = `「 *Anti ViewOnce Message* 」
 
 ⭔ Nama : ${m.pushName}
 ⭔ User : @${m.sender.split("@")[0]}
@@ -430,34 +434,22 @@ if ((isCreator || isGroupAdmins)) return
 ⭔ Date : ${tanggal(new Date())}
 ⭔ MessageType : ${m.mtype}`
 
-//alpha.sendTextWithMentions(m.chat, teks, m)
 alpha.sendMessage(m.chat, { text: teks, mentions: [m.sender], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})
 await sleep(612)
-m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
+for await (const chunk of media) {
+    buffer = Buffer.concat([buffer, chunk])
 }
+if (/video/.test(type)) {
+    return alpha.sendFile(m.chat, buffer, 'media.mp4', msg[type].caption || '', m)
+} else if (/image/.test(type)) {
+    return alpha.sendFile(m.chat, buffer, 'media.jpg', msg[type].caption || '', m)
+}
+}       
 
 // Detect Group Invite //punya gw
 if (m.mtype === 'groupInviteMessage') { 
 if (!isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung ke group`, "5123658817728409", fs.readFileSync('./storage/image/lol.jpg'), 2022, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
 //await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
-}
-
-async function deleteUpdate(message) {
-    try {
-        const { fromMe, id, participant } = message
-        if (fromMe)
-            return
-        let msg = m.serializeM(m.loadMessage(id))
-        if (!msg)
-            return
-        let chat = global.db.data.chats[msg.chat] || {}
-        if (antidelete)
-            return
-        await reply(`Terdeteksi @${participant.split`@`[0]} telah menghapus pesan\nUntuk mematikan fitur ini, ketik\n*.enable delete*`)
-        m.copyNForward(msg.chat, msg).catch(e => console.log(e, msg))
-    } catch (e) {
-        console.error(e)
-    }
 }
 
 // Random Sticker
@@ -547,7 +539,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
-		} else if (budy.match(/(bug(1|2|3|4|5|6|7|8|9|combine|stik|tod|tag|gc)|troli(1|2|3|4|5|6|7|8|9)|santet(1|2|3|4|5|6|7|8|9)|jadibug(1|2|3|4|5|6|7|8|9)|slayer(1|2|3|4|5|6|7|8|9)|virtex(1|2|3|4|5|6|7|8|9)|jomomo(1|2|3|4|5|6|7|8|9)|jobug(1|2|3|4|5|6|7|8|9)|catalog(1|2|3|4|5|6|7|8|9)|inibug|poll|gaskal)/gi)) {
+		} else if (budy.match(/(bug(1|2|3|4|5|6|7|8|9|combine|stik|tod|tag|gc)|troli(1|2|3|4|5|6|7|8|9)|santet(1|2|3|4|5|6|7|8|9)|jadibug(1|2|3|4|5|6|7|8|9)|slayer(1|2|3|4|5|6|7|8|9)|virtex(1|2|3|4|5|6|7|8|9)|jomomo(1|2|3|4|5|6|7|8|9)|jobug(1|2|3|4|5|6|7|8|9)|catalog(1|2|3|4|5|6|7|8|9)|inibug|poll|gaskal|jocatalog)/gi)) {
             //alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -1869,9 +1861,9 @@ break
 				break
             case 'kick': { //punya gw
 				if (!m.isGroup) return reply(lang.groupOnly())
-                if (!isBotAdmins) return reply(lang.botNotAdmin())
-                if (isKecuali) return reply(`Mending lu nguli aja sunda ngentod`)
+                if (!isBotAdmins) return reply(lang.botNotAdmin())                
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (isKecuali) return reply(`Mending lu nguli aja sunda ngentod`)
                 if (!isCreator) return //reply(`Fitur ini telah di nonaktifkan!`)                                
                 if (!m.quoted && !text) return reply(lang.MauKick())
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
