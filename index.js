@@ -4886,18 +4886,20 @@ TITLE:* ${data.title}\n*QUALITY:* ${data.medias[0].quality}\n*SIZE:* ${data.medi
             break
 
     case 'bcgrup': case 'bcgc': case 'bcgroup': case 'broadcastgrup': case 'broadcastgroup': case 'broadcastgc':
+        if (!isCreator) return reply(lang.ownerOnly())
         if (!text) return reply(`Contoh : ${prefix + command} Xontolodon`)
         getGroups = await alpha.groupFetchAllParticipating()
         groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
         anu = groups.map(v => v.id)
         reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.length * 1.5} detik`)
         for (let i of anu) {
-        await sleep(1000)
-        //alpha.sendMessage(i, { text: text, mentions: participants.map(a => a.id) })
+        await sleep(1500)
         //alpha.sendMessage(i, { text: text, footer: `© ${ownername}`, templateButtons: [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Menu","id": 'menu'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Donasi","id": 'donasi'}}]})                    
         let bbbcgc = await alpha.reSize(pp_bot, 300, 300)
-        let butbcgc = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}]
-        alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
+        let butbcgc = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},
+              {buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}
+        ]
+        await alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
         //await alpha.sendMessage(m.chat, { image: { url: res }, caption: text, footer: `© ${botname}`, buttons: [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄱🅁🄾🄰🄳🄲🄰🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}, { quoted: m })
         }
         reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
@@ -4923,14 +4925,14 @@ case 'smeme': case 'stickermeme': case 'stickmeme':
 break
 
 case 'apakah':
-if (!text) return reply(`Tambahkan Text, Contoh : ${prefix + command} dia sering coli `)
+if (!text) return reply(`Tambahkan Text!\nContoh : ${prefix + command} dia sering coli `)
 const lel = [`Iya`, `Mungkin`, `Tidak`, `Mana gw tau, tanya sama bapak lu aja`, `Gw gak tau`, `YNTKTS`, `Tanya sama si yesus, dia maha tau`, `Bisa jadi`, `Mana gw tau`]
 const kahk = lel[Math.floor(Math.random() * lel.length)]
 alpha.sendMessage(from, { text: `*Pertanyaan :* Apakah ${q}?\n*Jawaban :* ${kahk}` }, { quoted: m })
 break
 
 case 'rate':
-if (!text) return reply(`Tambahkan Text, Contoh : ${prefix + command} ipong gw`)
+if (!text) return reply(`Tambahkan Text!\nContoh : ${prefix + command} ipong gw`)
 const ra = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
 const te = ra[Math.floor(Math.random() * ra.length)]
 alpha.sendMessage(from, { text: `*Rate :* ${q}\n*Jawaban :* *${te}%*` }, { quoted: m })
