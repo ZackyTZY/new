@@ -666,7 +666,7 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
         //punya gw
         if (autoread) {
            //await alpha.sendReceipts(m.chat, m.sender, [m.key.id])
-           await alpha.sendReceipts(m.chat, alpha.user.jid || m.sender, [m.key.id])
+           await alpha.sendReceipts(m.chat, alpha.user.jid ? m.sender : undefined, [m.key.id])
            //await alpha.sendReceipts(m.chat, alpha.user.jid, [m.id || m.key.id])
            //await alpha.sendReceipts(m.chat, m.isGroup ? m.sender : undefined, [m.id || m.key.id])
         }        
