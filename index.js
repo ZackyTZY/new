@@ -688,7 +688,7 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
         if (autoreadsw) {
 		if (sw === 'status@broadcast') {
 		   //await alpha.chatRead(sw)
-		   await alpha.sendReceipts(sw, alpha.user.jid, [m.id || m.key.id])
+		   //await alpha.sendReceipts(sw, alpha.user.jid, [m.id || m.key.id])
 	    }}
 
         // Auto Bio \\
