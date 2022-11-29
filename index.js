@@ -668,7 +668,7 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
            //await alpha.sendReceipts(m.chat, m.sender, [m.key.id])
            await alpha.sendReceipts(m.chat, alpha.user.jid ? m.sender : undefined, [m.key.id])
            //await alpha.sendReceipts(m.chat, alpha.user.jid, [m.id || m.key.id])
-           //await alpha.sendReceipts(m.chat, m.isGroup ? m.sender : undefined, [m.id || m.key.id])
+           //await alpha.sendReceipts(m.chat, m.isGroup ? m.sender : undefined, [m.id || m.key.id]) // Kadang botnya ga respon di grup
         }        
         if (autoketik) {
            await alpha.sendPresenceUpdate('composing', m.chat)
@@ -686,8 +686,9 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
            await alpha.sendPresenceUpdate('pause', m.chat)
         }
         if (autoreadsw) {
-		if (from === 'status@broadcast') {
-		   await alpha.chatRead(from)
+		if (sw === 'status@broadcast') {
+		   //await alpha.chatRead(sw)
+		   await alpha.sendReceipts(sw, alpha.user.jid, [m.id || m.key.id])
 	    }}
 
         // Auto Bio \\
@@ -1942,7 +1943,7 @@ hadiah: 6,
 }*/
 }
 break
-case 'tebakgambar': {
+case 'tebakgambar': case 'tebak gambar': {
 if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) return reply(lang.Family())
 let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakgambar.json')
 let result = anu[Math.floor(Math.random() * anu.length)]
@@ -1957,7 +1958,7 @@ delete tebakgambar[m.sender.split('@')[0]]
 }
 } 
 break
-case 'tebakkata': {
+case 'tebakkata': case 'tebak kata': {
 if (tebakkata.hasOwnProperty(m.sender.split('@')[0])) return reply(lang.Family())
 let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakkata.json')
 let result = anu[Math.floor(Math.random() * anu.length)]
@@ -1972,7 +1973,7 @@ delete tebakkata[m.sender.split('@')[0]]
 }
 }
 break 
-case 'tebakbendera': {
+case 'tebakbendera': case 'tebak bendera': {
 if (tebakbendera.hasOwnProperty(m.sender.split('@')[0])) return reply(lang.Family())
 let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakbendera2.json')
 let result = anu[Math.floor(Math.random() * anu.length)]
@@ -2047,7 +2048,7 @@ delete tebakkimia[m.sender.split('@')[0]]
 }
 } 
 break
-case 'tebaklirik': {
+case 'tebaklirik': case 'tebak lirik': {
 if (tebaklirik.hasOwnProperty(m.sender.split('@')[0])) return reply(lang.Family())
 let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebaklirik.json')
 let result = anu[Math.floor(Math.random() * anu.length)]
@@ -2095,7 +2096,7 @@ delete caklontong[m.sender.split('@')[0]]
 }*/
 }
 break
-case 'susunkata': {
+case 'susunkata': case 'susun kata': {
 if (susunkata.hasOwnProperty(m.sender.split('@')[0])) return reply(lang.Family())
 let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/susunkata.json')
 let result = anu[Math.floor(Math.random() * anu.length)]
