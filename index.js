@@ -441,6 +441,34 @@ if (!isCreator) return sendOrder(m.chat, `Ketik *${prefix}joins* untuk bergabung
 //await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
 }
 
+/*var messaa = await prepareWAMessageMedia({ image: pp_bot }, { upload: alpha.waUploadToServer })
+var groupInvite = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+"groupInviteMessage": {
+"groupJid": "120363044585298853@g.us",
+"inviteCode": "k4hEiLw6EJqtj",
+"inviteExpiration": `99999999999`,
+"groupName": botname,
+"caption": `Iya Halo Bang, Kenapa?`,
+"jpegThumbnail": messaa.imageMessage,
+}
+}), { userJid: m.chat, quoted: m })
+alpha.relayMessage(m.chat, groupInvite.message, { messageId: groupInvite.key.id })
+}*/
+
+    /*if (m.message) return
+    spam = spam ? spam : {}
+    if (m.sender in spam) {
+        spam[m.sender].count++
+        if (m.messageTimestamp.toNumber() - spam[m.sender].lastspam > 10) {
+            if (spam[m.sender].count > 5) {
+                //global.db.data.users[m.sender].banned = true
+                reply('*⌦ kamu terdeteksi spam\n*Beri jeda 5 detik* !*')
+            }
+            spam[m.sender].count = 0
+            spam[m.sender].lastspam = m.messageTimestamp.toNumber()
+        }
+    }*/
+
 // Random Sticker
 var heker = HekerList[Math.floor(Math.random() * HekerList.length)];
 var sharelink = Sherlink[Math.floor(Math.random() * Sherlink.length)];
@@ -686,9 +714,9 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
            await alpha.sendPresenceUpdate('pause', m.chat)
         }
         if (autoreadsw) {
-		if (from === 'status@broadcast') {
+		if (m.mtype === 'status@broadcast') {
 		   //await alpha.chatRead(sw)
-		   await alpha.sendReceipts(sw, alpha.user.jid, [m.id || m.key.id])
+		   await alpha.sendReceipts(m.chat, alpha.user.jid, [m.id || m.key.id])
 	    }}
 
         // Auto Bio \\
