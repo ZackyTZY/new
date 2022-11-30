@@ -2724,7 +2724,7 @@ if (!db.data.chats[m.chat].nsfw) return reply(lang.OffNsfw())
 reply(lang.wait())
 //let to = global.api('alfa', '/api/nsfw/'+command, {}, 'apikey')
 let to = await axios.get(`https://waifu.pics/api/nsfw/${command}`)    
-await alpha.sendMessage(m.chat, { image: { url: waifudd.data.url }, caption: teks, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
+await alpha.sendMessage(m.chat, { image: { url: to.data.url }, caption: teks, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
 .catch((err) => {
 reply(lang.err())
 })
