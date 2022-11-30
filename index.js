@@ -43,8 +43,8 @@ const moment = require("moment-timezone");
 const ameClient = require("amethyste-api")
 const ameApi = new ameClient("1f486b04b157f12adf0b1fe0bd83c92a28ce768683871d2a390e25614150d0c8fa404fd01b82a5ebf5b82cbfa22e365e611c8501225a93d5d1e87f9f420eb91b")
 const hx = require('hxz-api');
-const ytdl = require('ytdl-core');
-const yts = require('yt-search');
+//const ytdl = require('ytdl-core');
+//const yts = require('yt-search');
 const { performance } = require('perf_hooks')
 const zee = require('xfarr-api')
 //const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews,TribunNews,DailyNews,DetikNews,OkezoneNews,CNBCNews,KompasNews,SindoNews,TempoNews,IndozoneNews,AntaraNews,RepublikaNews,VivaNews,KontanNews,MerdekaNews,KomikuSearch,AniPlanetSearch,KomikFoxSearch,KomikStationSearch,MangakuSearch,KiryuuSearch,KissMangaSearch,KlikMangaSearch,PalingMurah,LayarKaca21,AminoApps,Mangatoon,WAModsSearch,Emojis,CoronaInfo,JalanTikusMeme, Cerpen,Quotes,Couples, Darkjokes } = require("dhn-api")
@@ -715,7 +715,7 @@ return reply(`Tunggu beberapa detik dulu, jangan spam!`)
         }
         if (autoreadsw) {
 		if (m.mtype === 'status@broadcast') {
-		   //await alpha.chatRead(sw)
+		   //await alpha.chatRead(m.chat)
 		   await alpha.sendReceipts(m.chat, alpha.user.jid, [m.id || m.key.id])
 	    }}
 
@@ -4791,7 +4791,7 @@ break
 			case 'play': case 'ytplay': {
                 if (!text) return reply(`Contoh : ${prefix + command} bokep anime`)
                 await sendReact("🔎")
-                let yts = require("yt-search")
+                //let yts = require("yt-search")
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
                 var buttonsplay = [
@@ -4816,6 +4816,7 @@ break
                     headerType: 4
                 }
                 alpha.sendMessage(m.chat, buttonPlay, { quoted: m })   
+                .catch((err) => reply(mess.tence))
             }         
             break
 

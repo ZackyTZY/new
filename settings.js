@@ -7,15 +7,15 @@ const { tanggal, getTime } = require('./lib/myfunc')
 // Website Api
 global.APIs = {
 	alfa: 'https://zenzapis.xyz', //'https://api.zeeoneofc.xyz', //apabila link api eror, segera laporkan le owner
-	zenz: 'https://zenzapis.xyz',
+	//zenz: 'https://zenzapis.xyz',
 	lol: 'https://api.lolhuman.xyz',
 	xteam: 'https://api.xteam.xyz',
 }
 
 // Free apikey
 global.APIKeys = {
-	'https://api.zeeoneofc.xyz': 'Ceb3FLtq',  // login https://api.zeeoneofc.xyz to get apikey || https://api-alphabot.herokuapp.com
-	'https://zenzapis.xyz': 'b57b228ead', // nayakadonz@gmail.com | nayaka123
+	'https://zenzapis.xyz': 'b57b228ead', //'https://api.zeeoneofc.xyz': 'Ceb3FLtq',  // login https://api.zeeoneofc.xyz to get apikey || https://api-alphabot.herokuapp.com
+	//'https://zenzapis.xyz': 'b57b228ead', // nayakadonz@gmail.com | nayaka123
 	'https://api.lolhuman.xyz': 'APIKEY',
 	'https://api.xteam.xyz': 'APIKEY',
 }
@@ -140,7 +140,8 @@ global.mess = {
     wait: '```⏳「▰▰▰▱▱▱▱▱▱▱」Loading...```',
 	lockCmd: 'Fitur Tidak Diaktifkan Oleh Owner!',
 	error: '⚠ Apikey Sedang Error! Tunggu Beberapa Saat Nanti',
-	example1: 'Selamat Datang @user Di Group @subject Jangan Lupa Baca Rules @desc\n\nNote :\n1. @user (Mention User Join)\n2. @bio (Get Bio User Join)\n3. @tanggal (Date Now)\n4. @desc (Get Description Group)\n5. @subject (Group Name)'
+	example1: 'Selamat Datang @user Di Group @subject Jangan Lupa Baca Rules @desc\n\nNote :\n1. @user (Mention User Join)\n2. @bio (Get Bio User Join)\n3. @tanggal (Date Now)\n4. @desc (Get Description Group)\n5. @subject (Group Name)',
+    tence: '🛠 Fitur Sedang Maintenance'
 }
 
 let file = require.resolve(__filename)
