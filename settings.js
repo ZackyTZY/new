@@ -152,7 +152,7 @@ fs.watchFile(file, () => {
 	require(file)
 })
 
-/* Set Dias
+/* Set Dias A
 "6281316408830",
 "ᴹᴿ᭄ ƈρg • σƒƒι¢ιαℓ ×፝֟͜૨̸"
 */
