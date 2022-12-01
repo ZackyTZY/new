@@ -599,7 +599,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
      }
      
         if (!isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
-        if (m.sender.budy.match(/global.blacklist/gi)) {                 
+        if (m.sender.startsWith(global.blacklist)) {                 
         	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 			await alpha.updateBlockStatus(m.sender, 'block')
         }
