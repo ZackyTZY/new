@@ -4999,7 +4999,7 @@ break
 
 case 'smeme2': case 'stickermeme2': case 'stickmeme2':
  if (!text) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*\n\Contoh penggunaan: *smeme ${pushname}*`) 
- if (!text.includes('|')) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
+ if (!text.includes('|')) return reply(`Send/Reply Foto lalu ketik ${prefix + command}  *text1|text2*`) 
  //if (budy.match(/(?|!)/gi)) return reply(`Tidak dapat menggunakan tanda tanya/emot!`)
  if (/webp/.test(mime)) return reply(`perlu mengonversi ke gambar terlebih dahulu\ndengan cara balas sticker dengan caption *toimg*`)
  if (/image/.test(mime)) { 
