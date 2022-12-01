@@ -601,7 +601,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
      
         if (!isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
         if (isBlacklist) {                 
-        	await alpha.groupParticipantsUpdate(m.chat, [isBlacklist], 'remove')
+        	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 			await alpha.updateBlockStatus(m.sender, 'block')
         }
      }
