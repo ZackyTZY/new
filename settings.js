@@ -6,16 +6,16 @@ const { tanggal, getTime } = require('./lib/myfunc')
 
 // Website Api
 global.APIs = {
-	alfa: 'https://zenzapis.xyz', //'https://api.zeeoneofc.xyz', //apabila link api eror, segera laporkan le owner
-	//zenz: 'https://zenzapis.xyz',
+	alfa: 'https://api.zeeoneofc.xyz', //apabila link api eror, segera laporkan le owner
+	zenz: 'https://zenzapis.xyz',
 	lol: 'https://api.lolhuman.xyz',
 	xteam: 'https://api.xteam.xyz',
 }
 
 // Free apikey
 global.APIKeys = {
-	'https://zenzapis.xyz': 'b57b228ead', //'https://api.zeeoneofc.xyz': 'Ceb3FLtq',  // login https://api.zeeoneofc.xyz to get apikey || https://api-alphabot.herokuapp.com
-	//'https://zenzapis.xyz': 'b57b228ead', // nayakadonz@gmail.com | nayaka123
+	'https://api.zeeoneofc.xyz': 'Ceb3FLtq',  // login https://api.zeeoneofc.xyz to get apikey || https://api-alphabot.herokuapp.com
+	'https://zenzapis.xyz': 'b57b228ead', // nayakadonz@gmail.com | nayaka123
 	'https://api.lolhuman.xyz': 'APIKEY',
 	'https://api.xteam.xyz': 'APIKEY',
 }
@@ -53,8 +53,8 @@ global.facebook = "https://Facebook.com/AadipuraStars"
 global.email = "kontolodonz@gmail.com" //bebas
 global.region = "Indonesia" //bebas
 global.timezone = 'Asia/Jakarta' //  timezone wib
-global.premium = ["6283839350104","6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //premium user
-global.owner = ["6283839350104","6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
+global.premium = ["6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //premium user
+global.owner = ["6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
 global.kecuali = ["6283843295654","6288293521754","6283866838382","6281316408830","6281316407846","6287878230953"] //nomor² yg gabisa make fitur tertentu
 global.ownernomer = "62852364835045" // nomor wa kalian
 global.ownernomerr = "+62852364835045" //nmr wa kalian
@@ -152,7 +152,7 @@ fs.watchFile(file, () => {
 	require(file)
 })
 
-/* Set Dias A
+/* Set Dias
 "6281316408830",
 "ᴹᴿ᭄ ƈρg • σƒƒι¢ιαℓ ×፝֟͜૨̸"
 */

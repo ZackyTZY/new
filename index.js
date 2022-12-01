@@ -1880,9 +1880,10 @@ break
             case 'kick': { //punya gw
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())                
-                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                if (!isCreator) return //reply(`Fitur ini telah di nonaktifkan!`)                                
+                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())                                                
                 if (!m.quoted && !text) return reply(lang.MauKick())
+                if (isKecuali) return reply(`Mending lu nguli aja sunda ngentod`)
+                if (!isCreator) return //reply(`Fitur ini telah di nonaktifkan!`)
                 //if (budy.match(/(6285236483504|62852364835045|6289664709977)/gi)) return reply(`Mending lu nguli aja sunda ngentod`)                
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
@@ -1892,9 +1893,9 @@ break
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                //if (!m.key.fromMe) return reply(`Fitur ini telah di nonaktifkan!`)                
-                /*if (!m.quoted && !text) return reply(lang.MauAdd())
-				let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+                if (!m.quoted && !text) return reply(lang.MauAdd())
+                if (!isCreator) return //reply(`Fitur ini telah di nonaktifkan!`)                                
+				/*let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))*/
 				}
 				break
@@ -1910,10 +1911,10 @@ break
 			case 'demote': { //punya gw
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
-                if (isKecuali) return reply(`Mending lu nguli aja sunda ngentod`)
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())                
                 if (!m.quoted && !text) return reply(lang.NakDm())
                 if (budy.match(/(6285236483504|62852364835045|6289664709977)/gi)) return alpha.groupParticipantsUpdate(m.chat, [m.sender], 'demote')
+                if (isKecuali) return reply(`Mending lu nguli aja sunda ngentod`)                
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
