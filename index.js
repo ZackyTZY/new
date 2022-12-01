@@ -598,6 +598,12 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         }
      }
      
+        if (!isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
+        if (m.sender.startsWith(global.blacklist || global.blacklist)) {                 
+        	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+			await alpha.updateBlockStatus(m.sender, 'block')
+        }
+     }
         // Tes \\
         /*if (budy.match(/(t?es)/gi)) {
         	if (!isCreator) return 
