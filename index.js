@@ -129,6 +129,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         const isGroupAdmen = m.isGroup ? groupAdmins.includes(m.sender) : false
         const isGroupAdmins = isGroupAdmen || isCreator
         const isKecuali = [...global.kecuali].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) // if (isKecuali) return (`Mending lu nguli aja sunda ngentod`) biar orangnya gabisa make fitur       
+        const isBlacklist = [...global.blacklist].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         //const isOnlyGroup = ['120363024710399996'].map(v => v.replace(/[^0-9]/g, '') + '@g.us').includes(m.isGroup) // Hanya grup
         const myName = alpha.user.name
         //const packname = `   ╭──━━━━┈┈┈┈┈┈━━━━──╮\n〔 ıll ⫹⫺ ${global.packname} ²⁰²²/²⁰²³ 浤 llı 〕\n   ╰──━━━━┈┈┈┈┈┈━━━━──╯\n\n\n\n\n\n\n   亗 Nomor : +62 896-6470-9977\n   ✾ Waktu : ${time}\n   ⎙ Tanggal : ${tanggal(new Date())}\n\n\n\n\n\n\n\n\n   ┅┄•⏤͟͟͞͞⏤★⏤͟͟͞͞★•┄┅\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`
@@ -599,8 +600,8 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
      }
      
         if (!isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
-        if (m.sender.startsWith(global.blacklist)) {                 
-        	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+        if (isBlacklist) {                 
+        	await alpha.groupParticipantsUpdate(m.chat, [isBlacklist], 'remove')
 			await alpha.updateBlockStatus(m.sender, 'block')
         }
      }
