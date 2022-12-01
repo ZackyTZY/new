@@ -4981,18 +4981,37 @@ break*/
 
 case 'smeme': case 'stickermeme': case 'stickmeme':
  if (!text) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*\n\Contoh penggunaan: *smeme ${pushname}*`) 
- if (text.includes('|')) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
+ if (text.includes('|')) return reply(`Send/Reply Foto lalu ketik ${prefix + command}2 *text1|text2*`) 
  //if (budy.match(/(?|!)/gi)) return reply(`Tidak dapat menggunakan tanda tanya/emot!`)
  if (/webp/.test(mime)) return reply(`perlu mengonversi ke gambar terlebih dahulu\ndengan cara balas sticker dengan caption *toimg*`)
  if (/image/.test(mime)) { 
  let { TelegraPh } = require('./lib/uploader') 
- //ger = isQuotedImage || isQuotedSticker ? JSON.parse(JSON.stringify(m).replace('quotedM','m')).message.extendedTextMessage.contextInfo : m           
  mee = await alpha.downloadAndSaveMediaMessage(qmsg) 
  mem = await TelegraPh(mee) 
- meme = `https://api.memegen.link/images/custom/-/${text}.png?background=${mem}` 
+ meme = `https://api.memegen.link/images/custom/-/${encodeURIComponent(text)}.png?background=${mem}` 
  memek = await alpha.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
  .catch((err) => reply(mess.error)) //reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
  await fs.unlinkSync(memek)
+ } else {
+ reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
+ }
+break
+
+case 'smeme2': case 'stickermeme2': case 'stickmeme2':
+ if (!text) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*\n\Contoh penggunaan: *smeme ${pushname}*`) 
+ if (!text.includes('|')) return reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
+ //if (budy.match(/(?|!)/gi)) return reply(`Tidak dapat menggunakan tanda tanya/emot!`)
+ if (/webp/.test(mime)) return reply(`perlu mengonversi ke gambar terlebih dahulu\ndengan cara balas sticker dengan caption *toimg*`)
+ if (/image/.test(mime)) { 
+ atas = text.split('|')[0] ? text.split('|')[0] : '-'
+ bawah = text.split('|')[1] ? text.split('|')[1] : '-'
+ let { TelegraPh } = require('./lib/uploader') 
+ dwnld = await alpha.downloadAndSaveMediaMessage(qmsg) 
+ fatGans = await TelegraPh(dwnld) 
+ smeme2 = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${fatGans}`
+ memeks = await alpha.sendImageAsSticker(m.chat, smeme2, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
+ .catch((err) => reply(mess.error)) //reply(`Tidak dapat menggunakan tanda tanya/emot!\n\n*TypeError*: ${jsonformat(err)}`)) 
+ await fs.unlinkSync(memeks)
  } else {
  reply(`Send/Reply Foto lalu ketik ${prefix + command} *text*`) 
  }
