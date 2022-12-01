@@ -231,7 +231,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 		    return alpha.sendImageAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Link!`, body: `${ownername}`, mediaType: 1, thumbnailUrl: ``, thumbnail: pp_bot, renderLargerThumbnail: false, sourceUrl: `${myweb}`}}})
 		}
 		const sendStickerVideo = async (file) => {
-		    return alpha.sendVideoAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Virus!`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}})
+		    return alpha.sendVideoAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Virus!`, body: `${ownername}`, mediaType: 2, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `${youtube}`, mediaUrl: `${youtube}`}}}) //https://${tanggal(new Date())} tempatkan di sourceUrl 
 		}
 		const randomArr = (arr = []) => {
             return arr[Math.floor(Math.random() * arr.length)]
