@@ -584,7 +584,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
      
 //━━━━━━━━━━━━━━━━━━━━━━[ Anti Nomor Luar ]━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw							
 	
-	    if (global.autoblok212 && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
+	    if (m.isGroup && global.autoblok212 && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
         if (m.sender.startsWith('212' || '212')) {                 
         	//global.db.data.users[m.sender].banned = true
             await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
@@ -598,7 +598,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         }
      }
      
-        if (!isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
+        if (m.isGroup && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
         if (isBlacklist) {                 
         	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 			await alpha.updateBlockStatus(m.sender, 'block')
