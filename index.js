@@ -4799,8 +4799,7 @@ break
 			
 			case 'play': case 'ytplay': case 'ytsearch': {
                 if (!text) return reply(`Contoh : ${prefix + command} bokep anime`)
-                reply(mess.tence)
-                /*await sendReact("🔎")
+                await sendReact("🔎")
                 let yts = require("yt-search")
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
@@ -4826,7 +4825,7 @@ break
                     headerType: 4
                 }
                 alpha.sendMessage(m.chat, buttonPlay, { quoted: m })   
-                .catch((err) => reply(mess.tence))*/
+                .catch((err) => reply(mess.tence))
             }         
             break
 
