@@ -17,7 +17,7 @@
   "author": "ZeeoneOfc",
   "license": "MIT",
   "dependencies": {
-    "@adiwajshing/baileys": "^4.2.0",
+    "@adiwajshing/baileys": "^4.4.0",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@bochilteam/scraper": "^2.0.0",
     "@vitalets/google-translate-api": "^7.0.0",
@@ -59,8 +59,6 @@
     "scrape-primbon": "^1.1.0",
     "util": "^0.12.4",
     "xfarr-api": "^1.0.2",
-    "yargs": "^17.2.1",
-    "yt-search": "^2.7.6",
-    "ytdl-core": "^4.10.0"
+    "yargs": "^17.2.1"
   }
 }
