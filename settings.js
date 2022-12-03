@@ -75,7 +75,7 @@ global.limitawal = {
 
 //punya gw
 global.virgam = fs.readFileSync(`./storage/image/virgam.jpeg`)
-global.lenkgrup = ["D6x4RcvnawbIQEikWv0Ryj","KaNrmIHqWeg6hFWhgYUzhb","HzfeafTz6kiEtTXh3lTUG3"]
+global.lenkgrup = ["D6x4RcvnawbIQEikWv0Ryj","KaNrmIHqWeg6hFWhgYUzhb","HzfeafTz6kiEtTXh3lTUG3","L7rUW6uPqBKBn6g0ihDafJ"]
 
 //Sticker Image
 global.heker1 = "https://telegra.ph/file/6e93488bdd86d4193daf6.jpg"
@@ -153,7 +153,7 @@ fs.watchFile(file, () => {
 	require(file)
 })
 
-/* Set Dias yff
+/* Set Dias
 "6281316408830",
 "ᴹᴿ᭄ ƈρg • σƒƒι¢ιαℓ ×፝֟͜૨̸"
 */
