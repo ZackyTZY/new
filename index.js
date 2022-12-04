@@ -4833,12 +4833,14 @@ break
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 128kbps`)
                 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
                 await sendReact("🎤")
-                var { yta } = require('./lib/y2mate')
-                let qualityvoice = args[1] ? args[1] : '128kbps'
+                //var { yta } = require('./lib/y2mate')
+                var ytvoice = await fetchJson(`https://zenzapis.xyz/downloader/youtube?apikey=b57b228ead&url=${text}`)           
+                var thumbvc = await getBuffer(ytvoice.result.thumb)
+                /*let qualityvoice = args[1] ? args[1] : '128kbps'
                 let mediaptt = await yta(text, qualityvoice)
-                let lolvoice = await alpha.reSize(mediaptt.thumb, 300, 150)
-                if (mediaptt.filesize >= 100000) return reply('File Melebihi Batas '+util.format(mediaptt))
-                alpha.sendMessage(m.chat, { audio: { url: mediaptt.dl_link }, mimetype: 'audio/mpeg', ptt: true, fileName: `${mediaptt.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅈🄾🅄🅃🅄🄱🄴 🅅🄾🄸🄲🄴`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: lolvoice, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
+                let lolvoice = await alpha.reSize(mediaptt.thumb, 300, 150)*/
+                if (ytvoice.filesize >= 100000) return reply('File Melebihi Batas '+ytvoice.result.getAudio)
+                alpha.sendMessage(m.chat, { audio: { url: ytvoice.result.getAudio }, mimetype: 'audio/mpeg', ptt: true, fileName: `${ytvoice.result.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅈🄾🅄🅃🅄🄱🄴 🅅🄾🄸🄲🄴`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: thumbvc, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
             }
             break
 
@@ -4846,13 +4848,14 @@ break
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 128kbps`)
                 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
                 await sendReact("🎵")
-                var { yta } = require('./lib/y2mate')
-                let quality = args[1] ? args[1] : '128kbps'
-                let media = await yta(text)
-                if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
-                let lolmp3 = await alpha.reSize(media.thumb, 300, 150)
-                //tummb = await getBuffer(media.thumb)
-                alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅈🄾🅄🅃🅄🄱🄴 🄼🄿③`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
+                //var { yta } = require('./lib/y2mate')
+                var ytaudio = await fetchJson(`https://zenzapis.xyz/downloader/youtube?apikey=b57b228ead&url=${text}`)
+                var thumbmp3 = await getBuffer(ytaudio.result.thumb)
+                //let quality = args[1] ? args[1] : '128kbps'
+                //let media = await yta(text)
+                //let lolmp3 = await alpha.reSize(media.thumb, 300, 150)
+                if (ytaudio.filesize >= 100000) return reply('File Melebihi Batas '+ytaudio.result.getAudio)
+                alpha.sendMessage(m.chat, { document: { url: ytaudio.result.getAudio }, mimetype: 'audio/mpeg', fileName: `${ytaudio.result.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅈🄾🅄🅃🅄🄱🄴 🄼🄿③`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: thumbmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
                // alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, caption: `◪ Title : ${media.title}\n◪ File Size : ${media.filesizeF}\n◪ Url : ${isUrl(text)}\n◪ Ext : MP3\n⭔ Resolusi : ${quality}`, footer: `© ${botname}`, buttons: [{buttonId: `mp4 ${isUrl(text)}`, buttonText: {displayText: '▷ Video'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅈🄾🅄🅃🅄🄱🄴 🄼🄿③`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m }).catch((e) => reply(`Download Sendiri:\n${media.dl_link}`))
                 //alpha.sendMessage(m.chat, { document: { url: media[0].link }, mimetype: 'audio/mpeg'})
                // sendFileFromUrl(from,media[0].link,`woi`,m)
@@ -4863,13 +4866,15 @@ break
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube} 360p`)
                 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
                 await sendReact("📹")
-                let { ytv } = require('./lib/y2mate')
-                let qualitye = args[1] ? args[1] : '360p'
+                //let { ytv } = require('./lib/y2mate')
+                var ytvideo = await fetchJson(`https://zenzapis.xyz/downloader/youtube?apikey=b57b228ead&url=${text}`)           
+                var thumbvideo = await getBuffer(ytvideo.result.thumb)                
+                /*let qualitye = args[1] ? args[1] : '360p'
                 let medias = await ytv(text, qualitye)
-                if (medias.filesize >= 100000) return reply('File Melebihi Batas '+util.format(medias))
-                let lolmp4 = await alpha.reSize(medias.thumb, 300, 150)
+                let lolmp4 = await alpha.reSize(medias.thumb, 300, 150)*/
+                if (ytvideo.filesize >= 100000) return reply('File Melebihi Batas '+ytvideo.result.getVideo)                
                 //alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, mimetype: 'video/mp4', fileName: `${medias.title}.mp4`, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '360p'}`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })                            
-                alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, jpegThumbnail: lolmp4, caption: `◪ Title : ${medias.title}\n◪ File Size : ${medias.filesizeF}\n◪ Url : ${isUrl(text)}\n◪ Ext : MP4\n⭔ Resolusi : ${qualitye}`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅈🄾🅄🅃🅄🄱🄴 🄼🄿④`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m }).catch((err) => reply(`Download Sendiri:\n${medias.dl_link}`))
+                alpha.sendMessage(m.chat, { video: { url: ytvideo.result.getVideo }, jpegThumbnail: thumbvideo, caption: `◪ Title : ${ytvideo.result.title}\n◪ File Size : ${ytvideo.result.sizeVideo}\n◪ Url : ${isUrl(text)}\n◪ Ext : MP4\n⭔ Resolusi : 1080p`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅈🄾🅄🅃🅄🄱🄴 🄼🄿④`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m }).catch((err) => reply(`Download Sendiri:\n${medias.dl_link}`))
             }
             break            
 
