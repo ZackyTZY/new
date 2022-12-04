@@ -5104,7 +5104,6 @@ break
                 reply(mess.wait)
                 let anu = await fetchJson(`https://api.akuari.my.id/downloader/tiktok3?link=${text}`)
                 let anune = await fetchJson(`https://api.akuari.my.id/downloader/tiktokaudio?link=${text}`)
-                let audiott = await toAudio(anu.hasil.download_mp4, 'mp4')
                 let buttons = [
                     {buttonId: `tiktoknowm ${isUrl(text)}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokwm ${isUrl(text)}`, buttonText: {displayText: '► With Watermark'}, type: 1}
@@ -5117,7 +5116,7 @@ break
                     contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅃🄸🄺🅃🄾🄺 🄰🅄🄳🄸🄾`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}
                 }
                 let msg = await alpha.sendMessage(m.chat, buttonMessage, { quoted: m })
-                alpha.sendMessage(m.chat, { audio: audiott, mimetype: 'audio/mpeg', contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅃🄸🄺🅃🄾🄺 🄰🅄🄳🄸🄾`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: msg })
+                alpha.sendMessage(m.chat, { audio: { url: anune.hasil.audio }, mimetype: 'audio/mpeg', contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅃🄸🄺🅃🄾🄺 🄰🅄🄳🄸🄾`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: msg })
                 .catch((err) => reply(mess.tence))
             }
             break
