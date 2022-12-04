@@ -34,7 +34,7 @@ global.autovoice = false //prank autovoice (auto voice pas ada yg toxic) //punya
 //global.autobio = true //auto set bio (kalau ada orang yg komen)
 global.autoreadsw = true //auto read SW (story WhatsApp)
 global.publik = true //publik mode
-global.autoblok212 = true //ubah jadi true biar nmr 212 di blok sama bot
+global.autoblok212 = false //ubah jadi true biar nmr 212 di blok sama bot
 
 //language
 //Available in indonesia & english
