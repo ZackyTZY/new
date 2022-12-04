@@ -16,8 +16,8 @@ global.APIs = {
 global.APIKeys = {
 	'https://api.zeeoneofc.xyz': 'Ceb3FLtq',  // login https://api.zeeoneofc.xyz to get apikey || https://api-alphabot.herokuapp.com
 	'https://zenzapis.xyz': 'b57b228ead', // nayakadonz@gmail.com | nayaka123
-	'https://api.lolhuman.xyz': 'APIKEY',
-	'https://api.xteam.xyz': 'APIKEY',
+	'https://api.lolhuman.xyz': '9026766282040393fc6503b9',
+	'https://api.xteam.xyz': 'f39eec1f3046d439',
 }
 
 // Time
@@ -138,7 +138,7 @@ global.mess = {
     private: 'Perintah Ini Hanya Bisa Digunakan Di Private !',
 	bot: 'Fitur Khusus Pengguna Nomor Bot',
     errtoimg: 'Maaf Saat Ini Belum Support Sticker Gif !',
-    wait: '```⏳「▰▰▰▱▱▱▱▱▱▱」Loading...```',
+    wait: '```⏳「▰▰▰▱▱▱▱」Loading...```',
 	lockCmd: 'Fitur Tidak Diaktifkan Oleh Owner!',
 	error: '⚠ Apikey Sedang Error! Tunggu Beberapa Saat Nanti',
 	example1: 'Selamat Datang @user Di Group @subject Jangan Lupa Baca Rules @desc\n\nNote :\n1. @user (Mention User Join)\n2. @bio (Get Bio User Join)\n3. @tanggal (Date Now)\n4. @desc (Get Description Group)\n5. @subject (Group Name)',
