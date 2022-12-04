@@ -4833,6 +4833,7 @@ break
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube}`)
                 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
                 await sendReact("🎤")
+                reply(mess.wait)
                 //var { yta } = require('./lib/y2mate')
                 var ytvoice = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${text}&type=360`)      
                 var thumbvc = await getBuffer(ytvoice.thumbnail)
@@ -4848,8 +4849,9 @@ break
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube}`)
                 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
                 await sendReact("🎵")
+                reply(mess.wait)
                 //var { yta } = require('./lib/y2mate')
-                var ytaudio = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${text}&type=144`)
+                var ytaudio = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${text}&type=360`)
                 var thumbmp3 = await getBuffer(ytaudio.thumbnail)
                 //let quality = args[1] ? args[1] : '128kbps'
                 //let media = await yta(text)
@@ -4866,6 +4868,7 @@ break
                 if (!text) return reply(`Contoh : ${prefix + command} ${youtube}`)
                 if (!isUrl(args[0]) && !args[0].includes('youtube')) return reply(`Link Tidak Valid!`)
                 await sendReact("📹")
+                reply(mess.wait)
                 //let { ytv } = require('./lib/y2mate')
                 let qualitye = args[1] ? args[1] : '360'
                 var ytvideo = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${text}&type=${qualitye}`)
@@ -5047,7 +5050,7 @@ const te = ra[Math.floor(Math.random() * ra.length)]
 alpha.sendMessage(from, { text: `*Rate :* ${q}\n*Jawaban :* *${te}%*` }, { quoted: m })
 break
 
-case 'darkjoke': case 'darkjokes': { //error
+case 'darkjoke': case 'darkjokes': {
 //var res = await Darkjokes()
 var res = `https://api.akuari.my.id/randomimage/darkjokes1`
 let teks = "*Darkjokes*"
