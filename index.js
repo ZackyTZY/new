@@ -5117,7 +5117,7 @@ break
                     contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅃🄸🄺🅃🄾🄺 🄰🅄🄳🄸🄾`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}
                 }
                 let msg = await alpha.sendMessage(m.chat, buttonMessage, { quoted: m })
-                alpha.sendMessage(m.chat, { audio: audiott}, mimetype: 'audio/mpeg', contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅃🄸🄺🅃🄾🄺 🄰🅄🄳🄸🄾`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: msg })
+                alpha.sendMessage(m.chat, { audio: audiott, mimetype: 'audio/mpeg', contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅃🄸🄺🅃🄾🄺 🄰🅄🄳🄸🄾`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: msg })
                 .catch((err) => reply(mess.tence))
             }
             break
