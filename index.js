@@ -219,10 +219,10 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
         
         //punya gw
 		const reply = async (teks) => {
-			return alpha.sendMessage(m.chat, { text: teks, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})
+			return alpha.sendMessage(m.chat, { text: teks, contextInfo:{ externalAdReply: { showAdAttribution: true, renderLargerThumbnail: false, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})
 		}
 		const sendAudio = async (url) => {
-		    return alpha.sendMessage(m.chat, { audio: { url: url }, mimetype: 'audio/mp4', ptt: true, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Contoh Anak Kontol ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ppuser, thumbnail: '', sourceUrl: `${myweb}`}}}, {quoted:m})
+		    return alpha.sendMessage(m.chat, { audio: { url: url }, mimetype: 'audio/mp4', ptt: true, contextInfo:{ externalAdReply: { showAdAttribution: true, renderLargerThumbnail: false, title: `Contoh Anak Kontol ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ppuser, thumbnail: '', sourceUrl: `${myweb}`}}}, {quoted:m})
 		}
 		const sendReact = async (emoji) => { //await sendReact("📋")
             return alpha.sendMessage(m.chat, { react: { text: emoji, key: m.key }})
@@ -5116,7 +5116,7 @@ break
                     contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅃🄸🄺🅃🄾🄺 🄰🅄🄳🄸🄾`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}
                 }
                 let msg = await alpha.sendMessage(m.chat, buttonMessage, { quoted: m })
-                alpha.sendMessage(m.chat, { audio: { url: anune.hasil.audio }, mimetype: 'audio/mpeg', contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅃🄸🄺🅃🄾🄺 🄰🅄🄳🄸🄾`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: msg })
+                alpha.sendMessage(m.chat, { audio: { url: anune }, mimetype: 'audio/mpeg', contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅃🄸🄺🅃🄾🄺 🄰🅄🄳🄸🄾`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: msg })
                 .catch((err) => reply(mess.tence))
             }
             break
@@ -5141,6 +5141,29 @@ break
 		}
 	    }
 	    break
+
+case 'carigc': case 'searchgc': {
+if (!text) return reply(`Contoh : ${prefix + command} Bokep`)
+let carigc = await fetchJson(`https://api.akuari.my.id/search/carigc?query=${text}`)
+let teks = `*❉─────「 _GROUP SEARCH_ 」─────❉*`
+for (let res of carigc.result) {
+    teks += `\n\n◉ *Nama :* ${res.nama}\n◦➛ *Link :* ${res.link}`
+  }
+    await alpha.sendMessage(m.chat, { text: teks, contextInfo:{ externalAdReply: { showAdAttribution: true, renderLargerThumbnail: true, title: `${botname}`, body: `${ownername}`, mediaType: 1, thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})		
+  }
+break
+
+      case 'brainly': {
+        if (!text) return reply('Pertanyaan nya apa?')
+		   let res = await fetchJson(`https://api.akuari.my.id/edukasi/brainly?query=${text}`)
+		   let teks = '*❉───────「 _BRAINLY_ 」────────❉*\n\n'
+		   for (let Y of res.hasil.data) {
+		   teks += `*➸ Pertanyaan:* ${Y.pertanyaan}\n\n*➸ Jawaban:* ${Y.jawaban[0].text}\n❉─────────────────────┈ ⳹\n`
+		   }
+		   await reply(teks)
+		   .catch((err) => reply(mess.error))
+		   }
+		   break
 
 case 'jadibot':
 break
