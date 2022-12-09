@@ -140,7 +140,8 @@ global.mess = {
     errtoimg: 'Maaf Saat Ini Belum Support Sticker Gif !',
     wait: '```⏳「▰▰▰▱▱▱▱」Loading...```',
 	lockCmd: 'Fitur Tidak Diaktifkan Oleh Owner!',
-	error: '⚠ Apikey Sedang Error! Tunggu Beberapa Saat Nanti',
+	error: '⚠ Fitur Sedang Error!',
+	apierror: '⚠ Apikey Sedang Error! Tunggu Beberapa Saat Nanti',
 	example1: 'Selamat Datang @user Di Group @subject Jangan Lupa Baca Rules @desc\n\nNote :\n1. @user (Mention User Join)\n2. @bio (Get Bio User Join)\n3. @tanggal (Date Now)\n4. @desc (Get Description Group)\n5. @subject (Group Name)',
     tence: '🛠 Fitur Sedang Maintenance'
 }
