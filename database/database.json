@@ -23,6 +23,19 @@
       "AdminOnly": false,
       "setWelcome": "",
       "setLeave": ""
+    },
+  "120363044043075422@g.us": {
+      "name": "🐶🄼🄰🄻🄰🅈🄳🄾🄶 🄺🄾🄽🅃🄾🄻 & 🄰🄶🄾🄽🄶 🄶🄰🅈🏳️‍🌈",
+      "goodbye": false,
+      "welcome": false,
+      "mute": true,
+      "nsfw": true,
+      "antilink": false,
+      "antivirus": true,
+      "antionce": true,
+      "AdminOnly": true,
+      "setWelcome": "",
+      "setLeave": ""
     }
   },
   "database": {},
