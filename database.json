@@ -1,7 +1,7 @@
 {
   "users": {
     "6285236483504@s.whatsapp.net": {
-      "name": "ẉạ.me/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n️",
+      "name": "ẉạ.me/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
       "premium": true,
       "premiumTime": -1,
       "banned": false,
@@ -18,9 +18,22 @@
       "mute": false,
       "nsfw": true,
       "antilink": false,
-      "antivirus": true,
+      "antivirus": false,
       "antionce": true,
       "AdminOnly": false,
+      "setWelcome": "",
+      "setLeave": ""
+    },
+  "120363044043075422@g.us": {
+      "name": "🐶🄼🄰🄻🄰🅈🄳🄾🄶 🄺🄾🄽🅃🄾🄻 & 🄰🄶🄾🄽🄶 🄶🄰🅈🏳️‍🌈",
+      "goodbye": false,
+      "welcome": false,
+      "mute": true,
+      "nsfw": true,
+      "antilink": false,
+      "antivirus": true,
+      "antionce": true,
+      "AdminOnly": true,
       "setWelcome": "",
       "setLeave": ""
     }
@@ -57,7 +70,7 @@
     },
     "6289664709977@s.whatsapp.net": {
       "name": "кєιтн вσт-м∂ོ",
-      "autobio": true,
+      "autobio": false,
       "available": false,
       "composing": false,
       "recording": false,
