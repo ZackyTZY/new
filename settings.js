@@ -55,7 +55,7 @@ global.region = "Indonesia" //bebas
 global.timezone = 'Asia/Jakarta' //  timezone wib
 global.premium = ["6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //premium user
 global.owner = ["6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
-global.kecuali = ["6283843295654","6288293521754","6283866838382","6281316408830","6281316407846","6287878230953"] //nomor² yg gabisa make fitur tertentu
+global.kecuali = ["6285648046590","62881027147106","6282140762482","6283843295654","6288293521754","6283866838382","6281316408830","6281316407846","6287878230953"] //nomor² yg gabisa make fitur tertentu
 global.blacklist = ["6289636743196","6285241070729","6282334467096","6285750412441"] // nomor yg akan otomatis di kick dari grup
 global.ownernomer = "62852364835045" // nomor wa kalian
 global.ownernomerr = "+62852364835045" //nmr wa kalian
@@ -78,12 +78,12 @@ global.virgam = fs.readFileSync(`./storage/image/virgam.jpeg`)
 global.lenkgrup = ["D6x4RcvnawbIQEikWv0Ryj","KaNrmIHqWeg6hFWhgYUzhb","HzfeafTz6kiEtTXh3lTUG3","L7rUW6uPqBKBn6g0ihDafJ"]
 
 //Sticker Image
-global.heker1 = "https://telegra.ph/file/6e93488bdd86d4193daf6.jpg"
-global.heker2 = "https://telegra.ph/file/16d47fcc205b23e4e99d5.png"
-global.heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg"
-global.heker4 = "https://telegra.ph/file/a9a7a9702db222f61641a.jpg"
-global.heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png"
-global.heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png"
+global.heker1 = "https://telegra.ph/file/efc8b0115b3f7a8462676.jpg" // capek² emaknya ngelonte
+global.heker2 = "https://telegra.ph/file/ef4ecbf5bbe3393ce734e.jpg" // bocah tolol main piltek, bug, slayer
+global.heker3 = "https://telegra.ph/file/dbc3d3e9e7f31a9d42556.jpg" // mati diserang heker
+global.heker4 = "https://telegra.ph/file/60c26bf4db45aa49935f0.jpg" // ngemri banget hekel pilteks 
+global.heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png" // cape² ngaku hekel modal piltek
+global.heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png" // hekel piltek pas tau pilteknya ga lag
 // Sticker Video
 global.hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
 global.HekerList = [heker1,heker2,heker3,heker4,heker5,heker6,hekel1]
