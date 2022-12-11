@@ -156,6 +156,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "6289643739077-1613049930@g.us" } : {}) },message: { "videoMessage": { "title":`${pushname}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${pushname}`, 'jpegThumbnail': pp_bot}}}
 		const floc = {key : {participant : '0@s.whatsapp.net'},message: {locationMessage: {name: `${ownername}`,jpegThumbnail: pp_bot}}}
 		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `6283136505591-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': pp_bot, thumbnail: pp_bot,sendEphemeral: true}}}
+		const fvirus = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {"documentMessage": {"url": "https://mmg.whatsapp.net/d/f/Aj85sbZCtNtq1cJ6JupaBUTKfgrl2zXRXGvVNWAbFnsp.enc","mimetype": "application/octet-stream","fileSha256": "TSSZu8gDEAPhp8vjdtJS/DXIECzjrSh3rmcoHN76M9k=","fileLength": "64455","pageCount": 1,"mediaKey": "P32GszzU5piUZ5HKluLD5h/TZzubVJ7lCAd1PIz3Qb0=","fileName": `${m.sender.split('@')[0]} Telah Mengirim Virus!`,"fileEncSha256": "ybdZlRjhY+aXtytT0G2HHN4iKWCFisG2W69AVPLg5yk=",sendEphemeral: true}}}
 		//punya gw BUG WA dari hw mod
 		const { ngazap } = require('./storage/virtex/ngazap')
 		const { bugweb } = require('./storage/virtex/bugweb')
@@ -231,7 +232,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, reSize) => {
 		    return alpha.sendImageAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Link!`, body: `${ownername}`, mediaType: 1, thumbnailUrl: ``, thumbnail: pp_bot, renderLargerThumbnail: false, sourceUrl: `${myweb}`}}})
 		}
 		const sendStickerVideo = async (file) => {
-		    return alpha.sendVideoAsSticker(m.chat, file, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Virus!`, body: `${ownername}`, mediaType: 2, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}) //https://${tanggal(new Date())} tempatkan di sourceUrl 
+		    return alpha.sendVideoAsSticker(m.chat, file, fvirus, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `${pushname} Telah Mengirim Virus!`, body: `${ownername}`, mediaType: 2, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}) //https://${tanggal(new Date())} tempatkan di sourceUrl 
 		}
 		const randomArr = (arr = []) => {
             return arr[Math.floor(Math.random() * arr.length)]
@@ -5074,7 +5075,7 @@ break
             case 'tiktok': case 'tiktoknowm': {
                 if (!text) return reply('Masukkan Linknya juga!')
                 reply(mess.wait)
-                let anu = await fetchJson(`https://api.akuari.my.id/downloader/tiktok3?link=${text}`).catch((err) => reply(mess.apierror))
+                let anu = await fetchJson(`https://api.akuari.my.id/downloader/tiktok3?link=${text}`)
                 let buttons = [
                     {buttonId: `tiktokwm ${isUrl(text)}`, buttonText: {displayText: '► With Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1}
@@ -5088,7 +5089,7 @@ break
                     contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅃🄸🄺🅃🄾🄺 🅅🄸🄳🄴🄾`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}
                 }
                 alpha.sendMessage(m.chat, buttonMessage, { quoted: m })            
-                .catch((err) => reply(mess.error))
+                .catch((err) => reply(mess.apierror))
             }
             break
             case 'tiktokwm': case 'tiktokwatermark': {
