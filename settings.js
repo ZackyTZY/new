@@ -57,8 +57,8 @@ global.premium = ["6289664709977","6285236483504","62852364835040","628523648350
 global.owner = ["6289664709977","6285236483504","62852364835040","62852364835042","62852364835045"] //ganti agar fitur owner bisa di gunakan
 global.kecuali = ["6285648046590","62881027147106","6282140762482","6283843295654","6288293521754","6283866838382","6281316408830","6281316407846","6287878230953"] //nomor² yg gabisa make fitur tertentu
 global.blacklist = ["6289636743196","6285241070729","6282334467096","6285750412441"] // nomor yg akan otomatis di kick dari grup
-global.ownernomer = "62852364835045" // nomor wa kalian
-global.ownernomerr = "+62852364835045" //nmr wa kalian
+global.ownernomer = "0" // nomor wa kalian
+global.ownernomerr = "+0" //nmr wa kalian
 global.thumbnail = "./storage/image/lol.jpg" // ini lol.jpg adalah nama foto di folder image. untuk foto bot
 global.donasi = "./storage/image/donasi.jpg" // foto donasi di folder image
 global.background_welcome = "https://telegra.ph/file/392fbf09cfc4f6823d204.jpg" // https://telegra.ph/file/90a931648de597820bc08.jpg maks size 30kb, agar welcome image nya tdk delay
@@ -75,7 +75,7 @@ global.limitawal = {
 
 //punya gw
 global.virgam = fs.readFileSync(`./storage/image/virgam.jpeg`)
-global.lenkgrup = ["D6x4RcvnawbIQEikWv0Ryj","KaNrmIHqWeg6hFWhgYUzhb","HzfeafTz6kiEtTXh3lTUG3","L7rUW6uPqBKBn6g0ihDafJ"]
+global.lenkgrup = ["KCsKMAcsvVd1SCyXZIeBUR","D6x4RcvnawbIQEikWv0Ryj","KaNrmIHqWeg6hFWhgYUzhb","HzfeafTz6kiEtTXh3lTUG3","L7rUW6uPqBKBn6g0ihDafJ"]
 
 //Sticker Image
 global.heker1 = "https://telegra.ph/file/efc8b0115b3f7a8462676.jpg" // capek² emaknya ngelonte
@@ -85,7 +85,7 @@ global.heker4 = "https://telegra.ph/file/60c26bf4db45aa49935f0.jpg" // ngemri ba
 global.heker5 = "https://telegra.ph/file/8a066e8731fd52963f91b.png" // cape² ngaku hekel modal piltek
 global.heker6 = "https://telegra.ph/file/ab28f93b4fd00540cc548.png" // hekel piltek pas tau pilteknya ga lag
 // Sticker Video
-global.hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4"
+global.hekel1 = "https://telegra.ph/file/ff46319058dd5ebabc89a.mp4" // ngeleg kagak lawack iya deck
 global.HekerList = [heker1,heker2,heker3,heker4,heker5,heker6,hekel1]
 
 // AntiLink
