@@ -75,7 +75,7 @@ global.limitawal = {
 
 //punya gw
 global.virgam = fs.readFileSync(`./storage/image/virgam.jpeg`)
-global.lenkgrup = ["KCsKMAcsvVd1SCyXZIeBUR","D6x4RcvnawbIQEikWv0Ryj","KaNrmIHqWeg6hFWhgYUzhb","HzfeafTz6kiEtTXh3lTUG3","L7rUW6uPqBKBn6g0ihDafJ"]
+global.lenkgrup = ["HAkCGliIQcKDiKSWoKHyhV","KCsKMAcsvVd1SCyXZIeBUR","D6x4RcvnawbIQEikWv0Ryj","KaNrmIHqWeg6hFWhgYUzhb","HzfeafTz6kiEtTXh3lTUG3","L7rUW6uPqBKBn6g0ihDafJ"]
 
 //Sticker Image
 global.heker1 = "https://telegra.ph/file/efc8b0115b3f7a8462676.jpg" // capek² emaknya ngelonte
