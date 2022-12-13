@@ -721,7 +721,7 @@ exports.listMenu = (time, salam, pushname, prefix) => {
 ├ ${prefix}revoke
 ├ ${prefix}leave
 ├ ~${prefix}add [62***]~
-├ ${prefix}kick @tag
+├ ~${prefix}kick @tag~
 ├ ${prefix}leave
 ├ ${prefix}linkgc
 ├ ${prefix}welcome [on/off]
@@ -1664,7 +1664,7 @@ exports.group = (prefix) =>{
 ├ ${prefix}revoke
 ├ ${prefix}leave
 ├ ~${prefix}add [62***]~
-├ ${prefix}kick @tag
+├ ~${prefix}kick @tag~
 ├ ${prefix}leave
 ├ ${prefix}linkgc
 ├ ${prefix}welcome [on/off]
