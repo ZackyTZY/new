@@ -511,9 +511,9 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
      
      if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
-            let linkgrupo = await alpha.groupInviteCode(m.chat)
-        	let linkgrup = linkgrupo || lenkgrup
-	    	if (budy.includes(linkgrup)) return
+            let linkgrupo2 = await alpha.groupInviteCode(m.chat)
+        	let linkgrup2 = linkgrupo2 || lenkgrup
+	    	if (budy.includes(linkgrup2)) return
         	await sendReact("🖕🏿")
         	await alpha.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})        
         }
