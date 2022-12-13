@@ -422,7 +422,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 //Anti View Once //punya gw
 if (m.mtype === 'viewOnceMessage') {
 if (!db.data.chats[m.chat].antionce) return
-if ((isCreator || isGroupAdmins)) return
+//if ((isCreator || isGroupAdmins)) return
  teks = `「 *Anti ViewOnce Message* 」
 
 ⭔ Nama : ${m.pushName}
@@ -431,9 +431,9 @@ if ((isCreator || isGroupAdmins)) return
 ⭔ Date : ${tanggal(new Date())}
 ⭔ MessageType : ${m.mtype}`
 
-await alpha.sendMessage(m.chat, { text: teks, mentions: [m.sender], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})
+let teng = await alpha.sendMessage(m.chat, { text: teks, mentions: [m.sender], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m})
 await sleep(612)
-m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
+m.copyNForward(m.chat, true, { readViewOnce: true }, { quoted: teng }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
 }
 
 // Detect Group Invite //punya gw
@@ -506,6 +506,16 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 			await alpha.updateBlockStatus(sender, 'block')
 			//await sleep(612)				
 			await deleteChat(from)
+        }
+     }     
+     
+     if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
+            if (budy.match(/(chat.whatsapp.com)/gi)) {
+            let linkgrupo = await alpha.groupInviteCode(m.chat)
+        	let linkgrup = linkgrupo || lenkgrup
+	    	if (budy.includes(linkgrup)) return
+        	await sendReact("🖕🏿")
+        	await alpha.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})        
         }
      }
 		
