@@ -527,22 +527,22 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
-			await sleep(612)				
-			deleteChat(from)			
+			//await sleep(612)
+			await deleteChat(from)			
 	    } else if (m.mtype === 'productMessage') {
         	//reply(`「 *SLAYER TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
-			await sleep(612)				
-			deleteChat(from)
+			//await sleep(612)
+			await deleteChat(from)	
 	    } else if (m.mtype === 'orderMessage') {
         	//reply(`「 *KATALOG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
         	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
-			await sleep(612)				
-			deleteChat(from)
+			//await sleep(612)
+			await deleteChat(from)	
 		/*} else if (m.mtype === 'locationMessage') { // Lokasi biasa, rekomendasi off
         	reply(`「 *VIRLOK TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -579,21 +579,28 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	sendStickerVideo(hengker).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
+		} else if (m.mtype === 'listMessage') {
+        	//reply(`「 *LIST PESAN TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
+        	await sendStickerVideo(heker).then(async res => 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
+			await alpha.updateBlockStatus(sender, 'block')
+			//await sleep(612)
+			await deleteChat(from)
 		} else if (budy.match(/(bug(1|2|3|4|5|6|7|8|9|combine|stik|tod|tag|gc)|troli(1|2|3|4|5|6|7|8|9)|santet(1|2|3|4|5|6|7|8|9)|jadibug(1|2|3|4|5|6|7|8|9)|slayer(1|2|3|4|5|6|7|8|9)|virtex(1|2|3|4|5|6|7|8|9)|jomomo(1|2|3|4|5|6|7|8|9)|jobug(1|2|3|4|5|6|7|8|9)|catalog(1|2|3|4|5|6|7|8|9)|inibug|poll|gaskal|jocatalog)/gi)) {
             //alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
             await alpha.updateBlockStatus(sender, 'block')
             if (m.isBaileys && m.key.fromMe) return
-            await sleep(612)
-            deleteChat(from)
+            //await sleep(612)
+			await deleteChat(from)	
 	    } else if (budy.length > 3000) {
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
 			await alpha.updateBlockStatus(sender, 'block')
-			await sleep(612)				
-			deleteChat(from)
+			//await sleep(612)
+			await deleteChat(from)
         }
      }          
 
