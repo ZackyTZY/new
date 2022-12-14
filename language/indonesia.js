@@ -105,8 +105,8 @@ exports.NoMute = () => {
 exports.NoMsgBot = () => {
     return `Pesan tersebut bukan dikirim oleh bot!`
 }
-exports.ToimgErr = () => {
-    return `Maaf Saat Ini Belum Support Sticker Gif`
+exports.ToimgErr = (prefix) => {
+    return `Ketik *${prefix}tomp4* Untuk Mengubah Menjadi Video`
 }
 exports.NoToImg = (prefix, command) => {
     return `Reply Sticker Dengan Caption *${prefix + command}*`
