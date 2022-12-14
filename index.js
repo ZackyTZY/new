@@ -1333,13 +1333,13 @@ if (!m.isGroup) return reply(lang.groupOnly())
             }
             break
 	    case 'toimage': case 'toimg': { //punya gw
-                if (!quoted) return reply(lang.NoToImg())
-                if (!/webp/.test(mime)) return reply(lang.NoToImg())                
+                if (!quoted) return reply(lang.NoToImg(prefix, command))
+                if (!/webp/.test(mime)) return reply(lang.NoToImg(prefix, command))                
                 let media = await alpha.downloadAndSaveMediaMessage(qmsg)
                 let ran = await getRandom('.png')
                 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
                     fs.unlinkSync(media)
-                    if (err) return reply(lang.ToimgErr())
+                    if (err) return reply(lang.ToimgErr(prefix))
                     let buffer = fs.readFileSync(ran)
                     alpha.sendMessage(m.chat, { image: buffer, caption: 'Nih Tod', contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅂🅃🄸🄲🄺🄴🅁 ⓉⓄ 🄸🄼🄰🄶🄴`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })
                     fs.unlinkSync(ran)
