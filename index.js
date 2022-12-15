@@ -2766,8 +2766,11 @@ sendFileFromUrl(from, to, lang.ok(), m)
 case 'baka':case 'smug':case 'neko_sfw':case 'hentai_gif':case 'spank':case 'blowjob':case 'cumarts':case 'eroyuri':case 'eroneko':case 'erokemonomimi':case 'erokitsune':case 'ero':case 'feet':case 'erofeet':case 'feetgif':case 'femdom':case 'futanari':case 'hentai':case 'holoero':case 'holo':case 'keta':case 'kitsune':case 'kemonomimi':case 'pussyart':case 'pussywankgif':case 'girl_solo':case 'girl_solo_gif':case 'tits':case 'trap':case 'yuri':case 'avatar2':case 'anal':case 'bj':case 'boobs':case 'classic':case 'cumsluts':case 'kuni':case 'lesbian':case 'neko':case 'neko_gif':case 'ahegao':case 'bdsm':case 'cuckold':case 'cum':case 'foot':case 'gangbang':case 'glasses':case 'jahy':case 'masturbation':case 'nsfw_neko':case 'orgy':case 'panties':case 'tentacles':case 'thighs':case 'zettai':{
 if (!db.data.chats[m.chat].nsfw) return reply(lang.OffNsfw())
 reply(lang.wait())
-//let to = global.api('alfa', '/api/nsfw/'+command, {}, 'apikey')
-let to = await axios.get(`https://waifu.pics/api/nsfw/${command}`)    
+try {
+to = global.api('alfa', '/api/nsfw/'+command, {}, 'apikey')
+} catch {
+to = await axios.get(`https://waifu.pics/api/nsfw/${command}`)  
+}  
 await alpha.sendMessage(m.chat, { image: { url: to.data.url }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
 .catch((err) => {
 reply(lang.err())
