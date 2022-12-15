@@ -2728,7 +2728,8 @@ break
 case 'chika': case 'rikagusriani':  case 'bocil': case 'geayubi': case 'santuy': case 'ukhty': case 'asupan':  case 'delvira': case 'ayu': case 'bunga': case 'aura': case 'nisa': case 'ziva': case 'yana': case 'viona': case 'syania': case 'riri': case 'syifa': case 'mama_gina': case 'alcakenya': case 'mangayutri': {
 	reply(lang.wait())
 	let to = global.api('alfa', '/api/asupan/'+command, {}, 'apikey')
-sendFileFromUrl(from, to, lang.ok(), m)
+//sendFileFromUrl(from, to, lang.ok(), m)
+await alpha.sendMessage(m.chat, { image: { url: to }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Lanjut'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅁🄰🄽🄳🄾🄼`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
 .catch((err) => {
                     reply(lang.err())
                 })
@@ -2738,7 +2739,7 @@ case 'china': case 'indonesia': case 'malaysia': case 'thailand': case 'korea': 
 	let to = global.api('alfa', '/api/cecan/'+command, {}, 'apikey')
 reply(lang.wait())
 //sendFileFromUrl(from, to, lang.ok(), m)
-alpha.sendMessage(m.chat, { image: { url: to }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Lanjut'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅆🄰🄽🄸🅃🄰`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
+await alpha.sendMessage(m.chat, { image: { url: to }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Lanjut'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅆🄰🄽🄸🅃🄰`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
 .catch((err) => {
                     reply(lang.err())
                 })
@@ -2750,14 +2751,15 @@ case 'hentai': {
                 anu = await hentai()
                 result = anu[Math.floor(Math.random(), anu.length)]
                 //alpha.sendMessage(m.chat, { video: { url: result.video_1 }, caption: `⭔ Title : ${result.title}\n⭔ Category : ${result.category}\n⭔ Mimetype : ${result.type}\n⭔ Views : ${result.views_count}\n⭔ Shares : ${result.share_count}\n⭔ Source : ${result.link}\n⭔ Media Url : ${result.video_1}` }, { quoted: m })
-                alpha.sendMessage(m.chat, { video: { url: result.video_1 }, caption: `⭔ Title : ${result.title}\n⭔ Category : ${result.category}\n⭔ Mimetype : ${result.type}\n⭔ Views : ${result.views_count}\n⭔ Shares : ${result.share_count}\n⭔ Source : ${result.link}\n⭔ Media Url : ${result.video_1}`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Lanjut'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
+                await alpha.sendMessage(m.chat, { video: { url: result.video_1 }, caption: `⭔ Title : ${result.title}\n⭔ Category : ${result.category}\n⭔ Mimetype : ${result.type}\n⭔ Views : ${result.views_count}\n⭔ Shares : ${result.share_count}\n⭔ Source : ${result.link}\n⭔ Media Url : ${result.video_1}`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Lanjut'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
             }
             break
 case 'cuddle':case 'feed':case 'foxgirl':case 'kemonomimi2':case 'woof':case 'holo2':case 'hug':case 'kiss':case 'lizard':case 'meowi':case 'neko2':case 'pat':case 'poke':case 'slap':case 'tickle':{
 if (!db.data.chats[m.chat].nsfw) return reply(lang.OffNsfw())
 reply(lang.wait())
 let to = global.api('alfa', '/api/sfw/'+command, {}, 'apikey')
-sendFileFromUrl(from, to, lang.ok(), m)
+//sendFileFromUrl(from, to, lang.ok(), m)
+await alpha.sendMessage(m.chat, { image: { url: to }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
 .catch((err) => {
                     reply(lang.err())
                 })
@@ -2767,14 +2769,12 @@ sendFileFromUrl(from, to, lang.ok(), m)
 case 'baka':case 'smug':case 'neko_sfw':case 'hentai_gif':case 'spank':case 'blowjob':case 'cumarts':case 'eroyuri':case 'eroneko':case 'erokemonomimi':case 'erokitsune':case 'ero':case 'feet':case 'erofeet':case 'feetgif':case 'femdom':case 'futanari':case 'hentai':case 'holoero':case 'holo':case 'keta':case 'kitsune':case 'kemonomimi':case 'pussyart':case 'pussywankgif':case 'girl_solo':case 'girl_solo_gif':case 'tits':case 'trap':case 'yuri':case 'avatar2':case 'anal':case 'bj':case 'boobs':case 'classic':case 'cumsluts':case 'kuni':case 'lesbian':case 'neko':case 'neko_gif':case 'ahegao':case 'bdsm':case 'cuckold':case 'cum':case 'foot':case 'gangbang':case 'glasses':case 'jahy':case 'masturbation':case 'nsfw_neko':case 'orgy':case 'panties':case 'tentacles':case 'thighs':case 'zettai':{
 if (!db.data.chats[m.chat].nsfw) return reply(lang.OffNsfw())
 reply(lang.wait())
-try {
-to = global.api('alfa', '/api/nsfw/'+command, {}, 'apikey')
-} catch {
-to = await axios.get(`https://waifu.pics/api/nsfw/${command}`)  
-}  
-await alpha.sendMessage(m.chat, { image: { url: to.data.url }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
-.catch((err) => {
+let to = global.api('alfa', '/api/nsfw/'+command, {}, 'apikey')
+//let to = await axios.get(`https://waifu.pics/api/nsfw/${command}`)  
 await alpha.sendMessage(m.chat, { image: { url: to }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
+//await alpha.sendMessage(m.chat, { image: { url: to.data.url }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
+.catch((err) => {
+reply(lang.err())
 })
 }
 break
