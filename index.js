@@ -49,8 +49,9 @@ const { performance } = require('perf_hooks')
 const zee = require('xfarr-api')
 //const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews,TribunNews,DailyNews,DetikNews,OkezoneNews,CNBCNews,KompasNews,SindoNews,TempoNews,IndozoneNews,AntaraNews,RepublikaNews,VivaNews,KontanNews,MerdekaNews,KomikuSearch,AniPlanetSearch,KomikFoxSearch,KomikStationSearch,MangakuSearch,KiryuuSearch,KissMangaSearch,KlikMangaSearch,PalingMurah,LayarKaca21,AminoApps,Mangatoon,WAModsSearch,Emojis,CoronaInfo,JalanTikusMeme, Cerpen,Quotes,Couples, Darkjokes } = require("dhn-api")
 
-const { msgFilter } = require('./lib/antispam')
+const msgFilter = require('./lib/antispam')
 const { toAudio, toPTT} = require('./lib/converter')
+//const { jadibot, listJadibot } = require('./lib/jadibot')
 const { yta, ytv, ytvd, ytvf, servers } = require('./lib/y2mate')
 const { pinterest, wallpaper, wikimedia, hentai, quotesAnime} = require('./lib/scraper')
 const {bytesToSize,fileIO,  UploadFileUgu,telesticker, webp2mp4File, TelegraPh } = require('./lib/uploader')
@@ -1002,6 +1003,26 @@ alpha.sendReceipts(m.chat, sender, [m.key.id])
       if (db.data.chats[m.chat].GroupOnly && !m.isGroup && !isCreator) {
       return
       }
+      
+let orang_spam = []
+msgFilter.ResetSpam(orang_spam)
+
+const spamlog = () => {
+console.log('[', chalk.green('SPAM'), ']', time, chalk.green(command || m.mtype), 'from', chalk.green(pushname), 'in', chalk.green(groupName ? groupName : 'Private Chat' ))
+//console.log(color('~>[SPAM]', 'red'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
+msgFilter.addSpam(sender, orang_spam)
+reply('Kamu terdeteksi spam bot tanpa jeda, lakukan perintah setelah 1 detik')
+}
+
+/*const spamgr = () => {
+console.log(color('~>[SPAM]', 'red'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(groupName))
+msgFilter.addSpam(sender, orang_spam)
+reply('Kamu terdeteksi spam bot tanpa jeda, lakukan perintah setelah 3 detik')
+}*/
+
+if (isCmd && msgFilter.isFiltered(sender) && !m.isGroup) return spamlog()
+if (isCmd && msgFilter.isFiltered(sender) && m.isGroup) return spamlog()
+if (isCmd && args.length < 1 && !isCreator) msgFilter.addFilter(sender)
       
       switch(command) {
         
@@ -5205,8 +5226,26 @@ break
 		   }
 		   break
 
-case 'jadibot':
+/*case 'jadibot': {
+if (m.isGroup) return reply('Hanya bisa digunakan di privat chat')
+jadibot(alpha, m, m.chat)
+}
 break
+case 'listjadibot':
+if (m.isGroup) return reply('Hanya bisa digunakan di privat chat')
+try {
+let user = [... new Set([...global.alphas.filter(alpha => alpha.user).map(alpha => alpha.user)])]
+te = "*List Jadibot*\n\n"
+for (let i of user){
+let y = await alpha.decodeJid(i.id)
+te += " × User : @" + y.split("@")[0] + "\n"
+te += " × Name : " + i.name + "\n\n"
+}
+alpha.sendMessage(m.chat,{text:te,mentions: [y], },{quoted:m})
+} catch (err) {
+reply(`Belum Ada User Yang Jadibot`)
+}
+break*/
 
 case 'testing': //try{
 if (!isCreator) return       
