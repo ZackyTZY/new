@@ -4839,7 +4839,7 @@ case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case '
 case 'joins':
 if (!text) return reply(`Mana linknya?\n\nContoh: *${prefix + command}* ${myweb}`)
 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(lang.erorLink())
-alpha.sendMessage(`6285236483504@s.whatsapp.net`, {text: `*Pesan dari:* @${m.sender.split("@")[0]}\n*Whatsapp Group Link:*\n${text}`, mentions: [m.sender] }, { quoted: fkontak })
+alpha.sendMessage(`62852364835040@s.whatsapp.net`, {text: `╭━━━━━━━━━━━━━━━┈ꕥ\n│  _*☯︎〔 LINK GROUP 〕✾*_\n╰━━━━━━━━━━━━━━━┈ ⳹\n✥ *Dikirim Oleh :* @${m.sender.split("@")[0]}\n➳ *Link WhatsApp :*\n${text}`, mentions: [m.sender] }, { quoted: fkontak })
 reply(`「 _*Pesan Sukses Terkirim!*_ 」 ✓\n\nPesan Link Group Telah Dikirim Ke Owner,\nHarap Pastikan Tautan Valid!\nKami Akan Cek Nanti!`)                    
 break
 
