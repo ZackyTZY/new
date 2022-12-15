@@ -2773,7 +2773,7 @@ to = await axios.get(`https://waifu.pics/api/nsfw/${command}`)
 }  
 await alpha.sendMessage(m.chat, { image: { url: to.data.url }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
 .catch((err) => {
-reply(lang.err())
+await alpha.sendMessage(m.chat, { image: { url: to }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
 })
 }
 break
