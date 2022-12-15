@@ -2730,7 +2730,6 @@ case 'chika': case 'rikagusriani':  case 'bocil': case 'geayubi': case 'santuy':
 	let to = global.api('alfa', '/api/asupan/'+command, {}, 'apikey')
 try {
 await alpha.sendMessage(m.chat, { video: { url: to }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Lanjut'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅁🄰🄽🄳🄾🄼`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
-.catch((err) => { reply(lang.err())})
 } catch {
 await sendFileFromUrl(from, to, lang.ok(), m)
 .catch((err) => { reply(lang.err())})
