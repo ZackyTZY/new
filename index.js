@@ -2728,11 +2728,13 @@ break
 case 'chika': case 'rikagusriani':  case 'bocil': case 'geayubi': case 'santuy': case 'ukhty': case 'asupan':  case 'delvira': case 'ayu': case 'bunga': case 'aura': case 'nisa': case 'ziva': case 'yana': case 'viona': case 'syania': case 'riri': case 'syifa': case 'mama_gina': case 'alcakenya': case 'mangayutri': {
 	reply(lang.wait())
 	let to = global.api('alfa', '/api/asupan/'+command, {}, 'apikey')
-//sendFileFromUrl(from, to, lang.ok(), m)
-await alpha.sendMessage(m.chat, { image: { url: to }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Lanjut'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅁🄰🄽🄳🄾🄼`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
-.catch((err) => {
-                    reply(lang.err())
-                })
+try {
+await alpha.sendMessage(m.chat, { video: { url: to }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Lanjut'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅁🄰🄽🄳🄾🄼`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
+.catch((err) => { reply(lang.err())})
+} catch {
+await sendFileFromUrl(from, to, lang.ok(), m)
+.catch((err) => { reply(lang.err())})
+}
 }
 break
 case 'china': case 'indonesia': case 'malaysia': case 'thailand': case 'korea': case 'japan': case 'vietnam': case 'jenni': case 'jiso': case 'lisa': case 'rose': {
