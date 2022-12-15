@@ -1010,7 +1010,7 @@ msgFilter.ResetSpam(orang_spam)
 const spamlog = () => {
 console.log('[', chalk.green('SPAM'), ']', time, chalk.green(command || m.mtype), 'from', chalk.green(pushname), 'in', chalk.green(groupName ? groupName : 'Private Chat' ))
 //console.log(color('~>[SPAM]', 'red'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
-msgFilter.addSpam(sender, orang_spam)
+msgFilter.addSpam(m.sender, orang_spam)
 reply('Kamu terdeteksi spam bot tanpa jeda, lakukan perintah setelah 1 detik')
 }
 
@@ -1020,9 +1020,9 @@ msgFilter.addSpam(sender, orang_spam)
 reply('Kamu terdeteksi spam bot tanpa jeda, lakukan perintah setelah 3 detik')
 }*/
 
-if (isCmd && msgFilter.isFiltered(sender) && !m.isGroup) return spamlog()
-if (isCmd && msgFilter.isFiltered(sender) && m.isGroup) return spamlog()
-if (isCmd && args.length < 1 && !isCreator) msgFilter.addFilter(sender)
+if (isCmd && msgFilter.isFiltered(m.sender) && !m.isGroup) return spamlog()
+if (isCmd && msgFilter.isFiltered(m.sender) && m.isGroup) return spamlog()
+if (isCmd && args.length < 1 && !isCreator) msgFilter.addFilter(m.sender)
       
       switch(command) {
         
