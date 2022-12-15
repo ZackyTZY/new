@@ -2737,7 +2737,8 @@ break
 case 'china': case 'indonesia': case 'malaysia': case 'thailand': case 'korea': case 'japan': case 'vietnam': case 'jenni': case 'jiso': case 'lisa': case 'rose': {
 	let to = global.api('alfa', '/api/cecan/'+command, {}, 'apikey')
 reply(lang.wait())
-sendFileFromUrl(from, to, lang.ok(), m)
+//sendFileFromUrl(from, to, lang.ok(), m)
+alpha.sendMessage(m.chat, { image: { url: to }, caption: lang.ok(), footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Lanjut'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅆🄰🄽🄸🅃🄰`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
 .catch((err) => {
                     reply(lang.err())
                 })
