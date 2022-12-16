@@ -565,15 +565,19 @@ exports.ownerOnly = () => {
 }
 
 exports.doneOwner = () => {
-    return `✅  ️Sudah selesai, Owner ~`
+    return `✅ ️Sudah selesai, Owner ~`
 }
 
 exports.groupOnly = () => {
-    return `👥  Command ini hanya bisa digunakan di dalam grup!`
+    return `👥 Command ini hanya bisa digunakan di dalam grup!`
+}
+
+exports.pcOnly = () => { //punya gw
+    return `👤 Command ini hanya bisa digunakan di privat chat!`
 }
 
 exports.adminOnly = () => {
-    return `🙅  Command ini hanya bisa digunakan oleh admin grup!`
+    return `🙅 Command ini hanya bisa digunakan oleh admin grup!`
 }
 
 exports.nhFalse = () => {
