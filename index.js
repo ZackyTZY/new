@@ -5249,6 +5249,7 @@ reply(`Belum Ada User Yang Jadibot`)
 break*/
 
 case 'tinyurl': {
+if (!text) return reply(`Contoh : ${prefix + command} xnxx.com`)
 let res = await fetchJson(`https://apimu.my.id/short/tinyurl?link=${text}`)
 await reply(res.hasil)
 .catch((err) => reply(mess.error))
