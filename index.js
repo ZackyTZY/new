@@ -1010,7 +1010,7 @@ msgFilter.ResetSpam(orang_spam)
 const spamlog = () => {
 console.log('[', chalk.green('SPAM'), ']', time, chalk.green(command || m.mtype), 'from', chalk.green(pushname), 'in', chalk.green(groupName ? groupName : 'Private Chat' ))
 //console.log(color('~>[SPAM]', 'red'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
-msgFilter.addSpam(m.sender, orang_spam)
+msgFilter.addSpam(sender, orang_spam)
 reply('Kamu terdeteksi spam bot tanpa jeda, lakukan perintah setelah 1 detik')
 }
 
@@ -1020,9 +1020,9 @@ msgFilter.addSpam(sender, orang_spam)
 reply('Kamu terdeteksi spam bot tanpa jeda, lakukan perintah setelah 3 detik')
 }*/
 
-if (isCmd && msgFilter.isFiltered(m.sender) && !m.isGroup) return spamlog()
-if (isCmd && msgFilter.isFiltered(m.sender) && m.isGroup) return spamlog()
-if (isCmd && args.length < 1 && !isCreator) msgFilter.addFilter(m.sender)
+if (isCmd && msgFilter.isFiltered(sender) && !m.isGroup) return spamlog()
+if (isCmd && msgFilter.isFiltered(sender) && m.isGroup) return spamlog()
+if (isCmd && args.length < 1 && !isCreator) msgFilter.addFilter(sender)
       
       switch(command) {
         
@@ -4744,7 +4744,7 @@ gak share gak bisa masuk🙏`
 
     case 'mute2': case 'adminonly': case 'onlyadmin': case 'hanyaadmin':
         if (!m.isGroup) return reply(lang.groupOnly())
-        if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+        if (!isGroupAdmins && !isCreator) return reply(lang.adminOnly())
         if (args[0] === "on") {
 		if (db.data.chats[m.chat].AdminOnly) return reply(lang.OnBef())
         db.data.chats[m.chat].AdminOnly = true
@@ -4837,6 +4837,7 @@ case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case '
             break
 
 case 'joins':
+if (m.isGroup) return reply(lang.pcOnly())
 if (!text) return reply(`Mana linknya?\n\nContoh: *${prefix + command}* ${myweb}`)
 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(lang.erorLink())
 alpha.sendMessage(`62852364835040@s.whatsapp.net`, {text: `╭━━━━━━━━━━━━━━━┈ꕥ\n│  _*☯︎〔 LINK GROUP 〕✾*_\n╰━━━━━━━━━━━━━━━┈ ⳹\n✥ *Dikirim Oleh :* @${m.sender.split("@")[0]}\n➳ *Link WhatsApp :*\n${text}`, mentions: [m.sender] }, { quoted: fkontak })
@@ -5227,7 +5228,7 @@ break
 		   break
 
 /*case 'jadibot': {
-if (m.isGroup) return reply('Hanya bisa digunakan di privat chat')
+if (m.isGroup) return reply(lang.pcOnly())
 jadibot(alpha, m, m.chat)
 }
 break
