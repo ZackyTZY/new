@@ -631,8 +631,8 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
      
         if (m.isGroup && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
         if (isBlacklist) {                 
-        	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-			await alpha.updateBlockStatus(m.sender, 'block')
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove')
+			await alpha.updateBlockStatus(sender, 'block')
         }
      }
         // Tes \\
@@ -2793,8 +2793,8 @@ if (!db.data.chats[m.chat].nsfw) return reply(lang.OffNsfw())
 reply(lang.wait())
 let to = global.api('alfa', '/api/nsfw/'+command, {}, 'apikey')
 let tu = await axios.get(`https://waifu.pics/api/nsfw/${command}`)  
-await alpha.sendMessage(m.chat, { image: { url: to }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
-.catch((err) => { alpha.sendMessage(m.chat, { image: { url: tu.data.url }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
+await alpha.sendMessage(m.chat, { image: { url: tu.data.url }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
+.catch((err) => { alpha.sendMessage(m.chat, { image: { url: to }, caption: `Enjoy Hambaque!`, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄽🅂🄵🅆`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })   
 //reply(lang.err())
 })
 }
@@ -5247,6 +5247,13 @@ alpha.sendMessage(m.chat,{text:te,mentions: [y], },{quoted:m})
 reply(`Belum Ada User Yang Jadibot`)
 }
 break*/
+
+case 'tinyurl': {
+let res = await fetchJson(`https://apimu.my.id/short/tinyurl?link=${text}`)
+await reply(res.hasil)
+.catch((err) => reply(mess.error))
+}
+break
 
 case 'testing': //try{
 if (!isCreator) return       
