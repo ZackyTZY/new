@@ -5598,8 +5598,8 @@ if (!m.isGroup && !m.key.fromMe && !isCreator) { //punya gw
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? alpha.user.jid : m.sender
     let name = await alpha.getName(who)
     let caption = `👋 Hai *${pushname}*, Ada yang bisa *${botname}* bantu?\nKetik *.menu* untuk melihat list fitur bot`
-    let buttonfirst = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Youtube', url: `${youtube}` }}, { quickReplyButton: { displayText: '📖 List Menu', id: 'command' }}, { quickReplyButton: { displayText: '🙍‍♂️ Owner', id: 'owner' }}, { quickReplyButton: { displayText: '💰 Donation', id: 'donasi' }}]
-    alpha.sendMessage(m.chat, { viewOnce : true, mentions: [m.sender], text: caption, templateButtons: buttonfirst, footer: ownername }, { quoted: m })
+    let buttonfirst = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Youtube', url: `${youtube}` }}, { quickReplyButton: { displayText: '📖 All Menu', id: 'allmenu' }}, { quickReplyButton: { displayText: 'Owner 🙍‍♂️', id: 'owner' }}, { quickReplyButton: { displayText: '💰 Donation 💸', id: 'donasi' }}]
+    alpha.sendMessage(m.chat, { viewOnce : true, text: caption, templateButtons: buttonfirst, footer: ownername, mentions: [m.sender] }, { quoted: m })
     user.firstChat = new Date * 1
 }
 
