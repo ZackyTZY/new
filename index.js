@@ -1580,7 +1580,7 @@ let media = await quoted.download()
 let encmedia = await alpha.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
 await fs.unlinkSync(encmedia)
 } else if (/video/.test(mime)) {
-if ((qmsg).seconds > 11) return reply(lang.NoToStik(prefix, command))
+if (qmsg) return reply(lang.NoToStik(prefix, command))
 let media = await quoted.download()
 let encmedia = await alpha.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: author, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅅🄸🄳🄴🄾 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
 await fs.unlinkSync(encmedia)
@@ -2470,7 +2470,7 @@ let media = await quoted.download()
 let encmedia = await alpha.sendImageAsSticker(m.chat, media, m, { packname: text.split("|")[0], author: text.split("|")[1], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄸🄼🄰🄶🄴 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
 await fs.unlinkSync(encmedia)
 } else if (/video/.test(mime)) {
-if ((qmsg).seconds > 11) return reply(lang.NoToStik(prefix, command))
+if (qmsg) return reply(lang.NoToStik(prefix, command))
 let media = await quoted.download()
 let encmedia = await alpha.sendVideoAsSticker(m.chat, media, m, { packname: text.split("|")[0], author: text.split("|")[1], contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅅🄸🄳🄴🄾 ⓉⓄ 🅂🅃🄸🄲🄺🄴🅁`, body: `${ownername}`, mediaType: 1, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}})
 await fs.unlinkSync(encmedia)
@@ -5119,7 +5119,7 @@ case 'apakah':
 if (!text) return reply(`Tambahkan Text!\nContoh : ${prefix + command} dia sering coli `)
 const lel = [`Iya`, `Mungkin`, `Tidak`, `Mana gw tau, tanya sama bapak lu aja`, `Gw gak tau`, `YNTKTS`, `Tanya sama si yesus, dia maha tau`, `Bisa jadi`, `Mana gw tau`]
 const kahk = lel[Math.floor(Math.random() * lel.length)]
-alpha.sendMessage(from, { text: `*Pertanyaan :* Apakah ${q}?\n*Jawaban :* ${kahk}` }, { quoted: m })
+alpha.sendMessage(from, { text: `*Pertanyaan :* Apakah ${q}\n*Jawaban :* ${kahk}` }, { quoted: m })
 break
 
 case 'rate':
@@ -5279,6 +5279,7 @@ break
                 let media = await alpha.downloadAndSaveMediaMessage(qmsg)
                 let webpToMp4 = await webp2mp4File(media)
                 await alpha.sendMessage(m.chat, { video: { url: webpToMp4.result }, caption: 'Nih memex', contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅂🅃🄸🄲🄺🄴🅁 ⓉⓄ 🅅🄸🄳🄴🄾`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })
+                //await alpha.sendMessage(m.chat, { video: { url: webpToMp4.result }, caption: `Nih memex`, footer: `© ${botname}`, buttons: [{buttonId: ` `, buttonText: {displayText: ' '}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅂🅃🄸🄲🄺🄴🅁 ⓉⓄ 🅅🄸🄳🄴🄾`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })               
                 await fs.unlinkSync(media)
             }
             break
