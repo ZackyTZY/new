@@ -315,7 +315,7 @@ exports.StalkIg = () => {
     return `Masukkan username`
 }
 exports.Tomp4 = (prefix, command) => {
-    return `Reply stiker gif dengan caption ${prefix + command}`
+    return `Reply stiker gif dengan caption *${prefix + command}*`
 }
 exports.Tourl = (prefix, command) => {
     return `Kirim/Reply Media Dengan Caption ${prefix + command}`
