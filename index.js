@@ -1489,16 +1489,16 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 				{
 					"urlButton": {
 						"displayText": "Website",
-						"url": `${myweb}`
+						"url": `${youtube}`
 						}
 					}
 				]
 			    var butod = [                    
                     {buttonId: 'command', buttonText: {displayText: 'List Command'}, type: 1}
                 ]
-				await alpha.send5ButImg(from, lang.rules(prefix), `© ${ownername}`,gam, but , { userJid: m.chat, quoted: m })
-                await alpha.sendButImg(from, lang.rules(prefix) , `© ${ownername}`,gam, butod , { userJid: m.chat, quoted: m })
-        
+				//await alpha.send5ButImg(from, lang.rules(prefix), `© ${ownername}`,gam, but , { userJid: m.chat, quoted: m })
+                //await alpha.sendButImg(from, lang.rules(prefix), `© ${ownername}`,gam, butod , { userJid: m.chat, quoted: m })
+                await alpha.sendMessage(from, { viewOnce : true, caption: lang.rules(prefix), image: gam, templateButtons: but, footer: `© ${ownername}`}, { userJid: m.chat, quoted: m })
 				}
             break
             
