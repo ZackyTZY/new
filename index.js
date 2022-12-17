@@ -4919,7 +4919,7 @@ break
                 /*let qualityvoice = args[1] ? args[1] : '128kbps'
                 let mediaptt = await yta(text, qualityvoice)
                 let lolvoice = await alpha.reSize(mediaptt.thumb, 300, 150)*/
-                if (ytvoice.filesize >= 100000) return reply('File Melebihi Batas '+ytvoice.audio.audio)
+                if (ytvoice.filesize >= 100000000) return reply('File Melebihi Batas '+ytvoice.audio.audio)
                 alpha.sendMessage(m.chat, { audio: { url: ytvoice.audio.audio }, mimetype: 'audio/mpeg', ptt: true, fileName: `${ytvoice.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅈🄾🅄🅃🅄🄱🄴 🅅🄾🄸🄲🄴`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: thumbvc, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
             }
             break
@@ -4935,7 +4935,7 @@ break
                 //let quality = args[1] ? args[1] : '128kbps'
                 //let media = await yta(text)
                 //let lolmp3 = await alpha.reSize(media.thumb, 300, 150)
-                if (ytaudio.filesize >= 100000) return reply('File Melebihi Batas '+ytaudio.audio.audio)
+                if (ytaudio.filesize >= 100000000) return reply('File Melebihi Batas '+ytaudio.audio.audio) // 100 MB
                 alpha.sendMessage(m.chat, { document: { url: ytaudio.audio.audio }, mimetype: 'audio/mpeg', fileName: `${ytaudio.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅈🄾🅄🅃🅄🄱🄴 🄼🄿③`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: thumbmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
                 //alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, caption: `◪ Title : ${media.title}\n◪ File Size : ${media.filesizeF}\n◪ Url : ${isUrl(text)}\n◪ Ext : MP3\n⭔ Resolusi : ${quality}`, footer: `© ${botname}`, buttons: [{buttonId: `mp4 ${isUrl(text)}`, buttonText: {displayText: '▷ Video'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅈🄾🅄🅃🅄🄱🄴 🄼🄿③`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m }).catch((e) => reply(`Download Sendiri:\n${media.dl_link}`))
                 //alpha.sendMessage(m.chat, { document: { url: media[0].link }, mimetype: 'audio/mpeg'})
@@ -4954,7 +4954,7 @@ break
                 var thumbvideo = await getBuffer(ytvideo.thumbnail)                
                 /*let medias = await ytv(text, qualitye)
                 let lolmp4 = await alpha.reSize(medias.thumb, 300, 150)*/
-                if (ytvideo.filesize >= 100000) return reply('File Melebihi Batas '+ytvideo.mp4.download)                
+                if (ytvideo.filesize >= 100000000) return reply('File Melebihi Batas '+ytvideo.mp4.download)                
                 //alpha.sendMessage(m.chat, { video: { url: medias.dl_link }, mimetype: 'video/mp4', fileName: `${medias.title}.mp4`, caption: `⭔ Title : ${medias.title}\n⭔ File Size : ${medias.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '360p'}`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })                            
                 alpha.sendMessage(m.chat, { video: { url: ytvideo.mp4.download }, jpegThumbnail: thumbvideo, caption: `◪ Title : ${ytvideo.title}\n◪ File Size : ${ytvideo.mp4.size}\n◪ Url : ${isUrl(text)}\n◪ Ext : MP4\n⭔ Resolusi : ${qualitye}p`, footer: `© ${botname}`, buttons: [{buttonId: `mp3 ${isUrl(text)}`, buttonText: {displayText: '♫ Audio'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅈🄾🅄🅃🅄🄱🄴 🄼🄿④`, body:`${time}`, mediaType: 2, thumbnail: pp_bot, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m })
                 .catch((err) => reply(`Download Sendiri:\n${ytvideo.mp4.download}`))
@@ -5284,6 +5284,25 @@ break
             }
             break
 
+case 'groupbot': case 'grupbot': case 'botgroup': case 'botgrup': {
+let teks = `*ωαяgα +62*
+https://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj
+
+*ʜᴜᴍᴀɴ'ɪᴛʏ*
+https://chat.whatsapp.com/HzfeafTz6kiEtTXh3lTUG3
+
+*𝙰𝙺𝙰𝙶𝙰𝙼𝙸 || 𝕰𝖒𝖕𝖎𝖗𝖊'𝖘 ⚔️*
+https://chat.whatsapp.com/KaNrmIHqWeg6hFWhgYUzhb
+
+*Kåûm Rêßāhåñ*
+https://chat.whatsapp.com/Dvz9SLP0UE6BPJX0Z1hhqu
+
+*ᏨᎾᎶᎯᏁ ᏨᎬᏨᎯᏁ*
+https://chat.whatsapp.com/KCsKMAcsvVd1SCyXZIeBUR`
+await alpha.sendMessage(m.chat, { document: fs.readFileSync('./storage/doc/keith.xlsx'), mimetype: docs, fileName: `ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ᴊᴏɪɴ`, fileLength: 1000000000, pageCount: 2022, caption: teks, contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🄶🅁🄾🅄🄿 🄱🄾🅃`, body:`${time}`, mediaType: 1, thumbnail: pp_bot, renderLargerThumbnail: true, sourceUrl: `${myweb}`, mediaUrl: `${myweb}` }}}, { quoted: m })
+}
+break
+
 case 'testing': //try{
 if (!isCreator) return       
 await sendReact("⏳")
@@ -5598,7 +5617,7 @@ if (!m.isGroup && !m.key.fromMe && !isCreator) { //punya gw
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? alpha.user.jid : m.sender
     let name = await alpha.getName(who)
     let caption = `👋 Hai *${pushname}*, Ada yang bisa *${botname}* bantu?\nKetik *.menu* untuk melihat list fitur bot`
-    let buttonfirst = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Youtube', url: `${youtube}` }}, { quickReplyButton: { displayText: '📖 All Menu', id: 'allmenu' }}, { quickReplyButton: { displayText: 'Owner 🙍‍♂️', id: 'owner' }}, { quickReplyButton: { displayText: '💰 Donation 💸', id: 'donasi' }}]
+    let buttonfirst = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Youtube', url: `${youtube}` }}, { quickReplyButton: { displayText: '👤 Group Bot', id: 'groupbot' }}, { quickReplyButton: { displayText: 'Rules 📃', id: 'rules' }}, { quickReplyButton: { displayText: '💰 Donation 💸', id: 'donasi' }}]
     alpha.sendMessage(m.chat, { viewOnce : true, text: caption, templateButtons: buttonfirst, footer: ownername, mentions: [m.sender] }, { quoted: m })
     user.firstChat = new Date * 1
 }
