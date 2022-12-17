@@ -498,7 +498,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         }
      }     
      
-     if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
+     /*if (m.isGroup && !db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
             if (budy.match(/(chat.whatsapp.com)/gi)) {
             let linkgrupo = await alpha.groupInviteCode(m.chat)
         	let linkgrup = linkgrupo || lenkgrup
@@ -506,7 +506,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	await sendReact("🖕🏿")
         	await alpha.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})        
         }
-     }
+     }*/
 		
 		// Anti Virus \\
 	  if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
