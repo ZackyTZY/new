@@ -5278,7 +5278,7 @@ break
                 let { webp2mp4File } = require('./lib/uploader')
                 let media = await alpha.downloadAndSaveMediaMessage(qmsg)
                 let webpToMp4 = await webp2mp4File(media)
-                await alpha.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Nih memex', contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅂🅃🄸🄲🄺🄴🅁 ⓉⓄ 🅅🄸🄳🄴🄾`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })
+                await alpha.sendMessage(m.chat, { video: { url: webpToMp4.result }, caption: 'Nih memex', contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅂🅃🄸🄲🄺🄴🅁 ⓉⓄ 🅅🄸🄳🄴🄾`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: pp_bot, sourceUrl: `${myweb}`}}}, { quoted: m })
                 await fs.unlinkSync(media)
             }
             break
