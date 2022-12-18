@@ -5072,7 +5072,7 @@ break*/
               {buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}
         ]*/
         let butbcgc = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Website', url: `${youtube}` }}, { quickReplyButton: { displayText: '⋮☰ мєηυ', id: 'menu' }}, { quickReplyButton: { displayText: 'Rules ⎙', id: 'rules' }}, { quickReplyButton: { displayText: '⫹⫺ Donation ⫹⫺', id: 'donasi' }}]        
-        await alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
+        //await alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
         //await alpha.sendMessage(m.chat, { image: { url: res }, caption: text, footer: `© ${botname}`, buttons: [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄱🅁🄾🄰🄳🄲🄰🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}, { quoted: m })
         await alpha.sendMessage(i, { viewOnce : true, location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n\n${text}`, templateButtons: butbcgc, footer: `© ${botname}` }, { quoted: m })    
         }
