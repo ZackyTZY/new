@@ -5618,7 +5618,7 @@ if (!m.isGroup && !m.key.fromMe && !isCreator) { //punya gw
     if (new Date - user.firstChat < cooldown) return // setiap 24 jam sekali
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? alpha.user.jid : m.sender
     let name = await alpha.getName(who)
-    let caption = `👋 Hai *${pushname}*, Ada yang bisa *${botname}* bantu?\nKetik *.menu* untuk melihat list fitur bot`
+    let caption = `👋 Hai *${pushname}*, Ada yang bisa *${botname}* bantu?\nKetik *${prefix}allmenu* untuk melihat list fitur bot`
     let buttonfirst = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Youtube', url: `${youtube}` }}, { quickReplyButton: { displayText: '👤 Group Bot', id: 'groupbot' }}, { quickReplyButton: { displayText: 'Rules 📃', id: 'rules' }}, { quickReplyButton: { displayText: '💰 Donation 💸', id: 'donasi' }}]
     await alpha.sendMessage(m.chat, { viewOnce : true, text: caption, templateButtons: buttonfirst, footer: ownername, mentions: [m.sender] }, { quoted: m })
     user.firstChat = new Date * 1
