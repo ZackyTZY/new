@@ -510,7 +510,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 		
 		// Anti Virus \\
 	  if (m.isGroup && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner && isBotAdmins){
-	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ        	
+	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|❚|𝀲|ࣧ|ࣻ|ۜ|ࣨ|ۧ|҈|᳕|᥋|২|อ|เ|ม|ล|ꭙ|Ȣ|৪|໑|๗|𖣔|࿋|ℭ|ム|ℕ|⫷|●|⫸|ཌྷ|្|ϟ|➊|㙾|㚗|؂|؃|؀|؁|؄|؅|0000000|1111111|7777777|8888888|9999999)/gi)) { // ꪶ, ꫂ        	
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)
         	//alpha.sendMessage(m.chat, { sticker: fs.readFileSync("./storage/sticker/heker.webp") }, { quoted: m })        	
         	await sendStickerVideo(heker).then(async res => 
@@ -5071,7 +5071,7 @@ break*/
         /*let butbcgc = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},
               {buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}
         ]*/
-        let butbcgc = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Website', url: `${youtube}` }}, { quickReplyButton: { displayText: '⋮☰ мєηυ', id: 'menu' }}, { quickReplyButton: { displayText: 'Rules ⎙', id: 'rules' }}, { quickReplyButton: { displayText: '⫹⫺ Donation ⫹⫺', id: 'donasi' }}]        
+        let butbcgc = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Website', url: `${youtube}` }}, { quickReplyButton: { displayText: '⋮☰ Menu', id: 'menu' }}, { quickReplyButton: { displayText: 'Rules ⎙', id: 'rules' }}, { quickReplyButton: { displayText: '⫹⫺ Donation ⫹⫺', id: 'donasi' }}]        
         //await alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
         //await alpha.sendMessage(m.chat, { image: { url: res }, caption: text, footer: `© ${botname}`, buttons: [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄱🅁🄾🄰🄳🄲🄰🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}, { quoted: m })
         await alpha.sendMessage(i, { viewOnce : true, location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n\n${text}`, templateButtons: butbcgc, footer: `© ${botname}` }, { quoted: m })    
