@@ -5068,11 +5068,13 @@ break*/
         await sleep(1500)
         //alpha.sendMessage(i, { text: text, footer: `© ${ownername}`, templateButtons: [{"urlButton": {"displayText": "YouTube Creator","url": `${youtube}`}},{"urlButton": {"displayText": "Rest Api's","url": `${myweb}`}},{"quickReplyButton": {"displayText": "Menu","id": 'menu'}},{"quickReplyButton": {"displayText": "Owner","id": 'owner'}},{"quickReplyButton": {"displayText": "Donasi","id": 'donasi'}}]})                    
         let bbbcgc = await alpha.reSize(pp_bot, 300, 300)
-        let butbcgc = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},
+        /*let butbcgc = [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},
               {buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}
-        ]
+        ]*/
+        let butbcgc = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Website', url: `${youtube}` }}, { quickReplyButton: { displayText: '⋮☰ мєηυ', id: 'menu' }}, { quickReplyButton: { displayText: 'Rules ⎙', id: 'rules' }}, { quickReplyButton: { displayText: '⫹⫺ Donation ⫹⫺', id: 'donasi' }}]        
         await alpha.sendMessage(i, { location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n\n${text}`, footer: `© ${botname}`, buttons: butbcgc })         
         //await alpha.sendMessage(m.chat, { image: { url: res }, caption: text, footer: `© ${botname}`, buttons: [{buttonId: `${prefix}menu`, buttonText: {displayText: '⋮☰ мєηυ'}, type: 1},{buttonId: `${prefix}owner`, buttonText: {displayText: 'σωηєя 亗'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄱🅁🄾🄰🄳🄲🄰🅂🅃`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${instagram}`}}}, { quoted: m })
+        await alpha.sendMessage(i, { viewOnce : true, location: { jpegThumbnail: bbbcgc }, caption: `*「 BROADCAST GROUP 」*\n\n${text}`, templateButtons: butbcgc, footer: `© ${botname}` }, { quoted: m })    
         }
         reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
         break
@@ -5618,7 +5620,7 @@ if (!m.isGroup && !m.key.fromMe && !isCreator) { //punya gw
     let name = await alpha.getName(who)
     let caption = `👋 Hai *${pushname}*, Ada yang bisa *${botname}* bantu?\nKetik *.menu* untuk melihat list fitur bot`
     let buttonfirst = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Youtube', url: `${youtube}` }}, { quickReplyButton: { displayText: '👤 Group Bot', id: 'groupbot' }}, { quickReplyButton: { displayText: 'Rules 📃', id: 'rules' }}, { quickReplyButton: { displayText: '💰 Donation 💸', id: 'donasi' }}]
-    alpha.sendMessage(m.chat, { viewOnce : true, text: caption, templateButtons: buttonfirst, footer: ownername, mentions: [m.sender] }, { quoted: m })
+    await alpha.sendMessage(m.chat, { viewOnce : true, text: caption, templateButtons: buttonfirst, footer: ownername, mentions: [m.sender] }, { quoted: m })
     user.firstChat = new Date * 1
 }
 
