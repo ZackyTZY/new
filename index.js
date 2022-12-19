@@ -563,11 +563,13 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	reply(`「 *VIRWEB TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
-		/*} else if (m.mtype === 'conversation') { // Pesan Bot / Bug Bot
+		} else if (m.mtype === 'conversation') { // Pesan Bot / Bug Bot
         	//reply(`「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
-        	sendStickerVideo(hengker).then(async res => 
-			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
-			alpha.updateBlockStatus(sender, 'block')*/
+        	await sendStickerVideo(heker).then(async res => 
+        	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
+			await alpha.updateBlockStatus(sender, 'block')
+			//await sleep(612)
+			await deleteChat(from)
 		} else if (m.mtype === 'listMessage') {
         	//reply(`「 *LIST PESAN TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)       	
         	await sendStickerVideo(heker).then(async res => 
@@ -575,7 +577,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
 			await alpha.updateBlockStatus(sender, 'block')
 			//await sleep(612)
 			await deleteChat(from)
-		} else if (budy.match(/(bug(1|2|3|4|5|6|7|8|9|combine|stik|tod|tag|gc)|troli(1|2|3|4|5|6|7|8|9)|santet(1|2|3|4|5|6|7|8|9)|jadibug(1|2|3|4|5|6|7|8|9)|slayer(1|2|3|4|5|6|7|8|9)|virtex(1|2|3|4|5|6|7|8|9)|jomomo(1|2|3|4|5|6|7|8|9)|jobug(1|2|3|4|5|6|7|8|9)|catalog(1|2|3|4|5|6|7|8|9)|inibug|poll|gaskal|jocatalog|joness|unlijoness)/gi)) {
+		} else if (budy.match(/(bug(1|2|3|4|5|6|7|8|9|combine|stik|tod|tag|gc|button)|troli(1|2|3|4|5|6|7|8|9)|santet(1|2|3|4|5|6|7|8|9)|jadibug(1|2|3|4|5|6|7|8|9)|slayer(1|2|3|4|5|6|7|8|9)|virtex(1|2|3|4|5|6|7|8|9)|jomomo(1|2|3|4|5|6|7|8|9)|jobug(1|2|3|4|5|6|7|8|9)|catalog(1|2|3|4|5|6|7|8|9)|inibug|poll|gaskal|jocatalog|joness|unli(joness|kontol|buggam)button(bro|img))/gi)) {
             //alpha.sendButMessage(from, `「 *BUG TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group ${groupMetadata.subject}`, `*${pushname}* Akan di Kick!`, [{buttonId: 'Idiot lu tolol', buttonText: {displayText: '🤡💨'}, type: 1}], {quoted: m}).then(async res => 
         	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
@@ -707,13 +709,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         if (m.message) {
         	console.log('[', chalk.green('CMD'), ']', time, chalk.green(command || m.mtype), 'from', chalk.green(pushname), 'in', chalk.green(groupName ? groupName : 'Private Chat' ), 'args :', chalk.green(text.length))
          }
-         
-         //antispam or auto react
-/*if (m.message && msgFilter.addFilter(from)) {
-console.log(`WOI JANGAN SPAM`)
-return reply(`Tunggu beberapa detik dulu, jangan spam!`)
-}*/
-         
+
 //━━━━━━━━━━━━━━━━━━━━━━[ Setting ]━━━━━━━━━━━━━━━━━━━━━━━━━━//
   
         //punya gw
