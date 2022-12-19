@@ -118,7 +118,7 @@ exports.BotSelf = () => {
     return `Sukses Ganti Ke Mode Self\n\nUntuk mengubah ke mode public silahkan gunakan nomor bot`
 }
 exports.NoToStik = (prefix, command) => {
-    return `Kirim/Reply Gambar/Video Dengan Caption ${prefix + command}\n\nDurasi Sticker Video 1-9 Detik`
+    return `Kirim/Reply Gambar/Video Dengan Caption ${prefix + command}\n\nDurasi Sticker Video 1-14 Detik`
 }
 exports.NoPpBot = (prefix, command) => {
     return `Kirim/Reply Image Dengan Caption ${prefix + command}`
