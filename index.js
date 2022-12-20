@@ -610,10 +610,10 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
         	//global.db.data.users[m.sender].banned = true
             await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 			await alpha.updateBlockStatus(m.sender, 'block')               
-        } else if (m.sender.startsWith('91' || '91')) {
+        } else if (m.sender.startsWith('91')) {
         	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 			await alpha.updateBlockStatus(m.sender, 'block')        
-        } else if (m.sender.startsWith('92' || '92')) {
+        } else if (m.sender.startsWith('92')) {
         	await alpha.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 			await alpha.updateBlockStatus(m.sender, 'block')
         }
@@ -4879,12 +4879,14 @@ break
                 let yts = require("yt-search")
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
-                var buttonsplay = [
+                /*var buttonsplay = [
                     {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
                     {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: '▷ Video'}, type: 1}
-                ]
+                ]*/
+                let buttonsplay = [{urlButton: { displayText: 'Website', url: `${youtube}` }}, { quickReplyButton: { displayText: '♫ Audio', id: `ytmp3 ${anu.url}` }}, { quickReplyButton: { displayText: '▷ Video', id: `ytmp4 ${anu.url}` }}]    
                 let lolplay = await alpha.reSize(anu.thumbnail, 300, 150)
-                let buttonPlay = {                
+                let buttonPlay = {
+                    viewOnce : true, 
                     location: { jpegThumbnail: lolplay },
                     caption: `
 *────「 YOUTUBE PLAY 」────*
@@ -4897,7 +4899,7 @@ break
 *🔗 Url :* ${anu.url}
 *📜 Description :* ${anu.description}`,
                     footer: `© ${botname}`,
-                    buttons: buttonsplay,
+                    templateButtons: buttonsplay,
                     headerType: 4
                 }
                 alpha.sendMessage(m.chat, buttonPlay, { quoted: m })   
