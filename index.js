@@ -4899,8 +4899,8 @@ break
 *🔗 Url :* ${anu.url}
 *📜 Description :* ${anu.description}`,
                     footer: `© ${botname}`,
-                    templateButtons: buttonsplay,
-                    headerType: 4
+                    templateButtons: buttonsplay
+                    //headerType: 4
                 }
                 alpha.sendMessage(m.chat, buttonPlay, { quoted: m })   
                 .catch((err) => reply(mess.tence))
