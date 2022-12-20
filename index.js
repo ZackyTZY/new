@@ -585,7 +585,7 @@ var docs = documents[Math.floor(Math.random() * documents.length)]
             if (m.isBaileys && m.key.fromMe) return
             //await sleep(612)
 			await deleteChat(from)	
-	    } else if (budy.length > 3000) {
+	    } else if (budy.length > 5000) {
         	//reply(`「 *VIRTEX TERDETEKSI* 」\n\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`)        	
         	await sendStickerVideo(heker).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))        				
