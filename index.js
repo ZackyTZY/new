@@ -4829,6 +4829,7 @@ gak share gak bisa masuk🙏`
 case 'goblok': case 'stupid': case 'foolish': case 'kontol': case 'idiot': case 'gay': case 'lesbi': case 'bastard': case 'stubble':
 case 'dog': case 'fuck': case 'noob': case 'horny': case 'wibu': case 'handsome': case 'beautiful':case 'cute': case 'ugly': case 'pretty': 
 case 'lesbian': case 'nigger': case 'nigga': case 'dumbass': case 'sexy': case 'fuckboy': case 'playboy': case 'fuckgirl':case 'playgirl':
+case 'asu': case 'memek':
       if (!m.isGroup) return reply(lang.groupOnly())
             let member = participants.map(a => a.id)
             let me = m.sender
@@ -4932,10 +4933,11 @@ break
                 //let media = await yta(text)
                 //let lolmp3 = await alpha.reSize(media.thumb, 300, 150)
                 if (ytaudio.filesize >= 100000000) return reply('File Melebihi Batas '+ytaudio.audio.audio) // 100 MB
-                alpha.sendMessage(m.chat, { document: { url: ytaudio.audio.audio }, mimetype: 'audio/mpeg', fileName: `${ytaudio.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅈🄾🅄🅃🅄🄱🄴 🄼🄿③`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: thumbmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })            
+                alpha.sendMessage(m.chat, { document: { url: ytaudio.audio.audio }, mimetype: 'audio/mpeg', fileName: `${ytaudio.title}.mp3`, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅈🄾🅄🅃🅄🄱🄴 🄼🄿③`, body: `${ownername}`, mediaType: 2, thumbnailUrl: ``, thumbnail: thumbmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}`}}}, { quoted: m })
                 //alpha.sendMessage(m.chat, { document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`, caption: `◪ Title : ${media.title}\n◪ File Size : ${media.filesizeF}\n◪ Url : ${isUrl(text)}\n◪ Ext : MP3\n⭔ Resolusi : ${quality}`, footer: `© ${botname}`, buttons: [{buttonId: `mp4 ${isUrl(text)}`, buttonText: {displayText: '▷ Video'}, type: 1},{buttonId: `ytptt ${isUrl(text)}`, buttonText: {displayText: '► Voice'}, type: 1}], contextInfo:{ externalAdReply: { showAdAttribution: true, title:`🅈🄾🅄🅃🅄🄱🄴 🄼🄿③`, body:`${time}`, mediaType: 2, thumbnail: lolmp3, sourceUrl: `https://${tanggal(new Date())}`, mediaUrl: `${youtube}` }}}, { quoted: m }).catch((e) => reply(`Download Sendiri:\n${media.dl_link}`))
                 //alpha.sendMessage(m.chat, { document: { url: media[0].link }, mimetype: 'audio/mpeg'})
                 //sendFileFromUrl(from,media[0].link,`woi`,m)
+                .catch((e) => reply(`Download Sendiri:\n${ytaudio.audio.audio}`))
              }
             break
 
