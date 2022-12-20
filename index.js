@@ -4902,7 +4902,7 @@ break
                     templateButtons: buttonsplay
                     //headerType: 4
                 }
-                alpha.sendMessage(m.chat, buttonPlay, { quoted: m })   
+                await alpha.sendMessage(m.chat, buttonPlay, { quoted: m })   
                 .catch((err) => reply(mess.tence))
             }         
             break
