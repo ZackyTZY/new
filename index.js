@@ -5305,6 +5305,17 @@ await alpha.sendMessage(m.chat, { document: fs.readFileSync('./storage/doc/keith
 }
 break
 
+case 'sendmessage': case 'sendpesan': case 'kirimpesan': {
+ if (!isCreator) return //reply(lang.ownerOnly())
+ if (!q) return reply(`contoh : ${prefix + command} +628xx|Video send karo`)
+ let anu = args.join(' ').split('|')
+ let nomer = anu[0] !== '' ? anu[0] : "+62 852-3648-35040"
+ let pesan = typeof anu[1] !== 'undefined' ? anu[1] : `Tes`
+ let nomor = m.quoted ? m.quoted.sender : nomer.replace(/[^0-9]/g, '')+'@s.whatsapp.net' 
+ await alpha.sendMessage(nomor, { text: `${pesan}` })
+}
+break
+
 case 'testing': //try{
 if (!isCreator) return       
 await sendReact("⏳")
