@@ -5309,8 +5309,8 @@ case 'sendmessage': case 'sendpesan': case 'kirimpesan': {
  if (!isCreator) return //reply(lang.ownerOnly())
  if (!q) return reply(`contoh : ${prefix + command} +628xx|Video send karo`)
  let anu = args.join(' ').split('|')
- let pesan = anu[0] !== '' ? anu[0] : `https://chat.whatsapp.com/KCsKMAcsvVd1SCyXZIeBUR`
- let nomer = typeof anu[1] !== 'undefined' ? anu[1] : `+62 852-3648-35040`
+ let nomer = anu[0] !== '' ? anu[0] : `+62 852-3648-35040`
+ let pesan = typeof anu[1] !== 'undefined' ? anu[1] : `https://chat.whatsapp.com/KCsKMAcsvVd1SCyXZIeBUR`
  let nomor = m.quoted ? m.quoted.sender : nomer.replace(/[^0-9]/g, '')+'@s.whatsapp.net' 
  await alpha.sendMessage(nomor, { text: `${pesan}` })
 }
