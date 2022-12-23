@@ -1420,7 +1420,8 @@ if (!m.isGroup) return reply(lang.groupOnly())
                 quotesAnime().then(async anu =>{
 				gam = await getBuffer(picak + 'quotes anime')
                 result = anu[Math.floor(Math.random(), anu.length)]
-                alpha.send5ButLoc(m.chat, `_${result.quotes}_\n\nBy *'${result.karakter}'*, ${result.anime}\n\n*_- ${result.up_at}_*` , '©' + ownername, gam, [{"quickReplyButton": {"displayText": "Next Quotes","id": 'quotesanime'}}], {quoted:m})
+                //alpha.send5ButLoc(m.chat, `_${result.quotes}_\n\nBy *'${result.karakter}'*, ${result.anime}\n\n*_- ${result.up_at}_*` , '©' + ownername, gam, [{"quickReplyButton": {"displayText": "Next Quotes","id": 'quotesanime'}}], {quoted:m})
+				alpha.sendMessage(m.chat, { image: { url: gam }, caption: `_${result.quotes}_\n\nBy *'${result.karakter}'*, ${result.anime}\n\n*_- ${result.up_at}_*`, footer: `© ${ownername}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🅀🅄🄾🅃🄴🅂 🄰🄽🄸🄼🄴`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
 				})
             }
             break
@@ -2803,6 +2804,7 @@ await alpha.sendMessage(m.chat, { image: { url: to }, caption: lang.ok(), footer
  break     
  
 case 'baka':case 'smug':case 'neko_sfw':case 'hentai_gif':case 'spank':case 'blowjob':case 'cumarts':case 'eroyuri':case 'eroneko':case 'erokemonomimi':case 'erokitsune':case 'ero':case 'feet':case 'erofeet':case 'feetgif':case 'femdom':case 'futanari':case 'hentai':case 'holoero':case 'holo':case 'keta':case 'kitsune':case 'kemonomimi':case 'pussyart':case 'pussywankgif':case 'girl_solo':case 'girl_solo_gif':case 'tits':case 'trap':case 'yuri':case 'avatar2':case 'anal':case 'bj':case 'boobs':case 'classic':case 'cumsluts':case 'kuni':case 'lesbian':case 'neko':case 'neko_gif':case 'ahegao':case 'bdsm':case 'cuckold':case 'cum':case 'foot':case 'gangbang':case 'glasses':case 'jahy':case 'masturbation':case 'nsfw_neko':case 'orgy':case 'panties':case 'tentacles':case 'thighs':case 'zettai':{
+if (m.isGroup) return reply(lang.pcOnly())
 if (!db.data.chats[m.chat].nsfw) return reply(lang.OffNsfw())
 reply(lang.wait())
 let to = global.api('alfa', '/api/nsfw/'+command, {}, 'apikey')
@@ -5136,7 +5138,7 @@ case 'darkjoke': case 'darkjokes': {
 //var res = await Darkjokes()
 var res = `https://api.akuari.my.id/randomimage/darkjokes1`
 let teks = "*Darkjokes*"
-alpha.sendMessage(m.chat, { image: { url: res }, caption: teks, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄳🄰🅁🄺🄹🄾🄺🄴`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
+await alpha.sendMessage(m.chat, { image: { url: res }, caption: teks, footer: `© ${botname}`, buttons: [{buttonId: `${prefix+command}`, buttonText: {displayText: '➢ Next'}, type: 1}], headerType: 4, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `🄳🄰🅁🄺🄹🄾🄺🄴`, body: `${ownername}`, mediaType: 4, thumbnail: pp_bot, sourceUrl: `${myweb}`, mediaUrl: `${myweb}`}}}, { quoted: m })
 //alpha.sendMessage(m.chat, { image : { url : res }, caption: teks }, { quoted : m })
 }
 break
@@ -5287,7 +5289,7 @@ break
             }
             break
 
-case 'groupbot': case 'grupbot': case 'botgroup': case 'botgrup': {
+case 'groupbot': case 'grupbot': case 'grubbot': case 'botgroup': case 'botgrup': {
 let teks = `*ωαяgα +62*
 https://chat.whatsapp.com/D6x4RcvnawbIQEikWv0Ryj
 
