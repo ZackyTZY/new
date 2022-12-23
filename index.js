@@ -2781,6 +2781,7 @@ await alpha.sendMessage(m.chat, { image: { url: to }, caption: lang.ok(), footer
 }
 	break
 case 'hentai': {
+            if (m.isGroup) return reply(lang.pcOnly())
 			if (!db.data.chats[m.chat].nsfw) return reply(lang.OffNsfw())
                 reply(lang.wait())
                 anu = await hentai()
