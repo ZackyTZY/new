@@ -5632,7 +5632,7 @@ if (!m.isGroup && !m.key.fromMe && !isCreator) { //punya gw
     let name = await alpha.getName(who)
     let caption = `👋 Hai *${pushname}*, Ada yang bisa *${botname}* bantu?\nKetik *${prefix}allmenu* untuk melihat list fitur bot`
     let buttonfirst = [{urlButton: { displayText: 'Group WhatsApp', url: `${myweb}` }}, { urlButton: { displayText: 'Youtube', url: `${youtube}` }}, { quickReplyButton: { displayText: '👤 Group Bot', id: 'groupbot' }}, { quickReplyButton: { displayText: 'Rules 📃', id: 'rules' }}, { quickReplyButton: { displayText: '💰 Donation 💸', id: 'donasi' }}]
-    await alpha.sendMessage(m.chat, { viewOnce : true, text: caption, templateButtons: buttonfirst, footer: ownername, mentions: [m.sender] }, { quoted: m })
+    await alpha.sendMessage(m.chat, { viewOnce : true, text: caption, templateButtons: buttonfirst, footer: `© ${ownername}`, mentions: [m.sender] }, { quoted: m })
     user.firstChat = new Date * 1
 }
 
