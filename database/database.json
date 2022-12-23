@@ -36,6 +36,19 @@
       "AdminOnly": true,
       "setWelcome": "",
       "setLeave": ""
+    },
+  "19177200397-1616731227@g.us": {
+      "name": "RP LONTE BTS KAFIR GAY🤡️‍",
+      "goodbye": false,
+      "welcome": false,
+      "mute": false,
+      "nsfw": true,
+      "antilink": false,
+      "antivirus": true,
+      "antionce": true,
+      "AdminOnly": false,
+      "setWelcome": "",
+      "setLeave": ""
     }
   },
   "database": {},
