@@ -1006,7 +1006,7 @@ reply('Kamu terdeteksi spam bot tanpa jeda, lakukan perintah setelah 3 detik')
 
 if (isCmd && msgFilter.isFiltered(sender) && !m.isGroup) return spamlog()
 if (isCmd && msgFilter.isFiltered(sender) && m.isGroup) return spamlog()
-if (isCmd && args.length < 1 && !isCreator) msgFilter.addFilter(sender)
+if (isCmd && args.length < 1 && !isCreator && !isGroupAdmins) msgFilter.addFilter(sender)
       
       switch(command) {
         
